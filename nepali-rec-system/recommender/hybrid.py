@@ -1,111 +1,150 @@
+"""Adaptive weighted hybrid recommendation engine."""
+
+from __future__ import annotations
+
 import logging
 from pathlib import Path
+
 import joblib
+import numpy as np
 import pandas as pd
-from .content_based import ContentBasedRecommender
+
 from .collaborative import CollaborativeRecommender
+from .content_based import ContentBasedRecommender
+from .utils import min_max_normalize
 
 logger = logging.getLogger(__name__)
 
+
 class HybridRecommender:
-    def __init__(self):
+    """Weighted hybrid recommender with adaptive alpha and festival context."""
+
+    festival_categories = {"Traditional Attire", "Kitchen & Home", "Handicrafts & Art", "Daily Groceries"}
+
+    def __init__(self) -> None:
+        """Initialize unfitted content and collaborative models."""
         self.cb = ContentBasedRecommender()
         self.cf = CollaborativeRecommender()
+        self.products_df: pd.DataFrame | None = None
+        self.users_df: pd.DataFrame | None = None
+        self.interactions_df: pd.DataFrame | None = None
         self.is_fitted = False
-        self.products_df = None
-        self.users_df = None
-        self.interactions_df = None
-        self.festival_categories = {'Traditional Attire', 'Kitchen & Home', 'Handicrafts & Art', 'Daily Groceries'}
 
-    def fit(self, products_df: pd.DataFrame, users_df: pd.DataFrame, interactions_df: pd.DataFrame) -> "HybridRecommender":
-        self.products_df = products_df.copy()
-        self.users_df = users_df.copy()
-        self.interactions_df = interactions_df.copy()
-        
-        self.cb.fit(products_df)
-        self.cf.fit(interactions_df, products_df)
+    def fit(
+        self,
+        products_df: pd.DataFrame,
+        users_df: pd.DataFrame,
+        interactions_df: pd.DataFrame,
+    ) -> "HybridRecommender":
+        """Fit content-based and collaborative sub-models."""
+        self.products_df = products_df.reset_index(drop=True).copy()
+        self.users_df = users_df.reset_index(drop=True).copy()
+        self.interactions_df = interactions_df.reset_index(drop=True).copy()
+        self.cb.fit(self.products_df)
+        self.cf.fit(self.interactions_df, self.products_df)
         self.is_fitted = True
         return self
 
     def recommend(self, user_id: str, top_k: int = 10, context: dict | None = None) -> list[dict]:
+        """Return hybrid recommendations sorted by score."""
+        if not self.is_fitted or self.products_df is None or self.interactions_df is None:
+            logger.warning("HybridRecommender used before fit")
+            return []
         context = context or {}
-        month = context.get('month')
-        
-        cf_recs_list = self.cf.recommend(user_id, top_k=50, exclude_interacted=context.get('exclude_interacted', True), interactions_df=self.interactions_df)
-        cf_recs = {r['product_id']: r['predicted_score'] for r in cf_recs_list}
-        
-        user_history = self.interactions_df[self.interactions_df['user_id'] == user_id]
-        if not user_history.empty:
-            recent_item = user_history.sort_values('timestamp', ascending=False).iloc[0]['product_id']
-            cb_recs = {r['product_id']: r['similarity_score'] for r in self.cb.recommend(recent_item, top_k=50)}
-        else:
-            cb_recs = {}
-            
-        all_pids = set(cf_recs.keys()) | set(cb_recs.keys())
-        
-        results = []
-        for pid in all_pids:
-            row = self.products_df[self.products_df['product_id'] == pid].iloc[0]
-            if context.get('exclude_out_of_stock', True) and not row['in_stock']:
+        month = context.get("month")
+        exclude_interacted = context.get("exclude_interacted", True)
+        exclude_out_of_stock = context.get("exclude_out_of_stock", True)
+        seed_product = context.get("seed_product")
+        products = self.products_df.set_index("product_id")
+
+        if user_id not in self.cf.user_interaction_counts:
+            logger.warning("Unknown user %s, returning popularity-informed hybrid fallback", user_id)
+
+        cf_raw = self.cf.predictions_df.loc[user_id] if self.cf.predictions_df is not None and user_id in self.cf.predictions_df.index else pd.Series(0, index=products.index)
+        cf_norm = pd.Series(min_max_normalize(cf_raw.to_numpy()), index=cf_raw.index)
+
+        cb_scores = pd.Series(0.0, index=products.index)
+        seed = seed_product
+        if not seed:
+            history = self.interactions_df.loc[self.interactions_df["user_id"] == user_id]
+            if not history.empty:
+                seed = history.sort_values("timestamp").iloc[-1]["product_id"]
+        if seed and seed in self.cb.product_index and self.cb.similarity_matrix is not None:
+            idx = self.cb.product_index[seed]
+            cb_scores = pd.Series(self.cb.similarity_matrix[idx], index=self.cb.products_df["product_id"])
+            cb_scores.loc[seed] = 0
+
+        if cf_norm.max() == 0 and cb_scores.max() == 0:
+            for item in self.cf.popularity_fallback:
+                cf_norm.loc[item["product_id"]] = float(item["popularity_score"])
+
+        seen: set[str] = set()
+        if exclude_interacted:
+            seen = set(self.interactions_df.loc[self.interactions_df["user_id"] == user_id, "product_id"])
+        results: list[dict] = []
+        for product_id, row in products.iterrows():
+            if product_id in seen:
                 continue
-                
-            cf_val = cf_recs.get(pid, 0) / 5.0 # pseudo-normalize CF to [0,1]
-            cb_val = cb_recs.get(pid, 0)
-            
-            alpha = self._compute_alpha(user_id, pid, month)
-            hybrid_score = alpha * cf_val + (1 - alpha) * cb_val
-            
-            freshness_boost_applied = False
-            if row.get('is_new_arrival', False):
+            if exclude_out_of_stock and not bool(row["in_stock"]):
+                continue
+            cf_score = float(cf_norm.get(product_id, 0.0))
+            cb_score = float(cb_scores.get(product_id, 0.0))
+            alpha = self._compute_alpha(user_id, product_id, month)
+            hybrid_score = alpha * cf_score + (1 - alpha) * cb_score
+            freshness = bool(row["is_new_arrival"])
+            if freshness:
                 hybrid_score += 0.08
-                freshness_boost_applied = True
-                
-            is_festival = False
-            if month in {10, 11} and row['category'] in self.festival_categories:
-                is_festival = True
-                
+            is_festival = month in {10, 11} and row["category"] in self.festival_categories
             results.append({
-                'product_id': pid,
-                'name': row['name'],
-                'category': row['category'],
-                'subcategory': row['subcategory'],
-                'brand': row['brand'],
-                'price_npr': row['price_npr'],
-                'avg_rating': row['avg_rating'],
-                'in_stock': row['in_stock'],
-                'is_new_arrival': row.get('is_new_arrival', False),
-                'cf_score': cf_val,
-                'cb_score': cb_val,
-                'hybrid_score': hybrid_score,
-                'alpha_used': alpha,
-                'freshness_boost_applied': freshness_boost_applied,
-                'is_festival_recommendation': is_festival
+                "product_id": product_id,
+                "name": row["name"],
+                "category": row["category"],
+                "subcategory": row["subcategory"],
+                "brand": row["brand"],
+                "price_npr": int(row["price_npr"]),
+                "avg_rating": None if pd.isna(row["avg_rating"]) else float(row["avg_rating"]),
+                "in_stock": bool(row["in_stock"]),
+                "is_new_arrival": freshness,
+                "cf_score": cf_score,
+                "cb_score": float(np.clip(cb_score, 0, 1)),
+                "hybrid_score": float(hybrid_score),
+                "alpha_used": float(alpha),
+                "freshness_boost_applied": freshness,
+                "is_festival_recommendation": bool(is_festival),
             })
-            
-        results.sort(key=lambda x: x['hybrid_score'], reverse=True)
+        results.sort(key=lambda item: item["hybrid_score"], reverse=True)
         return results[:top_k]
 
     def _compute_alpha(self, user_id: str, product_id: str, month: int | None) -> float:
-        interaction_count = self.cf.user_interaction_counts.get(user_id, 0)
-        
-        if interaction_count >= 20: alpha = 0.75
-        elif interaction_count >= 5: alpha = 0.55
-        elif interaction_count > 0: alpha = 0.30
-        else: alpha = 0.15
-        
-        row = self.products_df[self.products_df['product_id'] == product_id].iloc[0]
-        if row.get('is_new_arrival', False):
+        """Compute adaptive alpha for a user-product-context triplet."""
+        if self.products_df is None:
+            return 0.15
+        count = self.cf.user_interaction_counts.get(user_id, 0)
+        if count >= 20:
+            alpha = 0.75
+        elif count >= 5:
+            alpha = 0.55
+        elif count > 0:
+            alpha = 0.30
+        else:
+            alpha = 0.15
+        row = self.products_df.loc[self.products_df["product_id"] == product_id]
+        if row.empty:
+            return alpha
+        product = row.iloc[0]
+        if bool(product["is_new_arrival"]):
             alpha = 0.05
-            
-        if month in {10, 11} and row['category'] in self.festival_categories:
+        if month in {10, 11} and product["category"] in self.festival_categories:
             alpha = max(0.10, alpha - 0.20)
-            
-        return alpha
+        return float(alpha)
 
-    def save(self, path: Path) -> None:
+    def save(self, path: Path | str) -> None:
+        """Save the full hybrid model."""
+        path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         joblib.dump(self, path)
 
     @classmethod
-    def load(cls, path: Path) -> "HybridRecommender":
-        return joblib.load(path)
+    def load(cls, path: Path | str) -> "HybridRecommender":
+        """Load a saved hybrid model."""
+        return joblib.load(Path(path))
