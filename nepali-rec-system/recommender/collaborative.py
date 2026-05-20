@@ -51,7 +51,8 @@ class CollaborativeRecommender:
         if latent_k <= 0:
             predictions = values
         else:
-            u, sigma, vt = svds(sparse, k=latent_k, random_state=42)
+            np.random.seed(42)
+            u, sigma, vt = svds(sparse, k=latent_k)
             predictions = u @ np.diag(sigma) @ vt + user_means[:, None]
         predictions = np.clip(predictions, 0, 5)
         self.predictions_df = pd.DataFrame(predictions, index=matrix.index, columns=matrix.columns)

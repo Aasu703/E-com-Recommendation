@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+models/*.pkl
+node_modules/
+.next/
+postgres_data/
