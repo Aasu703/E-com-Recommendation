@@ -51,16 +51,20 @@ async def _cache_set(request: Request, key: str, payload: dict, ttl: int | None 
 
 
 @router.get("/user/{user_id}", response_model=RecommendationResponse)
-async def recommend_user(request: Request, user_id: str, top_k: int = 10, month: int | None = None, exclude_interacted: bool = True, exclude_out_of_stock: bool = True):
-    """Return personalized recommendations for a user."""
+async def recommend_user(request: Request, user_id: str, top_k: int = 10, exclude_out_of_stock: bool = True):
+    """Return baseline recent-product recommendations."""
     request.app.state.total_recommendations_served += 1
-    key = f"rec:user:{user_id}:{top_k}:{month}:{exclude_interacted}:{exclude_out_of_stock}"
+    key = f"rec:baseline:user:{user_id}:{top_k}:{exclude_out_of_stock}"
     cached = await _cache_get(request, key)
     if cached:
         cached["cached"] = True
         return cached
-    context = {"month": month, "exclude_interacted": exclude_interacted, "exclude_out_of_stock": exclude_out_of_stock}
-    recs = request.app.state.recommender.recommend(user_id, top_k=top_k, context=context)
+    recs = request.app.state.recommender.recommend(
+        user_id,
+        top_k=top_k,
+        exclude_out_of_stock=exclude_out_of_stock,
+    )
+    context = {"model": "baseline", "strategy": "recent_products", "exclude_out_of_stock": exclude_out_of_stock}
     payload = RecommendationResponse(
         user_id=user_id,
         recommendations=[_format_product(item) for item in recs],
@@ -75,44 +79,27 @@ async def recommend_user(request: Request, user_id: str, top_k: int = 10, month:
 
 @router.get("/baseline/user/{user_id}", response_model=RecommendationResponse)
 async def recommend_baseline(request: Request, user_id: str, top_k: int = 10, exclude_out_of_stock: bool = True):
-    """Return non-personalized recent products."""
-    request.app.state.total_recommendations_served += 1
-    key = f"rec:baseline:{user_id}:{top_k}:{exclude_out_of_stock}"
-    cached = await _cache_get(request, key)
-    if cached:
-        cached["cached"] = True
-        return cached
-    recs = request.app.state.baseline_recommender.recommend(
-        user_id,
-        top_k=top_k,
-        exclude_out_of_stock=exclude_out_of_stock,
-    )
-    context = {"baseline": "recent", "exclude_out_of_stock": exclude_out_of_stock}
-    payload = RecommendationResponse(
-        user_id=user_id,
-        recommendations=[_format_product(item) for item in recs],
-        model_version=request.app.state.model_version,
-        context=context,
-        generated_at=_now(),
-        cached=False,
-    ).model_dump()
-    await _cache_set(request, key, payload)
-    return payload
+    """Backward-compatible alias for the baseline endpoint."""
+    return await recommend_user(request, user_id, top_k, exclude_out_of_stock)
 
 
 @router.get("/product/{product_id}/similar", response_model=SimilarProductsResponse)
 async def similar_products(request: Request, product_id: str, top_k: int = 10, exclude_out_of_stock: bool = True):
-    """Return similar products for a product page."""
+    """Return recent products as the baseline product-page fallback."""
     products = request.app.state.recommender.products_df
     if product_id not in set(products["product_id"]):
         raise HTTPException(status_code=404, detail=f"Product {product_id} not found in catalog")
-    key = f"rec:product:{product_id}:{top_k}:{exclude_out_of_stock}"
+    key = f"rec:baseline:product:{product_id}:{top_k}:{exclude_out_of_stock}"
     cached = await _cache_get(request, key)
     if cached:
         cached["cached"] = True
         return cached
-    raw = request.app.state.recommender.cb.recommend(product_id, top_k=top_k, exclude_out_of_stock=exclude_out_of_stock)
-    recs = [{**item, "hybrid_score": item["similarity_score"], "cb_score": item["similarity_score"]} for item in raw]
+    raw = request.app.state.recommender.recommend(
+        "product-page",
+        top_k=top_k + 1,
+        exclude_out_of_stock=exclude_out_of_stock,
+    )
+    recs = [item for item in raw if item["product_id"] != product_id][:top_k]
     name = products.loc[products["product_id"] == product_id, "name"].iloc[0]
     payload = SimilarProductsResponse(
         product_id=product_id,
@@ -143,9 +130,9 @@ async def popular(request: Request, top_k: int = 10, category: str | None = None
 
 @router.post("/batch")
 async def batch(request: Request, body: BatchRequest):
-    """Run recommendations for up to 50 users concurrently."""
+    """Run baseline recommendations for up to 50 users concurrently."""
     async def one(uid: str):
-        recs = await asyncio.to_thread(request.app.state.recommender.recommend, uid, body.top_k, {})
+        recs = await asyncio.to_thread(request.app.state.recommender.recommend, uid, body.top_k)
         return uid, [_format_product(item).model_dump() for item in recs]
 
     pairs = await asyncio.gather(*(one(uid) for uid in body.user_ids))
