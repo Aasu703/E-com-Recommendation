@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "nepali-baseline-rec-system"
+version = "0.1.0"
+description = "Nepali E-Commerce Baseline Recommendation System"
+authors = ["Aayush Subedi <230425@student>"]
+readme = "README.md"
+packages = [{include = "recommender"}, {include = "api"}, {include = "db"}, {include = "jobs"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+pydantic = "^2.7.0"
+pydantic-settings = "^2.3.0"
+sqlalchemy = "^2.0.30"
+alembic = "^1.13.1"
+asyncpg = "^0.29.0"
+redis = "^5.0.4"
+celery = "^5.4.0"
+scikit-learn = "^1.5.0"
+scipy = "^1.13.0"
+numpy = "^1.26.4"
+pandas = "^2.2.2"
+joblib = "^1.4.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+pytest-asyncio = "^0.23.7"
+httpx = "^0.27.0"
+jupyter = "^1.0.0"
+matplotlib = "^3.9.0"
+seaborn = "^0.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

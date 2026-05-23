@@ -3,19 +3,18 @@ from httpx import ASGITransport, AsyncClient
 
 from api.main import app
 from recommender.baseline import BaselineRecommender
-from recommender.hybrid import HybridRecommender
 from recommender.utils import load_data
 
 
 def _ensure_state():
     if not hasattr(app.state, "recommender"):
         p, u, i = load_data()
-        app.state.recommender = HybridRecommender().fit(p, u, i)
-        app.state.baseline_recommender = BaselineRecommender().fit(p, i)
+        app.state.recommender = BaselineRecommender().fit(p, i)
+        app.state.recommender.users_df = u
         app.state.started_at = 0
         app.state.total_recommendations_served = 0
         app.state.cache_hits = 0
-        app.state.model_version = "test"
+        app.state.model_version = "baseline-test"
         app.state.redis = None
         app.state.redis_connected = False
         app.state.db_connected = False
