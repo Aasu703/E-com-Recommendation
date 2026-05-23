@@ -41,10 +41,6 @@ The repository currently provides:
 +-- hybrid-model/
 |   +-- backend/          # FastAPI backend using HybridRecommender
 |   +-- frontend/         # Next.js UI for personalized hybrid recommendations
-+-- nepali-rec-system/    # Original backend workspace kept for reference
-+-- frontend/             # Original frontend workspace kept for reference
-+-- models/               # Shared/generated model artifacts
-+-- notebooks/            # Thesis notebooks, if used at root level
 +-- README.md
 ```
 
@@ -285,9 +281,8 @@ Each backend includes `.env.example` as a starting point.
 
 ## Suggested Improvements
 
-- Consolidate duplicated workspaces. `nepali-rec-system/` and root `frontend/` appear to be older/original copies, while `baseline-model/` and `hybrid-model/` are the cleaner separated thesis stacks.
-- Decide where model artifacts should live. There are model files under backend notebook folders and also a root `models/` directory.
-- Keep generated files out of version control. The workspace currently contains generated folders such as `.next/`, `node_modules/`, `__pycache__/`, and `.pytest_cache/`; these should stay ignored and be removed from commits if already tracked.
+- Decide whether the duplicated notebook model artifacts under each backend should remain committed or be generated during setup.
+- Keep generated files out of version control. Generated folders such as `.next/`, `node_modules/`, `__pycache__/`, and `.pytest_cache/` should stay ignored and should not be committed.
 - Fix encoding artifacts in some frontend text. For example, the hybrid frontend shows garbled characters around separators and the smoke-test message has corrupted checkmark/dash characters.
 - Avoid repeated backend code between baseline and hybrid if both will continue evolving. Shared API schemas, data loading, Docker files, and UI components could be extracted or documented as intentionally duplicated for thesis isolation.
 - Add clearer evaluation results to the README or a separate report file, including precision, recall, NDCG, coverage, and diversity comparisons between baseline and hybrid.
@@ -298,18 +293,10 @@ Each backend includes `.env.example` as a starting point.
 
 ## Files and Folders That Look Unnecessary or Should Be Cleaned
 
-These are not necessarily wrong, but they add noise and should be reviewed:
+The duplicate root workspaces and generated caches have been cleaned. These remaining items should still be reviewed:
 
-- `baseline-model/frontend/node_modules/`
-- `hybrid-model/frontend/node_modules/`
-- `baseline-model/frontend/.next/`
-- `hybrid-model/frontend/.next/`
-- Any `__pycache__/` directory
-- Any `.pytest_cache/` directory
-- Root `frontend/` if it is now superseded by `hybrid-model/frontend/`
-- Root `nepali-rec-system/` if it is now superseded by `hybrid-model/backend/`
 - Duplicate notebook model artifacts such as `notebooks/models/*.pkl` inside multiple backend copies
-- Root `models/hybrid_recommender.pkl` if backend-specific `models/` folders are the intended source of truth
+- Any empty root `frontend/` directory left behind by Windows file locking can be removed once the locking process releases it.
 
 ## Current Project Summary
 
