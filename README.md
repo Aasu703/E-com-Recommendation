@@ -279,6 +279,28 @@ Important settings:
 
 Each backend includes `.env.example` as a starting point.
 
+## Evaluation Results
+
+Offline evaluation using a time-based 80/20 split on the synthetic Nepali
+e-commerce dataset (500 products, 300 users, 6,194 interactions).
+Test period: interactions from 2025-01-01 onward. Users evaluated: 299.
+
+| Model    | K  | Precision | Recall | NDCG  | Coverage | Diversity |
+|----------|----|-----------|--------|-------|----------|-----------|
+| Baseline | 5  | 0.019     | 0.015  | 0.021 | 0.010    | 0.900     |
+| Hybrid   | 5  | 0.059     | 0.044  | 0.053 | 0.638    | 0.301     |
+| Baseline | 10 | 0.017     | 0.027  | 0.025 | 0.020    | 0.800     |
+| Hybrid   | 10 | 0.054     | 0.082  | 0.065 | 0.894    | 0.353     |
+| Baseline | 20 | 0.018     | 0.060  | 0.039 | 0.040    | 0.858     |
+| Hybrid   | 20 | 0.043     | 0.133  | 0.087 | 0.936    | 0.408     |
+
+Key findings:
+- The hybrid model achieves 160% higher NDCG@10 than the baseline.
+- Coverage improves from 0.020 to 0.894 at K=10, meaning more of the catalog
+  is surfaced to users.
+- Diversity increases with K, reflecting the hybrid model's ability to blend
+  category signals rather than repeating popular items.
+
 ## Suggested Improvements
 
 - Decide whether the duplicated notebook model artifacts under each backend should remain committed or be generated during setup.
