@@ -1,0 +1,15 @@
+# Generated dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Python/cache artifacts that should not be committed from mixed workspaces
+__pycache__/
+.pytest_cache/
+
+# Generated model artifacts
+*.pkl
+*.npy
+notebooks/models/

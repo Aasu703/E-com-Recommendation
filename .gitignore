@@ -22,8 +22,11 @@ dist/
 build/
 
 # Data/models
+*.pkl
+*.npy
 models/*.pkl
 models/*.joblib
+notebooks/models/
 
 # Logs
 *.log
