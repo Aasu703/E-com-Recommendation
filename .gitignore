@@ -1,0 +1,68 @@
+### OS / editor ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+### Environment / secrets ###
+.env
+.env.*
+!.env.example
+!.env.sample
+.python-version
+
+### Python ###
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.venv/
+venv/
+env/
+ENV/
+pip-wheel-metadata/
+*.egg-info/
+.ipynb_checkpoints/
+
+### Node / Next.js ###
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+### Logs / runtime ###
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+### Databases / local state ###
+*.sqlite
+*.sqlite3
+*.db
+postgres_data/
+
+### Generated ML artifacts ###
+models/*.pkl
+models/*.joblib
+models/*.npy
+*.pkl
+*.joblib
+*.npy
+
+### Project-specific ###
+nepali-rec-system/.env
+nepali-rec-system/.venv/
+nepali-rec-system/node_modules/
+nepali-rec-system/.next/
+hybrid-model/frontend/.next/
