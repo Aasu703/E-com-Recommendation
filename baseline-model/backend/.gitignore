@@ -2,7 +2,10 @@ __pycache__/
 *.pyc
 .env
 .venv/
+*.pkl
+*.npy
 models/*.pkl
+notebooks/models/
 node_modules/
 .next/
 postgres_data/
