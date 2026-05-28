@@ -1,0 +1,84 @@
+from __future__ import annotations
+
+import pytest
+from httpx import ASGITransport, AsyncClient
+
+from api.main import app
+from recommender.baseline import BaselineRecommender
+from recommender.hybrid import HybridRecommender
+from recommender.utils import load_data
+
+
+def ensure_app_state() -> None:
+    if hasattr(app.state, "recommender"):
+        return
+
+    products, users, interactions = load_data()
+    app.state.recommender = HybridRecommender().fit(products, users, interactions)
+    app.state.baseline_recommender = BaselineRecommender().fit(products, interactions)
+    app.state.started_at = 0
+    app.state.total_recommendations_served = 0
+    app.state.cache_hits = 0
+    app.state.model_version = "test"
+    app.state.redis = None
+    app.state.redis_connected = False
+    app.state.db_connected = False
+
+
+@pytest.fixture
+async def client():
+    ensure_app_state()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as async_client:
+        yield async_client
+
+
+@pytest.mark.asyncio
+async def test_health_returns_ok(client):
+    response = await client.get("/health")
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
+
+
+@pytest.mark.asyncio
+async def test_user_recommendations_return_known_user_results(client):
+    response = await client.get("/api/v1/recommend/user/U0001?top_k=5")
+
+    assert response.status_code == 200
+    recommendations = response.json()["recommendations"]
+    assert isinstance(recommendations, list)
+    assert len(recommendations) <= 5
+
+
+@pytest.mark.asyncio
+async def test_unknown_user_is_handled_without_500(client):
+    response = await client.get("/api/v1/recommend/user/UNKNOWN_USER_XYZ?top_k=5")
+
+    assert response.status_code != 500
+    if response.status_code == 200:
+        assert isinstance(response.json()["recommendations"], list)
+
+
+@pytest.mark.asyncio
+async def test_similar_products_returns_list_for_known_product(client):
+    response = await client.get("/api/v1/recommend/product/P0001/similar?top_k=3")
+
+    assert response.status_code == 200
+    assert isinstance(response.json()["similar_products"], list)
+
+
+@pytest.mark.asyncio
+async def test_similar_products_unknown_product_returns_404(client):
+    response = await client.get("/api/v1/recommend/product/UNKNOWN_PRODUCT_XYZ/similar")
+
+    assert response.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_popular_recommendations_return_top_k_list(client):
+    response = await client.get("/api/v1/recommend/popular?top_k=5")
+
+    assert response.status_code == 200
+    recommendations = response.json()["recommendations"]
+    assert isinstance(recommendations, list)
+    assert len(recommendations) == 5
