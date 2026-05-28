@@ -17,7 +17,7 @@ async def health(request: Request):
     model_loaded = bool(getattr(request.app.state, "recommender", None))
     redis_connected = bool(getattr(request.app.state, "redis_connected", False))
     return HealthResponse(
-        status="healthy" if model_loaded else "unhealthy",
+        status="ok" if model_loaded else "error",
         model_loaded=model_loaded,
         redis_connected=redis_connected,
         db_connected=bool(getattr(request.app.state, "db_connected", False)),
