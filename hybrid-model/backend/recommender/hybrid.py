@@ -19,7 +19,15 @@ logger = logging.getLogger(__name__)
 class HybridRecommender:
     """Weighted hybrid recommender with adaptive alpha and festival context."""
 
-    festival_categories = {"Traditional Attire", "Kitchen & Home", "Handicrafts & Art", "Daily Groceries"}
+    festival_categories = {
+        "Traditional Attire",
+        "Kitchen & Home",
+        "Handicrafts & Art",
+        "Daily Groceries",
+        "Traditional Gifts",
+        "Electronics",  # Festival electronics are big in Dashain
+    }
+    COLD_START_THRESHOLD = 3  # gamma in the formula
 
     def __init__(self) -> None:
         """Initialize unfitted content and collaborative models."""
@@ -91,10 +99,16 @@ class HybridRecommender:
             cb_score = float(cb_scores.get(product_id, 0.0))
             alpha = self._compute_alpha(user_id, product_id, month)
             hybrid_score = alpha * cf_score + (1 - alpha) * cb_score
+            
             freshness = bool(row["is_new_arrival"])
             if freshness:
                 hybrid_score += 0.08
+            
+            # Festival Boosting (Dashain/Tihar)
             is_festival = month in {10, 11} and row["category"] in self.festival_categories
+            if is_festival:
+                hybrid_score += 0.25  # Localized boost multiplier
+                
             results.append({
                 "product_id": product_id,
                 "name": row["name"],
@@ -116,26 +130,25 @@ class HybridRecommender:
         return results[:top_k]
 
     def _compute_alpha(self, user_id: str, product_id: str, month: int | None) -> float:
-        """Compute adaptive alpha for a user-product-context triplet."""
+        """Compute adaptive alpha using saturation curve: alpha = Uc / (Uc + gamma)."""
         if self.products_df is None:
             return 0.15
-        count = self.cf.user_interaction_counts.get(user_id, 0)
-        if count >= 20:
-            alpha = 0.75
-        elif count >= 5:
-            alpha = 0.55
-        elif count > 0:
-            alpha = 0.30
-        else:
-            alpha = 0.15
+        
+        u_c = self.cf.user_interaction_counts.get(user_id, 0)
+        # alpha_u = Uc / (Uc + gamma)
+        alpha = u_c / (u_c + self.COLD_START_THRESHOLD)
+        
         row = self.products_df.loc[self.products_df["product_id"] == product_id]
         if row.empty:
-            return alpha
+            return float(alpha)
+        
         product = row.iloc[0]
+        # For new arrivals, we prefer content-based (lower alpha)
         if bool(product["is_new_arrival"]):
-            alpha = 0.05
-        if month in {10, 11} and product["category"] in self.festival_categories:
-            alpha = max(0.10, alpha - 0.20)
+            alpha *= 0.5
+            
+        # For festivals, we might want to favor content/discovery slightly if it's a cold-start scenario
+        # but the formula already handles cold start well.
         return float(alpha)
 
     def save(self, path: Path | str) -> None:
