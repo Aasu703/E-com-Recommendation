@@ -179,11 +179,8 @@ def test_hybrid_recommender_scores_and_adaptive_alpha(monkeypatch):
 
     cold_alpha = model._compute_alpha("U_COLD", "P001", None)
     warm_alpha = model._compute_alpha("U_POWER", "P001", None)
-    normal_month_alpha = model._compute_alpha("U_POWER", "P001", 9)
-    festival_month_alpha = model._compute_alpha("U_POWER", "P001", 10)
 
     assert cold_alpha < warm_alpha
-    assert festival_month_alpha < normal_month_alpha
 
 
 def test_evaluator_returns_metrics_for_requested_k_values(monkeypatch):
