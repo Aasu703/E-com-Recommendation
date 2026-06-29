@@ -1,9 +1,24 @@
-const REC_API_BASE = process.env.NEXT_PUBLIC_REC_API_URL ?? "http://localhost:8000";
+/**
+ * API client for the Nepali E-Commerce Recommendation backend.
+ *
+ * Provides typed fetch wrappers for:
+ *  - Hybrid recommendations (personalized)
+ *  - Baseline recommendations (non-personalized, recency-based)
+ *  - Content-based similar products
+ *  - Globally popular products
+ */
+
+const API_BASE = process.env.NEXT_PUBLIC_REC_API_URL ?? "http://localhost:8000";
+
+/* ------------------------------------------------------------------ */
+/*  Types                                                              */
+/* ------------------------------------------------------------------ */
 
 export interface RecommendedProduct {
   product_id: string;
   name: string;
   category: string;
+  subcategory: string;
   brand: string;
   price_npr: number;
   price_formatted: string;
@@ -11,32 +26,105 @@ export interface RecommendedProduct {
   in_stock: boolean;
   is_new_arrival: boolean;
   hybrid_score: number;
+  cf_score: number;
+  cb_score: number;
+  alpha_used: number;
   is_festival_recommendation: boolean;
+  freshness_boost_applied: boolean;
 }
 
 export interface RecommendationResponse {
   user_id: string;
   recommendations: RecommendedProduct[];
   model_version: string;
+  context: Record<string, unknown>;
+  generated_at: string;
   cached: boolean;
 }
 
-async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${REC_API_BASE}${path}`);
-  if (!res.ok) throw new Error(await res.text());
+export interface SimilarProductsResponse {
+  product_id: string;
+  seed_product_name: string;
+  similar_products: RecommendedProduct[];
+  generated_at: string;
+  cached: boolean;
+}
+
+export interface User {
+  user_id: string;
+  name: string;
+  city: string;
+  age: number;
+  gender: string;
+  user_type: string;
+  preferred_categories: string;
+  joined_date: string;
+  is_verified: boolean;
+}
+
+export interface HealthResponse {
+  status: string;
+  model_loaded: boolean;
+  redis_connected: boolean;
+  db_connected: boolean;
+  uptime_seconds: number;
+  model_version: string;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Fetch helper                                                       */
+/* ------------------------------------------------------------------ */
+
+async function fetchJson<T>(path: string): Promise<T> {
+  const res = await fetch(`${API_BASE}${path}`);
+  if (!res.ok) throw new Error(`API error ${res.status}: ${await res.text()}`);
   return res.json();
 }
 
-export async function getRecommendationsForUser(userId: string, topK = 10, month?: number): Promise<RecommendationResponse> {
-  const suffix = month ? `&month=${month}` : "";
-  return getJson(`/api/v1/recommend/user/${userId}?top_k=${topK}${suffix}`);
+/* ------------------------------------------------------------------ */
+/*  API functions                                                      */
+/* ------------------------------------------------------------------ */
+
+/** Personalized hybrid recommendations for a user. */
+export async function getHybridRecommendations(
+  userId: string,
+  topK = 10,
+  month?: number,
+): Promise<RecommendationResponse> {
+  const params = new URLSearchParams({ top_k: String(topK) });
+  if (month) params.set("month", String(month));
+  return fetchJson(`/api/v1/recommend/user/${userId}?${params}`);
 }
 
-export async function getSimilarProducts(productId: string, topK = 8): Promise<RecommendationResponse> {
-  const res: any = await getJson(`/api/v1/recommend/product/${productId}/similar?top_k=${topK}`);
-  return { user_id: productId, recommendations: res.similar_products, model_version: "1.0.0", cached: res.cached };
+/** Non-personalized baseline (recency) recommendations. */
+export async function getBaselineRecommendations(
+  userId: string,
+  topK = 10,
+): Promise<RecommendationResponse> {
+  return fetchJson(`/api/v1/recommend/baseline/user/${userId}?top_k=${topK}`);
 }
 
-export async function getPopularProducts(topK = 10): Promise<RecommendationResponse> {
-  return getJson(`/api/v1/recommend/popular?top_k=${topK}`);
+/** Content-based similar products for a seed product. */
+export async function getSimilarProducts(
+  productId: string,
+  topK = 8,
+): Promise<SimilarProductsResponse> {
+  return fetchJson(`/api/v1/recommend/product/${productId}/similar?top_k=${topK}`);
+}
+
+/** Globally popular products. */
+export async function getPopularProducts(
+  topK = 10,
+): Promise<RecommendationResponse> {
+  return fetchJson(`/api/v1/recommend/popular?top_k=${topK}`);
+}
+
+/** List all users for the demo selector. */
+export async function getUsers(limit = 300): Promise<User[]> {
+  return fetchJson(`/api/v1/users?limit=${limit}`);
+}
+
+/** Health check endpoint. */
+export async function getHealth(): Promise<HealthResponse> {
+  return fetchJson("/health");
 }
