@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
-module.exports = { 
+module.exports = {
   reactStrictMode: true,
-  experimental: {
-    turbopack: {
-      root: __dirname,
-    }
-  }
+  turbopack: {
+    root: __dirname,
+  },
 };
