@@ -15,6 +15,9 @@ export default function StoreFront() {
   // Fetch popular products (Trending)
   const popular = usePopularProducts(8);
 
+  // Define dummy analyzer state to fix ReferenceError
+  const analyzer = { hasHistory: false, analyzedProducts: [], seedName: "", isLoading: false };
+
   return (
     <div className="min-h-screen bg-[#0f1117] text-white font-sans">
       <Head>
