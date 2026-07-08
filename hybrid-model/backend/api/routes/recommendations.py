@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 
 from api.config import settings
-from api.schemas import RecommendedProduct, RecommendationResponse, SimilarProductsResponse
+from api.schemas import RecommendedProduct, RecommendationResponse, SimilarProductsResponse, InteractionRequest
 from recommender.utils import get_popular_products
 
 router = APIRouter(prefix="/api/v1/recommend", tags=["recommendations"])
@@ -150,3 +150,40 @@ async def batch(request: Request, body: BatchRequest):
 
     pairs = await asyncio.gather(*(one(uid) for uid in body.user_ids))
     return {"results": dict(pairs), "generated_at": _now()}
+
+
+@router.post("/interact")
+async def interact(request: Request, body: InteractionRequest):
+    """Log an interaction to update the recommender state live."""
+    import pandas as pd
+    recommender = request.app.state.recommender
+    if recommender.interactions_df is not None:
+        # Create a new interaction row
+        score_map = {"view": 1.0, "cart": 2.0, "purchase": 4.0}
+        score = score_map.get(body.interaction_type, 1.0)
+        
+        new_row = pd.DataFrame([{
+            "user_id": body.user_id,
+            "product_id": body.product_id,
+            "interaction_type": body.interaction_type,
+            "implicit_score": score,
+            "timestamp": _now(),
+            "month": datetime.now(timezone.utc).month,
+            "is_festival_period": datetime.now(timezone.utc).month in {10, 11}
+        }])
+        recommender.interactions_df = pd.concat([recommender.interactions_df, new_row], ignore_index=True)
+        
+        # Increment user's interaction count to adapt the Hybrid alpha instantly
+        if body.user_id in recommender.cf.user_interaction_counts:
+            recommender.cf.user_interaction_counts[body.user_id] += 1
+        else:
+            recommender.cf.user_interaction_counts[body.user_id] = 1
+            
+        # Clear cache for this user
+        redis = getattr(request.app.state, "redis", None)
+        if redis:
+            keys = await redis.keys(f"rec:user:{body.user_id}:*")
+            if keys:
+                await redis.delete(*keys)
+                
+    return {"status": "success", "recorded": body.model_dump(), "generated_at": _now()}

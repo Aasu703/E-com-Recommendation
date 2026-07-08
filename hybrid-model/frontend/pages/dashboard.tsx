@@ -25,6 +25,7 @@ import {
   useBaselineRecommendations,
   useUsers,
 } from "../hooks/useRecommendations";
+import { useDemoUser } from "../contexts/DemoUserContext";
 
 const MONTH_LABELS: Record<number, string> = {
   1: "Magh", 2: "Falgun", 3: "Chaitra", 4: "Baisakh",
@@ -33,7 +34,7 @@ const MONTH_LABELS: Record<number, string> = {
 };
 
 export default function Dashboard() {
-  const [userId, setUserId] = useState("U0001");
+  const { userId, setUserId } = useDemoUser();
   const [month, setMonth] = useState(10);
   const [topK, setTopK] = useState(10);
 

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect } from 'react';
 import { useSimilarProducts, usePopularProducts } from "../../hooks/useRecommendations";
 import { useCart } from "../../contexts/CartContext";
 import { Navbar } from "../../components/ui/Navbar";
@@ -11,8 +10,7 @@ import { ArrowLeft, ShoppingCart, Star, Sparkles } from "lucide-react";
 export default function ProductDetailPage() {
   const router = useRouter();
   const productId = String(router.query.id ?? "P0001");
-  const [userId, setUserId] = useState("U0001");
-  
+
   const { addToCart } = useCart();
 
   const { recommendations, seedName, isLoading } = useSimilarProducts(productId, 8);
@@ -28,7 +26,7 @@ export default function ProductDetailPage() {
         <title>{productTitle} — NepKart</title>
       </Head>
 
-      <Navbar userId={userId} setUserId={setUserId} />
+      <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
         <Link href="/" className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium mb-10 transition-colors">

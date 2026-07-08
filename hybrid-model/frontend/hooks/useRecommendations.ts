@@ -7,7 +7,7 @@
  *  - isLoading / isError: request state
  */
 
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import {
   getHybridRecommendations,
   getBaselineRecommendations,
@@ -15,7 +15,17 @@ import {
   getPopularProducts,
   getUsers,
   getHealth,
+  logInteraction,
 } from "../lib/rec-api";
+
+export function useInteract() {
+  const { mutate } = useSWRConfig();
+  return async (userId: string, productId: string, interactionType: string = "view", topK: number = 8, month: number = 10) => {
+    await logInteraction(userId, productId, interactionType);
+    // Invalidate hybrid recommendations cache
+    mutate(["hybrid", userId, topK, month]);
+  };
+}
 
 /** Personalized hybrid recommendations for a user. */
 export function useHybridRecommendations(userId: string, topK = 10, month?: number) {
@@ -59,11 +69,11 @@ export function useSimilarProducts(productId: string, topK = 8) {
   };
 }
 
-/** Globally popular products. */
-export function usePopularProducts(topK = 10) {
+/** Globally popular products, optionally filtered to a single category. */
+export function usePopularProducts(topK = 10, category?: string) {
   const { data, error, isLoading } = useSWR(
-    ["popular", topK],
-    () => getPopularProducts(topK),
+    ["popular", topK, category],
+    () => getPopularProducts(topK, category),
   );
   return {
     recommendations: data?.recommendations ?? [],

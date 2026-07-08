@@ -1,17 +1,14 @@
 import Link from 'next/link';
-import { ShoppingCart, Search, User, Menu } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, UserPlus } from 'lucide-react';
 import { useUsers } from '../../hooks/useRecommendations';
+import { useDemoUser } from '../../contexts/DemoUserContext';
 
-interface NavbarProps {
-  userId: string;
-  setUserId: (id: string) => void;
-}
-
-export function Navbar({ userId, setUserId }: NavbarProps) {
+export function Navbar() {
   const { users } = useUsers();
+  const { userId, setUserId, startAsNewVisitor } = useDemoUser();
 
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-lg bg-[#0f1117]/80 border-b border-[#2a2e3f]">
+    <nav className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/80 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
@@ -19,7 +16,7 @@ export function Navbar({ userId, setUserId }: NavbarProps) {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-[0_0_15px_rgba(99,102,241,0.4)] group-hover:shadow-[0_0_25px_rgba(99,102,241,0.6)] transition-all">
                 N
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
                 NepKart
               </span>
             </Link>
@@ -30,35 +27,49 @@ export function Navbar({ userId, setUserId }: NavbarProps) {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full bg-[#1e2130] border border-[#353a50] rounded-full py-2 px-4 pl-10 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                className="w-full bg-slate-100 border border-transparent rounded-full py-2 px-4 pl-10 text-slate-900 focus:outline-none focus:bg-white focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 transition-all"
               />
-              <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
             </div>
           </div>
 
           <div className="flex items-center gap-6">
             <div className="hidden md:flex items-center gap-2">
-              <User className="h-5 w-5 text-gray-400" />
-              <select 
+              <User className="h-5 w-5 text-slate-400" />
+              <select
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
-                className="bg-transparent text-sm text-gray-300 focus:outline-none cursor-pointer"
+                className="bg-transparent text-sm text-slate-600 font-medium focus:outline-none cursor-pointer"
               >
+                {userId.startsWith('GUEST-') && (
+                  <option value={userId} className="bg-white text-slate-900">
+                    New Visitor ({userId})
+                  </option>
+                )}
                 {users.slice(0, 20).map(u => (
-                  <option key={u.user_id} value={u.user_id} className="bg-[#1e2130]">
+                  <option key={u.user_id} value={u.user_id} className="bg-white text-slate-900">
                     {u.name}
                   </option>
                 ))}
               </select>
+              <button
+                type="button"
+                onClick={startAsNewVisitor}
+                title="Restart as a new visitor (cold-start demo)"
+                className="flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
+              >
+                <UserPlus className="h-4 w-4" />
+                <span className="hidden lg:inline">New Visitor</span>
+              </button>
             </div>
-            
-            <button className="relative text-gray-300 hover:text-white transition-colors">
+
+            <button className="relative text-slate-500 hover:text-indigo-600 transition-colors">
               <ShoppingCart className="h-6 w-6" />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-500 text-[10px] font-bold text-white">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-500 text-[10px] font-bold text-white shadow-sm">
                 3
               </span>
             </button>
-            <button className="md:hidden text-gray-300">
+            <button className="md:hidden text-slate-500">
               <Menu className="h-6 w-6" />
             </button>
           </div>

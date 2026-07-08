@@ -11,7 +11,7 @@ import { ArrowLeft, Trash2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 export default function CartPage() {
   const router = useRouter();
   const { items, removeFromCart, total, clearCart } = useCart();
-  const { isAuthenticated, userId } = useAuth();
+  const { isAuthenticated } = useAuth();
   
   const [showLogin, setShowLogin] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -61,7 +61,7 @@ export default function CartPage() {
         <title>Your Cart — NepKart</title>
       </Head>
 
-      <Navbar userId={userId || "U0001"} setUserId={() => {}} />
+      <Navbar />
       <LoginModal isOpen={showLogin} onClose={() => {
         if (!isAuthenticated) router.push('/');
         setShowLogin(false);

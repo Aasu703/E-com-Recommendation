@@ -19,6 +19,12 @@ class SimilarProductsRequest(BaseModel):
     exclude_out_of_stock: bool = True
 
 
+class InteractionRequest(BaseModel):
+    user_id: str
+    product_id: str
+    interaction_type: str = Field(default="view")
+
+
 class RecommendedProduct(BaseModel):
     product_id: str
     name: str

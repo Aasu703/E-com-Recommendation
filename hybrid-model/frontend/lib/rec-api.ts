@@ -112,11 +112,14 @@ export async function getSimilarProducts(
   return fetchJson(`/api/v1/recommend/product/${productId}/similar?top_k=${topK}`);
 }
 
-/** Globally popular products. */
+/** Globally popular products, optionally filtered to a single category. */
 export async function getPopularProducts(
   topK = 10,
+  category?: string,
 ): Promise<RecommendationResponse> {
-  return fetchJson(`/api/v1/recommend/popular?top_k=${topK}`);
+  const params = new URLSearchParams({ top_k: String(topK) });
+  if (category) params.set("category", category);
+  return fetchJson(`/api/v1/recommend/popular?${params}`);
 }
 
 /** List all users for the demo selector. */
@@ -127,4 +130,21 @@ export async function getUsers(limit = 300): Promise<User[]> {
 /** Health check endpoint. */
 export async function getHealth(): Promise<HealthResponse> {
   return fetchJson("/health");
+}
+
+/** Log a user interaction to the backend */
+export async function logInteraction(userId: string, productId: string, interactionType: string = "view") {
+  const res = await fetch(`${API_BASE}/api/v1/recommend/interact`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      product_id: productId,
+      interaction_type: interactionType
+    })
+  });
+  if (!res.ok) throw new Error(`API error ${res.status}: ${await res.text()}`);
+  return res.json();
 }
