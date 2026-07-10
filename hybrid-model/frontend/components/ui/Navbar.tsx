@@ -2,10 +2,16 @@ import Link from 'next/link';
 import { ShoppingCart, Search, User, Menu, UserPlus } from 'lucide-react';
 import { useUsers } from '../../hooks/useRecommendations';
 import { useDemoUser } from '../../contexts/DemoUserContext';
+import { useCart } from '../../contexts/CartContext';
 
 export function Navbar() {
   const { users } = useUsers();
   const { userId, setUserId, startAsNewVisitor } = useDemoUser();
+  const { items } = useCart();
+
+  const currentUser = users.find((u) => u.user_id === userId);
+  const displayName = userId.startsWith('GUEST-') ? 'Guest Visitor' : currentUser?.name ?? '...';
+  const cartCount = items.reduce((n, i) => n + i.quantity, 0);
 
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/80 border-b border-slate-200">
@@ -35,7 +41,10 @@ export function Navbar() {
 
           <div className="flex items-center gap-6">
             <div className="hidden md:flex items-center gap-2">
-              <User className="h-5 w-5 text-slate-400" />
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">
+                <User className="h-3.5 w-3.5" />
+                Signed in as {displayName}
+              </span>
               <select
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
@@ -63,12 +72,14 @@ export function Navbar() {
               </button>
             </div>
 
-            <button className="relative text-slate-500 hover:text-indigo-600 transition-colors">
+            <Link href="/cart" className="relative text-slate-500 hover:text-indigo-600 transition-colors">
               <ShoppingCart className="h-6 w-6" />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-500 text-[10px] font-bold text-white shadow-sm">
-                3
-              </span>
-            </button>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-500 text-[10px] font-bold text-white shadow-sm">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
             <button className="md:hidden text-slate-500">
               <Menu className="h-6 w-6" />
             </button>

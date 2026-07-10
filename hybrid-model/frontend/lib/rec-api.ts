@@ -50,6 +50,21 @@ export interface SimilarProductsResponse {
   cached: boolean;
 }
 
+export interface Product {
+  product_id: string;
+  name: string;
+  category: string;
+  subcategory: string;
+  brand: string;
+  description: string;
+  price_npr: number;
+  avg_rating: number | null;
+  rating_count: number;
+  tags: string;
+  is_new_arrival: boolean;
+  in_stock: boolean;
+}
+
 export interface User {
   user_id: string;
   name: string;
@@ -125,6 +140,11 @@ export async function getPopularProducts(
 /** List all users for the demo selector. */
 export async function getUsers(limit = 300): Promise<User[]> {
   return fetchJson(`/api/v1/users?limit=${limit}`);
+}
+
+/** Fetch a single product by id. */
+export async function getProductById(productId: string): Promise<Product> {
+  return fetchJson(`/api/v1/products/${productId}`);
 }
 
 /** Health check endpoint. */

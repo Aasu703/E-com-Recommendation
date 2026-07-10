@@ -15,6 +15,7 @@ import {
   getPopularProducts,
   getUsers,
   getHealth,
+  getProductById,
   logInteraction,
 } from "../lib/rec-api";
 
@@ -99,4 +100,13 @@ export function useUsers(limit = 300) {
 export function useHealth() {
   const { data, error, isLoading } = useSWR("health", getHealth);
   return { health: data, isLoading, isError: !!error };
+}
+
+/** A single product by id (for the product detail page). */
+export function useProduct(productId: string) {
+  const { data, error, isLoading } = useSWR(
+    productId ? ["product", productId] : null,
+    () => getProductById(productId),
+  );
+  return { product: data, isLoading, isError: !!error };
 }
