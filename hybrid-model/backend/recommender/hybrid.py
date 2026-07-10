@@ -27,12 +27,18 @@ class HybridRecommender:
         "Traditional Gifts",
         "Electronics",  # Festival electronics are big in Dashain
     }
-    COLD_START_THRESHOLD = 3  # gamma in the formula
+    COLD_START_THRESHOLD = 3  # default gamma in the formula
 
-    def __init__(self) -> None:
-        """Initialize unfitted content and collaborative models."""
+    def __init__(self, gamma: int = COLD_START_THRESHOLD) -> None:
+        """Initialize unfitted content and collaborative models.
+
+        gamma overrides the class-level COLD_START_THRESHOLD default for this
+        instance only (used by results_ablation_gamma.py); existing callers
+        that construct HybridRecommender() with no arguments are unaffected.
+        """
         self.cb = ContentBasedRecommender()
         self.cf = CollaborativeRecommender()
+        self.COLD_START_THRESHOLD = gamma
         self.products_df: pd.DataFrame | None = None
         self.users_df: pd.DataFrame | None = None
         self.interactions_df: pd.DataFrame | None = None
