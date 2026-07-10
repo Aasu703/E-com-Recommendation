@@ -1,0 +1,35 @@
+INFO: Fitting models...
+INFO: Running RQ1: Statistical Significance Test...
+INFO: Running RQ2: Latency Profiling...
+INFO: Running RQ3: User Stratification...
+C:\Users\aayus\AppData\Local\pypoetry\Cache\virtualenvs\nepali-rec-system-TbCyp9J3-py3.11\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\aayus\AppData\Local\pypoetry\Cache\virtualenvs\nepali-rec-system-TbCyp9J3-py3.11\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+
+==================================================
+ADVANCED EVALUATION REPORT
+==================================================
+
+### RQ1: Statistical Significance (NDCG@10)
+| Model | Mean NDCG@10 | Std Dev |
+|-------|--------------|---------|
+| Hybrid | 0.0165 | 0.0501 |
+| Baseline | 0.0268 | 0.0625 |
+
+Paired T-Test: t=-1.2456, p=0.2158
+Result: Not Statistically Significant
+
+### RQ2: Infrastructure Latency Profiling
+| Scenario | Average Latency (ms) | P95 Latency (ms) |
+|----------|----------------------|------------------|
+| Cache Miss (Inference) | 153.36 | 169.93 |
+| Cache Hit (Redis) | 0.50 | 0.50 |
+
+Latency Reduction: 99.67%
+
+### RQ3: User Stratification Performance
+| Segment | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
+|---------|--------------|-----------|----------|------------------|
+| Active Users | 0.0220 | 0.0471 | 0.0310 | 0.4680 |
+| Cold-Start | nan | nan | nan | 0.0000 |

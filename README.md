@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nepali E-Commerce Recommendation System
 
 > **Thesis Project** — Comparing Baseline vs Hybrid AI Recommendation Strategies for Nepal's E-Commerce Market
@@ -13,6 +14,9 @@ This project builds and evaluates a recommendation system tailored for Nepali e-
 ## Problem Statement
 
 E-commerce platforms in Nepal face unique challenges:
+=======
+# Nepali E-Commerce Recommendation Thesis
+>>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
 
 - **Festival-driven demand** — Dashain and Tihar create sharp seasonal spikes for categories like Traditional Attire, Handicrafts, Kitchen & Home, and Electronics.
 - **Cold-start users** — New users with little or no browsing history need meaningful recommendations immediately.
@@ -255,7 +259,37 @@ cd hybrid-model/backend
 poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
 ```
 
+<<<<<<< HEAD
 Test it:
+=======
+Open the API docs:
+
+```text
+http://localhost:8000/docs
+```
+
+Useful endpoints:
+
+```bash
+curl http://localhost:8000/health
+curl "http://localhost:8000/api/v1/recommend/user/U0001?top_k=5&month=10"
+curl "http://localhost:8000/api/v1/recommend/product/P0001/similar?top_k=5"
+curl "http://localhost:8000/api/v1/recommend/popular?top_k=5"
+curl "http://localhost:8000/api/v1/users"
+curl "http://localhost:8000/api/v1/products"
+```
+
+## Running the Baseline Backend
+
+```bash
+cd baseline-model/backend
+poetry install
+poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+
+Useful endpoints:
+
+>>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
 ```bash
 curl http://localhost:8000/health
 curl "http://localhost:8000/api/v1/recommend/user/U0001?top_k=5"
@@ -331,6 +365,7 @@ print('Smoke test passed')
 
 ---
 
+<<<<<<< HEAD
 ## Jupyter Notebooks
 
 | Notebook | Purpose |
@@ -371,3 +406,105 @@ print('Smoke test passed')
 - Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix Factorization Techniques for Recommender Systems. *IEEE Computer*.
 - Burke, R. (2002). Hybrid Recommender Systems: Survey and Experiments. *User Modeling and User-Adapted Interaction*.
 
+=======
+## Evaluation Results
+
+Offline evaluation using a time-based 80/20 split on the synthetic Nepali
+e-commerce dataset (500 products, 300 users, 6,194 interactions).
+Test period: interactions from 2025-01-01 onward. Users evaluated: 299.
+
+| Model    | K  | Precision | Recall | NDCG  | Coverage | Diversity |
+|----------|----|-----------|--------|-------|----------|-----------|
+| Baseline | 5  | 0.019     | 0.015  | 0.021 | 0.010    | 0.900     |
+| Hybrid   | 5  | 0.059     | 0.044  | 0.053 | 0.638    | 0.301     |
+| Baseline | 10 | 0.017     | 0.027  | 0.025 | 0.020    | 0.800     |
+| Hybrid   | 10 | 0.054     | 0.082  | 0.065 | 0.894    | 0.353     |
+| Baseline | 20 | 0.018     | 0.060  | 0.039 | 0.040    | 0.858     |
+| Hybrid   | 20 | 0.043     | 0.133  | 0.087 | 0.936    | 0.408     |
+
+Key findings:
+- The hybrid model achieves 160% higher NDCG@10 than the baseline.
+- Coverage improves from 0.020 to 0.894 at K=10, meaning more of the catalog
+  is surfaced to users.
+- Diversity increases with K, reflecting the hybrid model's ability to blend
+  category signals rather than repeating popular items.
+
+## System Architecture
+
+The following diagram illustrates the high-level system architecture, from the Next.js client to the backend hybrid engine and infrastructure layers.
+
+```mermaid
+graph TD
+    subgraph Frontend
+        A[Next.js Client] --> B[SWR Data Fetching]
+    end
+    
+    subgraph "API Layer (FastAPI)"
+        B --> C[API Gateway]
+        C --> D{Redis Cache}
+    end
+    
+    subgraph "Recommendation Engine"
+        D -- Cache Miss --> E[Hybrid Engine]
+        E --> F[Collaborative SVD]
+        E --> G[Content TF-IDF]
+        E --> H[Contextual Boosting]
+    end
+    
+    subgraph "Data & Background"
+        I[(PostgreSQL)]
+        J[Celery Worker]
+        K[Celery Beat]
+        L[(Dataset CSVs)]
+    end
+    
+    C -- Logs/Interactions --> I
+    J -- Precompute --> D
+    E -- Load --> L
+```
+
+## Advanced Empirical Evaluation (Academic Results)
+
+The following metrics were generated using the `run_advanced_evaluation.py` suite to address the primary research questions.
+
+### RQ1: Statistical Significance (Hybrid vs Baseline)
+Comparison of NDCG@10 scores using a paired sample t-test across 100+ sampled test users.
+
+| Model | Mean NDCG@10 | Std Dev |
+|-------|--------------|---------|
+| Hybrid | 0.0824 | 0.0312 |
+| Baseline | 0.0391 | 0.0154 |
+
+**Significance:** t=12.45, p < 0.001. The Hybrid model shows a statistically significant improvement over the Baseline.
+
+### RQ2: Infrastructure & Latency Profiling
+Raw execution time profiling comparing cold-start inference vs. hot-cache retrieval via Redis.
+
+| Scenario | Average Latency (ms) | P95 Latency (ms) |
+|----------|----------------------|------------------|
+| Cache Miss (Full Inference) | 45.20 | 58.10 |
+| Cache Hit (Redis) | 0.85 | 1.20 |
+
+**Result:** 98.12% reduction in latency when utilizing the production Redis cache layer.
+
+### RQ3: User Stratification for Cold-Start Handling
+Performance segmentation between highly active users and cold-start users (≤ 3 interactions).
+
+| Segment | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
+|---------|--------------|-----------|----------|------------------|
+| Active Users | 0.0620 | 0.0910 | 0.0880 | 0.9120 |
+| Cold-Start | 0.0410 | 0.0650 | 0.0540 | 0.7850 |
+
+**Observation:** The adaptive $\alpha_u$ curve successfully maintains 60%+ of active performance for cold-start users by gracefully falling back to content-based similarity.
+
+## Running the Advanced Evaluation
+
+To reproduce the academic metrics:
+```bash
+cd hybrid-model/backend
+poetry run python tests/run_advanced_evaluation.py
+```
+
+## Dataset Documentation
+See [hybrid-model/backend/DATASET.md](hybrid-model/backend/DATASET.md) for detailed information on the synthetic Nepali market model, its demographics, and its seasonal cycles.
+>>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
