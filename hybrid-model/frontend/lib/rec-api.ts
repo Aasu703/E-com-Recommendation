@@ -50,7 +50,6 @@ export interface SimilarProductsResponse {
   cached: boolean;
 }
 
-<<<<<<< HEAD
 export interface Product {
   product_id: string;
   name: string;
@@ -66,8 +65,6 @@ export interface Product {
   in_stock: boolean;
 }
 
-=======
->>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
 export interface User {
   user_id: string;
   name: string;
@@ -130,7 +127,6 @@ export async function getSimilarProducts(
   return fetchJson(`/api/v1/recommend/product/${productId}/similar?top_k=${topK}`);
 }
 
-<<<<<<< HEAD
 /** Globally popular products, optionally filtered to a single category. */
 export async function getPopularProducts(
   topK = 10,
@@ -139,13 +135,6 @@ export async function getPopularProducts(
   const params = new URLSearchParams({ top_k: String(topK) });
   if (category) params.set("category", category);
   return fetchJson(`/api/v1/recommend/popular?${params}`);
-=======
-/** Globally popular products. */
-export async function getPopularProducts(
-  topK = 10,
-): Promise<RecommendationResponse> {
-  return fetchJson(`/api/v1/recommend/popular?top_k=${topK}`);
->>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
 }
 
 /** List all users for the demo selector. */
@@ -153,7 +142,6 @@ export async function getUsers(limit = 300): Promise<User[]> {
   return fetchJson(`/api/v1/users?limit=${limit}`);
 }
 
-<<<<<<< HEAD
 /** Fetch a single product by id. */
 export async function getProductById(productId: string): Promise<Product> {
   return fetchJson(`/api/v1/products/${productId}`);
@@ -179,9 +167,4 @@ export async function logInteraction(userId: string, productId: string, interact
   });
   if (!res.ok) throw new Error(`API error ${res.status}: ${await res.text()}`);
   return res.json();
-=======
-/** Health check endpoint. */
-export async function getHealth(): Promise<HealthResponse> {
-  return fetchJson("/health");
->>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
 }
