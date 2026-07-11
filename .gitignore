@@ -65,9 +65,3 @@ Desktop.ini
 
 # Project-specific paths (redundant but kept for safety)
 hybrid-model/frontend/.next/
-<<<<<<< HEAD
-
-__pycache__/
-*.pyc
-=======
->>>>>>> b0cbdba1f8b96ecd4f0dbb3c7b8e48fecda82efb
