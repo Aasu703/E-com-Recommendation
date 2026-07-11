@@ -1,15 +1,26 @@
 # Python
 __pycache__/
 *.pyc
+*.py[cod]
 *.pyo
 *.pyd
 .venv/
+venv/
+env/
+ENV/
 .env
 .env.*
+!.env.example
+!.env.sample
 .pytest_cache/
 .coverage
+coverage.xml
+htmlcov/
 .mypy_cache/
 .ruff_cache/
+pip-wheel-metadata/
+*.egg-info/
+.python-version
 
 # Jupyter
 .ipynb_checkpoints/
@@ -20,17 +31,37 @@ node_modules/
 out/
 dist/
 build/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Data/models
 *.pkl
 *.npy
+*.joblib
 models/*.pkl
 models/*.joblib
+models/*.npy
 notebooks/models/
 
 # Logs
 *.log
 
-# OS
+# Databases / local state
+*.sqlite
+*.sqlite3
+*.db
+postgres_data/
+
+# OS / editor
 .DS_Store
 Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Project-specific paths (redundant but kept for safety)
+hybrid-model/frontend/.next/
