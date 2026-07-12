@@ -21,12 +21,21 @@ class Evaluator:
         products_df: pd.DataFrame,
         K_values: list[int] | None = None,
         min_test_interactions: int = 1,
+        split_date: pd.Timestamp | str | None = None,
     ) -> dict:
-        """Run precision, recall, NDCG, coverage, and diversity evaluation."""
+        """Run precision, recall, NDCG, coverage, and diversity evaluation.
+
+        The held-out test set is every interaction with timestamp >= split_date.
+        split_date defaults to 2025-01-01 (the fixed-date protocol) so existing
+        callers are unaffected; results_eval_80_20.py passes the 80th-percentile
+        timestamp instead. The caller is responsible for having fit the model on
+        interactions strictly before the same split_date (leak-free).
+        """
         K_values = K_values or [5, 10, 20]
+        cutoff = pd.Timestamp("2025-01-01") if split_date is None else pd.Timestamp(split_date)
         data = interactions_df.copy()
         data["timestamp"] = pd.to_datetime(data["timestamp"])
-        test = data[data["timestamp"] >= pd.Timestamp("2025-01-01")]
+        test = data[data["timestamp"] >= cutoff]
         users = [u for u, grp in test.groupby("user_id") if len(grp) >= min_test_interactions]
         category_by_product = products_df.set_index("product_id")["category"].to_dict()
         out: dict = {}
