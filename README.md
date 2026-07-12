@@ -237,10 +237,15 @@ Source: `evaluation_suite/evaluation_results.txt` (`compare_models.py`): Baselin
 
 ## Project Structure
 
+> **Note:** `baseline-model/` is a **superseded early iteration**, retained for
+> provenance only. All active development, the current models, the leak-free
+> evaluation, and every cited result live in `hybrid-model/`. Do not develop
+> against or cite numbers from `baseline-model/`.
+
 ```
 .
 ├── README.md                          # This file
-├── baseline-model/
+├── baseline-model/                    # SUPERSEDED — early iteration, kept for provenance
 │   ├── backend/                       # FastAPI backend for baseline recommender
 │   │   ├── api/                       # API routes, config, schemas
 │   │   ├── recommender/               # BaselineRecommender class
