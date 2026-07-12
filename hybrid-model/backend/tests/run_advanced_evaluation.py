@@ -95,8 +95,12 @@ def run_rq2_latency(hybrid, user_id):
     print(f"| Scenario | Average Latency (ms) | P95 Latency (ms) |")
     print(f"|----------|----------------------|------------------|")
     print(f"| Cache Miss (Inference) | {mean_miss:.2f} | {np.percentile(miss_times, 95):.2f} |")
-    print(f"| Cache Hit (Redis) | {mean_hit:.2f} | {np.percentile(hit_times, 95):.2f} |")
-    print(f"\nLatency Reduction: {reduction:.2f}%")
+    print(f"| Cache Hit (SIMULATED +0.5ms) | {mean_hit:.2f} | {np.percentile(hit_times, 95):.2f} |")
+    print(f"\nLatency Reduction: {reduction:.2f}% (using the SIMULATED cache-hit figure).")
+    print("NOTE: the cache-hit row above is a SIMULATED upper-bound (a fixed +0.5 ms")
+    print("constant), NOT a live Redis measurement. The authoritative LIVE measurement")
+    print("against a running Redis instance is in results/latency_live.txt, produced by")
+    print("results_latency.py (200 cold + 200 warm requests to the live API).")
 
 def run_rq3_stratification(hybrid, train_df, test_df, products_df):
     """RQ3: User stratification across three activity segments.

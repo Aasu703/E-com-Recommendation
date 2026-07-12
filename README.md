@@ -99,6 +99,32 @@ graph TB
     end
 ```
 
+### Infrastructure scope (what is actually deployed vs designed)
+
+To keep the evaluation honest, this repository distinguishes between the
+components that the **evaluated prototype actually runs** and components that are
+**designed but not deployed**:
+
+- **Recommendation serving — deployed.** The FastAPI service loads the models
+  and serves recommendations entirely from **in-memory pandas DataFrames**
+  loaded from the CSVs. There is no application database in the request path.
+- **Redis cache — deployed and measured.** The `/api/v1/recommend/user/{id}`
+  endpoint performs a real Redis GET/SET around inference. Live latency was
+  measured against a running Redis instance (see `results/latency_live.txt`,
+  produced by `results_latency.py`): a cache hit is a real HTTP round-trip, not
+  a simulated constant.
+- **PostgreSQL (SQLAlchemy models in `db/`) — designed but NOT deployed.** The
+  ORM models exist for a persistence design, but no database session is ever
+  opened; the evaluated system does not read or write a database. Accordingly
+  `/health` reports `db_connected: false`.
+- **Celery workers / beat (`jobs/`) — designed but NOT deployed.** The nightly
+  retrain and cache-precompute tasks are written but are not scheduled or run in
+  the evaluated prototype; no results in this repository depend on them.
+
+The `docker-compose.yml` includes `postgres`, `redis`, `worker` and `beat`
+services for a full deployment target, but only `redis` (and the API) were
+exercised for the reported measurements.
+
 ---
 
 ## Methodology

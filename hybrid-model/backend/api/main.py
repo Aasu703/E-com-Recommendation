@@ -48,6 +48,11 @@ async def lifespan(app: FastAPI):
         logger.warning("Redis unavailable; using uncached responses")
         app.state.redis = None
         app.state.redis_connected = False
+    # The SQLAlchemy layer in db/ is designed but NOT deployed in the evaluated
+    # prototype: the app never opens a DB session and serves entirely from the
+    # in-memory pandas DataFrames loaded above. db_connected therefore honestly
+    # reports False (no database connection is ever established), rather than
+    # implying a database-backed path that does not run. See README architecture.
     app.state.db_connected = False
     yield
     if getattr(app.state, "redis", None):

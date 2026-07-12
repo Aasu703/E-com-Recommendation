@@ -67,10 +67,14 @@ Result: Not Statistically Significant
 ### RQ2: Infrastructure Latency Profiling
 | Scenario | Average Latency (ms) | P95 Latency (ms) |
 |----------|----------------------|------------------|
-| Cache Miss (Inference) | 141.13 | 148.27 |
-| Cache Hit (Redis) | 0.50 | 0.50 |
+| Cache Miss (Inference) | 162.65 | 208.11 |
+| Cache Hit (SIMULATED +0.5ms) | 0.50 | 0.50 |
 
-Latency Reduction: 99.65%
+Latency Reduction: 99.69% (using the SIMULATED cache-hit figure).
+NOTE: the cache-hit row above is a SIMULATED upper-bound (a fixed +0.5 ms
+constant), NOT a live Redis measurement. The authoritative LIVE measurement
+against a running Redis instance is in results/latency_live.txt, produced by
+results_latency.py (200 cold + 200 warm requests to the live API).
 
 ### RQ3: User Stratification Performance (three segments)
 | Segment | Users | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
