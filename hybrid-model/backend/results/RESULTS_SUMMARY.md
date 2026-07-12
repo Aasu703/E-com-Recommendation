@@ -1,242 +1,251 @@
-# Results Summary — Clean, Leak-Free Evaluation
+# Results Summary — Leak-Free Evaluation (Dataset v2 edition)
 
-Generated 2026-07-10. This directory holds evaluation output produced *after*
-fixing the train/test leakage identified in `REPO_AUDIT.md` §5–6
-(`notebooks/05_evaluation.ipynb` fit both models on the full interactions
-frame, including the held-out test period, before evaluating them on that
-same period). Every number below is either quoted verbatim from a file in
-this `results/` directory or from the pre-existing, already-clean
-`evaluation_suite/evaluation_results.txt`. Nothing here is invented.
+Regenerated 2026-07-12 on **dataset v2** (see `DATASET.md` "Dataset v2
+changelog"). This directory holds the evaluation output produced *after* fixing
+the train/test leakage identified in `REPO_AUDIT.md` §5–6, and after rebuilding
+the dataset with genuine cold-start cohorts so that RQ3 can actually be measured.
+Every number below is quoted verbatim from a file in this `results/` directory
+(or `evaluation_suite/evaluation_results.txt`). Nothing here is invented; the
+frontend and `thesis_assets/thesis_numbers.json` are generated from these same
+files by `scripts/export_metrics.py`.
 
-All scripts live in `hybrid-model/backend/` and are re-runnable with:
-```bash
-poetry run python results_eval_clean.py
-poetry run python tests/run_advanced_evaluation.py
-poetry run python results_ablation_gamma.py
-poetry run python results_figures.py
-```
+Protocol (unless noted): models are fit **only** on interactions before the
+temporal cutoff and evaluated on the held-out slice at/after it (leak-free).
+All randomness is seeded (seed = 42). Re-run everything with the command block
+in the root `README.md` "Reproducing the Full Results" section.
 
 ---
 
-## 1. Clean time-split evaluation (PRIMARY protocol — recommended)
+## 1. Clean time-split evaluation — PRIMARY (Hybrid vs Baseline)
 
-**Source:** `results/clean_eval_results.txt`, `results/clean_eval_results.csv`
-**Script:** `results_eval_clean.py`
-**Protocol:** Global time cutoff. `train = interactions[timestamp < 2025-01-01]`
-(4,383 rows), `test = interactions[timestamp >= 2025-01-01]` (1,811 rows).
-`BaselineRecommender` and `HybridRecommender` are each fit **only on train**,
-then evaluated with `recommender.evaluator.Evaluator` against the held-out
-test interactions for 299 users, at K ∈ {5, 10, 20}.
+**Source:** `results/clean_eval_results.{txt,csv}` · **Script:** `results_eval_clean.py`
+**Split:** fixed date, `train = interactions[timestamp < 2025-01-01]` (4,294 rows),
+`test = interactions[timestamp >= 2025-01-01]` (1,860 rows), 271 test users.
 
 | K | Model | Precision | Recall | NDCG | Coverage | Diversity |
-|---|---|---|---|---|---|---|
-| 5 | Baseline | 0.020 | 0.015 | 0.024 | 0.010 | 0.900 |
-| 5 | Hybrid | 0.011 | 0.009 | 0.011 | 0.496 | 0.607 |
-| 10 | Baseline | 0.017 | 0.029 | 0.027 | 0.020 | 0.889 |
-| 10 | Hybrid | 0.012 | 0.020 | 0.016 | 0.736 | 0.655 |
-| 20 | Baseline | 0.016 | 0.056 | 0.038 | 0.040 | 0.858 |
-| 20 | Hybrid | 0.014 | 0.046 | 0.028 | 0.916 | 0.688 |
+|---|-------|-----------|--------|------|----------|-----------|
+| 5 | Baseline | 0.013 | 0.009 | 0.012 | 0.010 | 0.900 |
+| 5 | Hybrid | 0.010 | 0.008 | 0.010 | 0.526 | 0.654 |
+| 10 | Baseline | 0.014 | 0.023 | 0.017 | 0.020 | 0.889 |
+| 10 | Hybrid | 0.012 | 0.018 | 0.014 | 0.724 | 0.696 |
+| 20 | Baseline | 0.015 | 0.045 | 0.027 | 0.040 | 0.879 |
+| 20 | Hybrid | 0.012 | 0.035 | 0.022 | 0.872 | 0.720 |
 
-**Honest reading — this is the headline finding of this evaluation pass:**
-Once leakage is removed, **Baseline is equal to or slightly ahead of Hybrid
-on Precision, Recall, and NDCG at every K**. This directly contradicts the
-old (leaky) notebook numbers, which showed Hybrid winning by 2–3× on these
-same metrics — that gap was mostly an artifact of the model having already
-seen the test interactions during fitting, not real personalization skill.
-
-The one metric where Hybrid decisively and legitimately wins is **Coverage**:
-0.736 vs 0.020 at K=10 (Hybrid surfaces 74% of the catalog across users vs.
-2% for Baseline, which shows the same static list to everyone). Diversity is
-the reverse — Baseline's per-list diversity is higher (0.889 vs 0.655 at
-K=10) simply because personalization concentrates each individual user's
-list around their own taste, which is expected behavior, not a bug.
-
-### Old (leaky) numbers, for explicit contrast
-
-**Source:** `notebooks/05_evaluation.ipynb` (executed cells), quoted in
-`REPO_AUDIT.md` §6 and inside `results_eval_clean.py` as `LEAKY_RESULTS`.
-
-| K | Model | Precision (leaky → clean) | NDCG (leaky → clean) | Coverage (leaky → clean) |
-|---|---|---|---|---|
-| 10 | Baseline | 0.017 → 0.017 (unchanged) | 0.025 → 0.027 (unchanged) | 0.020 → 0.020 (unchanged) |
-| 10 | Hybrid | 0.054 → 0.012 (−78%) | 0.065 → 0.016 (−75%) | 0.894 → 0.736 (−18%) |
-
-Baseline's numbers barely move (it was already effectively evaluated
-correctly, since a recency-sorted list fit on the full data vs. train-only
-data produces nearly the same ranking). **Hybrid's numbers collapse** once it
-can no longer see the test period during fitting — this is the leakage
-signature.
+**Honest reading.** Once leakage is removed, Baseline is equal to or slightly
+ahead of Hybrid on Precision/Recall/NDCG at every K. The Hybrid's decisive,
+legitimate win is **Coverage** (0.724 vs 0.020 at K=10 — it personalizes across
+~72% of the catalog vs the baseline's single static ~2% list). Baseline's
+higher per-list Diversity is expected: personalization concentrates each user's
+list around their own taste.
 
 ---
 
-## 2. Leave-one-out Hit Rate@10 (secondary — already clean)
+## 2. Component-level evaluation (five models)
 
-**Source:** `evaluation_suite/evaluation_results.txt` (pre-existing, not
-modified by this pass)
-**Script:** `evaluation_suite/compare_models.py`
-**Protocol:** Per-user leave-one-out — for each user, sort their interactions
-by timestamp, hold out the single chronologically-last interaction, train on
-the rest. Evaluated on a 100-user subset for speed. This protocol was
-**already leak-free** (each user's train interactions all precede their own
-held-out interaction), so it was not re-run.
+**Source:** `results/components_eval.{txt,csv}` · **Script:** `results_eval_components.py`
+Same clean split as §1. CB-only seeds from each user's most recent train
+interaction; CF-only uses the SVD predict path with the <3 popularity fallback
+disabled for users that have factors.
 
-```
-Evaluation Results (Hit Rate @ 10)
-Baseline: 0.0200
-Hybrid AI: 0.0300
-Improvement: +50.0%
-```
+| K | Metric | Baseline | Popularity | Content | Collaborative | Hybrid |
+|---|--------|---------:|-----------:|--------:|--------------:|-------:|
+| 10 | Precision | 0.014 | 0.015 | 0.014 | **0.016** | 0.012 |
+| 10 | Recall | 0.023 | 0.027 | 0.017 | **0.028** | 0.018 |
+| 10 | NDCG | 0.017 | 0.021 | 0.016 | **0.021** | 0.014 |
+| 10 | Coverage | 0.020 | 0.020 | **0.842** | 0.574 | 0.724 |
 
-**Caveat:** at these hit-rate magnitudes, 0.02 vs 0.03 on 100 users is a
-difference of roughly **2 hits vs 3 hits** — a single-user swing changes the
-"improvement" percentage substantially. Treat the +50% figure as a
-weak/noisy signal, not strong evidence, and note it is broadly consistent
-with §1's finding that Hybrid and Baseline are close on accuracy metrics once
-leakage is fixed — it does not contradict §1.
+**Honest reading.** On accuracy the **collaborative filter alone** is the
+strongest model; the Hybrid does not lead. Content-based has the highest
+coverage but ~0 intra-list diversity (it returns same-category neighbours of the
+seed). This is the empirical basis for framing the Hybrid's value as
+coverage/personalization rather than accuracy. (K=5 and K=20 rows are in the CSV.)
 
 ---
 
-## 3. Advanced evaluation — RQ1 significance, RQ2 latency, RQ3 cold-start
+## 3. Hybridization-strategy comparison
 
-**Source:** `results/advanced_evaluation.txt`
-**Script:** `tests/run_advanced_evaluation.py`
-**Leakage check:** This script already fit both models on
-`train = interactions[timestamp < 2025-01-01]` and evaluated on
-`test = interactions[timestamp >= 2025-01-01]` in its original form — **no
-leakage found, no fix was needed**. It had simply never been run and its
-output never saved before this pass.
+**Source:** `results/alpha_strategy_ablation.{txt,csv}` · **Script:** `results_ablation_alpha.py`
+Clean split, K=10. Strategy/alpha/gamma/boosts affect only `recommend()`.
 
-### RQ1 — Statistical significance (paired t-test on NDCG@10, 100 users)
-| Model | Mean NDCG@10 | Std Dev |
-|---|---|---|
-| Hybrid | 0.0165 | 0.0501 |
-| Baseline | 0.0268 | 0.0625 |
+| Family | Config | Precision@10 | Coverage@10 |
+|--------|--------|-------------:|------------:|
+| fixed | α=0.00 (pure CB) | 0.0133 | 0.832 |
+| fixed | α=0.50 | 0.0140 | **0.912** |
+| fixed | α=1.00 (pure CF) | **0.0144** | 0.554 |
+| adaptive | γ=1 | 0.0118 | 0.672 |
+| adaptive | γ=3 (shipped) | 0.0118 | 0.724 |
+| switching | γ=3 | 0.0137 | 0.608 |
+| boost | adaptive γ=3, both on | 0.0118 | 0.724 |
+| boost | adaptive γ=3, freshness off | 0.0129 | 0.732 |
+| boost | adaptive γ=3, festival off | 0.0118 | 0.724 |
+| boost | adaptive γ=3, both off | 0.0129 | 0.732 |
 
-Paired T-Test: **t = -1.2456, p = 0.2158 → not statistically significant.**
-
-This is an important, honest result: the difference between Hybrid and
-Baseline on NDCG@10 in this run **cannot be distinguished from noise** at any
-conventional significance threshold. Combined with §1, the thesis should not
-claim the hybrid model has a proven accuracy advantage over the baseline on
-this dataset — it should instead report Coverage as the clear, demonstrated
-win and treat ranking-accuracy parity/significance as an honest limitation.
-
-### RQ2 — Latency (cache miss vs. simulated cache hit)
-| Scenario | Average Latency (ms) | P95 Latency (ms) |
-|---|---|---|
-| Cache Miss (full inference) | 153.36 | 169.93 |
-| Cache Hit (simulated Redis GET) | 0.50 | 0.50 |
-
-Latency reduction: 99.67%. Note the "cache hit" number is a **simulated**
-Redis lookup (a fixed +0.5ms constant added in code, not a live Redis
-roundtrip — see `run_rq2_latency()` in `tests/run_advanced_evaluation.py`),
-so this is an upper-bound estimate of caching benefit, not a measurement
-against a real Redis instance.
-
-### RQ3 — Active vs. cold-start user stratification
-| Segment | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
-|---|---|---|---|---|
-| Active Users (>3 train interactions) | 0.0220 | 0.0471 | 0.0310 | 0.4680 |
-| Cold-Start (≤3 train interactions) | **MISSING (NaN)** | **MISSING (NaN)** | **MISSING (NaN)** | 0.0000 |
-
-**MISSING and explained:** The cold-start row is `NaN` because the segment
-is **empty** — diagnosed directly in this pass: every one of the 300 users
-has **at least 6** train-period interactions (minimum, computed from the same
-train split), so **zero users** fall at or below the
-`COLD_START_THRESHOLD = 3` cutoff, and zero test users have no train history
-either. `evaluate_segment()` then computes `np.mean([])`, which is `NaN`
-(visible as a `RuntimeWarning: Mean of empty slice` in the raw script
-output). **This is a real limitation of the current synthetic dataset for
-this specific experiment, not a bug in the evaluation code**: the generator
-(`generate_dataset.py`) doesn't produce genuinely low-activity or brand-new
-users as of the 2025-01-01 split point, so RQ3's active-vs-cold-start
-comparison currently has no cold-start users to measure. This should be
-fixed by adjusting either the threshold or the dataset generator (see
-Top Priorities in `REPO_AUDIT.md`) before this figure can be cited as
-cold-start evidence.
+**Honest reading.** Highest Precision@10 is **fixed α=1.0 (pure CF, 0.0144)**;
+highest Coverage@10 is fixed α=0.5 (0.912). Switching γ∈{1,3,5} gives identical
+accuracy because every active user has ≥9 train interactions (always ≥γ → pure
+CF). The **freshness boost slightly *reduces* accuracy** (0.0129 → 0.0118) by
+promoting new arrivals that rarely match test interactions. The **festival boost
+is inactive** on this test window (test months 1–6; the boost fires only in
+months 10–11), so "festival off" is identical to "both on" by construction.
 
 ---
 
 ## 4. Gamma (cold-start threshold) ablation
 
-**Source:** `results/gamma_ablation.txt`, `results/gamma_ablation.csv`
-**Script:** `results_ablation_gamma.py`
-**Change made to support this:** `recommender/hybrid.py`'s
-`HybridRecommender.__init__` gained an optional `gamma: int = 3` parameter
-that sets `self.COLD_START_THRESHOLD` per-instance; the class-level default
-(`COLD_START_THRESHOLD = 3`) is unchanged and `HybridRecommender()` called
-with no arguments behaves exactly as before (verified: `tests/unit/test_hybrid.py`
-and `tests/test_recommenders.py`, 10/10 tests, still pass unmodified).
-**Protocol:** same train-only fit as §1 (train < 2025-01-01); gamma only
-affects the α formula inside `recommend()`, not model fitting, so CB/CF are
-fit once and `COLD_START_THRESHOLD` is swapped between evaluation passes.
+**Source:** `results/gamma_ablation.{txt,csv}` · **Script:** `results_ablation_gamma.py`
 
 | gamma | Precision@10 | NDCG@10 |
-|---|---|---|
-| 1 | 0.0137 | 0.0187 |
-| 3 (current default) | 0.0124 | 0.0161 |
-| 5 | 0.0117 | 0.0133 |
-| 10 | 0.0110 | 0.0119 |
+|-------|-------------:|--------:|
+| 1 | 0.0118 | 0.0156 |
+| 3 (default) | 0.0118 | 0.0139 |
+| 5 | 0.0103 | 0.0128 |
+| 10 | 0.0114 | 0.0126 |
 
-**Honest reading:** Precision@10 and NDCG@10 both **decrease monotonically**
-as gamma increases — γ=1 is best, γ=3 (the shipped default) is not the
-best value found, γ=10 is worst. The effect is real but **small in absolute
-terms** (Precision@10 ranges only from 0.0110 to 0.0137 across the whole
-sweep — a 0.0027 spread). This does not mean "lower gamma is proven better";
-it means that within this dataset and split, the alpha formula's cold-start
-constant has at most a marginal effect on ranking accuracy, and γ=3 is a
-defensible-but-not-optimal choice. Do not present γ=1 as a tuned/selected
-value — it was not selected to win, it is reported alongside the other three
-exactly as measured.
+**Honest reading.** NDCG@10 is highest at γ=1; the effect is small (Precision@10
+spans only 0.0103–0.0118). γ=3 is a defensible-but-not-optimal shipped default,
+reported alongside the others exactly as measured (not tuned to win).
 
 ---
 
-## 5. Figures
+## 5. Literal 80/20 temporal split (+ fixed-date sensitivity)
 
-**Source:** `results/figures/*.png`, generated by `results_figures.py` from
-`nepali_ecommerce_data/*.csv` (EDA plots) and `results/clean_eval_results.csv`
-(comparison plot). These replace the notebook-embedded-only versions in
-`notebooks/01_EDA.ipynb` (same underlying aggregations) with standalone PNG
-exports, plus one new chart not present anywhere else in the repo:
+**Source:** `results/eval_80_20.{txt,csv}` · **Script:** `results_eval_80_20.py`
+80/20 cutoff = 80th-percentile timestamp = **2025-02-23** (train 4,919 rows /
+79.9%, test 1,235 rows / 20.1%, 262 test users).
 
-| File | Content |
-|---|---|
-| `01_top_products_by_interactions.png` | Top 10 products by interaction count, colored by category |
-| `02_interactions_per_user_distribution.png` | Histogram of interactions per user (mean marked) |
-| `03_products_by_category.png` | Product count per category (7 categories) |
-| `04_festival_vs_nonfestival_interactions.png` | Festival-period vs. non-festival interaction counts |
-| `05_new_arrival_vs_established.png` | New-arrival vs. established product counts |
-| `hybrid_vs_baseline.png` | **New.** Grouped bar chart, Hybrid vs Baseline, Precision/Recall/NDCG/Coverage @ K=10, using the §1 clean numbers |
+| Model | Precision@10 | Recall@10 | NDCG@10 | Coverage@10 |
+|-------|-------------:|----------:|--------:|------------:|
+| Baseline | 0.0099 | 0.0267 | 0.0170 | 0.0200 |
+| Popularity | 0.0118 | 0.0321 | 0.0215 | 0.0200 |
+| Content | 0.0088 | 0.0149 | 0.0124 | 0.8460 |
+| Collaborative | 0.0126 | 0.0322 | 0.0200 | 0.5800 |
+| Hybrid | 0.0088 | 0.0202 | 0.0136 | 0.7220 |
+
+The fixed-date (2025-01-01) protocol is reported alongside in the same file as a
+sensitivity check; both tell the same story (accuracy parity, coverage win).
 
 ---
 
-## Which protocol should the thesis treat as PRIMARY?
+## 6. Statistical significance (80/20 split)
 
-**Recommendation: §1, the clean global time-split evaluation
-(`results_eval_clean.py` / `clean_eval_results.csv`).**
+**Source:** `results/significance_tests.{txt,csv}` · **Script:** `results_significance.py`
+Per-user Precision@10 and NDCG@10; paired t-test, Wilcoxon signed-rank, and a
+1,000-sample bootstrap 95% CI of the mean difference (Hybrid − other), seed=42.
+A positive mean difference favours Hybrid.
 
-Reasons:
-1. It evaluates the full available test population (299 users), not a
-   100-user speed sample.
-2. It reports a complete metric suite (Precision/Recall/NDCG/Coverage/
-   Diversity at three K values) rather than a single hit/no-hit signal.
-3. It matches the time-based train/test split methodology the project's own
-   `DATASET.md` and root `README.md` already describe, so adopting it as
-   primary keeps the thesis's existing methodology narrative intact — only
-   the *numbers* need correcting, not the *description* of the method.
-4. It is now leak-free, which the two most detailed alternative results
-   (RQ1/RQ3 from `run_advanced_evaluation.py`) already were, so all three are
-   mutually consistent in showing the same picture: **Hybrid and Baseline are
-   statistically indistinguishable on ranking accuracy on this dataset, and
-   Hybrid's one clear, reproducible advantage is catalog coverage.**
+| Comparison | Metric | mean diff | t-test p | Wilcoxon p | bootstrap 95% CI | Verdict |
+|------------|--------|----------:|---------:|-----------:|------------------|---------|
+| Hybrid vs Baseline | Precision@10 | −0.0011 | 0.6482 | 0.6473 | [−0.0057, +0.0034] | not significant |
+| Hybrid vs Baseline | NDCG@10 | −0.0034 | 0.4790 | 0.4540 | [−0.0123, +0.0059] | not significant |
+| Hybrid vs Content | Precision@10 | +0.0000 | 1.0000 | 1.0000 | [−0.0046, +0.0046] | not significant |
+| Hybrid vs Content | NDCG@10 | +0.0013 | 0.7636 | 0.6408 | [−0.0069, +0.0094] | not significant |
+| Hybrid vs Collaborative | Precision@10 | −0.0038 | **0.0251** | 0.0253 | [−0.0073, −0.0008] | **Hybrid significantly worse** |
+| Hybrid vs Collaborative | NDCG@10 | −0.0064 | **0.0096** | 0.0112 | [−0.0115, −0.0018] | **Hybrid significantly worse** |
 
-Use §2 (leave-one-out Hit Rate) and §3 (RQ1 significance test) as
-**secondary/corroborating** evidence — both are clean and both point the same
-direction as §1 (small or non-significant accuracy gap). Use §4 (gamma
-ablation) to support the methodology section honestly: the adaptive-α formula
-is a reasonable design choice, its cold-start constant was not previously
-tuned, and a coarse sweep shows the effect is real but small. Report §3's
-RQ3 cold-start-segment result as **missing/uninformative** on the current
-dataset and flag the dataset-generator limitation explicitly rather than
-omitting the RQ3 experiment from the thesis — the empty segment is itself a
-finding about the synthetic data, not a result to hide.
+**Honest reading.** Hybrid is statistically indistinguishable from Baseline and
+from Content-based on accuracy. The only significant accuracy difference is that
+the **collaborative component alone out-ranks the Hybrid** — the blend costs a
+little accuracy. This is reported, not hidden.
+
+---
+
+## 7. Advanced evaluation — RQ1 / RQ2 / RQ3
+
+**Source:** `results/advanced_evaluation.txt` · **Script:** `tests/run_advanced_evaluation.py`
+Fixed-date split (train < 2025-01-01).
+
+**RQ1 — significance (NDCG@10, 100-user sample):** Hybrid mean 0.0143 (std
+0.0364), Baseline mean 0.0192 (std 0.0504); paired t = −0.7835, **p = 0.4352 →
+not significant.** Consistent with §6.
+
+**RQ2 — latency:** cache-miss (full inference) mean 162.65 ms / P95 208.11 ms.
+The cache-hit row in this script is a **SIMULATED** upper-bound (a fixed +0.5 ms
+constant), **not** a live Redis measurement — see §8 for the live figure that
+supersedes it.
+
+**RQ3 — three cold-start segments (dataset v2):**
+
+| Segment | Users | Precision@10 | Recall@10 | NDCG@10 | Coverage |
+|---------|------:|-------------:|----------:|--------:|---------:|
+| Zero-history (0 train) | 24 | 0.0000 | 0.0000 | 0.0000 | 0.0200 |
+| Low-activity (1–3 train) | 7 | 0.0000 | 0.0000 | 0.0000 | 0.1340 |
+| Active (>3 train) | 240 | 0.0129 | 0.0206 | 0.0154 | 0.7160 |
+
+The segment is now **non-empty** (it was `NaN`/empty on dataset v1). **Cold-start
+pathway:** zero-history users have α=0 and no content seed, so their served
+top-10 is **100% new-arrival items** driven by the +0.08 freshness boost (0%
+overlap with the popularity fallback, which is nullified by α=0). This surfaces
+fresh content but scores 0 accuracy on their held-out interactions — an honest
+limitation of the current cold-start handling.
+
+---
+
+## 8. Infrastructure latency — LIVE Redis (supersedes the RQ2 simulation)
+
+**Source:** `results/latency_live.{txt,csv}` · **Script:** `results_latency.py`
+Docker was available; Redis was started via `docker compose up -d redis` and the
+API via `uvicorn`. 200 cold (cache-flushed) + 200 warm requests to
+`GET /api/v1/recommend/user/{id}`. Sanity check: cold phase 0/200 cached, warm
+phase 200/200 cached.
+
+| Scenario | Mean (ms) | P95 (ms) |
+|----------|----------:|---------:|
+| Cache miss (full inference) | 186.32 | 237.89 |
+| Cache hit (live Redis GET) | 1.90 | 2.68 |
+
+Mean latency reduction 98.98%. This cache-hit figure is a real HTTP round-trip
+to the API served from a live Redis instance, replacing the earlier simulated
++0.5 ms constant. PostgreSQL and Celery remain designed-but-not-deployed (see
+README "Infrastructure scope"); the evaluated system serves from in-memory
+DataFrames and `/health` honestly reports `db_connected: false`.
+
+---
+
+## 9. Item-side cold-start
+
+**Source:** `results/cold_items.{txt,csv}` · **Script:** `results_cold_items.py`
+Over all 271 test users' top-10 lists; 40 `is_cold_item` products (zero
+pre-cutoff interactions).
+
+| Model | Cold-item coverage | Mean cold items / list |
+|-------|-------------------:|-----------------------:|
+| Hybrid (freshness ON) | 0.925 (37/40) | 1.664 |
+| Hybrid (freshness OFF) | 0.925 (37/40) | 1.000 |
+| Baseline (recency) | 0.000 (0/40) | 0.000 |
+| Popularity | 0.000 (0/40) | 0.000 |
+
+**Honest reading.** The Hybrid surfaces 37 of 40 brand-new items; the recency and
+popularity baselines surface **none** — they structurally cannot reach items
+with no interaction history. The freshness boost does not change *which* cold
+items appear (coverage saturates at 37/40) but raises the mean per-list count
+(1.664 vs 1.000).
+
+---
+
+## 10. Secondary check — leave-one-out Hit Rate@10
+
+**Source:** `evaluation_suite/evaluation_results.txt` · **Script:** `evaluation_suite/compare_models.py`
+Per-user leave-one-out on a 100-user subset:
+
+```
+Baseline: 0.0400
+Hybrid AI: 0.0200
+```
+
+At these magnitudes this is a handful of hits and is a noisy signal; it is
+broadly consistent with the accuracy-parity finding and is **not** evidence of a
+Hybrid accuracy advantage.
+
+---
+
+## Which protocol is PRIMARY?
+
+The clean fixed-date time-split (§1) remains the primary protocol (full test
+population, complete metric suite, matches the methodology `DATASET.md` /
+`README.md` already describe), with the literal 80/20 split (§5) as the
+co-reported result and everything else as corroborating evidence. Across every
+protocol the picture is consistent: **Hybrid ≈ Baseline on ranking accuracy
+(not significant), the collaborative component alone is the accuracy leader, and
+Hybrid's clear reproducible wins are catalog coverage/personalization and
+cold-start item reach.** The documented leakage lesson and the empty→populated
+RQ3 cold-start segment are themselves findings, reported rather than hidden.

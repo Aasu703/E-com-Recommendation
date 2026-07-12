@@ -20,6 +20,7 @@ import { StatCard } from "../components/dashboard/StatCard";
 import { FestivalBanner } from "../components/recommendations/FestivalBanner";
 import { RecommendationGrid } from "../components/recommendations/RecommendationGrid";
 import { ProductCard } from "../components/recommendations/ProductCard";
+import { HEADLINE } from "../lib/metrics.generated";
 import {
   useHybridRecommendations,
   useBaselineRecommendations,
@@ -122,16 +123,14 @@ export default function Dashboard() {
           <StatCard
             label="Avg Hybrid Score"
             value={avgHybridScore.toFixed(3)}
-            change="3.1× vs Baseline"
-            positive
           />
           <StatCard label="Products Shown" value={String(topK)} />
           <StatCard label="Festival Picks" value={String(festivalCount)} />
           <StatCard label="New Arrivals" value={String(newArrivals)} />
           <StatCard
-            label="NDCG@10 (Hybrid)"
-            value="0.065"
-            change="+160% vs Baseline"
+            label="Catalog Coverage@10 (Hybrid)"
+            value={HEADLINE.coverage_at_10.hybrid.toFixed(3)}
+            change={`vs ${HEADLINE.coverage_at_10.baseline.toFixed(3)} Baseline`}
             positive
           />
         </div>
