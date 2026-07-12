@@ -1,7 +1,31 @@
 INFO: Fitting models...
 INFO: Running RQ1: Statistical Significance Test...
 INFO: Running RQ2: Latency Profiling...
-INFO: Running RQ3: User Stratification...
+INFO: Running RQ3: User Stratification (three segments)...
+WARNING: Unknown user U0259, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0269, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0271, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0273, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0274, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0276, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0277, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0278, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0280, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0281, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0282, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0285, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0286, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0287, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0288, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0289, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0291, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0292, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0293, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0294, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0295, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0297, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0298, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0299, returning popularity-informed hybrid fallback
 WARNING: Unknown user U0259, returning popularity-informed hybrid fallback
 WARNING: Unknown user U0269, returning popularity-informed hybrid fallback
 WARNING: Unknown user U0271, returning popularity-informed hybrid fallback
@@ -43,13 +67,24 @@ Result: Not Statistically Significant
 ### RQ2: Infrastructure Latency Profiling
 | Scenario | Average Latency (ms) | P95 Latency (ms) |
 |----------|----------------------|------------------|
-| Cache Miss (Inference) | 138.18 | 143.95 |
+| Cache Miss (Inference) | 141.13 | 148.27 |
 | Cache Hit (Redis) | 0.50 | 0.50 |
 
-Latency Reduction: 99.64%
+Latency Reduction: 99.65%
 
-### RQ3: User Stratification Performance
-| Segment | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
-|---------|--------------|-----------|----------|------------------|
-| Active Users | 0.0140 | 0.0218 | 0.0179 | 0.4440 |
-| Cold-Start | 0.0000 | 0.0000 | 0.0000 | 0.1500 |
+### RQ3: User Stratification Performance (three segments)
+| Segment | Users | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
+|---------|-------|--------------|-----------|----------|------------------|
+| Zero-history (0 train) | 24 | 0.0000 | 0.0000 | 0.0000 | 0.0200 |
+| Low-activity (1-3 train) | 7 | 0.0000 | 0.0000 | 0.0000 | 0.1340 |
+| Active (>3 train) | 240 | 0.0129 | 0.0206 | 0.0154 | 0.7160 |
+
+Cold-start pathway (zero-history segment, 24 users):
+A zero-history user has no CF factors and no content seed, so alpha = 0
+(fully content-based weighting) but content similarity is uniformly zero.
+The served ranking is therefore driven by the +0.08 freshness boost, i.e.
+these users are shown NEW-ARRIVAL products (a discovery-oriented cold-start
+pathway). The popularity fallback populates the CF vector but is nullified
+because alpha = 0 for a user with no interactions.
+  Mean fraction of served top-10 that are new arrivals: 100.0%
+  Mean overlap of served top-10 with the popularity fallback list: 0.0%
