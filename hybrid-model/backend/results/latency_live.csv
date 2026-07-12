@@ -1,0 +1,3 @@
+scenario,mean_latency_ms,p95_latency_ms,n_requests,measurement
+cache_miss_full_inference,186.3222,237.8873,200,live
+cache_hit_live_redis,1.9043,2.6833,200,live
