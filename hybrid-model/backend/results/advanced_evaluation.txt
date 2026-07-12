@@ -2,10 +2,30 @@ INFO: Fitting models...
 INFO: Running RQ1: Statistical Significance Test...
 INFO: Running RQ2: Latency Profiling...
 INFO: Running RQ3: User Stratification...
-C:\Users\aayus\AppData\Local\pypoetry\Cache\virtualenvs\nepali-rec-system-TbCyp9J3-py3.11\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
-  return _methods._mean(a, axis=axis, dtype=dtype,
-C:\Users\aayus\AppData\Local\pypoetry\Cache\virtualenvs\nepali-rec-system-TbCyp9J3-py3.11\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
+WARNING: Unknown user U0259, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0269, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0271, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0273, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0274, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0276, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0277, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0278, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0280, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0281, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0282, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0285, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0286, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0287, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0288, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0289, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0291, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0292, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0293, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0294, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0295, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0297, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0298, returning popularity-informed hybrid fallback
+WARNING: Unknown user U0299, returning popularity-informed hybrid fallback
 
 ==================================================
 ADVANCED EVALUATION REPORT
@@ -14,22 +34,22 @@ ADVANCED EVALUATION REPORT
 ### RQ1: Statistical Significance (NDCG@10)
 | Model | Mean NDCG@10 | Std Dev |
 |-------|--------------|---------|
-| Hybrid | 0.0165 | 0.0501 |
-| Baseline | 0.0268 | 0.0625 |
+| Hybrid | 0.0143 | 0.0364 |
+| Baseline | 0.0192 | 0.0504 |
 
-Paired T-Test: t=-1.2456, p=0.2158
+Paired T-Test: t=-0.7835, p=0.4352
 Result: Not Statistically Significant
 
 ### RQ2: Infrastructure Latency Profiling
 | Scenario | Average Latency (ms) | P95 Latency (ms) |
 |----------|----------------------|------------------|
-| Cache Miss (Inference) | 153.36 | 169.93 |
+| Cache Miss (Inference) | 138.18 | 143.95 |
 | Cache Hit (Redis) | 0.50 | 0.50 |
 
-Latency Reduction: 99.67%
+Latency Reduction: 99.64%
 
 ### RQ3: User Stratification Performance
 | Segment | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
 |---------|--------------|-----------|----------|------------------|
-| Active Users | 0.0220 | 0.0471 | 0.0310 | 0.4680 |
-| Cold-Start | nan | nan | nan | 0.0000 |
+| Active Users | 0.0140 | 0.0218 | 0.0179 | 0.4440 |
+| Cold-Start | 0.0000 | 0.0000 | 0.0000 | 0.1500 |
