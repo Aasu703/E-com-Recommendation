@@ -1,33 +1,55 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Star, ShoppingCart, Check } from 'lucide-react';
 import type { RecommendedProduct } from '../../lib/rec-api';
 import { useCart } from '../../contexts/CartContext';
-import { useDemoUser } from '../../contexts/DemoUserContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useCartGate } from '../../contexts/CartGateContext';
 import { useInteract } from '../../hooks/useRecommendations';
 
 interface StoreProductCardProps {
   product: RecommendedProduct;
-  onInteract?: () => void;
+  /** false only for the /demo persona-switcher, where cart is never auth-gated. */
+  gated?: boolean;
+  /** required when gated=false: the demo persona to log the interaction against. */
+  userId?: string;
 }
 
-export function StoreProductCard({ product, onInteract }: StoreProductCardProps) {
+export function StoreProductCard({ product, gated = true, userId }: StoreProductCardProps) {
+  const router = useRouter();
   const { addToCart } = useCart();
-  const { userId } = useDemoUser();
+  const { user } = useAuth();
+  const { requestAdd } = useCartGate();
   const logInteraction = useInteract();
   const [justAdded, setJustAdded] = useState(false);
+
+  const effectiveUserId = gated ? user?.user_id : userId;
+
+  const handleCardClick = () => {
+    if (effectiveUserId) logInteraction(effectiveUserId, product.product_id, 'click');
+    router.push(`/product/${product.product_id}`);
+  };
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!product.in_stock) return;
-    addToCart({ product_id: product.product_id, name: product.name, price_npr: product.price_npr });
-    logInteraction(userId, product.product_id, 'cart');
+
+    const cartItem = { product_id: product.product_id, name: product.name, price_npr: product.price_npr };
+
+    if (gated && !user) {
+      requestAdd(cartItem);
+      return;
+    }
+
+    addToCart(cartItem);
+    if (effectiveUserId) logInteraction(effectiveUserId, product.product_id, 'add_to_cart');
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1500);
   };
 
   return (
     <div
-      onClick={onInteract}
+      onClick={handleCardClick}
       className="group bg-white border border-slate-200 hover:border-indigo-400 rounded-2xl p-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 flex flex-col h-full relative overflow-hidden cursor-pointer"
     >
       <div className="flex gap-2 flex-wrap mb-3">

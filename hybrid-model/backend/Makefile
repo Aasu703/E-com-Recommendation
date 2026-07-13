@@ -1,4 +1,4 @@
-.PHONY: install setup train api worker test notebooks clean smoke-test docker-up docker-logs
+.PHONY: install setup train api worker test notebooks clean smoke-test docker-up docker-logs dev
 
 install:
 	python -m poetry install
@@ -13,6 +13,10 @@ train:
 
 api:
 	python -m poetry run uvicorn api.main:app --reload --port 8000
+
+dev:
+	python -m poetry run uvicorn api.main:app --reload --port 8000 &
+	cd ../frontend && npm run dev
 
 worker:
 	python -m poetry run celery -A jobs.celery_app worker --loglevel=info

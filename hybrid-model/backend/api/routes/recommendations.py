@@ -6,12 +6,17 @@ import asyncio
 import json
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
 
+from api.auth import append_live_interactions, get_optional_user
 from api.config import settings
+from api.recommend_blend import blended_recommendations, is_cold_start
 from api.schemas import RecommendedProduct, RecommendationResponse, SimilarProductsResponse, InteractionRequest
 from recommender.utils import get_popular_products
+
+ALLOWED_INTERACTION_TYPES = {"view", "click", "add_to_cart", "purchase"}
+INTERACTION_SCORE_MAP = {"view": 1.0, "click": 1.0, "add_to_cart": 2.0, "purchase": 4.0}
 
 router = APIRouter(prefix="/api/v1/recommend", tags=["recommendations"])
 
@@ -59,8 +64,19 @@ async def recommend_user(request: Request, user_id: str, top_k: int = 10, month:
     if cached:
         cached["cached"] = True
         return cached
+    recommender = request.app.state.recommender
     context = {"month": month, "exclude_interacted": exclude_interacted, "exclude_out_of_stock": exclude_out_of_stock}
-    recs = request.app.state.recommender.recommend(user_id, top_k=top_k, context=context)
+
+    if is_cold_start(recommender, user_id, settings.COLD_START_THRESHOLD):
+        recs = blended_recommendations(recommender, user_id, top_k, month, exclude_interacted, exclude_out_of_stock)
+        context["cold_start_blend"] = True
+    else:
+        recs = recommender.recommend(user_id, top_k=top_k, context=context)
+
+    interaction_count = recommender.cf.user_interaction_counts.get(user_id, 0)
+    context["user_interaction_count"] = interaction_count
+    context["alpha_avg"] = (sum(r["alpha_used"] for r in recs) / len(recs)) if recs else 0.0
+
     payload = RecommendationResponse(
         user_id=user_id,
         recommendations=[_format_product(item) for item in recs],
@@ -153,37 +169,53 @@ async def batch(request: Request, body: BatchRequest):
 
 
 @router.post("/interact")
-async def interact(request: Request, body: InteractionRequest):
-    """Log an interaction to update the recommender state live."""
+async def interact(request: Request, body: InteractionRequest, current_user: dict | None = Depends(get_optional_user)):
+    """Log an interaction to update the recommender state live.
+
+    The user is taken from the JWT when present (real logged-in shoppers);
+    otherwise it falls back to the body-supplied user_id, which keeps /demo's
+    persona-switching working unauthenticated exactly as before.
+    """
     import pandas as pd
+
+    if body.interaction_type not in ALLOWED_INTERACTION_TYPES:
+        raise HTTPException(status_code=400, detail=f"Unknown interaction_type: {body.interaction_type}")
+
+    user_id = current_user["user_id"] if current_user else body.user_id
+    if not user_id:
+        raise HTTPException(status_code=400, detail="user_id is required (or a valid Authorization bearer token)")
+
     recommender = request.app.state.recommender
     if recommender.interactions_df is not None:
-        # Create a new interaction row
-        score_map = {"view": 1.0, "cart": 2.0, "purchase": 4.0}
-        score = score_map.get(body.interaction_type, 1.0)
-        
-        new_row = pd.DataFrame([{
-            "user_id": body.user_id,
+        score = INTERACTION_SCORE_MAP[body.interaction_type]
+        now = datetime.now(timezone.utc)
+        new_row_dict = {
+            "user_id": user_id,
             "product_id": body.product_id,
             "interaction_type": body.interaction_type,
             "implicit_score": score,
             "timestamp": _now(),
-            "month": datetime.now(timezone.utc).month,
-            "is_festival_period": datetime.now(timezone.utc).month in {10, 11}
-        }])
+            "month": now.month,
+            "is_festival_period": now.month in {10, 11},
+        }
+        new_row = pd.DataFrame([new_row_dict])
         recommender.interactions_df = pd.concat([recommender.interactions_df, new_row], ignore_index=True)
-        
+
         # Increment user's interaction count to adapt the Hybrid alpha instantly
-        if body.user_id in recommender.cf.user_interaction_counts:
-            recommender.cf.user_interaction_counts[body.user_id] += 1
-        else:
-            recommender.cf.user_interaction_counts[body.user_id] = 1
-            
+        recommender.cf.user_interaction_counts[user_id] = recommender.cf.user_interaction_counts.get(user_id, 0) + 1
+
+        # Real users are persisted so a restart doesn't lose their learned profile;
+        # /demo personas (non-RU ids) stay in-memory only, exactly as before.
+        if user_id.startswith("RU"):
+            append_live_interactions([new_row_dict])
+
         # Clear cache for this user
         redis = getattr(request.app.state, "redis", None)
         if redis:
-            keys = await redis.keys(f"rec:user:{body.user_id}:*")
+            keys = await redis.keys(f"rec:user:{user_id}:*")
             if keys:
                 await redis.delete(*keys)
-                
-    return {"status": "success", "recorded": body.model_dump(), "generated_at": _now()}
+
+    recorded = body.model_dump()
+    recorded["user_id"] = user_id
+    return {"status": "success", "recorded": recorded, "generated_at": _now()}

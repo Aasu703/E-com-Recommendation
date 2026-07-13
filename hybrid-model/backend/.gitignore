@@ -30,3 +30,8 @@ out/
 # OS
 .DS_Store
 Thumbs.db
+
+# Real user accounts + live interactions (runtime state, not thesis data)
+nepali_ecommerce_data/app_users.json
+nepali_ecommerce_data/app_users.tmp
+nepali_ecommerce_data/live_interactions.csv

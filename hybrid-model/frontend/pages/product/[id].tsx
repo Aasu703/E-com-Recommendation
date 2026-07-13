@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useSimilarProducts, useProduct } from "../../hooks/useRecommendations";
+import { useEffect, useState } from "react";
+import { useSimilarProducts, useProduct, useInteract } from "../../hooks/useRecommendations";
 import { useCart } from "../../contexts/CartContext";
+import { useAuth } from "../../contexts/AuthContext";
+import { useCartGate } from "../../contexts/CartGateContext";
 import { Navbar } from "../../components/ui/Navbar";
 import { StoreProductCard } from "../../components/ui/StoreProductCard";
 import { ArrowLeft, ShoppingCart, Star, Sparkles, Minus, Plus, Check } from "lucide-react";
@@ -14,14 +16,33 @@ export default function ProductDetailPage() {
   const productId = String(router.query.id ?? "");
 
   const { addToCart } = useCart();
+  const { user } = useAuth();
+  const { requestAdd } = useCartGate();
+  const logInteraction = useInteract();
   const { product, isLoading, isError } = useProduct(productId);
   const { recommendations, isLoading: similarLoading } = useSimilarProducts(productId, 8);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
+  // Log one "view" per product per tab session, logged-in users only.
+  useEffect(() => {
+    if (!productId || !user) return;
+    const key = `nepkart_viewed:${productId}`;
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, '1');
+    logInteraction(user.user_id, productId, 'view');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId, user?.user_id]);
+
   const handleAddToCart = () => {
     if (!product || !product.in_stock) return;
-    addToCart({ product_id: product.product_id, name: product.name, price_npr: product.price_npr }, quantity);
+    const cartItem = { product_id: product.product_id, name: product.name, price_npr: product.price_npr };
+    if (!user) {
+      requestAdd(cartItem);
+      return;
+    }
+    addToCart(cartItem, quantity);
+    logInteraction(user.user_id, product.product_id, 'add_to_cart');
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };

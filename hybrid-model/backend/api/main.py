@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from contextlib import asynccontextmanager
 from pathlib import Path
 import logging
@@ -11,8 +12,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import redis.asyncio as redis
 
+from api.auth import replay_live_state
 from api.config import settings
-from api.routes import health, products, recommendations, users
+from api.routes import account, auth, health, products, recommendations, users
 from recommender.baseline import BaselineRecommender
 from recommender.hybrid import HybridRecommender
 from recommender.utils import load_data
@@ -40,6 +42,13 @@ async def lifespan(app: FastAPI):
     if products_df is None or interactions_df is None:
         products_df, _, interactions_df = load_data()
     app.state.baseline_recommender = BaselineRecommender().fit(products_df, interactions_df)
+
+    # Replay persisted real (RU####) users + their live interactions on top of
+    # the fitted model, so a restart doesn't wipe an account or its learned
+    # profile. Never re-fits CF/CB -- see api/auth.py:replay_live_state.
+    app.state.app_users = replay_live_state(app.state.recommender)
+    app.state.app_users_lock = asyncio.Lock()
+
     try:
         app.state.redis = redis.from_url(settings.REDIS_URL, decode_responses=True)
         await app.state.redis.ping()
@@ -75,4 +84,6 @@ app.add_middleware(
 app.include_router(recommendations.router)
 app.include_router(products.router)
 app.include_router(users.router)
+app.include_router(auth.router)
+app.include_router(account.router)
 app.include_router(health.router)

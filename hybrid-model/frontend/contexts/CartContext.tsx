@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
 export interface CartItem {
   product_id: string;
@@ -26,18 +27,24 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
+  const { user } = useAuth();
+  const userId = user?.user_id ?? null;
   const [items, setItems] = useState<CartItem[]>([]);
 
+  // Cart is per-account: switching users (or logging out) swaps the whole cart.
   useEffect(() => {
-    const stored = localStorage.getItem('cart_items');
-    if (stored) {
-      setItems(JSON.parse(stored));
+    if (!userId) {
+      setItems([]);
+      return;
     }
-  }, []);
+    const stored = localStorage.getItem(`cart_items:${userId}`);
+    setItems(stored ? JSON.parse(stored) : []);
+  }, [userId]);
 
   useEffect(() => {
-    localStorage.setItem('cart_items', JSON.stringify(items));
-  }, [items]);
+    if (!userId) return;
+    localStorage.setItem(`cart_items:${userId}`, JSON.stringify(items));
+  }, [userId, items]);
 
   const addToCart = (product: { product_id: string; name: string; price_npr: number }, quantity = 1) => {
     setItems((prev) => {
