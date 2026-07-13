@@ -1,0 +1,14 @@
+========================================================================
+LIVE LATENCY — measured against live Redis (not simulated)
+========================================================================
+Requests per phase: 200 | Endpoint: GET /api/v1/recommend/user/{id}
+Cache-hit sanity check: cold phase cached responses = 0/200 (expect 0); warm phase cached responses = 200/200 (expect 200).
+
+Scenario                         | Mean Latency (ms) | P95 Latency (ms)
+---------------------------------|-------------------|-----------------
+Cache MISS (full inference)      |     186.32        |     237.89
+Cache HIT (live Redis GET)       |       1.90        |       2.68
+
+Latency reduction (mean): 98.98%
+This cache-hit figure is a real HTTP round-trip to the API served from a
+live Redis instance, replacing the earlier simulated +0.5 ms constant.

@@ -5,19 +5,22 @@
 import type { AppProps } from "next/app";
 import { Layout } from "../components/layout/Layout";
 import { CartProvider } from "../contexts/CartContext";
-import { DemoUserProvider } from "../contexts/DemoUserContext";
-import { PreferenceOnboarding } from "../components/onboarding/PreferenceOnboarding";
+import { AuthProvider } from "../contexts/AuthContext";
+import { CartGateProvider } from "../contexts/CartGateContext";
+import { AuthGateModal } from "../components/auth/AuthGateModal";
 import "../styles.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <DemoUserProvider>
+    <AuthProvider>
       <CartProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        <PreferenceOnboarding />
+        <CartGateProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <AuthGateModal />
+        </CartGateProvider>
       </CartProvider>
-    </DemoUserProvider>
+    </AuthProvider>
   );
 }

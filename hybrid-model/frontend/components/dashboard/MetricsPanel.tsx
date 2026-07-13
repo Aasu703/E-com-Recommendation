@@ -1,62 +1,37 @@
 /**
- * MetricsPanel — side-by-side accuracy comparison of Hybrid vs Baseline.
+ * MetricsPanel — side-by-side comparison of Hybrid vs Baseline.
  *
- * Displays Precision, Recall, NDCG, Coverage, and Diversity at K = 5, 10, 20
- * using the offline evaluation results from the thesis notebook.
+ * Displays Precision, Recall, NDCG, Coverage, and Diversity at K = 5, 10, 20.
+ * All numbers are imported from lib/metrics.generated.ts, which is auto-generated
+ * from the leak-free evaluation results (results/clean_eval_results.csv) by
+ * backend/scripts/export_metrics.py — this component holds NO hardcoded metrics,
+ * so it can never drift from results/.
  */
 
 import { useState } from "react";
+import { HYBRID_VS_BASELINE, HEADLINE } from "../../lib/metrics.generated";
 
-interface MetricRow {
-  metric: string;
-  hybrid: number;
-  baseline: number;
-}
+const K_VALUES = HYBRID_VS_BASELINE.map((entry) => entry.k);
 
-/** Offline evaluation results from notebooks/05_evaluation.ipynb */
-const EVALUATION_DATA: Record<number, MetricRow[]> = {
-  5: [
-    { metric: "Precision",  hybrid: 0.059, baseline: 0.019 },
-    { metric: "Recall",     hybrid: 0.044, baseline: 0.015 },
-    { metric: "NDCG",       hybrid: 0.053, baseline: 0.021 },
-    { metric: "Coverage",   hybrid: 0.638, baseline: 0.010 },
-    { metric: "Diversity",  hybrid: 0.301, baseline: 0.900 },
-  ],
-  10: [
-    { metric: "Precision",  hybrid: 0.054, baseline: 0.017 },
-    { metric: "Recall",     hybrid: 0.082, baseline: 0.027 },
-    { metric: "NDCG",       hybrid: 0.065, baseline: 0.025 },
-    { metric: "Coverage",   hybrid: 0.894, baseline: 0.020 },
-    { metric: "Diversity",  hybrid: 0.353, baseline: 0.800 },
-  ],
-  20: [
-    { metric: "Precision",  hybrid: 0.043, baseline: 0.018 },
-    { metric: "Recall",     hybrid: 0.133, baseline: 0.060 },
-    { metric: "NDCG",       hybrid: 0.087, baseline: 0.039 },
-    { metric: "Coverage",   hybrid: 0.936, baseline: 0.040 },
-    { metric: "Diversity",  hybrid: 0.408, baseline: 0.858 },
-  ],
-};
-
-const K_VALUES = [5, 10, 20];
-
-function getImprovement(hybrid: number, baseline: number): string {
+function getDelta(hybrid: number, baseline: number): string {
   if (baseline === 0) return "—";
   const pct = ((hybrid - baseline) / baseline) * 100;
   return `${pct > 0 ? "+" : ""}${pct.toFixed(0)}%`;
 }
 
 export function MetricsPanel() {
-  const [activeK, setActiveK] = useState(5);
-  const rows = EVALUATION_DATA[activeK];
+  const [activeK, setActiveK] = useState<number>(K_VALUES[0] ?? 5);
+  const rows = HYBRID_VS_BASELINE.find((entry) => entry.k === activeK)?.rows ?? [];
 
   return (
     <div className="metrics-panel">
       <div className="section-header">
         <div>
-          <h2>📊 Model Accuracy Comparison</h2>
+          <h2>📊 Hybrid vs Baseline — Leak-Free Evaluation</h2>
           <div className="section-subtitle">
-            Offline evaluation — time-based train/test split (test ≥ Jan 2025) · 299 users
+            {HEADLINE.protocol} · {HEADLINE.n_users} users. Accuracy is on par with
+            the baseline ({HEADLINE.accuracy_significance.verdict}); the Hybrid&apos;s
+            clear win is catalog coverage.
           </div>
         </div>
       </div>
@@ -103,7 +78,7 @@ export function MetricsPanel() {
                 </td>
                 <td>
                   <span className="improvement">
-                    {getImprovement(row.hybrid, row.baseline)}
+                    {getDelta(row.hybrid, row.baseline)}
                   </span>
                 </td>
                 <td>

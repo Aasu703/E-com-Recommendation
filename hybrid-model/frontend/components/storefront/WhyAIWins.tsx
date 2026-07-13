@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Brain, ArrowRight, Sparkles } from 'lucide-react';
 import type { RecommendedProduct } from '../../lib/rec-api';
+import { HEADLINE } from '../../lib/metrics.generated';
 
 interface WhyAIWinsProps {
   hybridTop?: RecommendedProduct;
@@ -8,12 +9,28 @@ interface WhyAIWinsProps {
   isLoading: boolean;
 }
 
-/** K=10 offline evaluation figures — sourced from components/dashboard/MetricsPanel.tsx
- *  so the storefront headline never contradicts the Thesis Dashboard. */
+const pct = (x: number) => `${Math.round(x * 100)}%`;
+
+/** Honest headline figures — auto-generated in lib/metrics.generated.ts from the
+ *  leak-free results (results/*.csv). Once train/test leakage was removed the
+ *  Hybrid is on PAR with the baseline on ranking accuracy; its genuine wins are
+ *  catalog coverage / personalization and reaching brand-new (cold) items. */
 const STATS = [
-  { label: 'NDCG@10', value: '+160%', detail: '0.065 vs 0.025' },
-  { label: 'Precision@10', value: '+218%', detail: '0.054 vs 0.017' },
-  { label: 'Catalog Coverage', value: '+4370%', detail: '0.894 vs 0.020' },
+  {
+    label: 'Catalog Coverage @10',
+    value: pct(HEADLINE.coverage_at_10.hybrid),
+    detail: `vs ${pct(HEADLINE.coverage_at_10.baseline)} for Baseline — one static list for everyone`,
+  },
+  {
+    label: 'Cold (new) Items Reached',
+    value: pct(HEADLINE.cold_item_coverage.hybrid),
+    detail: `vs ${pct(HEADLINE.cold_item_coverage.baseline)} for Baseline & Popularity`,
+  },
+  {
+    label: 'Ranking Accuracy',
+    value: 'On par',
+    detail: `Precision@10 ${HEADLINE.precision_at_10.hybrid.toFixed(3)} vs ${HEADLINE.precision_at_10.baseline.toFixed(3)} · ${HEADLINE.accuracy_significance.verdict}`,
+  },
 ];
 
 function buildReason(p: RecommendedProduct): string {
@@ -38,8 +55,8 @@ export function WhyAIWins({ hybridTop, baselineTop, isLoading }: WhyAIWinsProps)
           <Brain className="h-6 w-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Why Hybrid AI Wins in Nepal&apos;s Sparse-Data Market</h2>
-          <p className="text-slate-500 text-sm">Live proof from your session, backed by offline evaluation</p>
+          <h2 className="text-2xl font-bold text-slate-900">Where Hybrid AI Wins in Nepal&apos;s Sparse-Data Market</h2>
+          <p className="text-slate-500 text-sm">Coverage &amp; personalization, not accuracy hype — backed by leak-free offline evaluation</p>
         </div>
       </div>
 
@@ -54,7 +71,7 @@ export function WhyAIWins({ hybridTop, baselineTop, isLoading }: WhyAIWinsProps)
         ))}
       </div>
       <p className="text-xs text-slate-400 text-center -mt-6 mb-10">
-        Offline evaluation · 299 users · time-based train/test split ·{' '}
+        Leak-free offline evaluation · {HEADLINE.n_users} users · time-based train/test split ·{' '}
         <Link href="/dashboard" className="text-indigo-600 font-semibold hover:underline">
           full breakdown on Thesis Dashboard
         </Link>
