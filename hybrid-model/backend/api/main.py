@@ -87,3 +87,10 @@ app.include_router(users.router)
 app.include_router(auth.router)
 app.include_router(account.router)
 app.include_router(health.router)
+
+
+def run_dev() -> None:
+    """Entry point for `poetry run dev` -- reload server on :8000."""
+    import uvicorn
+
+    uvicorn.run("api.main:app", host="127.0.0.1", port=8000, reload=True)

@@ -12,10 +12,10 @@ train:
 	python -m poetry run python -c "from recommender.hybrid import HybridRecommender; from recommender.utils import load_data; p,u,i=load_data(); m=HybridRecommender().fit(p,u,i); m.save('models/hybrid_recommender.pkl'); print('Models trained and saved')"
 
 api:
-	python -m poetry run uvicorn api.main:app --reload --port 8000
+	python -m poetry run dev
 
 dev:
-	python -m poetry run uvicorn api.main:app --reload --port 8000 &
+	python -m poetry run dev &
 	cd ../frontend && npm run dev
 
 worker:
