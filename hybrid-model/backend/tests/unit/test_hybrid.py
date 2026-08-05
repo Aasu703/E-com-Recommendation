@@ -27,8 +27,10 @@ class TestHybridRecommender:
 
     def test_festival_month_boosts_score_for_festival_categories(self):
         pid = self.products.loc[self.products["category"].eq("Traditional Attire"), "product_id"].iloc[0]
-        recs_fest = self.model.recommend("U0042", top_k=500, context={"month": 10, "exclude_interacted": False})
-        recs_norm = self.model.recommend("U0042", top_k=500, context={"month": 7, "exclude_interacted": False})
+        catalog_size = len(self.products)
+        ctx = {"exclude_interacted": False, "exclude_out_of_stock": False}
+        recs_fest = self.model.recommend("U0042", top_k=catalog_size, context={**ctx, "month": 10})
+        recs_norm = self.model.recommend("U0042", top_k=catalog_size, context={**ctx, "month": 7})
         
         fest_score = next(r["hybrid_score"] for r in recs_fest if r["product_id"] == pid)
         norm_score = next(r["hybrid_score"] for r in recs_norm if r["product_id"] == pid)

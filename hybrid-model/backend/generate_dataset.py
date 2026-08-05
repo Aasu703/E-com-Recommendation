@@ -1,21 +1,23 @@
-"""Generate the deterministic Nepali e-commerce CSVs (dataset v2).
+"""Generate the deterministic Nepali e-commerce CSVs (dataset v3).
 
-Dataset v2 introduces genuine cold-start structure so that RQ3 (cold-start
-handling) can actually be measured. See DATASET.md "Dataset v2 changelog" and
-results/RESULTS_SUMMARY.md section 3 for the motivating finding (the v1 RQ3
-cold-start segment was empty because every user had >= 6 train interactions).
+Dataset v3 scales dataset v2 up ~5x (more products/users/interactions per
+cohort) for a stronger accuracy signal, while keeping the same genuine
+cold-start structure introduced in v2 so RQ3 (cold-start handling) remains
+measurable. See DATASET.md "Dataset v3 changelog" and
+results/RESULTS_SUMMARY.md section 3 for the v1->v2 motivating finding (the v1
+RQ3 cold-start segment was empty because every user had >= 6 train interactions).
 
 Cohorts (all deterministic under RANDOM_STATE = 42):
-  * ACTIVE  U0001-U0240 (240 users): ~25 interactions each (v1-like density),
-    contributing ~6,000 rows.
-  * LOW-ACTIVITY  U0241-U0270 (30 users): 1-3 interactions each, spread across
+  * ACTIVE  U0001-U1200 (1,200 users): ~25 interactions each (v1/v2-like
+    density), contributing ~30,000 rows.
+  * LOW-ACTIVITY  U1201-U1350 (150 users): 1-3 interactions each, spread across
     the whole time range -> <= 3 TRAIN interactions at the split (below gamma=3).
-  * COLD-START  U0271-U0300 (30 users): 0-3 interactions each, joined 2025-01-01
+  * COLD-START  U1351-U1500 (150 users): 0-3 interactions each, joined 2025-01-01
     or later, all interaction timestamps >= 2025-01-15 -> ZERO train history at
-    the 2025-01-01 split; >= 8 of these users have exactly 0 interactions.
+    the 2025-01-01 split; >= 40 of these users have exactly 0 interactions.
 
-Item cold-start: 40 products drawn from the is_new_arrival pool are flagged with
-a new boolean column ``is_cold_item`` in products.csv. They receive ZERO
+Item cold-start: 200 products drawn from the is_new_arrival pool are flagged
+with a new boolean column ``is_cold_item`` in products.csv. They receive ZERO
 interactions before 2025-01-01 and only sparse interactions afterwards.
 """
 
@@ -32,13 +34,16 @@ DATA_DIR = Path(__file__).parent / "nepali_ecommerce_data"
 RANDOM_STATE = 42
 
 # Cohort boundaries (inclusive user index ranges).
-N_USERS = 300
-ACTIVE_MAX = 240          # U0001-U0240
-LOW_ACTIVITY_MAX = 270    # U0241-U0270
-# COLD_START: U0271-U0300
+N_USERS = 1500
+ACTIVE_MAX = 1200          # U0001-U1200
+LOW_ACTIVITY_MAX = 1350    # U1201-U1350
+# COLD_START: U1351-U1500
 
-ACTIVE_INTERACTIONS = 6000  # total rows contributed by the active cohort
-N_COLD_ITEMS = 40
+ACTIVE_INTERACTIONS = 30000  # total rows contributed by the active cohort
+N_COLD_ITEMS = 200
+N_PRODUCTS = 2500
+N_NEW_ARRIVALS = 375
+N_ZERO_HISTORY_COLD_USERS = 40
 
 # Time geometry. Interaction timestamps span a 520-day window from 2024-01-01
 # (matching v1), i.e. up to 2025-06-04. The fixed-date evaluation split is
@@ -78,7 +83,7 @@ def _ts(offset_days: int) -> datetime:
 
 
 def generate_dataset(force: bool = False) -> None:
-    """Create products, users, and interactions CSVs (dataset v2)."""
+    """Create products, users, and interactions CSVs (dataset v3)."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     paths = [DATA_DIR / "products.csv", DATA_DIR / "users.csv", DATA_DIR / "interactions.csv"]
     if not force and all(path.exists() for path in paths):
@@ -96,10 +101,10 @@ def generate_dataset(force: bool = False) -> None:
         "Books & Education": ["Exam Prep", "Children Books", "Literature", "Stationery"],
     }
     brands = ["Himalaya", "Kathmandu Craft", "Sagarmatha", "Lalitpur Looms", "NepTech", "Janakpur Mart"]
-    all_ids = [f"P{i:04d}" for i in range(1, 501)]
+    all_ids = [f"P{i:04d}" for i in range(1, N_PRODUCTS + 1)]
 
-    # 75 new arrivals (as in v1). 40 of them are the item-cold-start test set.
-    new_arrival_ids = set(np.random.choice(all_ids, 75, replace=False))
+    # New arrivals (5x the v1/v2 count). A subset are the item-cold-start test set.
+    new_arrival_ids = set(np.random.choice(all_ids, N_NEW_ARRIVALS, replace=False))
     cold_item_ids = set(np.random.choice(sorted(new_arrival_ids), N_COLD_ITEMS, replace=False))
 
     products = []
@@ -170,11 +175,11 @@ def generate_dataset(force: bool = False) -> None:
             ts = _ts(np.random.randint(0, WINDOW_DAYS))
             interactions.append(_make_interaction(user_id, product_id, ts))
 
-    # --- Cold-start cohort: U0271-U0300, 0-3 interactions each, timestamps
-    #     >= 2025-01-15 (all in the test period). Guarantee >= 8 zero-history users.
-    cold_user_indices = list(range(LOW_ACTIVITY_MAX + 1, N_USERS + 1))  # 271..300
+    # --- Cold-start cohort: U1351-U1500, 0-3 interactions each, timestamps
+    #     >= 2025-01-15 (all in the test period). Guarantee >= 40 zero-history users.
+    cold_user_indices = list(range(LOW_ACTIVITY_MAX + 1, N_USERS + 1))  # 1351..1500
     cold_counts = [int(np.random.randint(1, 4)) for _ in cold_user_indices]  # 1..3
-    zero_positions = np.random.choice(len(cold_user_indices), 8, replace=False)
+    zero_positions = np.random.choice(len(cold_user_indices), N_ZERO_HISTORY_COLD_USERS, replace=False)
     for pos in zero_positions:
         cold_counts[pos] = 0
     for idx, n in zip(cold_user_indices, cold_counts):

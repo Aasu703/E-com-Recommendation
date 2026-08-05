@@ -55,6 +55,13 @@ export function Navbar() {
           </form>
 
           <div className="flex items-center gap-6">
+            <Link
+              href="/case-study"
+              className="hidden md:inline text-sm font-semibold text-slate-500 hover:text-indigo-600 transition-colors"
+            >
+              Why Nepal
+            </Link>
+
             {user ? (
               <div className="relative hidden md:block">
                 <button
