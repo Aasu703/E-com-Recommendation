@@ -26,6 +26,9 @@ python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 bcrypt = "4.0.1"  # passlib 1.7.4's bcrypt backend self-test breaks on bcrypt>=4.1
 
+[tool.poetry.scripts]
+dev = "api.main:run_dev"
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.0"
 pytest-asyncio = "^0.23.7"

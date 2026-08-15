@@ -7,22 +7,18 @@ Hybrid API for the thesis recommendation model. This backend combines collaborat
 ```bash
 poetry install
 make train
-poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
+poetry run dev
 ```
 
 Open `http://localhost:8000/docs` for the API explorer.
 
 ## Running the full storefront (backend + frontend)
 
-```bash
-make dev
-```
-
-Starts the backend on `:8000` (backgrounded) and the frontend (`../frontend`) on `:3000` in the same terminal. To run them separately instead:
+Run each in its own terminal:
 
 ```bash
 # terminal 1
-poetry run uvicorn api.main:app --reload --port 8000
+poetry run dev
 # terminal 2
 cd ../frontend && npm run dev
 ```
