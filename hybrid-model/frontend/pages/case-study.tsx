@@ -112,7 +112,7 @@ export default function CaseStudyPage() {
           </h2>
           <p className="text-slate-500 mb-6 max-w-3xl">
             Before settling on a hybrid, this project evaluated all five candidate
-            strategies against the same leak-free split (271 test users, K=10).
+            strategies against the same leak-free split (1,386 test users, K=10).
             No single technique wins on every axis — which is itself the case for
             blending them.
           </p>

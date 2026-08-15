@@ -1,16 +1,16 @@
 ==========================================================================
 ITEM-SIDE COLD-START experiment (clean split, top-10 lists)
 ==========================================================================
-Split date: 2025-01-01 | Cold items (is_cold_item): 40
-Test users evaluated: 271
+Split date: 2025-01-01 | Cold items (is_cold_item): 200
+Test users evaluated: 1386
 Cold items have zero pre-cutoff interactions -> no collaborative signal;
 they can surface only via content similarity and the freshness boost.
 
 Model                         | Cold-item coverage | Mean cold items / list
 ------------------------------|--------------------|-----------------------
-Hybrid (freshness ON)         | 0.925 (37/40)      | 1.664
-Hybrid (freshness OFF)        | 0.925 (37/40)      | 1.000
-Baseline (recency)            | 0.000 (0/40)      | 0.000
-Popularity                    | 0.000 (0/40)      | 0.000
+Hybrid (freshness ON)         | 0.900 (180/200)      | 3.798
+Hybrid (freshness OFF)        | 0.900 (180/200)      | 1.890
+Baseline (recency)            | 0.000 (0/200)      | 0.000
+Popularity                    | 0.000 (0/200)      | 0.000
 
-Freshness boost effect on cold-item coverage: +0.000 (0.925 on vs 0.925 off).
+Freshness boost effect on cold-item coverage: +0.000 (0.900 on vs 0.900 off).
