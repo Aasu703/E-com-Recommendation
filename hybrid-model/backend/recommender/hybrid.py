@@ -36,6 +36,7 @@ class HybridRecommender:
         alpha: float | None = None,
         freshness_boost: bool = True,
         festival_boost: bool = True,
+        cold_user_fallback: bool = False,
     ) -> None:
         """Initialize unfitted content and collaborative models.
 
@@ -55,6 +56,14 @@ class HybridRecommender:
         freshness_boost / festival_boost toggle the +0.08 new-arrival and +0.25
         festival additive boosts; both default to True (shipped behaviour) and
         are switched off only for the boost ablation.
+
+        cold_user_fallback (default False, shipped behaviour unchanged) is an
+        opt-in experimental pathway (see results_cold_user_fallback.py) for
+        zero-history users under the "adaptive" strategy, who otherwise get
+        alpha=0 -- which nullifies the popularity fallback populated into the
+        CF score (RESULTS_SUMMARY.md §7). When enabled, such users get
+        alpha=1.0 (so the popularity fallback actually scores) plus a +0.08
+        boost on products matching their onboarding `preferred_categories`.
         """
         self.cb = ContentBasedRecommender()
         self.cf = CollaborativeRecommender()
@@ -63,6 +72,7 @@ class HybridRecommender:
         self.fixed_alpha = 0.5 if alpha is None else float(alpha)
         self.freshness_boost = freshness_boost
         self.festival_boost = festival_boost
+        self.cold_user_fallback = cold_user_fallback
         self.products_df: pd.DataFrame | None = None
         self.users_df: pd.DataFrame | None = None
         self.interactions_df: pd.DataFrame | None = None
@@ -148,7 +158,17 @@ class HybridRecommender:
             base_alpha = u_c / (u_c + self.COLD_START_THRESHOLD)
             alpha_arr = np.where(is_new_arrival_arr, base_alpha * 0.5, base_alpha)
 
+        preferred_category_arr = np.zeros(len(kept), dtype=bool)
+        if self.cold_user_fallback and self.strategy == "adaptive" and u_c == 0:
+            alpha_arr = np.full(len(kept), 1.0)
+            if self.users_df is not None:
+                urow = self.users_df.loc[self.users_df["user_id"] == user_id]
+                if not urow.empty and pd.notna(urow.iloc[0].get("preferred_categories")):
+                    preferred = set(str(urow.iloc[0]["preferred_categories"]).split("|"))
+                    preferred_category_arr = kept["category"].isin(preferred).to_numpy()
+
         hybrid_score_arr = alpha_arr * cf_score_arr + (1 - alpha_arr) * cb_score_arr
+        hybrid_score_arr = hybrid_score_arr + np.where(preferred_category_arr, 0.08, 0.0)
 
         freshness_applied_arr = is_new_arrival_arr & self.freshness_boost
         hybrid_score_arr = hybrid_score_arr + np.where(freshness_applied_arr, 0.08, 0.0)
@@ -183,6 +203,7 @@ class HybridRecommender:
                 "alpha_used": float(alpha_arr[i]),
                 "freshness_boost_applied": bool(freshness_applied_arr[i]),
                 "is_festival_recommendation": bool(festival_applied_arr[i]),
+                "cold_user_fallback_applied": bool(preferred_category_arr[i]),
             })
         return results
 

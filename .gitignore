@@ -68,3 +68,8 @@ hybrid-model/frontend/.next/
 
 # Local working context file — never push to GitHub
 PROJECT_CONTEXT.md
+
+
+#claude
+CLAUDE.md
+.claude/

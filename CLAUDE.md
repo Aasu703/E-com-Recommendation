@@ -11,12 +11,12 @@ Final-year BSc thesis project (Softwarica College / Coventry University): "Desig
 5. Run `poetry run pytest` (from hybrid-model/backend) before declaring any work package done; all tests must pass.
 6. UK English in all documentation.
 
-## Current honest findings (as of results/RESULTS_SUMMARY.md)
-- After removing leakage, Hybrid ≈ Baseline on Precision/Recall/NDCG (paired t-test p=0.2158, not significant).
-- Hybrid's clear, legitimate win is CATALOG COVERAGE (0.736 vs 0.020 @K=10) and per-user personalization; Baseline shows one static list to everyone.
-- γ ablation (1/3/5/10): small monotonic effect, γ=1 best, spread only ~0.003 Precision@10.
-- RQ3 cold-start segment was EMPTY on dataset v1 (every user has ≥6 train interactions) — this is why dataset v2 with genuine cold users exists / is being built.
-- RQ2 latency: cache-hit number was SIMULATED (+0.5ms constant), not a live Redis measurement, unless/until replaced by a real measurement.
+## Current honest findings (as of results/RESULTS_SUMMARY.md, dataset v3)
+- After removing leakage, Hybrid ≈ Baseline on Precision/Recall/NDCG (paired t-test p=0.4929 on Precision@10, p=0.2967 on NDCG@10 — both not significant; §6).
+- Hybrid's clear, legitimate win is CATALOG COVERAGE (0.3376 vs 0.0040 @K=10) and per-user personalization; Baseline shows one static list to everyone (§1).
+- γ ablation (1/3/5/10): Precision@10 highest at γ=1 (0.0017), γ=3 shipped default is 0.0012 — a ~2x relative spread at v3 scale (0.0008–0.0017), γ=3 is defensible but not optimal (§4).
+- RQ3 cold-start segment is now POPULATED (dataset v3: 127 zero-history / 60 low-activity / 1,199 active users). Zero-history and low-activity users score Precision@10 = 0.0000 — their top-10 is 100% new-arrival items from the freshness boost, an honest unresolved cold-start weakness (§7).
+- RQ2 latency: cache-hit is now a LIVE Redis measurement (mean 1.46ms, P95 1.73ms vs cache-miss mean 9.04ms, P95 10.03ms — 83.81% reduction), superseding the earlier simulated constant (§8).
 
 ## Key file map
 - Models: hybrid-model/backend/recommender/{baseline,content_based,collaborative,hybrid}.py
@@ -25,6 +25,7 @@ Final-year BSc thesis project (Softwarica College / Coventry University): "Desig
 - Clean primary eval: results_eval_clean.py → results/clean_eval_results.{csv,txt}
 - Significance/latency/cold-start script: tests/run_advanced_evaluation.py → results/advanced_evaluation.txt
 - γ ablation: results_ablation_gamma.py → results/gamma_ablation.{csv,txt}
+- Cold-user fallback experiment (opt-in via `HybridRecommender(cold_user_fallback=True)`, shipped default is off): results_cold_user_fallback.py → results/cold_user_fallback.{csv,txt}
 - Figures: results_figures.py → results/figures/*.png
 - Dataset generator (seeded): generate_dataset.py → nepali_ecommerce_data/{products,users,interactions}.csv
 - Frontend numbers: frontend/components/dashboard/MetricsPanel.tsx and frontend/components/storefront/WhyAIWins.tsx (must never drift from results/)
