@@ -22,11 +22,11 @@ import { BarChart, HBarChart, LineChart, Legend, ChartCard, Series } from "./Cha
 
 /* One colour per model, reused everywhere for instant recognition. */
 const COLOR = {
-  Baseline: "#f59e0b",
-  Popularity: "#6b7194",
-  ContentBased: "#3b82f6",
-  Collaborative: "#22c55e",
-  Hybrid: "#6366f1",
+  Baseline: "#d97706",
+  Popularity: "#a8a29e",
+  ContentBased: "#2563eb",
+  Collaborative: "#16a34a",
+  Hybrid: "#0d9488",
 } as const;
 
 type ModelName = keyof typeof COLOR;
@@ -118,11 +118,11 @@ export function ResultsVisualizations() {
     <section className="results-viz">
       <div className="section-header">
         <div>
-          <h2 className="section-title">📈 Thesis Results — Leak-Free Evaluation</h2>
+          <h2 className="section-title">Thesis Results — Leak-Free Evaluation</h2>
           <div className="section-subtitle">
-            {HEADLINE.protocol} · {HEADLINE.n_users} users. Accuracy is on par with the
-            baseline ({HEADLINE.accuracy_significance.verdict}); the Hybrid&apos;s decisive win
-            is catalogue coverage and per-user personalisation.
+            {HEADLINE.protocol} · {HEADLINE.n_users} users. Accuracy is on par with
+            the baseline; the Hybrid&apos;s decisive win is catalogue coverage and
+            per-user personalisation.
           </div>
         </div>
       </div>

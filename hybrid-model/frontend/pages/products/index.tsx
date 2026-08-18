@@ -73,7 +73,7 @@ export default function ProductsPage() {
                 setPage(1);
               }}
               placeholder="Search products..."
-              className="w-full bg-slate-100 border border-transparent rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:bg-white focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+              className="w-full bg-slate-100 border border-transparent rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:bg-white focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
             />
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           </div>
@@ -115,7 +115,7 @@ export default function ProductsPage() {
                 setInStockOnly(e.target.checked);
                 setPage(1);
               }}
-              className="accent-indigo-600"
+              className="accent-teal-700"
             />
             <SlidersHorizontal className="h-4 w-4" />
             In stock only

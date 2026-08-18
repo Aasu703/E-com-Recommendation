@@ -65,7 +65,7 @@ export function PreferenceOnboarding({ mode = 'demo', onComplete, submitting: ex
   const isValid = mode === 'register' ? selected.length >= 3 : selected.length > 0;
   const body = (
     <div className={mode === 'demo' ? 'w-full max-w-lg rounded-3xl bg-white shadow-2xl p-8' : 'w-full'}>
-      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-medium text-xs w-fit mb-5">
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 font-medium text-xs w-fit mb-5">
         <Sparkles className="h-3.5 w-3.5" />
         <span>{mode === 'register' ? 'Personalize Your Feed' : 'Cold-Start Personalization Demo'}</span>
       </div>
@@ -89,7 +89,7 @@ export function PreferenceOnboarding({ mode = 'demo', onComplete, submitting: ex
               onClick={() => toggleCategory(c.name)}
               className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all ${
                 isSelected
-                  ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-sm'
+                  ? 'border-teal-600 bg-teal-50 text-teal-800 shadow-sm'
                   : 'border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
@@ -119,7 +119,7 @@ export function PreferenceOnboarding({ mode = 'demo', onComplete, submitting: ex
           type="button"
           onClick={handleConfirm}
           disabled={!isValid || submitting}
-          className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
           {mode === 'register' ? 'Continue' : submitting ? 'Personalizing…' : 'Show me picks'}

@@ -46,7 +46,7 @@ export default function StoreFront() {
         {/* Recommended For You Section */}
         <section id="recommendations">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <Sparkles className="h-6 w-6" />
             </div>
             <div>
@@ -83,7 +83,7 @@ export default function StoreFront() {
             {/* Hybrid AI vs Baseline Comparison Section */}
             <section>
               <div className="flex items-center gap-3 mb-8">
-                <div className="p-2 bg-emerald-100 rounded-lg text-emerald-600 shadow-sm">
+                <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
                   <Scale className="h-6 w-6" />
                 </div>
                 <div>
@@ -95,7 +95,7 @@ export default function StoreFront() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-bold">🤖 Hybrid AI</span>
+                    <span className="px-3 py-1 rounded-full bg-teal-700 text-white text-xs font-bold">Hybrid AI</span>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {hybrid.isLoading ? (
@@ -112,7 +112,7 @@ export default function StoreFront() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-bold">📋 Baseline (No AI)</span>
+                    <span className="px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-bold">Baseline (No AI)</span>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {baseline.isLoading ? (
@@ -133,7 +133,7 @@ export default function StoreFront() {
 
         <section>
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-purple-100 rounded-lg text-purple-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <TrendingUp className="h-6 w-6" />
             </div>
             <div>

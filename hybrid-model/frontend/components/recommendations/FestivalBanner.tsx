@@ -12,16 +12,14 @@ interface FestivalBannerProps {
   isLoading: boolean;
 }
 
-const FESTIVAL_NAMES: Record<number, { name: string; emoji: string; description: string }> = {
+const FESTIVAL_NAMES: Record<number, { name: string; description: string }> = {
   10: {
     name: "Dashain",
-    emoji: "🪁",
-    description: "Nepal's biggest festival — products from Traditional Attire, Kitchen & Home, Electronics, and more receive a cultural relevance boost.",
+    description: "Culturally relevant categories receive a +0.25 seasonal score boost.",
   },
   11: {
     name: "Tihar",
-    emoji: "🪔",
-    description: "Festival of lights — culturally relevant product categories are boosted with a +0.25 score increase.",
+    description: "Culturally relevant categories receive a +0.25 seasonal score boost.",
   },
 };
 
@@ -35,7 +33,6 @@ export function FestivalBanner({ month, products, isLoading }: FestivalBannerPro
   return (
     <div className="festival-banner">
       <div className="festival-banner-header">
-        <span style={{ fontSize: 28 }}>{festival.emoji}</span>
         <h2>{festival.name} Special Picks</h2>
       </div>
       <div className="festival-banner-subtitle">{festival.description}</div>

@@ -7,13 +7,13 @@ import { updatePreferences } from '../lib/rec-api';
 import { Navbar } from '../components/ui/Navbar';
 
 const CATEGORIES = [
-  { name: 'Traditional Attire', emoji: '🧵' },
-  { name: 'Handicrafts & Art', emoji: '🏺' },
-  { name: 'Electronics', emoji: '📱' },
-  { name: 'Kitchen & Home', emoji: '🍳' },
-  { name: 'Daily Groceries', emoji: '🛒' },
-  { name: 'Fashion & Accessories', emoji: '👜' },
-  { name: 'Books & Education', emoji: '📚' },
+  { name: 'Traditional Attire' },
+  { name: 'Handicrafts & Art' },
+  { name: 'Electronics' },
+  { name: 'Kitchen & Home' },
+  { name: 'Daily Groceries' },
+  { name: 'Fashion & Accessories' },
+  { name: 'Books & Education' },
 ];
 
 export default function AccountPage() {
@@ -65,7 +65,7 @@ export default function AccountPage() {
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full space-y-10">
         <section className="bg-white border border-slate-200 rounded-3xl p-8">
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <User className="h-5 w-5" />
             </div>
             <h1 className="text-2xl font-bold">My Account</h1>
@@ -92,11 +92,10 @@ export default function AccountPage() {
                   onClick={() => toggleCategory(c.name)}
                   className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all ${
                     isSelected
-                      ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-sm'
+                      ? 'border-teal-600 bg-teal-50 text-teal-800'
                       : 'border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                   }`}
                 >
-                  <span className="text-lg">{c.emoji}</span>
                   <span>{c.name}</span>
                 </button>
               );
@@ -107,7 +106,7 @@ export default function AccountPage() {
             type="button"
             onClick={handleSave}
             disabled={selected.length < 3 || saving}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all disabled:opacity-50"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all disabled:opacity-50"
           >
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
             {saved && !saving && <Check className="h-4 w-4" />}
@@ -117,7 +116,7 @@ export default function AccountPage() {
 
         <section id="orders" className="bg-white border border-slate-200 rounded-3xl p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <Package className="h-5 w-5" />
             </div>
             <h2 className="text-xl font-bold">Order History</h2>
@@ -132,7 +131,7 @@ export default function AccountPage() {
               {[...orders].reverse().map((order) => (
                 <div key={order.order_id} className="border border-slate-100 rounded-2xl p-5">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="font-mono font-bold text-indigo-600 text-sm">{order.order_id}</span>
+                    <span className="font-mono font-bold text-teal-700 text-sm">{order.order_id}</span>
                     <span className="text-xs text-slate-400">{new Date(order.placed_at).toLocaleString()}</span>
                   </div>
                   <div className="space-y-1 mb-3">

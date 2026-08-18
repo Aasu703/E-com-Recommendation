@@ -32,7 +32,7 @@ import { useDemoUser } from "../contexts/DemoUserContext";
 const MONTH_LABELS: Record<number, string> = {
   1: "Magh", 2: "Falgun", 3: "Chaitra", 4: "Baisakh",
   5: "Jestha", 6: "Ashadh", 7: "Shrawan", 8: "Bhadra",
-  9: "Ashwin", 10: "Dashain 🪁", 11: "Tihar 🪔", 12: "Poush",
+  9: "Ashwin",    10: "Dashain", 11: "Tihar", 12: "Poush",
 };
 
 export default function Dashboard() {
@@ -70,11 +70,11 @@ export default function Dashboard() {
         <section className="hero">
           <h1>Nepali E-Commerce Recommendation System</h1>
           <p className="hero-subtitle">
-            Hybrid AI model combining Collaborative Filtering (SVD) and Content-Based
+            Hybrid AI combining Collaborative Filtering (SVD) and Content-Based
             Filtering (TF-IDF) with festival-aware ranking for Nepal&apos;s e-commerce market.
           </p>
           <Link href="/case-study" className="back-link" style={{ marginTop: 4 }}>
-            📖 Why this model helps Nepal — read the full case study →
+            Read the full case study
           </Link>
         </section>
 
@@ -151,7 +151,7 @@ export default function Dashboard() {
         <section className="comparison-section">
           <div className="section-header">
             <div>
-              <h2 className="section-title">🔀 Hybrid AI vs Baseline Comparison</h2>
+              <h2 className="section-title">Hybrid AI vs Baseline Comparison</h2>
               <div className="section-subtitle">
                 Same user, same K — see how personalization changes the results
               </div>
@@ -162,31 +162,22 @@ export default function Dashboard() {
                 className={compareView === "rows" ? "active" : ""}
                 onClick={() => setCompareView("rows")}
               >
-                ▤ Rows
+                Rows
               </button>
               <button
                 type="button"
                 className={compareView === "columns" ? "active" : ""}
                 onClick={() => setCompareView("columns")}
               >
-                ▥ Columns
+                Columns
               </button>
             </div>
           </div>
 
           <p className="comparison-note">
-            <strong>Where this shows up in the app:</strong> both sides call the
-            live backend — <code>GET /api/v1/recommend/user/{"{id}"}</code> for
-            Hybrid AI, <code>GET /api/v1/recommend/baseline/user/{"{id}"}</code>{" "}
-            for Baseline — using the exact user/month/Top‑K selected above. The
-            same Hybrid endpoint powers the personalized &quot;Recommended for
-            You&quot; feed on the <Link href="/">NepKart storefront home page</Link>{" "}
-            once a shopper is logged in; the Baseline endpoint is the
-            non‑personalized, recency‑sorted list every guest (or an anonymous
-            visitor) would see instead, regardless of who they are. Switch to{" "}
-            <strong>Rows</strong> to compare each ranked pick side‑by‑side at a
-            glance, or <strong>Columns</strong> to read each model&apos;s full
-            list top‑to‑bottom.
+            Both columns call the live backend for the same user, month and Top-K.
+            The Hybrid endpoint also powers the personalised storefront feed; the
+            Baseline is the recency-sorted list every visitor sees.
           </p>
 
           {compareView === "rows" ? (

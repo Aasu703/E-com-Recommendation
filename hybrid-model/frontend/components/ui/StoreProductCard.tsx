@@ -50,7 +50,7 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
   return (
     <div
       onClick={handleCardClick}
-      className="group bg-white border border-slate-200 hover:border-indigo-400 rounded-2xl p-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 flex flex-col h-full relative overflow-hidden cursor-pointer"
+      className="group bg-white border border-slate-200 hover:border-teal-400 rounded-2xl p-4 transition-colors flex flex-col h-full relative overflow-hidden cursor-pointer"
     >
       <div className="flex gap-2 flex-wrap mb-3">
         {product.is_festival_recommendation && (
@@ -71,7 +71,7 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
       </div>
 
       <div className="flex-1">
-        <h3 className="text-slate-800 font-bold text-lg mb-1 leading-tight group-hover:text-indigo-600 transition-colors">
+        <h3 className="text-slate-800 font-bold text-lg mb-1 leading-tight group-hover:text-teal-700 transition-colors">
           {product.name}
         </h3>
         <p className="text-slate-500 text-sm mb-3">
@@ -81,7 +81,7 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
 
       <div className="mt-auto pt-4 border-t border-slate-100">
         <div className="flex justify-between items-center mb-3">
-          <span className="text-xl font-extrabold text-indigo-600">
+          <span className="text-xl font-extrabold text-teal-700">
             NPR {product.price_npr.toLocaleString()}
           </span>
           <div className="flex items-center gap-1 text-slate-500 text-sm">
@@ -94,11 +94,11 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
           type="button"
           onClick={handleAddToCart}
           disabled={!product.in_stock}
-          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all ${
+          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-colors ${
             justAdded
               ? 'bg-green-500 text-white'
               : product.in_stock
-              ? 'bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white'
+              ? 'bg-teal-50 text-teal-700 hover:bg-teal-700 hover:text-white'
               : 'bg-slate-100 text-slate-400 cursor-not-allowed'
           }`}
         >

@@ -95,7 +95,7 @@ export function AuthGateModal() {
         </button>
 
         {mode !== 'register-categories' && (
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-medium text-xs w-fit mb-5">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 font-medium text-xs w-fit mb-5">
             <Lock className="h-3.5 w-3.5" />
             <span>Sign in to add items to your cart</span>
           </div>
@@ -111,7 +111,7 @@ export function AuthGateModal() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               <input
                 type="password"
@@ -119,13 +119,13 @@ export function AuthGateModal() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               {error && <p className="text-sm text-red-600">{error}</p>}
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all disabled:opacity-50"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 {submitting ? 'Logging in…' : 'Log in & add to cart'}
@@ -139,7 +139,7 @@ export function AuthGateModal() {
               }}
               className="mt-4 text-sm text-slate-500 hover:text-slate-700"
             >
-              New here? <span className="text-indigo-600 font-semibold">Create an account</span>
+              New here? <span className="text-teal-700 font-semibold">Create an account</span>
             </button>
           </>
         )}
@@ -154,7 +154,7 @@ export function AuthGateModal() {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               <input
                 type="email"
@@ -162,7 +162,7 @@ export function AuthGateModal() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               <input
                 type="password"
@@ -171,12 +171,12 @@ export function AuthGateModal() {
                 placeholder="Password (min 8 characters)"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               {error && <p className="text-sm text-red-600">{error}</p>}
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all"
+                className="w-full py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all"
               >
                 Continue
               </button>
@@ -189,7 +189,7 @@ export function AuthGateModal() {
               }}
               className="mt-4 text-sm text-slate-500 hover:text-slate-700"
             >
-              Already have an account? <span className="text-indigo-600 font-semibold">Log in</span>
+              Already have an account? <span className="text-teal-700 font-semibold">Log in</span>
             </button>
           </>
         )}

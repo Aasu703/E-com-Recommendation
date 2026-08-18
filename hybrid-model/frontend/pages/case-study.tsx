@@ -67,13 +67,13 @@ export default function CaseStudyPage() {
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20 pb-32">
         {/* ── Hero ── */}
         <section className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-medium text-sm mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100 border border-teal-200 text-teal-800 font-medium text-sm mb-6 shadow-sm">
             <Sparkles className="h-4 w-4" />
             <span>Case Study</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
             Why a Hybrid Model for
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mt-2">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-700 mt-2">
               Nepal&apos;s E-Commerce Market
             </span>
           </h1>
@@ -96,7 +96,7 @@ export default function CaseStudyPage() {
             {NEPAL_CHALLENGES.map((c) => (
               <div key={c.title} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1.5 bg-indigo-100 rounded-lg text-indigo-600">{c.icon}</div>
+                  <div className="p-1.5 bg-teal-100 rounded-lg text-teal-700">{c.icon}</div>
                   <h3 className="font-bold text-slate-900">{c.title}</h3>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed">{c.body}</p>
@@ -134,7 +134,7 @@ export default function CaseStudyPage() {
                   return (
                     <tr
                       key={model}
-                      className={`border-b border-slate-100 last:border-0 ${isHybrid ? 'bg-indigo-50/60' : ''}`}
+                      className={`border-b border-slate-100 last:border-0 ${isHybrid ? 'bg-teal-50/60' : ''}`}
                     >
                       <td className="px-5 py-3 font-semibold text-slate-800">
                         {COMPONENT_LABEL[model]}
@@ -156,7 +156,7 @@ export default function CaseStudyPage() {
           </div>
           <p className="text-xs text-slate-400 mt-2">
             Source: <code>results/components_eval.csv</code> — see the full{' '}
-            <Link href="/dashboard" className="text-indigo-600 font-semibold hover:underline">
+            <Link href="/dashboard" className="text-teal-700 font-semibold hover:underline">
               Thesis Dashboard
             </Link>{' '}
             for K=5/20 and every other protocol.
@@ -186,7 +186,7 @@ export default function CaseStudyPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-6 mt-5">
+          <div className="bg-gradient-to-br from-teal-50 to-purple-50 border border-teal-100 rounded-2xl p-6 mt-5">
             <h3 className="font-bold text-slate-900 mb-2">The hybrid&apos;s job, honestly stated</h3>
             <p className="text-sm text-slate-700 leading-relaxed">
               The hybrid was chosen not because it beats every model on accuracy —
@@ -300,7 +300,7 @@ export default function CaseStudyPage() {
           </p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all hover:scale-105 shadow-lg shadow-indigo-500/30"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all hover:scale-105 shadow-lg shadow-teal-600/30"
           >
             See the full statistical breakdown
             <ArrowRight className="h-5 w-5" />

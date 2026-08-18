@@ -13,9 +13,9 @@ export function AlgorithmExplainer() {
     <div className="algorithm-section">
       <div className="section-header">
         <div>
-          <h2>🧠 How the Hybrid Model Works</h2>
+          <h2>How the Hybrid Model Works</h2>
           <div className="section-subtitle">
-            Weighted hybrid approach combining collaborative and content-based filtering
+            Weighted blend of collaborative and content-based filtering
           </div>
         </div>
       </div>
@@ -30,51 +30,37 @@ export function AlgorithmExplainer() {
 
       <div className="algorithm-grid" style={{ marginTop: 20 }}>
         <div className="algorithm-card">
-          <div className="algorithm-card-icon" style={{ background: "var(--accent-glow)" }}>
-            👥
-          </div>
           <h3>Collaborative Filtering (SVD)</h3>
           <p>
-            Decomposes the user-item interaction matrix using Singular Value Decomposition
-            with k=20 latent factors. Captures implicit preferences from user behavior
-            (views, cart, purchases). Includes mean-centering and popularity fallback for cold-start users.
+            SVD on the user-item interaction matrix with k=20 latent factors,
+            mean-centering and popularity fallback for cold-start users.
           </p>
         </div>
 
         <div className="algorithm-card">
-          <div className="algorithm-card-icon" style={{ background: "var(--info-bg)" }}>
-            📄
-          </div>
           <h3>Content-Based Filtering (TF-IDF)</h3>
           <p>
-            Builds TF-IDF vectors from product metadata (description, tags, category, brand)
-            with up to 3,000 features and bigrams. Computes pairwise cosine similarity
-            to find products similar to the user's last interaction.
+            TF-IDF vectors over product metadata (description, tags, category,
+            brand) with up to 3,000 features and bigrams, matched by cosine
+            similarity to the user&apos;s last interaction.
           </p>
         </div>
 
         <div className="algorithm-card">
-          <div className="algorithm-card-icon" style={{ background: "var(--success-bg)" }}>
-            ⚖️
-          </div>
           <h3>Adaptive Alpha (α)</h3>
           <p>
-            Dynamically balances CF vs CB using the saturation curve α = U_c / (U_c + γ).
-            New users (few interactions) get more content-based recommendations.
-            Active users get more collaborative recommendations.
-            New arrivals further reduce alpha by 50% to favor discovery.
+            Balances CF vs CB via α = U_c / (U_c + γ). New users get more
+            content-based picks; active users get more collaborative ones. New
+            arrivals further halve alpha to favour discovery.
           </p>
         </div>
 
         <div className="algorithm-card">
-          <div className="algorithm-card-icon" style={{ background: "var(--festival-bg)" }}>
-            🎉
-          </div>
           <h3>Festival-Aware Boosting</h3>
           <p>
-            During Dashain (month 10) and Tihar (month 11), products in culturally relevant
-            categories (Traditional Attire, Kitchen & Home, Handicrafts, Electronics, etc.)
-            receive a +0.25 score boost. New arrivals get a +0.08 freshness boost year-round.
+            During Dashain (10) and Tihar (11), culturally relevant categories
+            get a +0.25 boost. New arrivals get a +0.08 freshness boost
+            year-round.
           </p>
         </div>
       </div>

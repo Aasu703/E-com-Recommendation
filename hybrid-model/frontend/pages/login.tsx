@@ -33,12 +33,12 @@ export default function LoginPage() {
       <Head>
         <title>Login — NepKart</title>
       </Head>
-      <div className="w-full max-w-md rounded-3xl bg-white shadow-xl p-8">
+      <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200 p-8">
         <Link href="/" className="flex items-center gap-2 mb-8 w-fit">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center text-white font-bold text-xl">
             N
           </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+          <span className="text-xl font-bold text-slate-900">
             NepKart
           </span>
         </Link>
@@ -54,7 +54,7 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
             />
           </div>
           <div>
@@ -64,7 +64,7 @@ export default function LoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400"
+              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-900 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-all disabled:opacity-50"
           >
             {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
             {submitting ? 'Logging in…' : 'Log in'}
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
         <p className="text-sm text-slate-500 mt-6 text-center">
           New to NepKart?{' '}
-          <Link href="/register" className="text-indigo-600 font-semibold hover:text-indigo-700">
+          <Link href="/register" className="text-teal-700 font-semibold hover:text-teal-800">
             Create an account
           </Link>
         </p>
