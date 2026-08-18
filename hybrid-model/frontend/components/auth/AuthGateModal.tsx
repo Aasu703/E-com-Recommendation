@@ -85,7 +85,7 @@ export function AuthGateModal() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm px-4">
-      <div className="w-full max-w-md rounded-3xl bg-white shadow-2xl p-8 relative">
+      <div className="w-full max-w-md rounded-3xl bg-white border border-slate-200 p-8 relative">
         <button
           type="button"
           onClick={handleClose}
@@ -95,7 +95,7 @@ export function AuthGateModal() {
         </button>
 
         {mode !== 'register-categories' && (
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 font-medium text-xs w-fit mb-5">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 font-medium text-xs w-fit mb-5">
             <Lock className="h-3.5 w-3.5" />
             <span>Sign in to add items to your cart</span>
           </div>
