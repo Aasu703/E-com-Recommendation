@@ -27,7 +27,7 @@ class HybridRecommender:
         "Traditional Gifts",
         "Electronics",  # Festival electronics are big in Dashain
     }
-    COLD_START_THRESHOLD = 3  # default gamma in the formula
+    COLD_START_THRESHOLD = 1  # default gamma in the formula (γ=1 best in results/gamma_ablation.txt, dataset v3)
 
     def __init__(
         self,
@@ -36,13 +36,14 @@ class HybridRecommender:
         alpha: float | None = None,
         freshness_boost: bool = True,
         festival_boost: bool = True,
-        cold_user_fallback: bool = False,
+        cold_user_fallback: bool = True,
     ) -> None:
         """Initialize unfitted content and collaborative models.
 
         gamma overrides the class-level COLD_START_THRESHOLD default for this
         instance only (used by results_ablation_gamma.py); existing callers
-        that construct HybridRecommender() with no arguments are unaffected.
+        that construct HybridRecommender() with no arguments get gamma=1, the
+        measured-best value (results/gamma_ablation.txt).
 
         strategy selects how CF and CB are combined (used by
         results_ablation_alpha.py):
@@ -57,13 +58,16 @@ class HybridRecommender:
         festival additive boosts; both default to True (shipped behaviour) and
         are switched off only for the boost ablation.
 
-        cold_user_fallback (default False, shipped behaviour unchanged) is an
-        opt-in experimental pathway (see results_cold_user_fallback.py) for
-        zero-history users under the "adaptive" strategy, who otherwise get
-        alpha=0 -- which nullifies the popularity fallback populated into the
-        CF score (RESULTS_SUMMARY.md §7). When enabled, such users get
-        alpha=1.0 (so the popularity fallback actually scores) plus a +0.08
-        boost on products matching their onboarding `preferred_categories`.
+        cold_user_fallback (default True, shipped behaviour) resolves the RQ3
+        cold-start weakness for zero-history users under the "adaptive"
+        strategy. Previously (default False) such users got alpha=0 -- which
+        nullifies the popularity fallback populated into the CF score, leaving
+        their top-10 as 100% new arrivals scoring 0.0000 (RESULTS_SUMMARY.md
+        §7). With the fallback on, zero-history users get alpha=1.0 (so the
+        popularity fallback actually scores) plus a +0.08 boost on products
+        matching their onboarding `preferred_categories` (results_cold_user_fallback.py
+        measured Precision@10 rise 0.0000 -> 0.0016 for that segment). Pass
+        cold_user_fallback=False to restore the old behaviour.
         """
         self.cb = ContentBasedRecommender()
         self.cf = CollaborativeRecommender()

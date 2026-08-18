@@ -14,6 +14,9 @@ fit / held-out test split as results_eval_clean.py (train < 2025-01-01), at K=10
 Strategy / alpha / gamma / boost flags only affect HybridRecommender.recommend(),
 not fit(), so the CB/CF sub-models are fit once and the configuration is mutated
 on the same fitted instance between evaluation passes (equivalent to refitting).
+cold_user_fallback is explicitly disabled (False) so every row isolates the
+strategy/boost effect without the shipped cold-user popularity fallback (which
+triggers only for zero-history users and is orthogonal to these settings).
 
 NOTE on the festival boost: the Evaluator does not pass a month context and the
 held-out test window is 2025-01 .. 2025-06 (months 1-6), whereas the festival
@@ -51,7 +54,7 @@ def main() -> None:
     interactions_df["timestamp"] = pd.to_datetime(interactions_df["timestamp"])
     train_df = interactions_df[interactions_df["timestamp"] < SPLIT_DATE].copy()
 
-    hybrid = HybridRecommender().fit(products_df, users_df, train_df)
+    hybrid = HybridRecommender(cold_user_fallback=False).fit(products_df, users_df, train_df)
     evaluator = Evaluator()
 
     # (family, label, strategy, alpha, gamma, freshness, festival)

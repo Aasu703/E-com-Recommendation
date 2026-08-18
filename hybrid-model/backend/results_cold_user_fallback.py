@@ -1,14 +1,14 @@
 """Cold-user fallback experiment (RQ3 follow-up).
 
-RESULTS_SUMMARY.md §7 shows zero-history users get alpha=0 under the shipped
+RESULTS_SUMMARY.md §7 shows zero-history users get alpha=0 under the pure
 adaptive strategy, which nullifies the popularity fallback populated into
-cf_score_arr, and the shipped model never reads users.csv's onboarding
-`preferred_categories` column at all. `HybridRecommender(cold_user_fallback=True)`
-(recommender/hybrid.py) is an opt-in pathway that, only for zero-history users
-under the adaptive strategy, forces alpha=1.0 (so the popularity fallback
-actually contributes) and adds a +0.08 boost to products in the user's
-onboarding preferred_categories. The shipped default (cold_user_fallback=False)
-is unchanged.
+cf_score_arr, leaving their top-10 as 100% new arrivals scoring 0.0000.
+`HybridRecommender(cold_user_fallback=True)` (recommender/hybrid.py) is now the
+SHIPPED default: for zero-history users under the adaptive strategy it forces
+alpha=1.0 (so the popularity fallback actually contributes) and adds a +0.08
+boost to products in the user's onboarding preferred_categories. This script
+compares the shipped default against the previous behaviour
+(cold_user_fallback=False).
 
 Same train-only fit / held-out test split and segment definitions as
 tests/run_advanced_evaluation.py RQ3 (train < 2025-01-01, test >= 2025-01-01;
@@ -88,7 +88,7 @@ def main() -> None:
         lines.append(text)
 
     emit("=" * 70)
-    emit("Cold-user fallback experiment (opt-in; shipped default unaffected)")
+    emit("Cold-user fallback experiment (shipped default vs previous behaviour)")
     emit("=" * 70)
     emit(
         f"Split date: {SPLIT_DATE.date()} | Zero-history test users: {len(zero_users)} "
@@ -98,8 +98,8 @@ def main() -> None:
 
     rows = []
     variants = [
-        ("shipped (cold_user_fallback=False)", False),
-        ("experimental (cold_user_fallback=True)", True),
+        ("shipped (cold_user_fallback=True)", True),
+        ("previous shipped (cold_user_fallback=False)", False),
     ]
     for label, fallback in variants:
         hybrid = HybridRecommender(cold_user_fallback=fallback).fit(products_df, users_df, train_df)

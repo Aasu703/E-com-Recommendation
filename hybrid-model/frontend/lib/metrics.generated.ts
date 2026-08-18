@@ -45,31 +45,31 @@ export const THESIS_METRICS = {
       {
         "model": "Hybrid",
         "k": 5,
-        "precision": 0.001010101,
-        "recall": 0.0007051811,
-        "ndcg": 0.001079286,
-        "coverage": 0.2584,
-        "diversity": 0.4618326118,
+        "precision": 0.002020202,
+        "recall": 0.001635714,
+        "ndcg": 0.0023112094,
+        "coverage": 0.2612,
+        "diversity": 0.638961039,
         "n_users_evaluated": 1386
       },
       {
         "model": "Hybrid",
         "k": 10,
-        "precision": 0.0011544012,
-        "recall": 0.00169023,
-        "ndcg": 0.0014424026,
-        "coverage": 0.3376,
-        "diversity": 0.4048581049,
+        "precision": 0.0018759019,
+        "recall": 0.0028861721,
+        "ndcg": 0.0026206668,
+        "coverage": 0.3208,
+        "diversity": 0.6178130511,
         "n_users_evaluated": 1386
       },
       {
         "model": "Hybrid",
         "k": 20,
-        "precision": 0.0012987013,
-        "recall": 0.003625424,
-        "ndcg": 0.0023468518,
-        "coverage": 0.5772,
-        "diversity": 0.4477367662,
+        "precision": 0.0015151515,
+        "recall": 0.0046615792,
+        "ndcg": 0.0034175436,
+        "coverage": 0.4812,
+        "diversity": 0.6075985418,
         "n_users_evaluated": 1386
       }
     ]
@@ -120,11 +120,11 @@ export const THESIS_METRICS = {
       {
         "model": "Hybrid",
         "k": 5,
-        "precision": 0.001010101,
-        "recall": 0.0007051811,
-        "ndcg": 0.001079286,
-        "coverage": 0.2584,
-        "diversity": 0.4618326118,
+        "precision": 0.002020202,
+        "recall": 0.001635714,
+        "ndcg": 0.0023112094,
+        "coverage": 0.2612,
+        "diversity": 0.638961039,
         "n_users_evaluated": 1386
       },
       {
@@ -170,11 +170,11 @@ export const THESIS_METRICS = {
       {
         "model": "Hybrid",
         "k": 10,
-        "precision": 0.0011544012,
-        "recall": 0.00169023,
-        "ndcg": 0.0014424026,
-        "coverage": 0.3376,
-        "diversity": 0.4048581049,
+        "precision": 0.0018759019,
+        "recall": 0.0028861721,
+        "ndcg": 0.0026206668,
+        "coverage": 0.3208,
+        "diversity": 0.6178130511,
         "n_users_evaluated": 1386
       },
       {
@@ -220,11 +220,11 @@ export const THESIS_METRICS = {
       {
         "model": "Hybrid",
         "k": 20,
-        "precision": 0.0012987013,
-        "recall": 0.003625424,
-        "ndcg": 0.0023468518,
-        "coverage": 0.5772,
-        "diversity": 0.4477367662,
+        "precision": 0.0015151515,
+        "recall": 0.0046615792,
+        "ndcg": 0.0034175436,
+        "coverage": 0.4812,
+        "diversity": 0.6075985418,
         "n_users_evaluated": 1386
       }
     ]
@@ -285,11 +285,11 @@ export const THESIS_METRICS = {
         "cutoff": "2025-02-21",
         "model": "Hybrid",
         "k": 10,
-        "precision": 0.0011144131,
-        "recall": 0.0026188707,
-        "ndcg": 0.0017452056,
-        "coverage": 0.3624,
-        "diversity": 0.4471520555,
+        "precision": 0.0011887073,
+        "recall": 0.0028240642,
+        "ndcg": 0.0024114427,
+        "coverage": 0.3472,
+        "diversity": 0.6363051015,
         "n_users_evaluated": 1346
       },
       {
@@ -345,11 +345,11 @@ export const THESIS_METRICS = {
         "cutoff": "2025-01-01",
         "model": "Hybrid",
         "k": 10,
-        "precision": 0.0011544012,
-        "recall": 0.00169023,
-        "ndcg": 0.0014424026,
-        "coverage": 0.3376,
-        "diversity": 0.4048581049,
+        "precision": 0.0018759019,
+        "recall": 0.0028861721,
+        "ndcg": 0.0026206668,
+        "coverage": 0.3208,
+        "diversity": 0.6178130511,
         "n_users_evaluated": 1386
       }
     ]
@@ -360,80 +360,80 @@ export const THESIS_METRICS = {
       {
         "comparison": "Hybrid vs Baseline",
         "metric": "Precision@10",
-        "mean_hybrid": 0.0011144131,
+        "mean_hybrid": 0.0011887073,
         "mean_other": 0.0014115899,
-        "mean_diff": -0.0002971768,
-        "t_stat": -0.6858593717,
-        "p_ttest": 0.4929199937,
-        "w_stat": 262.5,
-        "p_wilcoxon": 0.4927166772,
+        "mean_diff": -0.0002228826,
+        "t_stat": -0.5069525746,
+        "p_ttest": 0.6122711956,
+        "w_stat": 288.0,
+        "p_wilcoxon": 0.6120898801,
         "ci95_low": -0.0011144131,
-        "ci95_high": 0.0005200594
+        "ci95_high": 0.0005943536
       },
       {
         "comparison": "Hybrid vs Baseline",
         "metric": "NDCG@10",
-        "mean_hybrid": 0.0017452056,
+        "mean_hybrid": 0.0024114427,
         "mean_other": 0.0026824048,
-        "mean_diff": -0.0009371991,
-        "t_stat": -1.0438846532,
-        "p_ttest": 0.2967263392,
-        "w_stat": 268.0,
-        "p_wilcoxon": 0.6139332361,
-        "ci95_low": -0.0027125855,
-        "ci95_high": 0.0006741028
+        "mean_diff": -0.000270962,
+        "t_stat": -0.2601077794,
+        "p_ttest": 0.7948204488,
+        "w_stat": 309.5,
+        "p_wilcoxon": 0.9282050334,
+        "ci95_low": -0.0023666854,
+        "ci95_high": 0.001674034
       },
       {
         "comparison": "Hybrid vs ContentBased",
         "metric": "Precision@10",
-        "mean_hybrid": 0.0011144131,
+        "mean_hybrid": 0.0011887073,
         "mean_other": 0.0022288262,
-        "mean_diff": -0.0011144131,
-        "t_stat": -2.2394004204,
-        "p_ttest": 0.0252927785,
-        "w_stat": 345.0,
-        "p_wilcoxon": 0.0253473187,
-        "ci95_low": -0.0022288262,
-        "ci95_high": -0.0002228826
+        "mean_diff": -0.0010401189,
+        "t_stat": -2.0666941928,
+        "p_ttest": 0.0389539943,
+        "w_stat": 376.0,
+        "p_wilcoxon": 0.038999953,
+        "ci95_low": -0.0020802377,
+        "ci95_high": -0.0001485884
       },
       {
         "comparison": "Hybrid vs ContentBased",
         "metric": "NDCG@10",
-        "mean_hybrid": 0.0017452056,
+        "mean_hybrid": 0.0024114427,
         "mean_other": 0.0033319788,
-        "mean_diff": -0.0015867732,
-        "t_stat": -1.9257502868,
-        "p_ttest": 0.0543461567,
-        "w_stat": 352.0,
-        "p_wilcoxon": 0.0616479811,
-        "ci95_low": -0.00311389,
-        "ci95_high": 0.0001294668
+        "mean_diff": -0.0009205361,
+        "t_stat": -0.9401363069,
+        "p_ttest": 0.3473164552,
+        "w_stat": 431.0,
+        "p_wilcoxon": 0.2314291303,
+        "ci95_low": -0.0026975699,
+        "ci95_high": 0.0009612768
       },
       {
         "comparison": "Hybrid vs Collaborative",
         "metric": "Precision@10",
-        "mean_hybrid": 0.0011144131,
+        "mean_hybrid": 0.0011887073,
         "mean_other": 0.0021545319,
-        "mean_diff": -0.0010401189,
-        "t_stat": -2.9936248099,
-        "p_ttest": 0.0028071685,
-        "w_stat": 46.0,
-        "p_wilcoxon": 0.0028375449,
-        "ci95_low": -0.0017830609,
+        "mean_diff": -0.0009658247,
+        "t_stat": -3.1634956676,
+        "p_ttest": 0.0015937504,
+        "w_stat": 18.0,
+        "p_wilcoxon": 0.0016162222,
+        "ci95_low": -0.0015601783,
         "ci95_high": -0.0004457652
       },
       {
         "comparison": "Hybrid vs Collaborative",
         "metric": "NDCG@10",
-        "mean_hybrid": 0.0017452056,
+        "mean_hybrid": 0.0024114427,
         "mean_other": 0.0032238206,
-        "mean_diff": -0.0014786149,
-        "t_stat": -2.9196667421,
-        "p_ttest": 0.0035624177,
-        "w_stat": 101.5,
-        "p_wilcoxon": 0.0040913453,
-        "ci95_low": -0.0025364168,
-        "ci95_high": -0.0005198444
+        "mean_diff": -0.0008123779,
+        "t_stat": -2.1756145706,
+        "p_ttest": 0.0297577277,
+        "w_stat": 71.5,
+        "p_wilcoxon": 0.0248912667,
+        "ci95_low": -0.0015218107,
+        "ci95_high": -3.85137e-05
       }
     ]
   },
@@ -726,13 +726,13 @@ export const THESIS_METRICS = {
         "model": "Hybrid",
         "freshness_boost": true,
         "cold_item_coverage": 0.9,
-        "mean_cold_items_per_list": 3.797979798
+        "mean_cold_items_per_list": 2.1940836941
       },
       {
         "model": "Hybrid",
         "freshness_boost": false,
-        "cold_item_coverage": 0.9,
-        "mean_cold_items_per_list": 1.8903318903
+        "cold_item_coverage": 0.895,
+        "mean_cold_items_per_list": 1.227994228
       },
       {
         "model": "Baseline",
@@ -774,27 +774,27 @@ export const THESIS_METRICS = {
         "rows": [
           {
             "metric": "Precision",
-            "hybrid": 0.001010101,
+            "hybrid": 0.002020202,
             "baseline": 0.0037518038
           },
           {
             "metric": "Recall",
-            "hybrid": 0.0007051811,
+            "hybrid": 0.001635714,
             "baseline": 0.0025123946
           },
           {
             "metric": "NDCG",
-            "hybrid": 0.001079286,
+            "hybrid": 0.0023112094,
             "baseline": 0.0037243689
           },
           {
             "metric": "Coverage",
-            "hybrid": 0.2584,
+            "hybrid": 0.2612,
             "baseline": 0.002
           },
           {
             "metric": "Diversity",
-            "hybrid": 0.4618326118,
+            "hybrid": 0.638961039,
             "baseline": 0.9
           }
         ]
@@ -804,27 +804,27 @@ export const THESIS_METRICS = {
         "rows": [
           {
             "metric": "Precision",
-            "hybrid": 0.0011544012,
+            "hybrid": 0.0018759019,
             "baseline": 0.003030303
           },
           {
             "metric": "Recall",
-            "hybrid": 0.00169023,
+            "hybrid": 0.0028861721,
             "baseline": 0.0039402477
           },
           {
             "metric": "NDCG",
-            "hybrid": 0.0014424026,
+            "hybrid": 0.0026206668,
             "baseline": 0.0037696395
           },
           {
             "metric": "Coverage",
-            "hybrid": 0.3376,
+            "hybrid": 0.3208,
             "baseline": 0.004
           },
           {
             "metric": "Diversity",
-            "hybrid": 0.4048581049,
+            "hybrid": 0.6178130511,
             "baseline": 0.8
           }
         ]
@@ -834,27 +834,27 @@ export const THESIS_METRICS = {
         "rows": [
           {
             "metric": "Precision",
-            "hybrid": 0.0012987013,
+            "hybrid": 0.0015151515,
             "baseline": 0.0028499278
           },
           {
             "metric": "Recall",
-            "hybrid": 0.003625424,
+            "hybrid": 0.0046615792,
             "baseline": 0.0072833311
           },
           {
             "metric": "NDCG",
-            "hybrid": 0.0023468518,
+            "hybrid": 0.0034175436,
             "baseline": 0.0053697779
           },
           {
             "metric": "Coverage",
-            "hybrid": 0.5772,
+            "hybrid": 0.4812,
             "baseline": 0.008
           },
           {
             "metric": "Diversity",
-            "hybrid": 0.4477367662,
+            "hybrid": 0.6075985418,
             "baseline": 0.8210526316
           }
         ]
@@ -864,15 +864,15 @@ export const THESIS_METRICS = {
       "n_users": 1386,
       "protocol": "Leak-free time split (train < 2025-01-01, test >= 2025-01-01)",
       "coverage_at_10": {
-        "hybrid": 0.3376,
+        "hybrid": 0.3208,
         "baseline": 0.004
       },
       "precision_at_10": {
-        "hybrid": 0.0011544012,
+        "hybrid": 0.0018759019,
         "baseline": 0.003030303
       },
       "ndcg_at_10": {
-        "hybrid": 0.0014424026,
+        "hybrid": 0.0026206668,
         "baseline": 0.0037696395
       },
       "cold_item_coverage": {
@@ -882,7 +882,7 @@ export const THESIS_METRICS = {
       "accuracy_significance": {
         "comparison": "Hybrid vs Baseline",
         "metric": "Precision@10",
-        "p_ttest": 0.4929199937,
+        "p_ttest": 0.6122711956,
         "verdict": "not statistically significant"
       },
       "latency_ms": {

@@ -4,7 +4,9 @@ Addresses RQ1 (Accuracy), RQ2 (Latency), and RQ3 (Cold-Start).
 """
 
 import time
+import sys
 import logging
+from contextlib import redirect_stdout, redirect_stderr
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -18,8 +20,25 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path("nepali_ecommerce_data")
+RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
 K = 10
 COLD_START_THRESHOLD = 3
+
+
+class _Tee:
+    """Mirror every write to both the console and a capture list (so the full
+    report is also persisted to results/advanced_evaluation.txt)."""
+
+    def __init__(self):
+        self.buffer: list[str] = []
+        self.console = sys.stdout
+
+    def write(self, data: str) -> None:
+        self.console.write(data)
+        self.buffer.append(data)
+
+    def flush(self) -> None:
+        self.console.flush()
 
 def load_data():
     products_df = pd.read_csv(DATA_DIR / "products.csv")
@@ -178,12 +197,10 @@ def run_rq3_stratification(hybrid, train_df, test_df, products_df):
                 new_arrival_frac.append(len([p for p in rec_ids if p in new_arrival_ids]) / len(rec_ids))
                 pop_overlap.append(len(set(rec_ids) & set(fallback_ids)) / K)
         print(f"\nCold-start pathway (zero-history segment, {len(zero_users)} users):")
-        print("A zero-history user has no CF factors and no content seed, so alpha = 0")
-        print("(fully content-based weighting) but content similarity is uniformly zero.")
-        print("The served ranking is therefore driven by the +0.08 freshness boost, i.e.")
-        print("these users are shown NEW-ARRIVAL products (a discovery-oriented cold-start")
-        print("pathway). The popularity fallback populates the CF vector but is nullified")
-        print("because alpha = 0 for a user with no interactions.")
+        print("A zero-history user has no CF factors and no content seed. The shipped")
+        print("cold-user fallback (cold_user_fallback=True) forces alpha=1.0 for such")
+        print("users, so the popularity fallback populated into the CF vector actually")
+        print("scores (plus a +0.08 boost on their onboarding preferred_categories).")
         print(f"  Mean fraction of served top-{K} that are new arrivals: {np.mean(new_arrival_frac):.1%}")
         print(f"  Mean overlap of served top-{K} with the popularity fallback list: {np.mean(pop_overlap):.1%}")
 
@@ -208,4 +225,10 @@ def main():
     run_rq3_stratification(hybrid, train_df, test_df, products_df)
 
 if __name__ == "__main__":
-    main()
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    tee = _Tee()
+    with redirect_stdout(tee), redirect_stderr(tee):
+        main()
+    out_path = RESULTS_DIR / "advanced_evaluation.txt"
+    out_path.write_text("".join(tee.buffer), encoding="utf-8")
+    print(f"\nWrote {out_path}")
