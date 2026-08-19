@@ -32,10 +32,10 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center text-white font-bold text-xl">
+              <div className="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center text-white font-serif font-bold text-xl transition-transform duration-300 group-hover:-rotate-6">
                 N
               </div>
-              <span className="text-xl font-bold text-slate-900">
+              <span className="font-serif text-xl font-semibold text-slate-900">
                 NepKart
               </span>
             </Link>

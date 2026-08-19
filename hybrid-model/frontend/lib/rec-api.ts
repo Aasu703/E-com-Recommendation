@@ -22,6 +22,7 @@ export interface RecommendedProduct {
   brand: string;
   price_npr: number;
   price_formatted: string;
+  image_url?: string | null;
   avg_rating: number | null;
   in_stock: boolean;
   is_new_arrival: boolean;
@@ -58,6 +59,7 @@ export interface Product {
   brand: string;
   description: string;
   price_npr: number;
+  image_url?: string | null;
   avg_rating: number | null;
   rating_count: number;
   tags: string;

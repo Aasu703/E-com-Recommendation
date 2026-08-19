@@ -106,6 +106,7 @@ def blended_recommendations(
             "subcategory": product["subcategory"],
             "brand": product["brand"],
             "price_npr": int(product["price_npr"]),
+            "image_url": product.get("image_url"),
             "avg_rating": None if pd.isna(product["avg_rating"]) else float(product["avg_rating"]),
             "in_stock": bool(product["in_stock"]),
             "is_new_arrival": freshness,

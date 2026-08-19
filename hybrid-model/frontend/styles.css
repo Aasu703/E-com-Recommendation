@@ -4,49 +4,55 @@
 
 /* =================================================================
    Nepali E-Commerce Recommendation System — Design System
-   Minimal light theme for thesis presentation
+   "Dashain dusk": warm ink-on-paper neutrals, brick-maroon accent,
+   marigold festival gold, serif display / mono data type.
    ================================================================= */
 
-/* --- Google Font --- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+/* --- Google Fonts: display serif, UI sans, data mono --- */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap");
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Surfaces */
-  --bg-primary: #f7f6f3;
-  --bg-secondary: #efeee9;
-  --bg-card: #ffffff;
-  --bg-card-hover: #fafaf9;
-  --bg-elevated: #f7f6f3;
+  /* Fonts */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* Surfaces — warm paper, not cool gray */
+  --bg-primary: #f8f3e9;
+  --bg-secondary: #efe6d3;
+  --bg-card: #fffdf8;
+  --bg-card-hover: #fbf5e9;
+  --bg-elevated: #f2ebdc;
 
   /* Borders */
-  --border: #e7e5e4;
-  --border-light: #d6d3d1;
+  --border: #e0d2b6;
+  --border-light: #c6b492;
 
-  /* Text */
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
-  --text-muted: #a8a29e;
+  /* Text — warm ink, not blue-gray */
+  --text-primary: #241d15;
+  --text-secondary: #5a4e3a;
+  --text-muted: #9c8a6c;
 
-  /* Accent — deep teal */
-  --accent: #0f766e;
-  --accent-light: #0d9488;
-  --accent-soft: rgba(15, 118, 110, 0.08);
+  /* Accent — brick maroon (temple pillars, sindoor) */
+  --accent: #6b3119;
+  --accent-light: #853f1f;
+  --accent-soft: rgba(107, 49, 25, 0.08);
 
   /* Semantic */
-  --success: #16a34a;
-  --success-bg: rgba(22, 163, 74, 0.1);
-  --warning: #d97706;
-  --warning-bg: rgba(217, 119, 6, 0.1);
-  --danger: #dc2626;
-  --danger-bg: rgba(220, 38, 38, 0.1);
-  --info: #2563eb;
-  --info-bg: rgba(37, 99, 235, 0.1);
+  --success: #3f7d3a;
+  --success-bg: rgba(63, 125, 58, 0.1);
+  --warning: #b5750f;
+  --warning-bg: rgba(181, 117, 15, 0.1);
+  --danger: #af2f1f;
+  --danger-bg: rgba(175, 47, 31, 0.1);
+  --info: #38598c;
+  --info-bg: rgba(56, 89, 140, 0.1);
 
-  /* Festival */
-  --festival-gold: #d97706;
-  --festival-bg: rgba(217, 119, 6, 0.08);
-  --festival-border: rgba(217, 119, 6, 0.3);
+  /* Festival — marigold */
+  --festival-gold: #b5750f;
+  --festival-bg: rgba(181, 117, 15, 0.08);
+  --festival-border: rgba(181, 117, 15, 0.3);
 
   /* Layout */
   --max-width: 1280px;
@@ -70,8 +76,12 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background: var(--bg-primary);
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(107, 49, 25, 0.07), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(181, 117, 15, 0.06), transparent 55%),
+    radial-gradient(circle at 1px 1px, rgba(107, 49, 25, 0.07) 1px, transparent 0) 0 0/22px 22px,
+    var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -80,6 +90,30 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* --- Display type: serif headings everywhere, mono for data/numerals --- */
+h1,
+h2,
+h3,
+h4,
+.navbar-brand,
+.hero h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.stat-card-value,
+.metric-value,
+.viz-headline-value,
+.product-card-price,
+.hbar-value,
+.chart-axis-label,
+.sig-table .mono,
+.cold-chip-val,
+.month-value,
+.score-value {
+  font-family: var(--font-mono);
 }
 
 /* --- Layout --- */
@@ -268,6 +302,31 @@ input[type="range"] {
   font-size: 13px;
   color: var(--text-muted);
 }
+
+/* --- Staggered entrance for card grids --- */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stats-grid > *,
+.product-grid > *,
+.algorithm-grid > *,
+.viz-grid > * {
+  animation: riseIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stats-grid > *:nth-child(1), .product-grid > *:nth-child(1), .algorithm-grid > *:nth-child(1), .viz-grid > *:nth-child(1) { animation-delay: 0.02s; }
+.stats-grid > *:nth-child(2), .product-grid > *:nth-child(2), .algorithm-grid > *:nth-child(2), .viz-grid > *:nth-child(2) { animation-delay: 0.08s; }
+.stats-grid > *:nth-child(3), .product-grid > *:nth-child(3), .algorithm-grid > *:nth-child(3), .viz-grid > *:nth-child(3) { animation-delay: 0.14s; }
+.stats-grid > *:nth-child(4), .product-grid > *:nth-child(4), .algorithm-grid > *:nth-child(4), .viz-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.stats-grid > *:nth-child(n+5), .product-grid > *:nth-child(n+5) { animation-delay: 0.26s; }
 
 /* --- Stat Cards --- */
 .stats-grid {
@@ -494,7 +553,7 @@ input[type="range"] {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 16px 20px;
-  font-family: "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--accent);
   margin-top: 16px;

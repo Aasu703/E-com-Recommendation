@@ -4,24 +4,32 @@ import Link from 'next/link';
 export function Hero() {
   return (
     <div className="relative overflow-hidden bg-slate-50 pt-16 pb-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 800px 420px at 50% -15%, rgba(107,49,25,0.10), transparent 60%), radial-gradient(ellipse 500px 320px at 90% 10%, rgba(181,117,15,0.10), transparent 60%)',
+        }}
+      />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-200 text-teal-700 font-medium text-sm mb-8">
+        <div className="animate-hero-rise inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-200 text-teal-700 font-medium text-sm mb-8">
           <Sparkles className="h-4 w-4" />
           <span>Powered by Hybrid AI Recommendations</span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+        <h1 className="animate-hero-rise [animation-delay:0.08s] font-serif text-5xl md:text-7xl font-semibold tracking-tight text-slate-900 mb-6">
           Discover the best of
-          <span className="block text-teal-700 mt-2">
+          <span className="block text-teal-700 mt-2 italic">
             Nepali E-Commerce
           </span>
         </h1>
 
-        <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 mb-10">
+        <p className="animate-hero-rise [animation-delay:0.16s] mt-4 max-w-2xl mx-auto text-xl text-slate-600 mb-10">
           Our AI learns what you love and curates products just for you.
         </p>
 
-        <div className="flex justify-center gap-4">
+        <div className="animate-hero-rise [animation-delay:0.24s] flex justify-center gap-4">
           <Link
             href="#recommendations"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-colors"
@@ -37,7 +45,7 @@ export function Hero() {
           </Link>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-12 text-sm text-slate-500 font-medium">
+        <div className="animate-hero-rise [animation-delay:0.32s] flex flex-wrap justify-center gap-x-8 gap-y-3 mt-12 text-sm text-slate-500 font-medium font-mono">
           <span>500 Products</span>
           <span>300 Simulated Shoppers</span>
           <span>Live SVD + TF-IDF Engine</span>

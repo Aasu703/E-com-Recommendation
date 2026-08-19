@@ -25,6 +25,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from pathlib import Path
+from urllib.parse import quote
 import random
 
 import numpy as np
@@ -32,6 +33,36 @@ import pandas as pd
 
 DATA_DIR = Path(__file__).parent / "nepali_ecommerce_data"
 RANDOM_STATE = 42
+
+# Deterministic per-category placeholder colour, matching the storefront's
+# "Dashain dusk" palette. No product photography is scraped (see README "Why
+# Synthetic Data?"), so product images are generated offline as inline SVG
+# data URIs -- reproducible, no network dependency, no RNG draws (so adding
+# this column cannot shift the seeded random/np.random sequence used by every
+# other field).
+CATEGORY_COLORS = {
+    "Traditional Attire": "#6B3119",
+    "Handicrafts & Art": "#8B3E1E",
+    "Electronics": "#38598C",
+    "Kitchen & Home": "#B5750F",
+    "Daily Groceries": "#3F7D3A",
+    "Fashion & Accessories": "#7E301A",
+    "Books & Education": "#5A4E3A",
+}
+
+
+def _placeholder_image(category: str, subcategory: str) -> str:
+    color = CATEGORY_COLORS.get(category, "#6B3119")
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">'
+        f'<rect width="400" height="400" fill="{color}"/>'
+        '<text x="200" y="190" font-family="Georgia,serif" font-size="28" '
+        f'fill="#F8F3E9" text-anchor="middle">{subcategory}</text>'
+        '<text x="200" y="224" font-family="Georgia,serif" font-size="14" '
+        f'fill="#F8F3E9" text-anchor="middle" opacity="0.75">{category}</text>'
+        '</svg>'
+    )
+    return "data:image/svg+xml," + quote(svg)
 
 # Cohort boundaries (inclusive user index ranges).
 N_USERS = 1500
@@ -123,6 +154,7 @@ def generate_dataset(force: bool = False) -> None:
             "avg_rating": round(float(np.clip(np.random.normal(4.0, 0.55), 2.2, 5.0)), 1),
             "rating_count": int(np.random.randint(0, 420)),
             "tags": f"{category.lower()}, {subcategory.lower()}, nepal, {brand.lower()}, gift",
+            "image_url": _placeholder_image(category, subcategory),
             "is_new_arrival": product_id in new_arrival_ids,
             "in_stock": bool(np.random.rand() > 0.08),
             "is_cold_item": product_id in cold_item_ids,

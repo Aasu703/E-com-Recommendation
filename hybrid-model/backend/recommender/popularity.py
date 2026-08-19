@@ -59,6 +59,7 @@ class PopularityRecommender:
                 "subcategory": row.get("subcategory", ""),
                 "brand": row.get("brand", ""),
                 "price_npr": int(row["price_npr"]),
+                "image_url": row.get("image_url"),
                 "avg_rating": None if pd.isna(row.get("avg_rating")) else float(row.get("avg_rating")),
                 "in_stock": bool(row.get("in_stock", True)),
                 "is_new_arrival": bool(row.get("is_new_arrival", False)),

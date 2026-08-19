@@ -50,8 +50,17 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
   return (
     <div
       onClick={handleCardClick}
-      className="group bg-white border border-slate-200 hover:border-teal-400 rounded-2xl p-4 transition-colors flex flex-col h-full relative overflow-hidden cursor-pointer"
+      className="group bg-white border border-slate-200 hover:border-teal-400 rounded-2xl overflow-hidden transition-colors flex flex-col h-full relative cursor-pointer"
     >
+      {product.image_url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={product.image_url}
+          alt={product.name}
+          className="w-full aspect-square object-cover border-b border-slate-100"
+        />
+      )}
+      <div className="p-4 flex flex-col flex-1">
       <div className="flex gap-2 flex-wrap mb-3">
         {product.is_festival_recommendation && (
           <span className="bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">
@@ -105,6 +114,7 @@ export function StoreProductCard({ product, gated = true, userId }: StoreProduct
           {justAdded ? <Check className="h-4 w-4" /> : <ShoppingCart className="h-4 w-4" />}
           {justAdded ? 'Added' : product.in_stock ? 'Add to Cart' : 'Out of Stock'}
         </button>
+      </div>
       </div>
     </div>
   );
