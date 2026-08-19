@@ -12,30 +12,34 @@
  */
 
 import Head from "next/head";
+import Link from "next/link";
 import { useState } from "react";
 
 import { AlgorithmExplainer } from "../components/dashboard/AlgorithmExplainer";
-import { MetricsPanel } from "../components/dashboard/MetricsPanel";
+import { ResultsVisualizations } from "../components/dashboard/ResultsVisualizations";
 import { StatCard } from "../components/dashboard/StatCard";
 import { FestivalBanner } from "../components/recommendations/FestivalBanner";
 import { RecommendationGrid } from "../components/recommendations/RecommendationGrid";
 import { ProductCard } from "../components/recommendations/ProductCard";
+import { HEADLINE } from "../lib/metrics.generated";
 import {
   useHybridRecommendations,
   useBaselineRecommendations,
   useUsers,
 } from "../hooks/useRecommendations";
+import { useDemoUser } from "../contexts/DemoUserContext";
 
 const MONTH_LABELS: Record<number, string> = {
   1: "Magh", 2: "Falgun", 3: "Chaitra", 4: "Baisakh",
   5: "Jestha", 6: "Ashadh", 7: "Shrawan", 8: "Bhadra",
-  9: "Ashwin", 10: "Dashain 🪁", 11: "Tihar 🪔", 12: "Poush",
+  9: "Ashwin",    10: "Dashain", 11: "Tihar", 12: "Poush",
 };
 
 export default function Dashboard() {
-  const [userId, setUserId] = useState("U0001");
+  const { userId, setUserId } = useDemoUser();
   const [month, setMonth] = useState(10);
   const [topK, setTopK] = useState(10);
+  const [compareView, setCompareView] = useState<"columns" | "rows">("rows");
 
   const { users } = useUsers();
   const hybrid = useHybridRecommendations(userId, topK, month);
@@ -66,9 +70,12 @@ export default function Dashboard() {
         <section className="hero">
           <h1>Nepali E-Commerce Recommendation System</h1>
           <p className="hero-subtitle">
-            Hybrid AI model combining Collaborative Filtering (SVD) and Content-Based
+            Hybrid AI combining Collaborative Filtering (SVD) and Content-Based
             Filtering (TF-IDF) with festival-aware ranking for Nepal&apos;s e-commerce market.
           </p>
+          <Link href="/case-study" className="back-link" style={{ marginTop: 4 }}>
+            Read the full case study
+          </Link>
         </section>
 
         {/* ── Controls ── */}
@@ -121,16 +128,14 @@ export default function Dashboard() {
           <StatCard
             label="Avg Hybrid Score"
             value={avgHybridScore.toFixed(3)}
-            change="3.1× vs Baseline"
-            positive
           />
           <StatCard label="Products Shown" value={String(topK)} />
           <StatCard label="Festival Picks" value={String(festivalCount)} />
           <StatCard label="New Arrivals" value={String(newArrivals)} />
           <StatCard
-            label="NDCG@10 (Hybrid)"
-            value="0.065"
-            change="+160% vs Baseline"
+            label="Catalog Coverage@10 (Hybrid)"
+            value={HEADLINE.coverage_at_10.hybrid.toFixed(3)}
+            change={`vs ${HEADLINE.coverage_at_10.baseline.toFixed(3)} Baseline`}
             positive
           />
         </div>
@@ -146,56 +151,115 @@ export default function Dashboard() {
         <section className="comparison-section">
           <div className="section-header">
             <div>
-              <h2 className="section-title">🔀 Hybrid AI vs Baseline Comparison</h2>
+              <h2 className="section-title">Hybrid AI vs Baseline Comparison</h2>
               <div className="section-subtitle">
                 Same user, same K — see how personalization changes the results
               </div>
             </div>
+            <div className="comparison-view-toggle" role="group" aria-label="Comparison layout">
+              <button
+                type="button"
+                className={compareView === "rows" ? "active" : ""}
+                onClick={() => setCompareView("rows")}
+              >
+                Rows
+              </button>
+              <button
+                type="button"
+                className={compareView === "columns" ? "active" : ""}
+                onClick={() => setCompareView("columns")}
+              >
+                Columns
+              </button>
+            </div>
           </div>
 
-          <div className="comparison-columns">
-            {/* Hybrid Column */}
-            <div className="comparison-column">
-              <div className="comparison-column-header hybrid-header">
+          <p className="comparison-note">
+            Both columns call the live backend for the same user, month and Top-K.
+            The Hybrid endpoint also powers the personalised storefront feed; the
+            Baseline is the recency-sorted list every visitor sees.
+          </p>
+
+          {compareView === "rows" ? (
+            <div className="comparison-rows">
+              <div className="comparison-row comparison-row-header">
+                <span className="comparison-row-rank" />
                 <span className="model-tag hybrid">Hybrid AI</span>
-                <h3>Personalized Picks</h3>
-              </div>
-              {hybrid.isLoading
-                ? Array.from({ length: 3 }).map((_, i) => (
-                    <div className="product-card" key={i} style={{ marginBottom: 12 }}>
-                      <div className="skeleton" />
-                    </div>
-                  ))
-                : hybrid.recommendations.map((p) => (
-                    <div key={p.product_id} style={{ marginBottom: 12 }}>
-                      <ProductCard product={p} showScores={true} />
-                    </div>
-                  ))}
-            </div>
-
-            {/* Baseline Column */}
-            <div className="comparison-column">
-              <div className="comparison-column-header baseline-header">
                 <span className="model-tag baseline">Baseline</span>
-                <h3>Recent / Popular (No AI)</h3>
               </div>
-              {baseline.isLoading
-                ? Array.from({ length: 3 }).map((_, i) => (
-                    <div className="product-card" key={i} style={{ marginBottom: 12 }}>
-                      <div className="skeleton" />
+
+              {hybrid.isLoading || baseline.isLoading
+                ? Array.from({ length: 4 }).map((_, i) => (
+                    <div className="comparison-row" key={i}>
+                      <span className="comparison-row-rank">{i + 1}</span>
+                      <div className="product-card product-card-horizontal">
+                        <div className="skeleton" style={{ height: 56, width: "100%" }} />
+                      </div>
+                      <div className="product-card product-card-horizontal">
+                        <div className="skeleton" style={{ height: 56, width: "100%" }} />
+                      </div>
                     </div>
                   ))
-                : baseline.recommendations.map((p) => (
-                    <div key={p.product_id} style={{ marginBottom: 12 }}>
-                      <ProductCard product={p} showScores={false} />
-                    </div>
-                  ))}
+                : hybrid.recommendations.map((p, i) => {
+                    const b = baseline.recommendations[i];
+                    return (
+                      <div className="comparison-row" key={p.product_id}>
+                        <span className="comparison-row-rank">{i + 1}</span>
+                        <div className="comparison-row-side">
+                          <ProductCard product={p} showScores={true} layout="horizontal" />
+                        </div>
+                        <div className="comparison-row-side">
+                          {b && <ProductCard product={b} showScores={false} layout="horizontal" />}
+                        </div>
+                      </div>
+                    );
+                  })}
             </div>
-          </div>
+          ) : (
+            <div className="comparison-columns">
+              {/* Hybrid Column */}
+              <div className="comparison-column">
+                <div className="comparison-column-header hybrid-header">
+                  <span className="model-tag hybrid">Hybrid AI</span>
+                  <h3>Personalized Picks</h3>
+                </div>
+                {hybrid.isLoading
+                  ? Array.from({ length: 3 }).map((_, i) => (
+                      <div className="product-card" key={i} style={{ marginBottom: 12 }}>
+                        <div className="skeleton" />
+                      </div>
+                    ))
+                  : hybrid.recommendations.map((p) => (
+                      <div key={p.product_id} style={{ marginBottom: 12 }}>
+                        <ProductCard product={p} showScores={true} />
+                      </div>
+                    ))}
+              </div>
+
+              {/* Baseline Column */}
+              <div className="comparison-column">
+                <div className="comparison-column-header baseline-header">
+                  <span className="model-tag baseline">Baseline</span>
+                  <h3>Recent / Popular (No AI)</h3>
+                </div>
+                {baseline.isLoading
+                  ? Array.from({ length: 3 }).map((_, i) => (
+                      <div className="product-card" key={i} style={{ marginBottom: 12 }}>
+                        <div className="skeleton" />
+                      </div>
+                    ))
+                  : baseline.recommendations.map((p) => (
+                      <div key={p.product_id} style={{ marginBottom: 12 }}>
+                        <ProductCard product={p} showScores={false} />
+                      </div>
+                    ))}
+              </div>
+            </div>
+          )}
         </section>
 
-        {/* ── Accuracy Metrics ── */}
-        <MetricsPanel />
+        {/* ── Thesis Results (interactive visualisations) ── */}
+        <ResultsVisualizations />
 
         {/* ── Algorithm Explainer ── */}
         <AlgorithmExplainer />

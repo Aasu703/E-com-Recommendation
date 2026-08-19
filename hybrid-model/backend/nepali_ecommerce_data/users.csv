@@ -1,301 +1,1501 @@
 user_id,name,city,age,gender,user_type,preferred_categories,joined_date,is_verified
-U0001,Customer 1,Butwal,29,other,power,Books & Education|Daily Groceries,2024-04-20,True
-U0002,Customer 2,Butwal,38,other,power,Daily Groceries|Traditional Attire,2023-06-05,True
-U0003,Customer 3,Pokhara,50,male,power,Electronics|Traditional Attire,2024-11-05,False
-U0004,Customer 4,Lalitpur,35,male,new,Books & Education|Electronics,2023-11-10,True
-U0005,Customer 5,Butwal,40,other,regular,Handicrafts & Art|Books & Education,2023-06-25,True
-U0006,Customer 6,Dharan,34,other,new,Traditional Attire|Handicrafts & Art,2024-09-11,True
-U0007,Customer 7,Butwal,32,female,regular,Traditional Attire|Fashion & Accessories,2023-10-16,False
-U0008,Customer 8,Lalitpur,33,female,regular,Kitchen & Home|Books & Education,2023-03-07,True
-U0009,Customer 9,Lalitpur,45,other,power,Electronics|Fashion & Accessories,2023-02-16,False
-U0010,Customer 10,Pokhara,26,female,power,Traditional Attire|Books & Education,2024-10-21,True
-U0011,Customer 11,Kathmandu,25,male,regular,Traditional Attire|Fashion & Accessories,2024-10-01,True
-U0012,Customer 12,Biratnagar,21,other,regular,Fashion & Accessories|Kitchen & Home,2024-03-17,True
-U0013,Customer 13,Pokhara,55,other,new,Kitchen & Home|Electronics,2023-05-23,True
-U0014,Customer 14,Kathmandu,52,male,power,Electronics|Kitchen & Home,2023-11-09,True
-U0015,Customer 15,Biratnagar,31,other,power,Fashion & Accessories|Daily Groceries,2024-04-04,True
-U0016,Customer 16,Pokhara,26,male,power,Electronics|Traditional Attire,2023-07-26,True
-U0017,Customer 17,Pokhara,50,male,new,Traditional Attire|Books & Education,2024-10-07,True
-U0018,Customer 18,Bhaktapur,40,male,regular,Books & Education|Handicrafts & Art,2024-03-18,False
-U0019,Customer 19,Kathmandu,55,male,power,Electronics|Traditional Attire,2023-05-22,True
-U0020,Customer 20,Pokhara,25,male,power,Kitchen & Home|Handicrafts & Art,2024-12-02,True
-U0021,Customer 21,Butwal,47,other,power,Fashion & Accessories|Handicrafts & Art,2024-05-21,True
-U0022,Customer 22,Kathmandu,42,male,power,Books & Education|Electronics,2024-02-28,True
-U0023,Customer 23,Kathmandu,43,male,new,Traditional Attire|Kitchen & Home,2024-09-05,True
-U0024,Customer 24,Butwal,36,male,power,Books & Education|Electronics,2024-09-13,True
-U0025,Customer 25,Dharan,36,male,regular,Kitchen & Home|Fashion & Accessories,2024-12-13,True
-U0026,Customer 26,Kathmandu,24,male,new,Traditional Attire|Kitchen & Home,2024-12-18,True
-U0027,Customer 27,Biratnagar,36,other,regular,Books & Education|Daily Groceries,2024-02-02,True
-U0028,Customer 28,Bhaktapur,53,female,new,Traditional Attire|Kitchen & Home,2024-04-09,True
-U0029,Customer 29,Biratnagar,50,other,new,Kitchen & Home|Daily Groceries,2024-01-11,True
-U0030,Customer 30,Dharan,31,male,new,Kitchen & Home|Electronics,2023-07-22,False
-U0031,Customer 31,Kathmandu,31,other,power,Electronics|Handicrafts & Art,2023-08-10,True
-U0032,Customer 32,Butwal,21,female,regular,Traditional Attire|Daily Groceries,2024-05-28,True
-U0033,Customer 33,Bhaktapur,39,other,new,Electronics|Fashion & Accessories,2024-09-23,True
-U0034,Customer 34,Pokhara,33,male,new,Handicrafts & Art|Traditional Attire,2024-04-21,True
-U0035,Customer 35,Pokhara,47,other,new,Handicrafts & Art|Daily Groceries,2023-09-25,True
-U0036,Customer 36,Biratnagar,38,male,power,Handicrafts & Art|Fashion & Accessories,2024-10-22,False
-U0037,Customer 37,Biratnagar,37,other,power,Books & Education|Daily Groceries,2024-11-14,False
-U0038,Customer 38,Butwal,26,male,power,Fashion & Accessories|Books & Education,2024-03-20,False
-U0039,Customer 39,Biratnagar,52,female,regular,Electronics|Handicrafts & Art,2024-04-26,True
-U0040,Customer 40,Lalitpur,18,male,power,Kitchen & Home|Fashion & Accessories,2023-01-08,True
-U0041,Customer 41,Butwal,57,female,regular,Traditional Attire|Electronics,2023-11-28,True
-U0042,Customer 42,Kathmandu,32,female,regular,Kitchen & Home|Books & Education,2024-10-20,True
-U0043,Customer 43,Kathmandu,46,other,new,Books & Education|Electronics,2024-02-10,True
-U0044,Customer 44,Butwal,55,male,regular,Daily Groceries|Books & Education,2024-05-19,True
-U0045,Customer 45,Bhaktapur,21,other,new,Daily Groceries|Books & Education,2024-03-30,False
-U0046,Customer 46,Dharan,21,female,regular,Kitchen & Home|Daily Groceries,2024-02-10,True
-U0047,Customer 47,Butwal,20,female,new,Daily Groceries|Kitchen & Home,2024-05-06,True
-U0048,Customer 48,Bhaktapur,51,male,power,Kitchen & Home|Traditional Attire,2023-12-13,True
-U0049,Customer 49,Dharan,18,female,new,Traditional Attire|Daily Groceries,2024-08-06,True
-U0050,Customer 50,Biratnagar,23,male,power,Handicrafts & Art|Fashion & Accessories,2023-08-02,True
-U0051,Customer 51,Pokhara,34,male,regular,Daily Groceries|Books & Education,2024-07-26,True
-U0052,Customer 52,Biratnagar,43,male,power,Electronics|Kitchen & Home,2023-10-10,False
-U0053,Customer 53,Bhaktapur,18,other,power,Daily Groceries|Traditional Attire,2024-03-16,True
-U0054,Customer 54,Lalitpur,52,female,power,Electronics|Traditional Attire,2024-02-28,True
-U0055,Customer 55,Lalitpur,37,male,power,Fashion & Accessories|Kitchen & Home,2024-11-19,True
-U0056,Customer 56,Butwal,55,female,regular,Books & Education|Fashion & Accessories,2023-02-18,False
-U0057,Customer 57,Dharan,25,female,regular,Traditional Attire|Daily Groceries,2024-07-08,True
-U0058,Customer 58,Dharan,50,other,regular,Electronics|Fashion & Accessories,2024-08-24,True
-U0059,Customer 59,Dharan,26,female,regular,Handicrafts & Art|Daily Groceries,2023-12-10,False
-U0060,Customer 60,Dharan,34,male,new,Daily Groceries|Kitchen & Home,2024-07-24,True
-U0061,Customer 61,Bhaktapur,56,other,power,Fashion & Accessories|Books & Education,2024-02-01,True
-U0062,Customer 62,Dharan,36,other,regular,Daily Groceries|Traditional Attire,2023-11-29,True
-U0063,Customer 63,Kathmandu,18,male,regular,Daily Groceries|Electronics,2023-06-17,True
-U0064,Customer 64,Lalitpur,29,male,new,Handicrafts & Art|Books & Education,2024-08-06,True
-U0065,Customer 65,Pokhara,29,female,regular,Handicrafts & Art|Books & Education,2024-03-20,True
-U0066,Customer 66,Butwal,43,other,power,Books & Education|Traditional Attire,2023-04-13,True
-U0067,Customer 67,Dharan,22,male,power,Daily Groceries|Traditional Attire,2024-06-03,True
-U0068,Customer 68,Biratnagar,40,female,new,Handicrafts & Art|Daily Groceries,2024-10-31,True
-U0069,Customer 69,Bhaktapur,40,other,new,Handicrafts & Art|Fashion & Accessories,2024-11-19,True
-U0070,Customer 70,Kathmandu,35,male,regular,Fashion & Accessories|Kitchen & Home,2024-10-19,False
-U0071,Customer 71,Pokhara,47,male,power,Fashion & Accessories|Books & Education,2024-11-03,True
-U0072,Customer 72,Bhaktapur,35,male,new,Electronics|Fashion & Accessories,2024-04-29,False
-U0073,Customer 73,Lalitpur,45,male,new,Daily Groceries|Handicrafts & Art,2023-03-25,True
-U0074,Customer 74,Butwal,29,male,regular,Electronics|Fashion & Accessories,2024-01-13,True
-U0075,Customer 75,Bhaktapur,56,male,power,Books & Education|Electronics,2023-04-15,True
-U0076,Customer 76,Pokhara,28,female,power,Daily Groceries|Kitchen & Home,2023-09-23,True
-U0077,Customer 77,Kathmandu,26,other,regular,Handicrafts & Art|Electronics,2024-01-12,False
-U0078,Customer 78,Butwal,20,female,power,Books & Education|Electronics,2023-03-25,True
-U0079,Customer 79,Bhaktapur,19,female,regular,Books & Education|Daily Groceries,2024-08-27,False
-U0080,Customer 80,Lalitpur,33,male,power,Traditional Attire|Handicrafts & Art,2023-12-16,False
-U0081,Customer 81,Kathmandu,34,female,regular,Handicrafts & Art|Kitchen & Home,2023-09-25,True
-U0082,Customer 82,Biratnagar,18,female,regular,Electronics|Traditional Attire,2023-11-07,True
-U0083,Customer 83,Pokhara,43,male,new,Daily Groceries|Electronics,2023-12-23,False
-U0084,Customer 84,Kathmandu,48,male,new,Electronics|Handicrafts & Art,2023-10-06,True
-U0085,Customer 85,Dharan,55,male,new,Books & Education|Fashion & Accessories,2023-10-04,True
-U0086,Customer 86,Lalitpur,35,male,power,Handicrafts & Art|Traditional Attire,2024-02-24,True
-U0087,Customer 87,Bhaktapur,26,other,regular,Books & Education|Handicrafts & Art,2024-09-25,True
-U0088,Customer 88,Kathmandu,51,female,new,Kitchen & Home|Daily Groceries,2024-03-26,True
-U0089,Customer 89,Bhaktapur,32,female,power,Electronics|Handicrafts & Art,2023-02-10,True
-U0090,Customer 90,Butwal,57,male,new,Fashion & Accessories|Daily Groceries,2023-03-16,True
-U0091,Customer 91,Pokhara,53,male,new,Books & Education|Electronics,2024-01-15,True
-U0092,Customer 92,Biratnagar,56,other,power,Traditional Attire|Handicrafts & Art,2023-10-17,False
-U0093,Customer 93,Kathmandu,54,male,power,Kitchen & Home|Traditional Attire,2023-01-07,False
-U0094,Customer 94,Dharan,18,other,power,Daily Groceries|Traditional Attire,2023-07-12,True
-U0095,Customer 95,Pokhara,36,male,regular,Handicrafts & Art|Fashion & Accessories,2024-10-30,True
-U0096,Customer 96,Lalitpur,35,female,power,Traditional Attire|Daily Groceries,2024-02-23,True
-U0097,Customer 97,Dharan,48,other,new,Kitchen & Home|Handicrafts & Art,2024-04-19,True
-U0098,Customer 98,Kathmandu,55,other,power,Daily Groceries|Electronics,2024-07-29,True
-U0099,Customer 99,Butwal,51,female,regular,Daily Groceries|Books & Education,2024-11-18,True
-U0100,Customer 100,Kathmandu,29,other,regular,Books & Education|Kitchen & Home,2024-04-30,True
-U0101,Customer 101,Dharan,21,female,regular,Electronics|Books & Education,2024-09-16,False
-U0102,Customer 102,Lalitpur,22,female,power,Books & Education|Traditional Attire,2024-01-11,True
-U0103,Customer 103,Kathmandu,20,other,power,Fashion & Accessories|Books & Education,2023-03-16,False
-U0104,Customer 104,Pokhara,43,female,regular,Books & Education|Electronics,2023-06-04,True
-U0105,Customer 105,Bhaktapur,44,other,new,Daily Groceries|Electronics,2023-08-22,True
-U0106,Customer 106,Biratnagar,23,other,regular,Books & Education|Fashion & Accessories,2023-05-05,True
-U0107,Customer 107,Bhaktapur,47,female,new,Fashion & Accessories|Handicrafts & Art,2024-04-29,True
-U0108,Customer 108,Kathmandu,54,male,new,Fashion & Accessories|Kitchen & Home,2023-06-19,True
-U0109,Customer 109,Kathmandu,52,male,regular,Traditional Attire|Handicrafts & Art,2023-03-28,True
-U0110,Customer 110,Bhaktapur,35,other,regular,Daily Groceries|Kitchen & Home,2023-07-20,True
-U0111,Customer 111,Bhaktapur,30,other,new,Electronics|Traditional Attire,2023-02-28,True
-U0112,Customer 112,Bhaktapur,34,female,power,Electronics|Books & Education,2023-04-19,True
-U0113,Customer 113,Kathmandu,39,male,regular,Electronics|Books & Education,2023-03-09,True
-U0114,Customer 114,Biratnagar,30,male,regular,Kitchen & Home|Fashion & Accessories,2024-11-04,False
-U0115,Customer 115,Dharan,40,male,regular,Handicrafts & Art|Kitchen & Home,2024-07-07,True
-U0116,Customer 116,Lalitpur,38,female,power,Books & Education|Daily Groceries,2024-01-18,True
-U0117,Customer 117,Biratnagar,28,other,new,Kitchen & Home|Traditional Attire,2023-12-25,True
-U0118,Customer 118,Lalitpur,18,female,new,Daily Groceries|Electronics,2024-08-26,True
-U0119,Customer 119,Lalitpur,52,male,regular,Electronics|Fashion & Accessories,2023-04-21,True
-U0120,Customer 120,Biratnagar,53,female,power,Daily Groceries|Fashion & Accessories,2024-03-10,True
-U0121,Customer 121,Biratnagar,52,female,power,Kitchen & Home|Electronics,2023-04-14,True
-U0122,Customer 122,Butwal,41,male,regular,Books & Education|Electronics,2023-06-14,True
-U0123,Customer 123,Kathmandu,25,other,power,Fashion & Accessories|Traditional Attire,2023-10-11,True
-U0124,Customer 124,Butwal,54,other,power,Kitchen & Home|Electronics,2023-06-13,True
-U0125,Customer 125,Pokhara,44,other,power,Handicrafts & Art|Traditional Attire,2023-04-27,True
-U0126,Customer 126,Kathmandu,29,female,new,Books & Education|Kitchen & Home,2023-09-03,False
-U0127,Customer 127,Lalitpur,28,male,regular,Handicrafts & Art|Fashion & Accessories,2024-05-01,False
-U0128,Customer 128,Butwal,34,female,power,Daily Groceries|Traditional Attire,2023-07-03,True
-U0129,Customer 129,Lalitpur,29,male,new,Kitchen & Home|Electronics,2024-08-04,False
-U0130,Customer 130,Butwal,36,male,regular,Daily Groceries|Handicrafts & Art,2024-10-27,True
-U0131,Customer 131,Lalitpur,49,female,new,Electronics|Fashion & Accessories,2024-08-04,True
-U0132,Customer 132,Pokhara,53,male,power,Traditional Attire|Fashion & Accessories,2023-04-12,True
-U0133,Customer 133,Kathmandu,41,male,regular,Kitchen & Home|Daily Groceries,2024-02-11,True
-U0134,Customer 134,Pokhara,28,other,regular,Fashion & Accessories|Kitchen & Home,2024-12-04,True
-U0135,Customer 135,Pokhara,34,female,new,Fashion & Accessories|Kitchen & Home,2024-11-21,True
-U0136,Customer 136,Biratnagar,44,female,power,Books & Education|Traditional Attire,2023-03-23,True
-U0137,Customer 137,Bhaktapur,21,other,regular,Kitchen & Home|Traditional Attire,2023-12-31,True
-U0138,Customer 138,Dharan,26,female,power,Fashion & Accessories|Electronics,2023-04-26,False
-U0139,Customer 139,Lalitpur,34,female,power,Daily Groceries|Electronics,2023-05-27,True
-U0140,Customer 140,Dharan,20,female,regular,Fashion & Accessories|Books & Education,2024-03-18,False
-U0141,Customer 141,Kathmandu,48,female,new,Daily Groceries|Handicrafts & Art,2024-12-20,True
-U0142,Customer 142,Kathmandu,39,male,power,Handicrafts & Art|Kitchen & Home,2023-12-15,False
-U0143,Customer 143,Biratnagar,20,other,new,Daily Groceries|Electronics,2024-07-19,True
-U0144,Customer 144,Kathmandu,38,male,regular,Daily Groceries|Traditional Attire,2023-07-23,True
-U0145,Customer 145,Biratnagar,41,other,regular,Fashion & Accessories|Books & Education,2024-06-30,True
-U0146,Customer 146,Bhaktapur,47,other,new,Books & Education|Kitchen & Home,2023-10-30,True
-U0147,Customer 147,Dharan,25,female,regular,Handicrafts & Art|Electronics,2023-04-23,False
-U0148,Customer 148,Butwal,47,male,new,Kitchen & Home|Fashion & Accessories,2024-10-08,False
-U0149,Customer 149,Dharan,53,other,new,Books & Education|Daily Groceries,2023-01-25,True
-U0150,Customer 150,Biratnagar,32,other,new,Books & Education|Handicrafts & Art,2024-07-02,False
-U0151,Customer 151,Butwal,25,female,regular,Books & Education|Traditional Attire,2023-07-07,True
-U0152,Customer 152,Lalitpur,18,other,new,Handicrafts & Art|Books & Education,2024-11-06,True
-U0153,Customer 153,Lalitpur,57,female,regular,Electronics|Daily Groceries,2024-06-18,True
-U0154,Customer 154,Butwal,31,male,new,Handicrafts & Art|Fashion & Accessories,2024-01-19,True
-U0155,Customer 155,Butwal,48,other,new,Fashion & Accessories|Electronics,2023-12-24,True
-U0156,Customer 156,Pokhara,25,other,power,Daily Groceries|Fashion & Accessories,2023-07-07,True
-U0157,Customer 157,Dharan,49,other,power,Handicrafts & Art|Books & Education,2023-10-17,False
-U0158,Customer 158,Bhaktapur,36,other,new,Daily Groceries|Electronics,2023-05-03,True
-U0159,Customer 159,Kathmandu,19,female,power,Books & Education|Traditional Attire,2024-10-18,True
-U0160,Customer 160,Lalitpur,33,other,new,Books & Education|Daily Groceries,2023-12-24,False
-U0161,Customer 161,Biratnagar,19,other,power,Books & Education|Daily Groceries,2024-04-18,True
-U0162,Customer 162,Dharan,48,other,regular,Traditional Attire|Kitchen & Home,2024-05-22,True
-U0163,Customer 163,Biratnagar,20,female,power,Fashion & Accessories|Electronics,2023-08-03,True
-U0164,Customer 164,Biratnagar,44,female,power,Kitchen & Home|Electronics,2024-09-21,True
-U0165,Customer 165,Biratnagar,56,male,regular,Traditional Attire|Handicrafts & Art,2023-11-17,True
-U0166,Customer 166,Lalitpur,47,other,new,Kitchen & Home|Handicrafts & Art,2024-03-12,False
-U0167,Customer 167,Lalitpur,36,other,regular,Electronics|Fashion & Accessories,2023-02-22,True
-U0168,Customer 168,Bhaktapur,42,male,power,Kitchen & Home|Handicrafts & Art,2023-01-31,True
-U0169,Customer 169,Lalitpur,40,female,regular,Daily Groceries|Traditional Attire,2024-06-27,True
-U0170,Customer 170,Biratnagar,27,female,new,Traditional Attire|Electronics,2024-04-28,True
-U0171,Customer 171,Lalitpur,37,male,power,Traditional Attire|Books & Education,2023-06-09,True
-U0172,Customer 172,Bhaktapur,45,female,regular,Kitchen & Home|Handicrafts & Art,2023-02-22,True
-U0173,Customer 173,Lalitpur,39,female,new,Daily Groceries|Fashion & Accessories,2023-01-30,True
-U0174,Customer 174,Biratnagar,30,male,regular,Kitchen & Home|Daily Groceries,2023-02-28,True
-U0175,Customer 175,Kathmandu,35,male,power,Kitchen & Home|Traditional Attire,2023-01-12,True
-U0176,Customer 176,Pokhara,31,other,regular,Kitchen & Home|Handicrafts & Art,2023-10-17,False
-U0177,Customer 177,Lalitpur,51,male,power,Traditional Attire|Books & Education,2024-09-30,False
-U0178,Customer 178,Dharan,29,male,regular,Books & Education|Fashion & Accessories,2024-07-14,True
-U0179,Customer 179,Bhaktapur,48,female,regular,Daily Groceries|Traditional Attire,2023-08-29,True
-U0180,Customer 180,Dharan,43,male,regular,Handicrafts & Art|Electronics,2023-04-06,True
-U0181,Customer 181,Biratnagar,34,female,power,Electronics|Traditional Attire,2023-12-09,True
-U0182,Customer 182,Lalitpur,25,other,regular,Daily Groceries|Handicrafts & Art,2024-01-25,True
-U0183,Customer 183,Butwal,46,male,power,Traditional Attire|Kitchen & Home,2024-10-29,False
-U0184,Customer 184,Dharan,18,other,new,Electronics|Daily Groceries,2024-09-10,True
-U0185,Customer 185,Biratnagar,44,male,regular,Handicrafts & Art|Traditional Attire,2024-11-04,True
-U0186,Customer 186,Bhaktapur,53,female,new,Daily Groceries|Electronics,2023-05-21,True
-U0187,Customer 187,Biratnagar,23,other,new,Daily Groceries|Books & Education,2024-09-15,True
-U0188,Customer 188,Pokhara,54,other,regular,Traditional Attire|Books & Education,2024-02-05,True
-U0189,Customer 189,Butwal,43,male,new,Books & Education|Kitchen & Home,2024-09-23,True
-U0190,Customer 190,Pokhara,40,male,power,Daily Groceries|Books & Education,2023-08-23,True
-U0191,Customer 191,Biratnagar,50,other,power,Electronics|Handicrafts & Art,2024-06-19,True
-U0192,Customer 192,Butwal,34,male,power,Books & Education|Electronics,2024-03-27,True
-U0193,Customer 193,Butwal,47,male,power,Books & Education|Daily Groceries,2024-12-13,False
-U0194,Customer 194,Biratnagar,36,female,regular,Daily Groceries|Electronics,2024-10-13,True
-U0195,Customer 195,Kathmandu,34,male,power,Electronics|Fashion & Accessories,2023-04-11,True
-U0196,Customer 196,Bhaktapur,56,other,power,Electronics|Fashion & Accessories,2024-06-23,True
-U0197,Customer 197,Biratnagar,52,male,power,Traditional Attire|Daily Groceries,2023-10-30,False
-U0198,Customer 198,Butwal,31,female,power,Books & Education|Daily Groceries,2023-08-15,True
-U0199,Customer 199,Biratnagar,24,female,power,Traditional Attire|Daily Groceries,2023-01-13,True
-U0200,Customer 200,Butwal,30,male,new,Fashion & Accessories|Books & Education,2023-04-10,True
-U0201,Customer 201,Pokhara,33,female,power,Books & Education|Fashion & Accessories,2024-10-10,True
-U0202,Customer 202,Pokhara,28,female,regular,Fashion & Accessories|Traditional Attire,2023-04-10,True
-U0203,Customer 203,Pokhara,51,male,power,Electronics|Kitchen & Home,2023-09-20,False
-U0204,Customer 204,Butwal,20,other,regular,Handicrafts & Art|Kitchen & Home,2023-01-28,True
-U0205,Customer 205,Dharan,38,female,power,Books & Education|Fashion & Accessories,2024-06-23,True
-U0206,Customer 206,Pokhara,18,other,regular,Handicrafts & Art|Daily Groceries,2023-12-22,False
-U0207,Customer 207,Butwal,52,male,regular,Fashion & Accessories|Kitchen & Home,2024-06-08,False
-U0208,Customer 208,Butwal,27,male,power,Handicrafts & Art|Kitchen & Home,2024-07-18,True
-U0209,Customer 209,Bhaktapur,27,other,power,Electronics|Fashion & Accessories,2024-07-11,True
-U0210,Customer 210,Lalitpur,55,other,regular,Fashion & Accessories|Books & Education,2024-02-02,True
-U0211,Customer 211,Lalitpur,42,other,regular,Handicrafts & Art|Books & Education,2024-01-22,True
-U0212,Customer 212,Bhaktapur,34,male,power,Handicrafts & Art|Electronics,2023-07-01,True
-U0213,Customer 213,Dharan,46,male,regular,Handicrafts & Art|Fashion & Accessories,2023-06-20,True
-U0214,Customer 214,Butwal,43,other,regular,Kitchen & Home|Electronics,2023-08-18,True
-U0215,Customer 215,Butwal,45,other,power,Electronics|Traditional Attire,2024-11-17,True
-U0216,Customer 216,Bhaktapur,45,male,new,Kitchen & Home|Books & Education,2024-11-28,True
-U0217,Customer 217,Lalitpur,47,other,new,Electronics|Traditional Attire,2024-11-04,True
-U0218,Customer 218,Dharan,24,male,power,Electronics|Kitchen & Home,2024-05-15,True
-U0219,Customer 219,Pokhara,24,other,regular,Kitchen & Home|Handicrafts & Art,2024-09-29,True
-U0220,Customer 220,Lalitpur,33,female,new,Daily Groceries|Fashion & Accessories,2024-07-08,True
-U0221,Customer 221,Butwal,30,female,new,Daily Groceries|Fashion & Accessories,2024-10-08,True
-U0222,Customer 222,Butwal,26,female,power,Traditional Attire|Fashion & Accessories,2023-06-09,True
-U0223,Customer 223,Kathmandu,50,male,regular,Handicrafts & Art|Traditional Attire,2024-05-18,True
-U0224,Customer 224,Kathmandu,39,other,new,Fashion & Accessories|Kitchen & Home,2023-02-28,True
-U0225,Customer 225,Pokhara,20,male,power,Traditional Attire|Daily Groceries,2024-05-03,True
-U0226,Customer 226,Dharan,51,female,regular,Kitchen & Home|Books & Education,2024-02-16,True
-U0227,Customer 227,Dharan,40,female,new,Electronics|Books & Education,2023-08-06,True
-U0228,Customer 228,Pokhara,57,other,power,Fashion & Accessories|Daily Groceries,2024-01-28,True
-U0229,Customer 229,Pokhara,49,male,new,Fashion & Accessories|Traditional Attire,2024-03-09,True
-U0230,Customer 230,Bhaktapur,49,male,new,Traditional Attire|Kitchen & Home,2024-06-23,True
-U0231,Customer 231,Kathmandu,34,female,regular,Fashion & Accessories|Electronics,2024-07-24,True
-U0232,Customer 232,Kathmandu,24,male,regular,Daily Groceries|Books & Education,2023-12-28,True
-U0233,Customer 233,Butwal,42,other,regular,Kitchen & Home|Fashion & Accessories,2024-01-29,True
-U0234,Customer 234,Biratnagar,36,male,new,Handicrafts & Art|Daily Groceries,2023-09-24,True
-U0235,Customer 235,Lalitpur,25,female,power,Books & Education|Traditional Attire,2023-12-26,True
-U0236,Customer 236,Lalitpur,48,other,new,Kitchen & Home|Fashion & Accessories,2024-02-16,True
-U0237,Customer 237,Lalitpur,18,male,power,Traditional Attire|Fashion & Accessories,2023-02-18,True
-U0238,Customer 238,Pokhara,55,other,power,Fashion & Accessories|Handicrafts & Art,2023-08-04,True
-U0239,Customer 239,Butwal,48,male,new,Kitchen & Home|Books & Education,2024-05-03,True
-U0240,Customer 240,Kathmandu,43,female,new,Kitchen & Home|Fashion & Accessories,2023-01-05,True
-U0241,Customer 241,Pokhara,28,female,regular,Kitchen & Home|Electronics,2023-09-05,False
-U0242,Customer 242,Biratnagar,55,male,regular,Kitchen & Home|Handicrafts & Art,2023-01-15,True
-U0243,Customer 243,Dharan,38,other,new,Electronics|Daily Groceries,2024-07-11,False
-U0244,Customer 244,Lalitpur,55,other,new,Electronics|Fashion & Accessories,2024-07-27,True
-U0245,Customer 245,Kathmandu,35,male,regular,Traditional Attire|Fashion & Accessories,2024-08-12,True
-U0246,Customer 246,Dharan,30,other,power,Handicrafts & Art|Kitchen & Home,2023-08-11,False
-U0247,Customer 247,Dharan,47,female,power,Books & Education|Electronics,2024-06-01,True
-U0248,Customer 248,Butwal,50,female,new,Electronics|Books & Education,2023-11-27,True
-U0249,Customer 249,Pokhara,28,male,power,Handicrafts & Art|Kitchen & Home,2024-10-29,True
-U0250,Customer 250,Biratnagar,33,other,power,Daily Groceries|Electronics,2024-08-02,True
-U0251,Customer 251,Bhaktapur,43,other,new,Kitchen & Home|Daily Groceries,2024-03-21,True
-U0252,Customer 252,Dharan,28,other,new,Books & Education|Handicrafts & Art,2023-12-23,True
-U0253,Customer 253,Butwal,36,other,regular,Daily Groceries|Kitchen & Home,2023-11-07,True
-U0254,Customer 254,Kathmandu,35,female,power,Traditional Attire|Daily Groceries,2023-06-03,False
-U0255,Customer 255,Butwal,46,other,new,Daily Groceries|Handicrafts & Art,2024-07-24,True
-U0256,Customer 256,Bhaktapur,34,other,regular,Handicrafts & Art|Electronics,2024-09-10,True
-U0257,Customer 257,Pokhara,33,other,power,Traditional Attire|Fashion & Accessories,2024-03-25,True
-U0258,Customer 258,Butwal,25,male,new,Kitchen & Home|Traditional Attire,2023-05-21,True
-U0259,Customer 259,Butwal,47,male,regular,Kitchen & Home|Handicrafts & Art,2023-12-18,True
-U0260,Customer 260,Butwal,47,male,power,Daily Groceries|Traditional Attire,2024-03-02,True
-U0261,Customer 261,Dharan,37,female,regular,Books & Education|Electronics,2024-08-22,True
-U0262,Customer 262,Dharan,46,female,power,Electronics|Traditional Attire,2023-03-27,True
-U0263,Customer 263,Biratnagar,54,male,power,Traditional Attire|Books & Education,2023-03-15,True
-U0264,Customer 264,Kathmandu,45,female,regular,Traditional Attire|Daily Groceries,2024-05-26,True
-U0265,Customer 265,Biratnagar,38,female,new,Traditional Attire|Electronics,2023-06-19,True
-U0266,Customer 266,Dharan,19,other,regular,Books & Education|Fashion & Accessories,2024-07-20,True
-U0267,Customer 267,Biratnagar,44,male,regular,Electronics|Kitchen & Home,2024-09-04,True
-U0268,Customer 268,Dharan,46,other,new,Traditional Attire|Fashion & Accessories,2024-03-26,True
-U0269,Customer 269,Kathmandu,27,female,power,Fashion & Accessories|Electronics,2023-09-22,False
-U0270,Customer 270,Pokhara,44,other,new,Kitchen & Home|Daily Groceries,2024-06-29,True
-U0271,Customer 271,Bhaktapur,49,female,regular,Books & Education|Traditional Attire,2024-08-23,True
-U0272,Customer 272,Dharan,20,other,regular,Kitchen & Home|Fashion & Accessories,2024-02-08,True
-U0273,Customer 273,Bhaktapur,52,female,new,Daily Groceries|Kitchen & Home,2024-09-02,True
-U0274,Customer 274,Pokhara,44,male,new,Kitchen & Home|Electronics,2024-12-18,True
-U0275,Customer 275,Kathmandu,46,other,regular,Fashion & Accessories|Traditional Attire,2024-11-23,True
-U0276,Customer 276,Pokhara,21,female,new,Daily Groceries|Traditional Attire,2023-04-24,True
-U0277,Customer 277,Kathmandu,43,male,power,Traditional Attire|Daily Groceries,2024-02-08,False
-U0278,Customer 278,Bhaktapur,27,female,new,Fashion & Accessories|Books & Education,2023-11-11,True
-U0279,Customer 279,Biratnagar,22,male,new,Fashion & Accessories|Traditional Attire,2023-07-12,False
-U0280,Customer 280,Bhaktapur,51,female,new,Daily Groceries|Handicrafts & Art,2024-08-02,True
-U0281,Customer 281,Pokhara,28,other,power,Daily Groceries|Electronics,2024-10-22,True
-U0282,Customer 282,Butwal,43,other,regular,Electronics|Daily Groceries,2024-02-07,False
-U0283,Customer 283,Pokhara,24,other,power,Handicrafts & Art|Electronics,2023-10-30,True
-U0284,Customer 284,Lalitpur,43,male,new,Handicrafts & Art|Kitchen & Home,2024-07-05,True
-U0285,Customer 285,Dharan,31,female,power,Daily Groceries|Books & Education,2023-05-12,True
-U0286,Customer 286,Butwal,37,male,new,Fashion & Accessories|Kitchen & Home,2024-02-03,True
-U0287,Customer 287,Dharan,46,male,power,Electronics|Fashion & Accessories,2024-07-06,True
-U0288,Customer 288,Biratnagar,56,male,new,Electronics|Fashion & Accessories,2024-07-11,True
-U0289,Customer 289,Pokhara,44,other,regular,Electronics|Kitchen & Home,2023-09-28,True
-U0290,Customer 290,Lalitpur,18,other,new,Handicrafts & Art|Books & Education,2024-12-07,False
-U0291,Customer 291,Kathmandu,44,other,regular,Books & Education|Kitchen & Home,2023-02-09,False
-U0292,Customer 292,Butwal,53,female,regular,Kitchen & Home|Daily Groceries,2024-06-19,True
-U0293,Customer 293,Pokhara,21,male,power,Handicrafts & Art|Electronics,2023-10-17,True
-U0294,Customer 294,Bhaktapur,40,male,new,Traditional Attire|Kitchen & Home,2023-06-30,True
-U0295,Customer 295,Bhaktapur,40,female,new,Daily Groceries|Fashion & Accessories,2024-08-03,True
-U0296,Customer 296,Dharan,23,other,power,Electronics|Kitchen & Home,2023-12-23,True
-U0297,Customer 297,Pokhara,57,other,power,Traditional Attire|Books & Education,2024-01-26,True
-U0298,Customer 298,Pokhara,38,male,new,Fashion & Accessories|Daily Groceries,2023-11-13,True
-U0299,Customer 299,Lalitpur,39,female,new,Books & Education|Electronics,2023-02-07,True
-U0300,Customer 300,Kathmandu,53,other,regular,Handicrafts & Art|Fashion & Accessories,2023-06-18,True
+U0001,Customer 1,Pokhara,20,other,new,Handicrafts & Art|Kitchen & Home,2023-02-03,True
+U0002,Customer 2,Bhaktapur,55,other,power,Handicrafts & Art|Traditional Attire,2024-12-18,True
+U0003,Customer 3,Kathmandu,46,male,new,Kitchen & Home|Handicrafts & Art,2023-04-22,True
+U0004,Customer 4,Pokhara,45,female,power,Traditional Attire|Books & Education,2023-05-25,True
+U0005,Customer 5,Lalitpur,51,male,power,Fashion & Accessories|Daily Groceries,2024-10-09,False
+U0006,Customer 6,Dharan,44,female,new,Books & Education|Kitchen & Home,2023-12-17,True
+U0007,Customer 7,Lalitpur,29,other,regular,Handicrafts & Art|Fashion & Accessories,2023-12-26,True
+U0008,Customer 8,Pokhara,28,other,power,Kitchen & Home|Handicrafts & Art,2023-01-12,True
+U0009,Customer 9,Pokhara,44,other,regular,Traditional Attire|Daily Groceries,2024-10-02,True
+U0010,Customer 10,Dharan,26,male,regular,Daily Groceries|Traditional Attire,2023-01-30,False
+U0011,Customer 11,Butwal,54,female,new,Kitchen & Home|Traditional Attire,2023-11-06,True
+U0012,Customer 12,Kathmandu,32,other,regular,Traditional Attire|Daily Groceries,2024-12-04,True
+U0013,Customer 13,Butwal,40,female,regular,Books & Education|Daily Groceries,2024-03-31,False
+U0014,Customer 14,Dharan,25,female,regular,Books & Education|Fashion & Accessories,2023-04-13,True
+U0015,Customer 15,Kathmandu,35,female,power,Traditional Attire|Handicrafts & Art,2023-09-04,False
+U0016,Customer 16,Biratnagar,39,female,new,Books & Education|Kitchen & Home,2023-08-23,True
+U0017,Customer 17,Kathmandu,55,other,regular,Fashion & Accessories|Traditional Attire,2024-09-02,True
+U0018,Customer 18,Biratnagar,43,male,regular,Electronics|Handicrafts & Art,2024-03-24,True
+U0019,Customer 19,Kathmandu,54,female,power,Daily Groceries|Kitchen & Home,2023-10-25,True
+U0020,Customer 20,Pokhara,37,female,new,Traditional Attire|Daily Groceries,2024-10-13,True
+U0021,Customer 21,Kathmandu,52,female,new,Kitchen & Home|Daily Groceries,2023-02-15,True
+U0022,Customer 22,Butwal,35,other,regular,Fashion & Accessories|Kitchen & Home,2024-09-19,True
+U0023,Customer 23,Dharan,27,other,regular,Kitchen & Home|Handicrafts & Art,2023-09-30,True
+U0024,Customer 24,Lalitpur,18,female,new,Handicrafts & Art|Traditional Attire,2024-08-17,True
+U0025,Customer 25,Biratnagar,42,female,regular,Handicrafts & Art|Fashion & Accessories,2023-08-16,True
+U0026,Customer 26,Biratnagar,48,other,regular,Handicrafts & Art|Traditional Attire,2024-11-01,True
+U0027,Customer 27,Pokhara,48,female,power,Traditional Attire|Kitchen & Home,2024-04-02,True
+U0028,Customer 28,Biratnagar,40,male,new,Kitchen & Home|Handicrafts & Art,2023-05-30,True
+U0029,Customer 29,Pokhara,43,other,regular,Kitchen & Home|Fashion & Accessories,2024-02-03,True
+U0030,Customer 30,Lalitpur,57,female,new,Electronics|Handicrafts & Art,2023-05-28,False
+U0031,Customer 31,Kathmandu,25,male,new,Fashion & Accessories|Daily Groceries,2023-04-30,True
+U0032,Customer 32,Biratnagar,44,male,new,Traditional Attire|Kitchen & Home,2024-12-10,True
+U0033,Customer 33,Pokhara,22,male,power,Books & Education|Electronics,2023-02-06,True
+U0034,Customer 34,Butwal,24,female,power,Handicrafts & Art|Fashion & Accessories,2023-11-25,True
+U0035,Customer 35,Kathmandu,43,male,power,Daily Groceries|Handicrafts & Art,2023-01-10,True
+U0036,Customer 36,Butwal,31,male,regular,Kitchen & Home|Handicrafts & Art,2024-06-19,False
+U0037,Customer 37,Dharan,41,male,power,Electronics|Traditional Attire,2024-02-05,True
+U0038,Customer 38,Pokhara,52,male,regular,Books & Education|Handicrafts & Art,2023-11-25,True
+U0039,Customer 39,Butwal,20,female,power,Daily Groceries|Handicrafts & Art,2023-12-07,True
+U0040,Customer 40,Kathmandu,50,female,regular,Traditional Attire|Kitchen & Home,2024-06-05,True
+U0041,Customer 41,Kathmandu,23,male,power,Fashion & Accessories|Daily Groceries,2023-11-04,True
+U0042,Customer 42,Bhaktapur,57,other,new,Kitchen & Home|Books & Education,2024-09-22,False
+U0043,Customer 43,Pokhara,21,female,power,Kitchen & Home|Books & Education,2024-03-27,True
+U0044,Customer 44,Dharan,37,other,regular,Books & Education|Traditional Attire,2024-12-02,True
+U0045,Customer 45,Lalitpur,35,male,new,Handicrafts & Art|Books & Education,2023-08-25,True
+U0046,Customer 46,Kathmandu,32,male,power,Fashion & Accessories|Traditional Attire,2023-09-03,True
+U0047,Customer 47,Dharan,37,male,power,Electronics|Handicrafts & Art,2024-03-07,True
+U0048,Customer 48,Kathmandu,44,male,regular,Fashion & Accessories|Daily Groceries,2024-07-29,False
+U0049,Customer 49,Bhaktapur,51,other,regular,Books & Education|Handicrafts & Art,2024-01-24,True
+U0050,Customer 50,Dharan,41,male,power,Handicrafts & Art|Electronics,2023-07-28,True
+U0051,Customer 51,Bhaktapur,24,other,new,Fashion & Accessories|Traditional Attire,2023-12-31,True
+U0052,Customer 52,Lalitpur,46,other,new,Kitchen & Home|Fashion & Accessories,2023-03-20,True
+U0053,Customer 53,Bhaktapur,40,male,power,Electronics|Kitchen & Home,2023-02-01,False
+U0054,Customer 54,Butwal,57,female,power,Daily Groceries|Books & Education,2024-09-04,True
+U0055,Customer 55,Lalitpur,37,other,new,Traditional Attire|Daily Groceries,2023-07-11,True
+U0056,Customer 56,Lalitpur,48,female,new,Daily Groceries|Fashion & Accessories,2023-03-18,False
+U0057,Customer 57,Biratnagar,45,other,new,Kitchen & Home|Electronics,2023-06-16,True
+U0058,Customer 58,Pokhara,26,other,power,Electronics|Books & Education,2024-06-27,True
+U0059,Customer 59,Butwal,34,other,new,Fashion & Accessories|Traditional Attire,2023-04-05,True
+U0060,Customer 60,Pokhara,27,other,new,Handicrafts & Art|Electronics,2023-11-29,True
+U0061,Customer 61,Dharan,28,other,power,Fashion & Accessories|Kitchen & Home,2024-03-07,False
+U0062,Customer 62,Bhaktapur,32,female,regular,Handicrafts & Art|Fashion & Accessories,2023-08-08,True
+U0063,Customer 63,Butwal,34,other,regular,Electronics|Books & Education,2024-01-07,True
+U0064,Customer 64,Kathmandu,30,male,regular,Electronics|Traditional Attire,2024-09-05,True
+U0065,Customer 65,Butwal,32,other,new,Kitchen & Home|Books & Education,2023-08-08,True
+U0066,Customer 66,Butwal,48,other,power,Kitchen & Home|Fashion & Accessories,2023-11-27,True
+U0067,Customer 67,Butwal,44,male,power,Electronics|Kitchen & Home,2023-08-14,True
+U0068,Customer 68,Pokhara,37,male,new,Fashion & Accessories|Traditional Attire,2023-06-22,True
+U0069,Customer 69,Pokhara,40,male,new,Traditional Attire|Kitchen & Home,2023-06-06,True
+U0070,Customer 70,Lalitpur,27,female,power,Traditional Attire|Handicrafts & Art,2024-06-16,True
+U0071,Customer 71,Pokhara,50,female,power,Handicrafts & Art|Kitchen & Home,2024-06-25,False
+U0072,Customer 72,Lalitpur,38,male,power,Fashion & Accessories|Traditional Attire,2023-10-05,True
+U0073,Customer 73,Biratnagar,32,male,regular,Daily Groceries|Handicrafts & Art,2023-12-29,True
+U0074,Customer 74,Dharan,39,female,regular,Kitchen & Home|Fashion & Accessories,2024-03-13,True
+U0075,Customer 75,Kathmandu,50,female,power,Handicrafts & Art|Traditional Attire,2023-06-23,True
+U0076,Customer 76,Biratnagar,19,other,regular,Fashion & Accessories|Electronics,2023-10-06,True
+U0077,Customer 77,Bhaktapur,20,male,regular,Fashion & Accessories|Books & Education,2023-04-20,True
+U0078,Customer 78,Dharan,46,other,power,Daily Groceries|Fashion & Accessories,2024-11-06,True
+U0079,Customer 79,Lalitpur,53,other,new,Kitchen & Home|Books & Education,2023-04-23,True
+U0080,Customer 80,Pokhara,48,male,new,Books & Education|Electronics,2024-06-11,False
+U0081,Customer 81,Lalitpur,35,female,new,Kitchen & Home|Electronics,2024-12-05,True
+U0082,Customer 82,Biratnagar,32,female,power,Electronics|Books & Education,2024-03-02,True
+U0083,Customer 83,Butwal,27,male,new,Handicrafts & Art|Fashion & Accessories,2024-11-14,False
+U0084,Customer 84,Dharan,51,other,new,Handicrafts & Art|Fashion & Accessories,2024-06-03,True
+U0085,Customer 85,Kathmandu,21,female,regular,Handicrafts & Art|Books & Education,2024-11-21,True
+U0086,Customer 86,Biratnagar,37,male,regular,Daily Groceries|Handicrafts & Art,2024-02-27,True
+U0087,Customer 87,Butwal,43,other,new,Handicrafts & Art|Books & Education,2023-02-24,True
+U0088,Customer 88,Lalitpur,27,female,regular,Fashion & Accessories|Electronics,2023-11-23,False
+U0089,Customer 89,Pokhara,18,other,regular,Kitchen & Home|Daily Groceries,2023-01-12,True
+U0090,Customer 90,Biratnagar,22,male,new,Traditional Attire|Books & Education,2023-07-27,True
+U0091,Customer 91,Pokhara,43,female,power,Kitchen & Home|Electronics,2023-09-19,True
+U0092,Customer 92,Lalitpur,56,other,power,Daily Groceries|Books & Education,2024-09-23,True
+U0093,Customer 93,Lalitpur,31,other,power,Electronics|Kitchen & Home,2023-09-01,True
+U0094,Customer 94,Dharan,32,male,regular,Handicrafts & Art|Daily Groceries,2024-01-28,True
+U0095,Customer 95,Dharan,37,male,new,Fashion & Accessories|Traditional Attire,2024-09-30,False
+U0096,Customer 96,Butwal,38,female,regular,Handicrafts & Art|Fashion & Accessories,2024-09-14,True
+U0097,Customer 97,Butwal,46,female,regular,Traditional Attire|Kitchen & Home,2024-10-20,True
+U0098,Customer 98,Lalitpur,23,female,power,Electronics|Traditional Attire,2024-01-09,True
+U0099,Customer 99,Butwal,20,other,new,Fashion & Accessories|Handicrafts & Art,2023-02-11,True
+U0100,Customer 100,Pokhara,32,female,new,Books & Education|Electronics,2024-03-14,True
+U0101,Customer 101,Dharan,48,other,new,Daily Groceries|Kitchen & Home,2024-11-16,True
+U0102,Customer 102,Pokhara,36,male,regular,Daily Groceries|Kitchen & Home,2023-09-05,True
+U0103,Customer 103,Butwal,47,female,power,Daily Groceries|Books & Education,2024-10-04,False
+U0104,Customer 104,Pokhara,31,other,regular,Electronics|Kitchen & Home,2024-02-17,True
+U0105,Customer 105,Lalitpur,43,female,regular,Electronics|Kitchen & Home,2024-06-25,True
+U0106,Customer 106,Lalitpur,22,male,power,Electronics|Books & Education,2023-12-17,True
+U0107,Customer 107,Dharan,31,male,power,Traditional Attire|Handicrafts & Art,2024-05-09,False
+U0108,Customer 108,Lalitpur,44,female,power,Kitchen & Home|Books & Education,2023-10-19,True
+U0109,Customer 109,Biratnagar,39,female,power,Kitchen & Home|Fashion & Accessories,2024-10-30,True
+U0110,Customer 110,Pokhara,21,female,regular,Daily Groceries|Traditional Attire,2024-08-03,True
+U0111,Customer 111,Lalitpur,47,female,power,Kitchen & Home|Daily Groceries,2023-08-29,True
+U0112,Customer 112,Kathmandu,33,female,regular,Books & Education|Kitchen & Home,2024-11-25,False
+U0113,Customer 113,Biratnagar,51,female,power,Fashion & Accessories|Electronics,2024-12-13,True
+U0114,Customer 114,Butwal,44,female,new,Kitchen & Home|Fashion & Accessories,2024-04-28,True
+U0115,Customer 115,Lalitpur,39,other,regular,Handicrafts & Art|Kitchen & Home,2023-08-31,False
+U0116,Customer 116,Bhaktapur,52,other,regular,Traditional Attire|Electronics,2023-05-29,True
+U0117,Customer 117,Dharan,54,male,new,Kitchen & Home|Daily Groceries,2024-02-20,True
+U0118,Customer 118,Pokhara,41,male,regular,Traditional Attire|Books & Education,2023-03-27,True
+U0119,Customer 119,Biratnagar,47,female,power,Fashion & Accessories|Books & Education,2023-04-28,True
+U0120,Customer 120,Biratnagar,40,female,regular,Fashion & Accessories|Electronics,2024-02-19,True
+U0121,Customer 121,Pokhara,42,female,new,Fashion & Accessories|Books & Education,2024-12-03,False
+U0122,Customer 122,Biratnagar,56,female,power,Books & Education|Electronics,2023-04-05,True
+U0123,Customer 123,Butwal,40,male,power,Fashion & Accessories|Electronics,2024-10-11,True
+U0124,Customer 124,Dharan,45,other,regular,Kitchen & Home|Electronics,2024-11-06,True
+U0125,Customer 125,Lalitpur,25,other,power,Fashion & Accessories|Traditional Attire,2023-01-18,True
+U0126,Customer 126,Bhaktapur,28,male,new,Daily Groceries|Traditional Attire,2023-09-05,True
+U0127,Customer 127,Pokhara,29,male,regular,Daily Groceries|Traditional Attire,2024-12-02,True
+U0128,Customer 128,Lalitpur,34,female,new,Fashion & Accessories|Handicrafts & Art,2024-04-20,False
+U0129,Customer 129,Biratnagar,57,other,regular,Electronics|Books & Education,2023-04-28,True
+U0130,Customer 130,Lalitpur,56,other,power,Traditional Attire|Electronics,2023-03-15,True
+U0131,Customer 131,Pokhara,42,other,new,Traditional Attire|Daily Groceries,2024-02-24,False
+U0132,Customer 132,Butwal,27,female,power,Books & Education|Traditional Attire,2024-01-14,True
+U0133,Customer 133,Bhaktapur,32,other,regular,Electronics|Books & Education,2023-06-22,True
+U0134,Customer 134,Dharan,21,other,regular,Electronics|Fashion & Accessories,2024-08-27,True
+U0135,Customer 135,Butwal,48,male,new,Traditional Attire|Daily Groceries,2023-10-12,False
+U0136,Customer 136,Butwal,32,male,regular,Traditional Attire|Handicrafts & Art,2024-10-28,True
+U0137,Customer 137,Biratnagar,38,male,new,Books & Education|Kitchen & Home,2024-11-01,True
+U0138,Customer 138,Pokhara,43,other,new,Traditional Attire|Handicrafts & Art,2023-11-10,True
+U0139,Customer 139,Bhaktapur,34,other,power,Books & Education|Handicrafts & Art,2024-02-24,True
+U0140,Customer 140,Bhaktapur,31,other,power,Fashion & Accessories|Daily Groceries,2024-05-23,True
+U0141,Customer 141,Bhaktapur,34,female,regular,Daily Groceries|Fashion & Accessories,2023-09-14,True
+U0142,Customer 142,Kathmandu,34,female,new,Kitchen & Home|Traditional Attire,2023-01-14,True
+U0143,Customer 143,Lalitpur,42,other,regular,Kitchen & Home|Electronics,2023-02-09,False
+U0144,Customer 144,Butwal,43,other,regular,Handicrafts & Art|Kitchen & Home,2024-02-22,True
+U0145,Customer 145,Lalitpur,37,female,power,Handicrafts & Art|Fashion & Accessories,2023-12-16,True
+U0146,Customer 146,Pokhara,42,female,power,Books & Education|Traditional Attire,2023-12-24,False
+U0147,Customer 147,Pokhara,43,male,new,Handicrafts & Art|Fashion & Accessories,2024-12-02,True
+U0148,Customer 148,Kathmandu,41,male,power,Handicrafts & Art|Books & Education,2023-11-28,True
+U0149,Customer 149,Kathmandu,40,female,regular,Books & Education|Traditional Attire,2024-10-10,True
+U0150,Customer 150,Kathmandu,36,female,new,Books & Education|Kitchen & Home,2024-06-26,True
+U0151,Customer 151,Butwal,44,other,new,Traditional Attire|Fashion & Accessories,2024-05-05,False
+U0152,Customer 152,Lalitpur,24,female,new,Kitchen & Home|Traditional Attire,2024-11-05,False
+U0153,Customer 153,Kathmandu,40,female,new,Electronics|Fashion & Accessories,2023-09-12,False
+U0154,Customer 154,Butwal,30,female,new,Daily Groceries|Handicrafts & Art,2024-09-01,True
+U0155,Customer 155,Kathmandu,40,female,new,Fashion & Accessories|Electronics,2024-04-10,True
+U0156,Customer 156,Lalitpur,53,other,regular,Books & Education|Fashion & Accessories,2023-10-17,False
+U0157,Customer 157,Bhaktapur,31,other,power,Electronics|Handicrafts & Art,2023-06-05,True
+U0158,Customer 158,Butwal,30,other,new,Daily Groceries|Handicrafts & Art,2024-11-27,True
+U0159,Customer 159,Bhaktapur,19,female,power,Traditional Attire|Daily Groceries,2024-07-20,True
+U0160,Customer 160,Pokhara,54,male,new,Handicrafts & Art|Fashion & Accessories,2024-08-27,True
+U0161,Customer 161,Kathmandu,45,other,new,Books & Education|Daily Groceries,2024-05-20,True
+U0162,Customer 162,Bhaktapur,35,other,regular,Handicrafts & Art|Daily Groceries,2023-06-29,True
+U0163,Customer 163,Butwal,44,female,regular,Electronics|Fashion & Accessories,2024-11-23,True
+U0164,Customer 164,Pokhara,18,male,regular,Fashion & Accessories|Traditional Attire,2024-09-09,False
+U0165,Customer 165,Butwal,56,female,regular,Kitchen & Home|Handicrafts & Art,2023-06-11,True
+U0166,Customer 166,Kathmandu,38,male,new,Traditional Attire|Electronics,2023-06-30,True
+U0167,Customer 167,Biratnagar,36,male,power,Daily Groceries|Handicrafts & Art,2023-01-21,True
+U0168,Customer 168,Dharan,46,female,new,Electronics|Daily Groceries,2024-04-10,True
+U0169,Customer 169,Kathmandu,57,male,regular,Electronics|Kitchen & Home,2023-09-14,False
+U0170,Customer 170,Dharan,32,male,power,Kitchen & Home|Daily Groceries,2024-08-20,False
+U0171,Customer 171,Pokhara,56,other,regular,Books & Education|Kitchen & Home,2023-10-31,False
+U0172,Customer 172,Pokhara,49,female,regular,Electronics|Kitchen & Home,2023-07-15,True
+U0173,Customer 173,Pokhara,26,female,power,Fashion & Accessories|Electronics,2024-03-30,True
+U0174,Customer 174,Kathmandu,23,male,regular,Kitchen & Home|Fashion & Accessories,2024-10-19,True
+U0175,Customer 175,Dharan,40,female,new,Daily Groceries|Fashion & Accessories,2023-12-31,False
+U0176,Customer 176,Biratnagar,25,other,power,Handicrafts & Art|Kitchen & Home,2023-06-20,True
+U0177,Customer 177,Pokhara,52,female,regular,Traditional Attire|Fashion & Accessories,2024-08-14,True
+U0178,Customer 178,Pokhara,32,other,regular,Handicrafts & Art|Electronics,2023-06-04,True
+U0179,Customer 179,Bhaktapur,22,male,power,Traditional Attire|Handicrafts & Art,2023-12-29,True
+U0180,Customer 180,Bhaktapur,51,other,power,Kitchen & Home|Electronics,2023-10-25,True
+U0181,Customer 181,Bhaktapur,27,other,regular,Daily Groceries|Electronics,2023-08-27,True
+U0182,Customer 182,Dharan,43,other,regular,Electronics|Kitchen & Home,2023-06-25,True
+U0183,Customer 183,Lalitpur,30,female,regular,Kitchen & Home|Daily Groceries,2023-01-23,True
+U0184,Customer 184,Lalitpur,45,male,regular,Traditional Attire|Books & Education,2023-10-03,True
+U0185,Customer 185,Pokhara,41,female,new,Handicrafts & Art|Fashion & Accessories,2023-08-17,True
+U0186,Customer 186,Bhaktapur,47,female,regular,Fashion & Accessories|Traditional Attire,2023-06-25,True
+U0187,Customer 187,Pokhara,53,male,power,Fashion & Accessories|Traditional Attire,2024-10-18,True
+U0188,Customer 188,Pokhara,20,male,power,Fashion & Accessories|Electronics,2023-03-12,True
+U0189,Customer 189,Bhaktapur,19,female,power,Daily Groceries|Traditional Attire,2024-06-06,False
+U0190,Customer 190,Bhaktapur,34,male,regular,Books & Education|Daily Groceries,2023-07-15,False
+U0191,Customer 191,Dharan,57,male,regular,Handicrafts & Art|Electronics,2023-12-16,True
+U0192,Customer 192,Butwal,46,male,power,Daily Groceries|Electronics,2023-08-04,True
+U0193,Customer 193,Bhaktapur,46,female,regular,Daily Groceries|Traditional Attire,2024-07-28,True
+U0194,Customer 194,Biratnagar,53,male,regular,Traditional Attire|Kitchen & Home,2023-10-12,True
+U0195,Customer 195,Kathmandu,40,female,new,Kitchen & Home|Books & Education,2023-03-11,True
+U0196,Customer 196,Bhaktapur,25,male,power,Daily Groceries|Fashion & Accessories,2023-09-12,True
+U0197,Customer 197,Biratnagar,57,female,regular,Handicrafts & Art|Kitchen & Home,2024-12-17,True
+U0198,Customer 198,Biratnagar,53,female,power,Fashion & Accessories|Kitchen & Home,2024-11-01,False
+U0199,Customer 199,Dharan,55,other,power,Fashion & Accessories|Kitchen & Home,2023-11-04,True
+U0200,Customer 200,Biratnagar,40,male,power,Daily Groceries|Books & Education,2023-04-22,True
+U0201,Customer 201,Butwal,43,female,regular,Books & Education|Handicrafts & Art,2023-06-14,True
+U0202,Customer 202,Butwal,56,male,power,Electronics|Kitchen & Home,2023-08-26,True
+U0203,Customer 203,Bhaktapur,47,male,regular,Fashion & Accessories|Electronics,2023-02-27,True
+U0204,Customer 204,Butwal,35,female,new,Traditional Attire|Books & Education,2024-09-09,True
+U0205,Customer 205,Lalitpur,47,other,power,Books & Education|Electronics,2024-11-09,False
+U0206,Customer 206,Lalitpur,22,male,new,Traditional Attire|Fashion & Accessories,2024-06-02,True
+U0207,Customer 207,Lalitpur,30,male,regular,Kitchen & Home|Electronics,2024-06-13,False
+U0208,Customer 208,Pokhara,49,female,new,Traditional Attire|Fashion & Accessories,2023-03-15,True
+U0209,Customer 209,Butwal,32,female,power,Fashion & Accessories|Electronics,2023-12-01,True
+U0210,Customer 210,Kathmandu,57,male,new,Traditional Attire|Electronics,2024-07-28,True
+U0211,Customer 211,Lalitpur,52,female,regular,Traditional Attire|Daily Groceries,2023-01-15,True
+U0212,Customer 212,Butwal,25,other,regular,Fashion & Accessories|Kitchen & Home,2024-09-24,True
+U0213,Customer 213,Dharan,49,male,power,Electronics|Traditional Attire,2024-01-03,True
+U0214,Customer 214,Biratnagar,32,other,regular,Traditional Attire|Electronics,2024-11-22,True
+U0215,Customer 215,Kathmandu,57,male,new,Electronics|Daily Groceries,2024-06-19,True
+U0216,Customer 216,Pokhara,42,male,regular,Fashion & Accessories|Books & Education,2023-03-11,True
+U0217,Customer 217,Lalitpur,19,female,power,Daily Groceries|Fashion & Accessories,2023-08-05,True
+U0218,Customer 218,Biratnagar,50,female,regular,Electronics|Books & Education,2023-05-21,True
+U0219,Customer 219,Bhaktapur,44,other,new,Fashion & Accessories|Traditional Attire,2023-06-01,False
+U0220,Customer 220,Kathmandu,46,male,power,Electronics|Books & Education,2023-10-06,True
+U0221,Customer 221,Butwal,43,other,new,Kitchen & Home|Handicrafts & Art,2024-06-25,True
+U0222,Customer 222,Kathmandu,54,other,regular,Fashion & Accessories|Daily Groceries,2023-03-08,True
+U0223,Customer 223,Butwal,18,other,regular,Electronics|Traditional Attire,2023-10-06,True
+U0224,Customer 224,Lalitpur,34,female,power,Kitchen & Home|Handicrafts & Art,2023-05-08,False
+U0225,Customer 225,Butwal,21,male,regular,Books & Education|Electronics,2023-07-05,False
+U0226,Customer 226,Lalitpur,26,female,regular,Fashion & Accessories|Daily Groceries,2024-10-08,False
+U0227,Customer 227,Butwal,37,other,regular,Kitchen & Home|Electronics,2023-10-16,True
+U0228,Customer 228,Pokhara,51,female,power,Fashion & Accessories|Daily Groceries,2024-05-16,True
+U0229,Customer 229,Bhaktapur,32,female,power,Fashion & Accessories|Daily Groceries,2024-08-22,True
+U0230,Customer 230,Dharan,26,other,regular,Kitchen & Home|Handicrafts & Art,2023-06-02,True
+U0231,Customer 231,Butwal,30,other,regular,Electronics|Fashion & Accessories,2023-07-07,False
+U0232,Customer 232,Dharan,45,female,power,Daily Groceries|Fashion & Accessories,2024-05-30,True
+U0233,Customer 233,Biratnagar,41,female,new,Handicrafts & Art|Electronics,2024-04-03,True
+U0234,Customer 234,Dharan,56,male,regular,Handicrafts & Art|Fashion & Accessories,2024-09-28,True
+U0235,Customer 235,Bhaktapur,29,female,power,Kitchen & Home|Electronics,2023-10-02,True
+U0236,Customer 236,Lalitpur,47,male,power,Handicrafts & Art|Kitchen & Home,2024-01-11,True
+U0237,Customer 237,Dharan,28,other,new,Handicrafts & Art|Electronics,2024-10-22,True
+U0238,Customer 238,Kathmandu,35,female,new,Kitchen & Home|Handicrafts & Art,2023-10-31,True
+U0239,Customer 239,Bhaktapur,29,male,regular,Traditional Attire|Handicrafts & Art,2023-08-17,True
+U0240,Customer 240,Biratnagar,55,male,power,Kitchen & Home|Daily Groceries,2023-09-11,True
+U0241,Customer 241,Pokhara,21,male,new,Traditional Attire|Handicrafts & Art,2023-01-25,False
+U0242,Customer 242,Bhaktapur,31,male,power,Traditional Attire|Electronics,2024-02-01,False
+U0243,Customer 243,Dharan,41,female,power,Daily Groceries|Handicrafts & Art,2023-11-07,True
+U0244,Customer 244,Kathmandu,34,female,regular,Kitchen & Home|Traditional Attire,2023-08-05,True
+U0245,Customer 245,Bhaktapur,24,female,regular,Daily Groceries|Electronics,2024-02-12,True
+U0246,Customer 246,Dharan,22,female,regular,Electronics|Fashion & Accessories,2024-04-19,True
+U0247,Customer 247,Bhaktapur,48,female,new,Books & Education|Fashion & Accessories,2023-02-11,True
+U0248,Customer 248,Dharan,44,other,new,Traditional Attire|Daily Groceries,2023-10-15,True
+U0249,Customer 249,Bhaktapur,37,other,power,Daily Groceries|Fashion & Accessories,2024-05-15,True
+U0250,Customer 250,Kathmandu,30,female,power,Electronics|Kitchen & Home,2024-02-28,True
+U0251,Customer 251,Lalitpur,39,other,power,Traditional Attire|Electronics,2024-09-07,True
+U0252,Customer 252,Dharan,33,female,regular,Kitchen & Home|Fashion & Accessories,2024-08-27,False
+U0253,Customer 253,Kathmandu,51,female,new,Handicrafts & Art|Books & Education,2024-07-18,True
+U0254,Customer 254,Biratnagar,22,male,power,Electronics|Kitchen & Home,2023-09-03,False
+U0255,Customer 255,Butwal,48,male,power,Traditional Attire|Kitchen & Home,2023-12-18,True
+U0256,Customer 256,Butwal,22,male,regular,Traditional Attire|Electronics,2023-12-13,True
+U0257,Customer 257,Lalitpur,50,female,regular,Fashion & Accessories|Handicrafts & Art,2024-08-21,True
+U0258,Customer 258,Lalitpur,38,male,new,Kitchen & Home|Fashion & Accessories,2023-07-11,True
+U0259,Customer 259,Kathmandu,41,other,power,Fashion & Accessories|Daily Groceries,2023-12-17,True
+U0260,Customer 260,Dharan,19,other,new,Books & Education|Traditional Attire,2023-11-26,True
+U0261,Customer 261,Biratnagar,21,male,power,Electronics|Daily Groceries,2024-06-20,True
+U0262,Customer 262,Bhaktapur,19,other,new,Fashion & Accessories|Electronics,2023-05-25,True
+U0263,Customer 263,Bhaktapur,46,male,regular,Daily Groceries|Handicrafts & Art,2023-03-25,True
+U0264,Customer 264,Lalitpur,25,male,new,Traditional Attire|Kitchen & Home,2024-04-20,False
+U0265,Customer 265,Lalitpur,38,female,new,Books & Education|Handicrafts & Art,2023-09-03,True
+U0266,Customer 266,Lalitpur,23,other,regular,Kitchen & Home|Fashion & Accessories,2024-04-15,True
+U0267,Customer 267,Lalitpur,21,female,regular,Books & Education|Traditional Attire,2023-01-07,False
+U0268,Customer 268,Biratnagar,32,male,power,Kitchen & Home|Fashion & Accessories,2023-05-05,True
+U0269,Customer 269,Bhaktapur,24,female,power,Kitchen & Home|Traditional Attire,2024-06-08,False
+U0270,Customer 270,Kathmandu,56,male,regular,Electronics|Daily Groceries,2023-11-16,True
+U0271,Customer 271,Bhaktapur,42,other,power,Daily Groceries|Fashion & Accessories,2024-06-17,True
+U0272,Customer 272,Dharan,32,female,new,Electronics|Kitchen & Home,2024-12-05,False
+U0273,Customer 273,Pokhara,51,other,regular,Fashion & Accessories|Books & Education,2023-06-17,True
+U0274,Customer 274,Pokhara,30,female,regular,Books & Education|Fashion & Accessories,2024-08-29,True
+U0275,Customer 275,Lalitpur,32,male,power,Handicrafts & Art|Fashion & Accessories,2024-02-10,True
+U0276,Customer 276,Pokhara,26,female,power,Traditional Attire|Books & Education,2023-02-17,True
+U0277,Customer 277,Bhaktapur,19,female,power,Fashion & Accessories|Books & Education,2024-02-11,False
+U0278,Customer 278,Bhaktapur,35,male,regular,Fashion & Accessories|Kitchen & Home,2024-07-05,True
+U0279,Customer 279,Pokhara,28,male,new,Kitchen & Home|Fashion & Accessories,2023-12-15,True
+U0280,Customer 280,Bhaktapur,19,male,regular,Fashion & Accessories|Daily Groceries,2024-06-09,True
+U0281,Customer 281,Biratnagar,39,male,new,Handicrafts & Art|Traditional Attire,2024-04-03,True
+U0282,Customer 282,Bhaktapur,50,other,new,Kitchen & Home|Books & Education,2023-06-08,True
+U0283,Customer 283,Butwal,54,other,power,Traditional Attire|Books & Education,2024-06-10,True
+U0284,Customer 284,Kathmandu,44,male,new,Fashion & Accessories|Handicrafts & Art,2024-03-07,True
+U0285,Customer 285,Bhaktapur,47,female,new,Electronics|Fashion & Accessories,2023-03-08,True
+U0286,Customer 286,Biratnagar,24,other,regular,Kitchen & Home|Daily Groceries,2023-07-13,True
+U0287,Customer 287,Lalitpur,49,female,power,Handicrafts & Art|Traditional Attire,2023-02-08,True
+U0288,Customer 288,Dharan,20,other,regular,Traditional Attire|Books & Education,2023-07-25,True
+U0289,Customer 289,Bhaktapur,53,other,regular,Books & Education|Kitchen & Home,2024-07-08,True
+U0290,Customer 290,Dharan,27,female,new,Traditional Attire|Handicrafts & Art,2023-09-06,False
+U0291,Customer 291,Lalitpur,27,other,regular,Books & Education|Electronics,2024-12-02,True
+U0292,Customer 292,Biratnagar,50,female,power,Kitchen & Home|Handicrafts & Art,2024-03-19,True
+U0293,Customer 293,Dharan,55,other,new,Handicrafts & Art|Electronics,2024-02-15,True
+U0294,Customer 294,Biratnagar,52,female,new,Kitchen & Home|Handicrafts & Art,2024-03-28,True
+U0295,Customer 295,Pokhara,35,other,regular,Electronics|Books & Education,2024-08-07,True
+U0296,Customer 296,Butwal,35,other,power,Handicrafts & Art|Electronics,2024-05-29,True
+U0297,Customer 297,Kathmandu,56,male,new,Kitchen & Home|Traditional Attire,2024-09-18,True
+U0298,Customer 298,Dharan,40,male,power,Books & Education|Electronics,2023-08-15,True
+U0299,Customer 299,Biratnagar,57,other,regular,Handicrafts & Art|Fashion & Accessories,2024-08-22,False
+U0300,Customer 300,Lalitpur,34,female,new,Fashion & Accessories|Daily Groceries,2023-02-09,True
+U0301,Customer 301,Kathmandu,41,male,new,Daily Groceries|Traditional Attire,2023-04-29,False
+U0302,Customer 302,Butwal,45,other,power,Kitchen & Home|Electronics,2024-05-23,True
+U0303,Customer 303,Bhaktapur,27,female,new,Fashion & Accessories|Books & Education,2023-05-29,True
+U0304,Customer 304,Butwal,26,male,regular,Electronics|Daily Groceries,2023-02-14,True
+U0305,Customer 305,Lalitpur,52,female,power,Kitchen & Home|Fashion & Accessories,2023-08-22,True
+U0306,Customer 306,Pokhara,42,male,new,Traditional Attire|Daily Groceries,2023-07-16,True
+U0307,Customer 307,Lalitpur,43,male,new,Daily Groceries|Kitchen & Home,2023-02-05,True
+U0308,Customer 308,Dharan,35,other,regular,Traditional Attire|Electronics,2024-06-13,True
+U0309,Customer 309,Kathmandu,19,male,new,Handicrafts & Art|Electronics,2023-05-16,True
+U0310,Customer 310,Bhaktapur,51,male,power,Handicrafts & Art|Kitchen & Home,2024-03-19,True
+U0311,Customer 311,Lalitpur,38,male,power,Electronics|Kitchen & Home,2023-05-09,True
+U0312,Customer 312,Butwal,53,male,regular,Books & Education|Electronics,2024-07-19,True
+U0313,Customer 313,Dharan,39,male,new,Handicrafts & Art|Electronics,2023-09-20,True
+U0314,Customer 314,Dharan,25,male,new,Daily Groceries|Fashion & Accessories,2023-11-26,True
+U0315,Customer 315,Kathmandu,28,female,new,Handicrafts & Art|Books & Education,2023-05-03,True
+U0316,Customer 316,Lalitpur,50,female,power,Traditional Attire|Kitchen & Home,2023-07-09,True
+U0317,Customer 317,Kathmandu,52,male,new,Kitchen & Home|Books & Education,2024-04-10,True
+U0318,Customer 318,Dharan,54,other,regular,Kitchen & Home|Electronics,2023-12-29,True
+U0319,Customer 319,Kathmandu,51,other,new,Kitchen & Home|Books & Education,2024-10-25,True
+U0320,Customer 320,Kathmandu,27,female,regular,Traditional Attire|Electronics,2023-07-04,True
+U0321,Customer 321,Dharan,55,other,regular,Handicrafts & Art|Books & Education,2023-08-13,True
+U0322,Customer 322,Butwal,27,female,power,Daily Groceries|Fashion & Accessories,2023-06-05,True
+U0323,Customer 323,Bhaktapur,26,other,new,Traditional Attire|Daily Groceries,2023-03-08,True
+U0324,Customer 324,Pokhara,29,male,power,Kitchen & Home|Traditional Attire,2024-01-29,True
+U0325,Customer 325,Kathmandu,38,male,power,Traditional Attire|Electronics,2024-10-22,True
+U0326,Customer 326,Biratnagar,42,male,power,Fashion & Accessories|Traditional Attire,2023-03-10,False
+U0327,Customer 327,Pokhara,25,female,new,Traditional Attire|Electronics,2023-06-26,False
+U0328,Customer 328,Dharan,23,male,regular,Kitchen & Home|Fashion & Accessories,2023-06-09,True
+U0329,Customer 329,Butwal,24,other,new,Fashion & Accessories|Electronics,2024-06-16,False
+U0330,Customer 330,Dharan,25,other,regular,Electronics|Traditional Attire,2023-10-10,True
+U0331,Customer 331,Dharan,19,other,new,Electronics|Fashion & Accessories,2024-12-19,False
+U0332,Customer 332,Bhaktapur,27,other,regular,Handicrafts & Art|Traditional Attire,2023-12-08,True
+U0333,Customer 333,Dharan,31,female,power,Electronics|Traditional Attire,2023-05-11,True
+U0334,Customer 334,Kathmandu,53,male,regular,Daily Groceries|Kitchen & Home,2023-03-02,True
+U0335,Customer 335,Bhaktapur,22,male,new,Handicrafts & Art|Books & Education,2024-12-20,True
+U0336,Customer 336,Pokhara,55,male,regular,Traditional Attire|Handicrafts & Art,2024-03-09,False
+U0337,Customer 337,Bhaktapur,43,other,new,Electronics|Fashion & Accessories,2023-11-15,True
+U0338,Customer 338,Biratnagar,43,male,power,Traditional Attire|Electronics,2024-05-13,True
+U0339,Customer 339,Dharan,18,other,new,Books & Education|Electronics,2024-07-20,False
+U0340,Customer 340,Kathmandu,38,male,power,Electronics|Fashion & Accessories,2024-01-23,True
+U0341,Customer 341,Biratnagar,54,male,regular,Handicrafts & Art|Kitchen & Home,2024-09-18,False
+U0342,Customer 342,Butwal,46,male,new,Electronics|Daily Groceries,2023-05-09,True
+U0343,Customer 343,Bhaktapur,40,male,power,Books & Education|Kitchen & Home,2023-04-29,True
+U0344,Customer 344,Dharan,23,male,new,Handicrafts & Art|Kitchen & Home,2023-07-04,True
+U0345,Customer 345,Lalitpur,30,male,power,Traditional Attire|Daily Groceries,2023-08-29,True
+U0346,Customer 346,Dharan,48,other,new,Handicrafts & Art|Fashion & Accessories,2023-06-14,True
+U0347,Customer 347,Dharan,43,other,power,Kitchen & Home|Daily Groceries,2024-07-10,True
+U0348,Customer 348,Biratnagar,50,male,new,Traditional Attire|Electronics,2024-11-10,False
+U0349,Customer 349,Lalitpur,45,female,new,Books & Education|Kitchen & Home,2023-01-05,True
+U0350,Customer 350,Bhaktapur,40,female,power,Fashion & Accessories|Electronics,2023-03-22,True
+U0351,Customer 351,Butwal,49,female,power,Kitchen & Home|Electronics,2024-01-21,True
+U0352,Customer 352,Butwal,48,female,power,Traditional Attire|Books & Education,2024-09-16,True
+U0353,Customer 353,Kathmandu,26,male,power,Kitchen & Home|Books & Education,2024-05-29,True
+U0354,Customer 354,Bhaktapur,43,male,regular,Fashion & Accessories|Daily Groceries,2024-07-15,False
+U0355,Customer 355,Kathmandu,55,other,new,Electronics|Daily Groceries,2024-03-16,False
+U0356,Customer 356,Dharan,23,male,new,Traditional Attire|Fashion & Accessories,2023-12-11,True
+U0357,Customer 357,Bhaktapur,20,male,new,Books & Education|Handicrafts & Art,2024-12-02,True
+U0358,Customer 358,Dharan,25,male,regular,Traditional Attire|Kitchen & Home,2024-01-03,True
+U0359,Customer 359,Biratnagar,29,other,regular,Daily Groceries|Fashion & Accessories,2023-12-11,True
+U0360,Customer 360,Lalitpur,53,female,new,Daily Groceries|Electronics,2023-04-25,True
+U0361,Customer 361,Dharan,46,other,regular,Handicrafts & Art|Traditional Attire,2023-12-11,False
+U0362,Customer 362,Kathmandu,31,male,power,Books & Education|Fashion & Accessories,2023-11-20,True
+U0363,Customer 363,Biratnagar,19,female,new,Traditional Attire|Books & Education,2024-06-12,True
+U0364,Customer 364,Biratnagar,24,male,power,Handicrafts & Art|Fashion & Accessories,2023-03-15,False
+U0365,Customer 365,Dharan,33,other,power,Kitchen & Home|Fashion & Accessories,2024-06-09,True
+U0366,Customer 366,Butwal,46,other,regular,Kitchen & Home|Electronics,2024-05-30,False
+U0367,Customer 367,Dharan,18,other,regular,Fashion & Accessories|Books & Education,2024-06-01,False
+U0368,Customer 368,Kathmandu,57,female,new,Books & Education|Electronics,2024-01-20,True
+U0369,Customer 369,Kathmandu,18,female,power,Traditional Attire|Handicrafts & Art,2023-07-14,True
+U0370,Customer 370,Pokhara,47,male,power,Handicrafts & Art|Traditional Attire,2023-10-04,True
+U0371,Customer 371,Pokhara,47,male,power,Handicrafts & Art|Fashion & Accessories,2023-10-05,True
+U0372,Customer 372,Pokhara,40,female,regular,Books & Education|Daily Groceries,2024-05-30,True
+U0373,Customer 373,Pokhara,34,male,regular,Books & Education|Kitchen & Home,2024-01-31,True
+U0374,Customer 374,Pokhara,52,female,power,Traditional Attire|Books & Education,2024-08-08,False
+U0375,Customer 375,Biratnagar,29,male,new,Fashion & Accessories|Kitchen & Home,2023-04-03,False
+U0376,Customer 376,Butwal,35,female,new,Books & Education|Kitchen & Home,2023-01-10,True
+U0377,Customer 377,Bhaktapur,39,male,new,Electronics|Daily Groceries,2024-03-31,True
+U0378,Customer 378,Kathmandu,38,other,power,Electronics|Traditional Attire,2024-01-28,True
+U0379,Customer 379,Bhaktapur,23,male,power,Kitchen & Home|Books & Education,2023-04-17,True
+U0380,Customer 380,Dharan,24,other,regular,Daily Groceries|Books & Education,2024-11-03,True
+U0381,Customer 381,Biratnagar,40,male,power,Traditional Attire|Kitchen & Home,2024-08-09,True
+U0382,Customer 382,Butwal,52,other,regular,Daily Groceries|Fashion & Accessories,2023-05-23,True
+U0383,Customer 383,Kathmandu,21,other,new,Handicrafts & Art|Fashion & Accessories,2023-06-16,True
+U0384,Customer 384,Lalitpur,47,other,new,Kitchen & Home|Daily Groceries,2023-07-04,False
+U0385,Customer 385,Biratnagar,27,male,new,Electronics|Fashion & Accessories,2023-04-09,True
+U0386,Customer 386,Dharan,49,male,regular,Kitchen & Home|Daily Groceries,2024-09-20,True
+U0387,Customer 387,Kathmandu,43,female,regular,Fashion & Accessories|Kitchen & Home,2024-08-01,True
+U0388,Customer 388,Biratnagar,35,male,regular,Fashion & Accessories|Handicrafts & Art,2023-08-07,True
+U0389,Customer 389,Pokhara,41,other,power,Handicrafts & Art|Daily Groceries,2023-11-28,True
+U0390,Customer 390,Bhaktapur,47,other,power,Electronics|Daily Groceries,2023-12-13,True
+U0391,Customer 391,Lalitpur,55,other,power,Kitchen & Home|Handicrafts & Art,2024-01-14,True
+U0392,Customer 392,Bhaktapur,49,other,power,Kitchen & Home|Books & Education,2023-03-25,False
+U0393,Customer 393,Bhaktapur,25,male,new,Fashion & Accessories|Electronics,2023-11-05,True
+U0394,Customer 394,Lalitpur,39,other,power,Daily Groceries|Handicrafts & Art,2024-06-02,True
+U0395,Customer 395,Biratnagar,54,female,new,Traditional Attire|Fashion & Accessories,2023-05-06,True
+U0396,Customer 396,Butwal,20,male,new,Handicrafts & Art|Books & Education,2024-01-24,True
+U0397,Customer 397,Biratnagar,22,male,new,Books & Education|Kitchen & Home,2023-03-15,True
+U0398,Customer 398,Kathmandu,42,female,regular,Handicrafts & Art|Daily Groceries,2023-03-23,True
+U0399,Customer 399,Dharan,19,female,new,Electronics|Books & Education,2024-02-09,False
+U0400,Customer 400,Kathmandu,25,female,regular,Books & Education|Daily Groceries,2023-08-12,True
+U0401,Customer 401,Butwal,36,female,new,Kitchen & Home|Traditional Attire,2024-08-28,False
+U0402,Customer 402,Biratnagar,46,male,regular,Daily Groceries|Handicrafts & Art,2024-08-16,True
+U0403,Customer 403,Bhaktapur,35,female,power,Books & Education|Electronics,2023-02-21,False
+U0404,Customer 404,Bhaktapur,24,other,power,Electronics|Handicrafts & Art,2023-12-19,True
+U0405,Customer 405,Kathmandu,56,other,new,Daily Groceries|Fashion & Accessories,2023-01-01,True
+U0406,Customer 406,Bhaktapur,48,female,new,Kitchen & Home|Books & Education,2023-01-19,True
+U0407,Customer 407,Butwal,22,female,power,Books & Education|Daily Groceries,2023-01-24,True
+U0408,Customer 408,Kathmandu,50,female,power,Traditional Attire|Daily Groceries,2023-06-10,False
+U0409,Customer 409,Lalitpur,54,female,power,Traditional Attire|Handicrafts & Art,2023-08-08,False
+U0410,Customer 410,Biratnagar,28,other,regular,Electronics|Fashion & Accessories,2023-08-30,True
+U0411,Customer 411,Pokhara,51,other,regular,Fashion & Accessories|Traditional Attire,2023-07-01,True
+U0412,Customer 412,Kathmandu,19,female,regular,Electronics|Handicrafts & Art,2024-11-22,True
+U0413,Customer 413,Pokhara,27,male,regular,Kitchen & Home|Traditional Attire,2023-10-15,False
+U0414,Customer 414,Pokhara,28,female,regular,Electronics|Daily Groceries,2023-08-10,True
+U0415,Customer 415,Bhaktapur,37,male,regular,Electronics|Fashion & Accessories,2024-05-22,False
+U0416,Customer 416,Pokhara,32,female,power,Fashion & Accessories|Books & Education,2024-12-12,False
+U0417,Customer 417,Pokhara,57,male,regular,Kitchen & Home|Handicrafts & Art,2023-04-15,True
+U0418,Customer 418,Bhaktapur,21,other,power,Kitchen & Home|Books & Education,2023-12-07,True
+U0419,Customer 419,Biratnagar,52,female,new,Electronics|Traditional Attire,2024-04-18,True
+U0420,Customer 420,Kathmandu,56,female,regular,Fashion & Accessories|Daily Groceries,2024-05-09,True
+U0421,Customer 421,Bhaktapur,32,female,regular,Electronics|Kitchen & Home,2023-05-01,True
+U0422,Customer 422,Bhaktapur,45,female,power,Traditional Attire|Kitchen & Home,2024-07-14,True
+U0423,Customer 423,Butwal,53,female,power,Fashion & Accessories|Handicrafts & Art,2024-06-23,True
+U0424,Customer 424,Butwal,43,male,regular,Fashion & Accessories|Books & Education,2023-03-06,True
+U0425,Customer 425,Dharan,29,other,regular,Kitchen & Home|Fashion & Accessories,2023-03-15,False
+U0426,Customer 426,Lalitpur,29,male,new,Fashion & Accessories|Books & Education,2023-07-11,True
+U0427,Customer 427,Butwal,22,other,new,Books & Education|Electronics,2024-08-15,True
+U0428,Customer 428,Biratnagar,34,other,new,Fashion & Accessories|Kitchen & Home,2023-02-17,True
+U0429,Customer 429,Bhaktapur,53,other,power,Daily Groceries|Books & Education,2024-07-30,True
+U0430,Customer 430,Lalitpur,22,other,regular,Kitchen & Home|Fashion & Accessories,2024-07-07,True
+U0431,Customer 431,Lalitpur,22,female,new,Books & Education|Handicrafts & Art,2023-02-08,False
+U0432,Customer 432,Biratnagar,29,other,power,Daily Groceries|Electronics,2023-12-05,True
+U0433,Customer 433,Butwal,29,other,regular,Fashion & Accessories|Handicrafts & Art,2023-03-04,False
+U0434,Customer 434,Butwal,51,other,regular,Handicrafts & Art|Traditional Attire,2023-10-26,True
+U0435,Customer 435,Bhaktapur,35,other,new,Daily Groceries|Electronics,2023-02-18,True
+U0436,Customer 436,Bhaktapur,46,other,power,Traditional Attire|Books & Education,2023-02-26,True
+U0437,Customer 437,Bhaktapur,46,male,power,Electronics|Handicrafts & Art,2023-01-24,True
+U0438,Customer 438,Kathmandu,50,other,new,Kitchen & Home|Daily Groceries,2023-10-21,True
+U0439,Customer 439,Lalitpur,40,other,power,Books & Education|Electronics,2024-04-25,True
+U0440,Customer 440,Kathmandu,41,other,new,Electronics|Traditional Attire,2023-09-24,True
+U0441,Customer 441,Butwal,38,other,new,Kitchen & Home|Electronics,2024-09-17,True
+U0442,Customer 442,Pokhara,53,other,power,Kitchen & Home|Electronics,2024-03-06,True
+U0443,Customer 443,Dharan,23,other,power,Daily Groceries|Fashion & Accessories,2023-08-30,True
+U0444,Customer 444,Pokhara,21,male,regular,Books & Education|Daily Groceries,2024-01-13,True
+U0445,Customer 445,Bhaktapur,48,other,power,Electronics|Fashion & Accessories,2023-07-28,False
+U0446,Customer 446,Dharan,18,male,power,Fashion & Accessories|Handicrafts & Art,2023-08-08,True
+U0447,Customer 447,Kathmandu,37,male,power,Fashion & Accessories|Handicrafts & Art,2023-08-17,True
+U0448,Customer 448,Bhaktapur,39,male,regular,Daily Groceries|Handicrafts & Art,2024-02-26,True
+U0449,Customer 449,Dharan,49,male,regular,Traditional Attire|Handicrafts & Art,2023-06-27,True
+U0450,Customer 450,Kathmandu,50,male,new,Traditional Attire|Books & Education,2024-11-06,True
+U0451,Customer 451,Biratnagar,20,female,regular,Kitchen & Home|Handicrafts & Art,2023-08-30,True
+U0452,Customer 452,Biratnagar,22,other,power,Fashion & Accessories|Daily Groceries,2024-08-25,True
+U0453,Customer 453,Bhaktapur,52,male,power,Daily Groceries|Kitchen & Home,2023-12-08,True
+U0454,Customer 454,Biratnagar,43,male,power,Kitchen & Home|Fashion & Accessories,2023-07-17,True
+U0455,Customer 455,Biratnagar,37,female,new,Kitchen & Home|Fashion & Accessories,2023-11-28,True
+U0456,Customer 456,Biratnagar,46,other,regular,Daily Groceries|Handicrafts & Art,2024-11-29,True
+U0457,Customer 457,Butwal,36,other,new,Handicrafts & Art|Fashion & Accessories,2024-07-06,True
+U0458,Customer 458,Biratnagar,32,male,new,Fashion & Accessories|Handicrafts & Art,2023-10-24,False
+U0459,Customer 459,Butwal,32,male,new,Fashion & Accessories|Handicrafts & Art,2024-03-31,True
+U0460,Customer 460,Kathmandu,39,female,regular,Daily Groceries|Kitchen & Home,2023-08-19,True
+U0461,Customer 461,Kathmandu,53,other,new,Daily Groceries|Electronics,2023-05-10,True
+U0462,Customer 462,Lalitpur,47,male,regular,Traditional Attire|Electronics,2024-01-11,True
+U0463,Customer 463,Kathmandu,22,female,new,Electronics|Kitchen & Home,2023-01-26,True
+U0464,Customer 464,Biratnagar,51,female,regular,Books & Education|Daily Groceries,2023-07-09,False
+U0465,Customer 465,Pokhara,37,other,regular,Electronics|Handicrafts & Art,2024-07-21,True
+U0466,Customer 466,Butwal,42,male,new,Traditional Attire|Books & Education,2023-12-06,True
+U0467,Customer 467,Biratnagar,56,male,power,Books & Education|Traditional Attire,2024-03-19,True
+U0468,Customer 468,Biratnagar,19,male,regular,Electronics|Daily Groceries,2023-11-21,True
+U0469,Customer 469,Bhaktapur,55,other,new,Kitchen & Home|Fashion & Accessories,2023-12-16,True
+U0470,Customer 470,Butwal,41,other,regular,Books & Education|Handicrafts & Art,2024-03-10,True
+U0471,Customer 471,Dharan,56,male,new,Books & Education|Kitchen & Home,2023-09-06,True
+U0472,Customer 472,Lalitpur,38,female,power,Books & Education|Fashion & Accessories,2023-12-02,True
+U0473,Customer 473,Biratnagar,50,male,new,Fashion & Accessories|Daily Groceries,2023-01-04,False
+U0474,Customer 474,Butwal,31,female,power,Kitchen & Home|Electronics,2023-04-21,True
+U0475,Customer 475,Lalitpur,53,other,new,Kitchen & Home|Fashion & Accessories,2023-05-13,False
+U0476,Customer 476,Dharan,48,female,power,Books & Education|Handicrafts & Art,2024-11-14,True
+U0477,Customer 477,Lalitpur,47,other,power,Fashion & Accessories|Books & Education,2024-11-17,True
+U0478,Customer 478,Butwal,22,female,new,Traditional Attire|Fashion & Accessories,2024-12-08,True
+U0479,Customer 479,Butwal,44,female,power,Daily Groceries|Books & Education,2023-11-26,True
+U0480,Customer 480,Bhaktapur,57,male,power,Daily Groceries|Handicrafts & Art,2023-03-26,True
+U0481,Customer 481,Dharan,37,other,new,Traditional Attire|Books & Education,2023-12-01,False
+U0482,Customer 482,Bhaktapur,22,female,new,Traditional Attire|Electronics,2023-07-02,True
+U0483,Customer 483,Bhaktapur,43,other,regular,Books & Education|Fashion & Accessories,2023-12-16,False
+U0484,Customer 484,Butwal,42,male,regular,Traditional Attire|Daily Groceries,2023-07-16,True
+U0485,Customer 485,Biratnagar,25,female,regular,Daily Groceries|Traditional Attire,2023-01-20,True
+U0486,Customer 486,Biratnagar,37,female,power,Kitchen & Home|Handicrafts & Art,2024-02-09,True
+U0487,Customer 487,Lalitpur,28,female,new,Electronics|Kitchen & Home,2024-07-19,True
+U0488,Customer 488,Pokhara,28,male,new,Traditional Attire|Daily Groceries,2024-01-16,True
+U0489,Customer 489,Bhaktapur,51,female,new,Handicrafts & Art|Electronics,2023-03-24,True
+U0490,Customer 490,Dharan,18,female,new,Electronics|Kitchen & Home,2023-03-28,True
+U0491,Customer 491,Pokhara,31,female,power,Daily Groceries|Electronics,2024-10-29,True
+U0492,Customer 492,Biratnagar,22,female,regular,Traditional Attire|Electronics,2024-11-28,True
+U0493,Customer 493,Lalitpur,31,male,regular,Handicrafts & Art|Kitchen & Home,2024-02-26,True
+U0494,Customer 494,Kathmandu,25,female,new,Books & Education|Traditional Attire,2024-03-18,False
+U0495,Customer 495,Butwal,48,female,regular,Books & Education|Daily Groceries,2023-10-15,False
+U0496,Customer 496,Biratnagar,30,female,regular,Daily Groceries|Books & Education,2023-11-27,True
+U0497,Customer 497,Biratnagar,43,other,regular,Traditional Attire|Electronics,2023-10-02,False
+U0498,Customer 498,Kathmandu,45,male,power,Traditional Attire|Kitchen & Home,2023-05-17,True
+U0499,Customer 499,Lalitpur,20,other,power,Handicrafts & Art|Traditional Attire,2023-07-01,False
+U0500,Customer 500,Pokhara,25,other,power,Fashion & Accessories|Traditional Attire,2023-07-16,True
+U0501,Customer 501,Lalitpur,41,other,regular,Books & Education|Handicrafts & Art,2024-01-22,True
+U0502,Customer 502,Bhaktapur,48,other,power,Kitchen & Home|Traditional Attire,2024-08-06,True
+U0503,Customer 503,Lalitpur,35,other,new,Handicrafts & Art|Books & Education,2024-10-27,False
+U0504,Customer 504,Butwal,24,male,power,Books & Education|Handicrafts & Art,2023-02-26,True
+U0505,Customer 505,Kathmandu,33,male,power,Kitchen & Home|Traditional Attire,2023-02-17,True
+U0506,Customer 506,Pokhara,20,female,new,Electronics|Fashion & Accessories,2023-02-02,True
+U0507,Customer 507,Butwal,26,male,power,Kitchen & Home|Electronics,2023-02-11,True
+U0508,Customer 508,Bhaktapur,34,other,new,Kitchen & Home|Electronics,2024-10-18,True
+U0509,Customer 509,Lalitpur,39,female,new,Daily Groceries|Books & Education,2023-05-22,True
+U0510,Customer 510,Butwal,20,female,regular,Fashion & Accessories|Daily Groceries,2023-02-12,False
+U0511,Customer 511,Dharan,39,female,new,Traditional Attire|Kitchen & Home,2024-06-03,True
+U0512,Customer 512,Lalitpur,46,male,new,Fashion & Accessories|Daily Groceries,2024-10-11,True
+U0513,Customer 513,Bhaktapur,38,male,power,Daily Groceries|Books & Education,2024-03-24,False
+U0514,Customer 514,Lalitpur,43,other,regular,Electronics|Fashion & Accessories,2024-04-01,True
+U0515,Customer 515,Dharan,52,male,regular,Electronics|Handicrafts & Art,2023-07-03,True
+U0516,Customer 516,Butwal,26,male,new,Handicrafts & Art|Kitchen & Home,2024-07-01,True
+U0517,Customer 517,Dharan,26,female,power,Fashion & Accessories|Handicrafts & Art,2023-03-10,False
+U0518,Customer 518,Kathmandu,49,other,new,Kitchen & Home|Traditional Attire,2023-03-13,False
+U0519,Customer 519,Dharan,54,other,regular,Kitchen & Home|Daily Groceries,2023-10-26,True
+U0520,Customer 520,Butwal,42,female,power,Books & Education|Kitchen & Home,2023-08-11,True
+U0521,Customer 521,Butwal,38,female,power,Fashion & Accessories|Traditional Attire,2023-08-19,True
+U0522,Customer 522,Kathmandu,19,male,regular,Kitchen & Home|Fashion & Accessories,2024-03-01,True
+U0523,Customer 523,Lalitpur,31,male,new,Books & Education|Daily Groceries,2024-08-30,True
+U0524,Customer 524,Kathmandu,41,female,regular,Books & Education|Fashion & Accessories,2023-10-04,False
+U0525,Customer 525,Biratnagar,57,female,new,Electronics|Handicrafts & Art,2024-03-23,True
+U0526,Customer 526,Bhaktapur,50,male,power,Fashion & Accessories|Traditional Attire,2024-05-06,True
+U0527,Customer 527,Pokhara,52,female,power,Fashion & Accessories|Electronics,2023-05-26,True
+U0528,Customer 528,Bhaktapur,48,other,new,Fashion & Accessories|Electronics,2023-03-30,True
+U0529,Customer 529,Lalitpur,51,female,regular,Handicrafts & Art|Kitchen & Home,2023-11-04,True
+U0530,Customer 530,Dharan,25,other,new,Kitchen & Home|Fashion & Accessories,2023-06-16,True
+U0531,Customer 531,Bhaktapur,46,other,regular,Traditional Attire|Handicrafts & Art,2024-05-05,True
+U0532,Customer 532,Butwal,46,other,regular,Traditional Attire|Electronics,2024-12-01,True
+U0533,Customer 533,Pokhara,51,other,power,Handicrafts & Art|Daily Groceries,2023-01-31,False
+U0534,Customer 534,Dharan,54,other,power,Daily Groceries|Fashion & Accessories,2023-10-21,True
+U0535,Customer 535,Butwal,29,female,power,Handicrafts & Art|Traditional Attire,2024-10-03,True
+U0536,Customer 536,Lalitpur,25,other,new,Traditional Attire|Handicrafts & Art,2023-04-20,True
+U0537,Customer 537,Bhaktapur,32,male,new,Daily Groceries|Fashion & Accessories,2023-06-12,True
+U0538,Customer 538,Kathmandu,23,other,power,Books & Education|Fashion & Accessories,2024-05-07,True
+U0539,Customer 539,Lalitpur,39,other,power,Daily Groceries|Books & Education,2024-08-02,True
+U0540,Customer 540,Biratnagar,44,other,power,Kitchen & Home|Traditional Attire,2024-06-17,True
+U0541,Customer 541,Bhaktapur,39,male,regular,Fashion & Accessories|Traditional Attire,2024-01-15,True
+U0542,Customer 542,Lalitpur,26,female,power,Books & Education|Kitchen & Home,2023-09-06,True
+U0543,Customer 543,Biratnagar,32,male,power,Daily Groceries|Kitchen & Home,2024-08-07,False
+U0544,Customer 544,Dharan,45,female,new,Books & Education|Traditional Attire,2024-08-06,False
+U0545,Customer 545,Butwal,28,male,regular,Electronics|Kitchen & Home,2024-06-11,True
+U0546,Customer 546,Pokhara,35,male,new,Traditional Attire|Kitchen & Home,2023-03-15,True
+U0547,Customer 547,Dharan,20,female,power,Daily Groceries|Traditional Attire,2023-02-12,True
+U0548,Customer 548,Pokhara,45,female,new,Kitchen & Home|Traditional Attire,2024-07-24,True
+U0549,Customer 549,Kathmandu,31,other,power,Electronics|Books & Education,2024-08-04,True
+U0550,Customer 550,Biratnagar,48,male,new,Traditional Attire|Books & Education,2023-07-26,False
+U0551,Customer 551,Lalitpur,46,male,new,Daily Groceries|Fashion & Accessories,2023-03-22,True
+U0552,Customer 552,Pokhara,29,male,new,Traditional Attire|Kitchen & Home,2023-12-12,True
+U0553,Customer 553,Butwal,22,female,new,Books & Education|Electronics,2024-07-06,True
+U0554,Customer 554,Butwal,48,male,new,Books & Education|Daily Groceries,2023-08-28,True
+U0555,Customer 555,Butwal,43,female,new,Fashion & Accessories|Kitchen & Home,2024-12-07,True
+U0556,Customer 556,Biratnagar,19,male,power,Traditional Attire|Books & Education,2024-12-14,True
+U0557,Customer 557,Kathmandu,52,male,new,Traditional Attire|Handicrafts & Art,2024-06-19,True
+U0558,Customer 558,Dharan,36,male,new,Electronics|Daily Groceries,2023-04-15,True
+U0559,Customer 559,Kathmandu,38,other,new,Traditional Attire|Fashion & Accessories,2024-06-10,True
+U0560,Customer 560,Biratnagar,44,female,power,Electronics|Kitchen & Home,2023-08-23,True
+U0561,Customer 561,Pokhara,50,other,power,Books & Education|Kitchen & Home,2023-01-06,True
+U0562,Customer 562,Biratnagar,47,male,regular,Daily Groceries|Traditional Attire,2024-10-18,False
+U0563,Customer 563,Butwal,24,other,new,Books & Education|Kitchen & Home,2024-11-16,False
+U0564,Customer 564,Dharan,48,female,regular,Electronics|Fashion & Accessories,2023-12-01,True
+U0565,Customer 565,Butwal,52,female,new,Daily Groceries|Electronics,2023-12-19,False
+U0566,Customer 566,Butwal,34,other,new,Traditional Attire|Books & Education,2023-08-16,True
+U0567,Customer 567,Butwal,46,female,power,Daily Groceries|Handicrafts & Art,2024-10-15,True
+U0568,Customer 568,Lalitpur,18,male,regular,Daily Groceries|Electronics,2023-12-26,False
+U0569,Customer 569,Biratnagar,46,female,new,Fashion & Accessories|Daily Groceries,2023-06-14,True
+U0570,Customer 570,Kathmandu,41,female,regular,Handicrafts & Art|Traditional Attire,2023-08-12,True
+U0571,Customer 571,Butwal,18,other,regular,Daily Groceries|Kitchen & Home,2023-02-21,True
+U0572,Customer 572,Butwal,51,female,new,Electronics|Daily Groceries,2023-05-07,True
+U0573,Customer 573,Butwal,20,male,regular,Kitchen & Home|Electronics,2023-09-30,False
+U0574,Customer 574,Butwal,46,other,power,Electronics|Traditional Attire,2023-06-15,True
+U0575,Customer 575,Kathmandu,22,female,power,Fashion & Accessories|Handicrafts & Art,2023-08-22,True
+U0576,Customer 576,Bhaktapur,43,female,regular,Books & Education|Daily Groceries,2024-01-11,False
+U0577,Customer 577,Pokhara,37,other,new,Electronics|Handicrafts & Art,2024-02-09,False
+U0578,Customer 578,Lalitpur,18,female,power,Books & Education|Traditional Attire,2023-01-21,True
+U0579,Customer 579,Dharan,31,male,power,Kitchen & Home|Fashion & Accessories,2023-02-20,True
+U0580,Customer 580,Bhaktapur,51,other,power,Fashion & Accessories|Electronics,2024-09-27,True
+U0581,Customer 581,Lalitpur,23,male,regular,Electronics|Daily Groceries,2023-02-18,True
+U0582,Customer 582,Biratnagar,24,female,regular,Handicrafts & Art|Traditional Attire,2024-03-28,True
+U0583,Customer 583,Dharan,30,female,power,Handicrafts & Art|Traditional Attire,2024-10-02,True
+U0584,Customer 584,Butwal,20,female,new,Handicrafts & Art|Kitchen & Home,2024-12-11,True
+U0585,Customer 585,Bhaktapur,57,male,power,Kitchen & Home|Fashion & Accessories,2023-04-07,True
+U0586,Customer 586,Biratnagar,40,female,new,Kitchen & Home|Handicrafts & Art,2024-09-04,True
+U0587,Customer 587,Kathmandu,55,male,new,Electronics|Traditional Attire,2023-01-29,False
+U0588,Customer 588,Pokhara,55,male,regular,Daily Groceries|Traditional Attire,2023-10-10,True
+U0589,Customer 589,Butwal,40,male,new,Handicrafts & Art|Fashion & Accessories,2024-07-10,True
+U0590,Customer 590,Pokhara,54,male,new,Traditional Attire|Handicrafts & Art,2024-12-01,True
+U0591,Customer 591,Dharan,32,female,regular,Handicrafts & Art|Electronics,2023-09-18,True
+U0592,Customer 592,Pokhara,27,female,new,Books & Education|Daily Groceries,2023-01-06,False
+U0593,Customer 593,Bhaktapur,34,male,new,Traditional Attire|Handicrafts & Art,2023-01-23,True
+U0594,Customer 594,Pokhara,32,male,power,Traditional Attire|Fashion & Accessories,2024-07-06,True
+U0595,Customer 595,Lalitpur,39,female,regular,Books & Education|Traditional Attire,2024-11-28,False
+U0596,Customer 596,Lalitpur,21,male,power,Kitchen & Home|Handicrafts & Art,2024-08-04,False
+U0597,Customer 597,Bhaktapur,36,other,regular,Handicrafts & Art|Daily Groceries,2023-05-31,True
+U0598,Customer 598,Kathmandu,20,female,new,Fashion & Accessories|Traditional Attire,2024-08-29,True
+U0599,Customer 599,Pokhara,35,other,regular,Books & Education|Handicrafts & Art,2023-07-25,True
+U0600,Customer 600,Lalitpur,27,other,regular,Fashion & Accessories|Electronics,2024-05-23,True
+U0601,Customer 601,Kathmandu,26,other,power,Fashion & Accessories|Handicrafts & Art,2024-04-11,True
+U0602,Customer 602,Lalitpur,25,female,regular,Handicrafts & Art|Daily Groceries,2023-06-28,True
+U0603,Customer 603,Dharan,35,male,new,Handicrafts & Art|Traditional Attire,2023-06-08,True
+U0604,Customer 604,Butwal,50,male,new,Books & Education|Daily Groceries,2023-01-30,True
+U0605,Customer 605,Bhaktapur,45,male,power,Fashion & Accessories|Traditional Attire,2024-06-02,False
+U0606,Customer 606,Pokhara,23,other,regular,Daily Groceries|Traditional Attire,2023-04-17,True
+U0607,Customer 607,Bhaktapur,47,other,regular,Books & Education|Fashion & Accessories,2023-07-18,True
+U0608,Customer 608,Biratnagar,35,female,regular,Kitchen & Home|Daily Groceries,2024-05-17,True
+U0609,Customer 609,Butwal,43,other,regular,Fashion & Accessories|Electronics,2023-04-30,True
+U0610,Customer 610,Biratnagar,41,male,power,Fashion & Accessories|Kitchen & Home,2024-07-05,True
+U0611,Customer 611,Bhaktapur,46,other,power,Kitchen & Home|Fashion & Accessories,2023-10-04,False
+U0612,Customer 612,Pokhara,44,female,regular,Traditional Attire|Handicrafts & Art,2023-01-31,True
+U0613,Customer 613,Biratnagar,50,female,regular,Books & Education|Handicrafts & Art,2023-03-14,False
+U0614,Customer 614,Butwal,48,female,regular,Kitchen & Home|Books & Education,2024-04-20,True
+U0615,Customer 615,Kathmandu,29,female,new,Electronics|Daily Groceries,2023-07-31,True
+U0616,Customer 616,Butwal,33,male,new,Electronics|Kitchen & Home,2023-02-03,True
+U0617,Customer 617,Biratnagar,42,other,power,Daily Groceries|Traditional Attire,2023-04-08,True
+U0618,Customer 618,Biratnagar,19,male,regular,Electronics|Kitchen & Home,2024-12-13,False
+U0619,Customer 619,Bhaktapur,27,male,regular,Kitchen & Home|Electronics,2023-05-07,False
+U0620,Customer 620,Kathmandu,41,female,regular,Electronics|Kitchen & Home,2024-03-25,False
+U0621,Customer 621,Dharan,27,female,regular,Handicrafts & Art|Electronics,2024-08-15,True
+U0622,Customer 622,Bhaktapur,55,other,power,Traditional Attire|Electronics,2024-02-16,True
+U0623,Customer 623,Kathmandu,18,male,new,Daily Groceries|Fashion & Accessories,2024-09-26,True
+U0624,Customer 624,Kathmandu,27,male,new,Traditional Attire|Books & Education,2023-07-26,True
+U0625,Customer 625,Lalitpur,40,female,power,Daily Groceries|Handicrafts & Art,2024-06-10,True
+U0626,Customer 626,Lalitpur,26,other,power,Electronics|Books & Education,2023-07-21,True
+U0627,Customer 627,Pokhara,42,other,power,Books & Education|Electronics,2024-01-24,True
+U0628,Customer 628,Dharan,43,other,regular,Handicrafts & Art|Fashion & Accessories,2024-09-24,True
+U0629,Customer 629,Lalitpur,42,male,regular,Traditional Attire|Electronics,2023-06-29,True
+U0630,Customer 630,Bhaktapur,27,other,new,Kitchen & Home|Daily Groceries,2024-10-10,True
+U0631,Customer 631,Butwal,43,female,regular,Kitchen & Home|Fashion & Accessories,2023-07-20,True
+U0632,Customer 632,Dharan,48,other,new,Handicrafts & Art|Books & Education,2023-03-01,True
+U0633,Customer 633,Butwal,23,other,power,Kitchen & Home|Handicrafts & Art,2024-07-03,True
+U0634,Customer 634,Dharan,22,male,regular,Books & Education|Kitchen & Home,2024-05-16,True
+U0635,Customer 635,Lalitpur,40,female,regular,Books & Education|Traditional Attire,2024-03-25,True
+U0636,Customer 636,Biratnagar,36,female,regular,Books & Education|Fashion & Accessories,2024-07-11,False
+U0637,Customer 637,Kathmandu,44,male,new,Kitchen & Home|Daily Groceries,2023-02-16,True
+U0638,Customer 638,Lalitpur,42,other,new,Daily Groceries|Handicrafts & Art,2024-10-18,True
+U0639,Customer 639,Bhaktapur,48,male,regular,Kitchen & Home|Fashion & Accessories,2023-04-29,True
+U0640,Customer 640,Biratnagar,22,other,regular,Handicrafts & Art|Kitchen & Home,2023-12-08,False
+U0641,Customer 641,Butwal,25,male,regular,Books & Education|Fashion & Accessories,2024-03-01,True
+U0642,Customer 642,Butwal,29,female,new,Daily Groceries|Traditional Attire,2023-07-04,False
+U0643,Customer 643,Butwal,32,other,power,Handicrafts & Art|Electronics,2023-04-12,False
+U0644,Customer 644,Bhaktapur,51,male,regular,Daily Groceries|Books & Education,2023-02-20,True
+U0645,Customer 645,Kathmandu,25,other,regular,Handicrafts & Art|Kitchen & Home,2024-08-11,False
+U0646,Customer 646,Kathmandu,55,male,power,Handicrafts & Art|Kitchen & Home,2023-03-11,False
+U0647,Customer 647,Lalitpur,24,female,new,Kitchen & Home|Fashion & Accessories,2023-04-18,True
+U0648,Customer 648,Butwal,40,female,new,Traditional Attire|Fashion & Accessories,2024-03-15,True
+U0649,Customer 649,Butwal,32,male,new,Books & Education|Fashion & Accessories,2023-12-27,False
+U0650,Customer 650,Kathmandu,33,male,regular,Handicrafts & Art|Books & Education,2024-09-07,True
+U0651,Customer 651,Lalitpur,37,other,power,Handicrafts & Art|Books & Education,2023-05-26,False
+U0652,Customer 652,Kathmandu,40,male,power,Traditional Attire|Kitchen & Home,2023-04-29,True
+U0653,Customer 653,Lalitpur,56,male,regular,Traditional Attire|Handicrafts & Art,2023-01-03,True
+U0654,Customer 654,Pokhara,39,other,regular,Handicrafts & Art|Traditional Attire,2023-09-14,True
+U0655,Customer 655,Kathmandu,45,male,new,Kitchen & Home|Fashion & Accessories,2024-05-10,True
+U0656,Customer 656,Lalitpur,18,male,power,Handicrafts & Art|Books & Education,2024-01-25,True
+U0657,Customer 657,Pokhara,20,other,power,Fashion & Accessories|Kitchen & Home,2023-09-17,True
+U0658,Customer 658,Pokhara,40,other,power,Electronics|Daily Groceries,2023-01-20,False
+U0659,Customer 659,Lalitpur,42,female,new,Fashion & Accessories|Kitchen & Home,2024-05-02,False
+U0660,Customer 660,Kathmandu,19,male,power,Handicrafts & Art|Kitchen & Home,2024-02-11,False
+U0661,Customer 661,Butwal,52,male,power,Books & Education|Handicrafts & Art,2023-03-20,True
+U0662,Customer 662,Biratnagar,31,other,new,Kitchen & Home|Books & Education,2023-09-03,False
+U0663,Customer 663,Lalitpur,18,other,regular,Fashion & Accessories|Traditional Attire,2024-03-11,True
+U0664,Customer 664,Bhaktapur,21,other,regular,Electronics|Fashion & Accessories,2024-10-25,True
+U0665,Customer 665,Bhaktapur,26,female,regular,Kitchen & Home|Daily Groceries,2024-02-20,True
+U0666,Customer 666,Butwal,37,other,regular,Handicrafts & Art|Books & Education,2024-08-01,True
+U0667,Customer 667,Dharan,39,female,power,Kitchen & Home|Books & Education,2023-09-07,True
+U0668,Customer 668,Biratnagar,25,other,new,Daily Groceries|Traditional Attire,2024-04-17,True
+U0669,Customer 669,Lalitpur,20,other,power,Handicrafts & Art|Books & Education,2023-02-01,True
+U0670,Customer 670,Kathmandu,38,other,power,Electronics|Fashion & Accessories,2023-09-26,True
+U0671,Customer 671,Biratnagar,56,male,power,Fashion & Accessories|Handicrafts & Art,2023-10-02,True
+U0672,Customer 672,Kathmandu,37,female,power,Traditional Attire|Electronics,2023-03-04,True
+U0673,Customer 673,Biratnagar,27,male,new,Books & Education|Electronics,2023-01-31,True
+U0674,Customer 674,Butwal,37,female,regular,Electronics|Handicrafts & Art,2024-09-13,True
+U0675,Customer 675,Dharan,35,other,power,Traditional Attire|Books & Education,2024-08-20,True
+U0676,Customer 676,Biratnagar,27,male,power,Fashion & Accessories|Kitchen & Home,2024-07-20,True
+U0677,Customer 677,Biratnagar,55,female,new,Kitchen & Home|Handicrafts & Art,2023-09-13,True
+U0678,Customer 678,Dharan,48,female,regular,Electronics|Traditional Attire,2023-05-17,True
+U0679,Customer 679,Biratnagar,54,male,regular,Fashion & Accessories|Books & Education,2023-12-21,True
+U0680,Customer 680,Butwal,21,other,new,Traditional Attire|Books & Education,2023-02-02,True
+U0681,Customer 681,Pokhara,47,male,regular,Fashion & Accessories|Kitchen & Home,2023-09-22,True
+U0682,Customer 682,Pokhara,18,female,power,Books & Education|Handicrafts & Art,2024-08-10,False
+U0683,Customer 683,Lalitpur,55,female,power,Traditional Attire|Handicrafts & Art,2024-04-10,True
+U0684,Customer 684,Pokhara,43,female,power,Fashion & Accessories|Kitchen & Home,2023-06-23,True
+U0685,Customer 685,Dharan,20,male,new,Books & Education|Traditional Attire,2024-05-02,True
+U0686,Customer 686,Pokhara,36,female,power,Kitchen & Home|Electronics,2023-01-26,True
+U0687,Customer 687,Butwal,56,female,regular,Traditional Attire|Fashion & Accessories,2024-01-02,True
+U0688,Customer 688,Bhaktapur,30,other,power,Fashion & Accessories|Traditional Attire,2023-07-10,True
+U0689,Customer 689,Dharan,43,other,new,Fashion & Accessories|Books & Education,2023-08-21,True
+U0690,Customer 690,Lalitpur,32,male,new,Kitchen & Home|Fashion & Accessories,2023-09-28,False
+U0691,Customer 691,Kathmandu,45,male,new,Daily Groceries|Traditional Attire,2024-02-19,True
+U0692,Customer 692,Pokhara,34,female,new,Handicrafts & Art|Electronics,2024-02-09,True
+U0693,Customer 693,Kathmandu,41,female,regular,Traditional Attire|Kitchen & Home,2023-08-29,True
+U0694,Customer 694,Dharan,53,other,new,Books & Education|Handicrafts & Art,2024-03-09,True
+U0695,Customer 695,Bhaktapur,51,other,new,Handicrafts & Art|Traditional Attire,2023-10-30,True
+U0696,Customer 696,Kathmandu,47,male,power,Fashion & Accessories|Handicrafts & Art,2023-07-14,True
+U0697,Customer 697,Lalitpur,29,other,power,Traditional Attire|Electronics,2024-10-08,True
+U0698,Customer 698,Pokhara,45,other,regular,Handicrafts & Art|Daily Groceries,2023-12-12,True
+U0699,Customer 699,Pokhara,31,female,new,Kitchen & Home|Traditional Attire,2023-11-30,True
+U0700,Customer 700,Pokhara,23,female,regular,Electronics|Books & Education,2024-08-27,True
+U0701,Customer 701,Kathmandu,37,male,new,Fashion & Accessories|Electronics,2023-11-30,False
+U0702,Customer 702,Kathmandu,19,other,regular,Kitchen & Home|Handicrafts & Art,2023-12-21,False
+U0703,Customer 703,Lalitpur,41,female,new,Fashion & Accessories|Daily Groceries,2023-06-17,False
+U0704,Customer 704,Lalitpur,19,other,regular,Handicrafts & Art|Kitchen & Home,2024-08-02,True
+U0705,Customer 705,Butwal,32,other,new,Traditional Attire|Fashion & Accessories,2024-03-12,True
+U0706,Customer 706,Butwal,18,male,power,Electronics|Traditional Attire,2024-11-12,True
+U0707,Customer 707,Dharan,24,other,new,Fashion & Accessories|Kitchen & Home,2023-02-04,True
+U0708,Customer 708,Dharan,18,other,regular,Electronics|Handicrafts & Art,2024-01-04,False
+U0709,Customer 709,Biratnagar,20,female,regular,Books & Education|Fashion & Accessories,2024-05-20,False
+U0710,Customer 710,Butwal,27,male,regular,Traditional Attire|Daily Groceries,2024-07-30,True
+U0711,Customer 711,Dharan,31,female,power,Daily Groceries|Fashion & Accessories,2023-07-20,True
+U0712,Customer 712,Kathmandu,40,female,new,Daily Groceries|Fashion & Accessories,2024-11-10,True
+U0713,Customer 713,Lalitpur,19,female,power,Daily Groceries|Traditional Attire,2023-12-21,True
+U0714,Customer 714,Butwal,34,female,new,Kitchen & Home|Handicrafts & Art,2024-07-12,True
+U0715,Customer 715,Biratnagar,35,male,new,Handicrafts & Art|Electronics,2023-11-04,True
+U0716,Customer 716,Pokhara,40,other,new,Handicrafts & Art|Kitchen & Home,2023-06-01,True
+U0717,Customer 717,Butwal,43,male,power,Handicrafts & Art|Fashion & Accessories,2023-01-21,True
+U0718,Customer 718,Lalitpur,19,male,power,Electronics|Handicrafts & Art,2023-06-11,True
+U0719,Customer 719,Butwal,21,male,power,Books & Education|Traditional Attire,2023-08-13,True
+U0720,Customer 720,Bhaktapur,25,female,new,Books & Education|Electronics,2024-01-19,True
+U0721,Customer 721,Lalitpur,23,male,new,Books & Education|Fashion & Accessories,2024-07-30,True
+U0722,Customer 722,Kathmandu,44,other,new,Handicrafts & Art|Daily Groceries,2024-05-24,False
+U0723,Customer 723,Dharan,40,other,new,Books & Education|Fashion & Accessories,2024-04-26,True
+U0724,Customer 724,Butwal,32,male,new,Daily Groceries|Kitchen & Home,2024-08-22,True
+U0725,Customer 725,Kathmandu,54,female,regular,Kitchen & Home|Fashion & Accessories,2023-06-21,True
+U0726,Customer 726,Kathmandu,27,other,new,Traditional Attire|Handicrafts & Art,2023-10-21,False
+U0727,Customer 727,Kathmandu,23,female,power,Handicrafts & Art|Books & Education,2023-08-07,False
+U0728,Customer 728,Pokhara,32,other,new,Daily Groceries|Handicrafts & Art,2023-02-21,False
+U0729,Customer 729,Biratnagar,57,male,new,Kitchen & Home|Fashion & Accessories,2023-04-22,True
+U0730,Customer 730,Pokhara,43,male,new,Fashion & Accessories|Handicrafts & Art,2023-09-02,True
+U0731,Customer 731,Lalitpur,30,male,power,Daily Groceries|Handicrafts & Art,2024-08-26,True
+U0732,Customer 732,Pokhara,28,male,regular,Kitchen & Home|Fashion & Accessories,2024-09-22,True
+U0733,Customer 733,Biratnagar,41,male,new,Traditional Attire|Electronics,2024-05-23,True
+U0734,Customer 734,Biratnagar,22,other,power,Kitchen & Home|Books & Education,2023-06-06,True
+U0735,Customer 735,Bhaktapur,30,female,regular,Fashion & Accessories|Kitchen & Home,2024-11-25,True
+U0736,Customer 736,Biratnagar,55,female,regular,Traditional Attire|Kitchen & Home,2024-12-18,True
+U0737,Customer 737,Pokhara,57,other,power,Daily Groceries|Books & Education,2024-08-07,True
+U0738,Customer 738,Biratnagar,46,male,regular,Handicrafts & Art|Electronics,2024-05-31,False
+U0739,Customer 739,Biratnagar,20,other,power,Kitchen & Home|Electronics,2023-06-26,True
+U0740,Customer 740,Lalitpur,31,female,power,Kitchen & Home|Traditional Attire,2024-10-15,True
+U0741,Customer 741,Pokhara,23,female,new,Kitchen & Home|Handicrafts & Art,2024-03-23,False
+U0742,Customer 742,Dharan,32,other,regular,Traditional Attire|Daily Groceries,2023-09-01,True
+U0743,Customer 743,Biratnagar,20,male,power,Kitchen & Home|Books & Education,2024-10-04,True
+U0744,Customer 744,Biratnagar,55,male,power,Electronics|Kitchen & Home,2024-01-16,True
+U0745,Customer 745,Biratnagar,56,female,new,Daily Groceries|Traditional Attire,2023-08-06,True
+U0746,Customer 746,Pokhara,47,female,regular,Kitchen & Home|Daily Groceries,2024-01-09,True
+U0747,Customer 747,Lalitpur,30,other,power,Electronics|Fashion & Accessories,2023-01-14,False
+U0748,Customer 748,Dharan,42,male,power,Kitchen & Home|Fashion & Accessories,2024-06-22,True
+U0749,Customer 749,Biratnagar,29,male,power,Traditional Attire|Fashion & Accessories,2023-10-31,False
+U0750,Customer 750,Biratnagar,51,female,regular,Handicrafts & Art|Books & Education,2023-08-30,True
+U0751,Customer 751,Dharan,19,female,power,Fashion & Accessories|Books & Education,2024-06-01,True
+U0752,Customer 752,Pokhara,38,male,power,Fashion & Accessories|Books & Education,2023-06-05,True
+U0753,Customer 753,Pokhara,27,male,new,Kitchen & Home|Fashion & Accessories,2023-05-18,False
+U0754,Customer 754,Dharan,36,female,new,Daily Groceries|Books & Education,2024-02-12,True
+U0755,Customer 755,Dharan,20,other,regular,Traditional Attire|Books & Education,2023-07-03,True
+U0756,Customer 756,Butwal,37,female,power,Kitchen & Home|Fashion & Accessories,2024-10-24,False
+U0757,Customer 757,Pokhara,26,male,regular,Handicrafts & Art|Kitchen & Home,2024-06-25,True
+U0758,Customer 758,Butwal,57,other,power,Fashion & Accessories|Electronics,2023-10-17,True
+U0759,Customer 759,Lalitpur,46,other,regular,Kitchen & Home|Daily Groceries,2023-05-25,True
+U0760,Customer 760,Bhaktapur,48,female,new,Books & Education|Fashion & Accessories,2024-08-10,True
+U0761,Customer 761,Bhaktapur,36,male,new,Fashion & Accessories|Daily Groceries,2024-12-01,False
+U0762,Customer 762,Pokhara,19,other,regular,Electronics|Fashion & Accessories,2023-01-17,True
+U0763,Customer 763,Kathmandu,56,female,regular,Fashion & Accessories|Electronics,2023-05-03,True
+U0764,Customer 764,Kathmandu,33,other,regular,Traditional Attire|Books & Education,2023-04-22,True
+U0765,Customer 765,Dharan,25,male,power,Daily Groceries|Kitchen & Home,2024-01-26,True
+U0766,Customer 766,Pokhara,35,male,new,Kitchen & Home|Handicrafts & Art,2024-01-02,True
+U0767,Customer 767,Pokhara,32,male,new,Fashion & Accessories|Handicrafts & Art,2023-03-17,False
+U0768,Customer 768,Biratnagar,26,other,new,Daily Groceries|Traditional Attire,2024-04-23,True
+U0769,Customer 769,Kathmandu,25,other,new,Handicrafts & Art|Books & Education,2023-11-03,True
+U0770,Customer 770,Lalitpur,55,male,regular,Books & Education|Handicrafts & Art,2023-01-31,True
+U0771,Customer 771,Kathmandu,46,other,new,Fashion & Accessories|Daily Groceries,2023-12-05,True
+U0772,Customer 772,Kathmandu,35,male,new,Traditional Attire|Electronics,2023-12-16,True
+U0773,Customer 773,Lalitpur,41,female,power,Electronics|Traditional Attire,2024-04-01,True
+U0774,Customer 774,Biratnagar,40,other,new,Handicrafts & Art|Kitchen & Home,2024-01-22,True
+U0775,Customer 775,Lalitpur,30,female,power,Traditional Attire|Books & Education,2024-09-27,True
+U0776,Customer 776,Kathmandu,43,female,power,Daily Groceries|Traditional Attire,2024-09-24,True
+U0777,Customer 777,Biratnagar,31,other,power,Books & Education|Traditional Attire,2024-10-21,True
+U0778,Customer 778,Biratnagar,30,male,regular,Books & Education|Electronics,2023-05-16,True
+U0779,Customer 779,Lalitpur,39,male,power,Daily Groceries|Kitchen & Home,2024-12-05,True
+U0780,Customer 780,Bhaktapur,57,female,regular,Electronics|Books & Education,2023-02-20,True
+U0781,Customer 781,Biratnagar,43,other,new,Fashion & Accessories|Kitchen & Home,2024-01-10,False
+U0782,Customer 782,Bhaktapur,25,female,new,Electronics|Books & Education,2024-05-03,True
+U0783,Customer 783,Biratnagar,33,other,new,Kitchen & Home|Fashion & Accessories,2024-01-10,True
+U0784,Customer 784,Kathmandu,42,other,regular,Traditional Attire|Daily Groceries,2024-06-05,True
+U0785,Customer 785,Lalitpur,21,male,power,Fashion & Accessories|Handicrafts & Art,2024-08-20,True
+U0786,Customer 786,Bhaktapur,53,male,power,Fashion & Accessories|Books & Education,2023-08-09,False
+U0787,Customer 787,Pokhara,38,female,power,Kitchen & Home|Fashion & Accessories,2023-05-04,True
+U0788,Customer 788,Kathmandu,18,other,regular,Books & Education|Electronics,2024-05-30,True
+U0789,Customer 789,Bhaktapur,19,other,regular,Books & Education|Traditional Attire,2024-09-23,False
+U0790,Customer 790,Pokhara,35,other,regular,Fashion & Accessories|Kitchen & Home,2024-03-16,True
+U0791,Customer 791,Butwal,28,female,regular,Kitchen & Home|Fashion & Accessories,2024-07-07,True
+U0792,Customer 792,Dharan,52,other,new,Kitchen & Home|Books & Education,2023-08-16,True
+U0793,Customer 793,Lalitpur,52,other,new,Fashion & Accessories|Kitchen & Home,2023-09-08,True
+U0794,Customer 794,Bhaktapur,32,other,power,Fashion & Accessories|Handicrafts & Art,2024-03-31,True
+U0795,Customer 795,Butwal,57,female,new,Books & Education|Fashion & Accessories,2024-10-20,False
+U0796,Customer 796,Lalitpur,46,other,power,Kitchen & Home|Traditional Attire,2024-12-05,True
+U0797,Customer 797,Pokhara,46,male,new,Books & Education|Kitchen & Home,2023-11-08,True
+U0798,Customer 798,Butwal,22,female,new,Kitchen & Home|Fashion & Accessories,2024-06-01,True
+U0799,Customer 799,Bhaktapur,57,other,power,Handicrafts & Art|Books & Education,2023-08-18,True
+U0800,Customer 800,Biratnagar,57,other,new,Traditional Attire|Books & Education,2023-01-08,True
+U0801,Customer 801,Biratnagar,51,male,new,Handicrafts & Art|Electronics,2023-01-19,True
+U0802,Customer 802,Dharan,53,male,power,Fashion & Accessories|Electronics,2024-04-08,True
+U0803,Customer 803,Pokhara,19,other,power,Traditional Attire|Fashion & Accessories,2023-06-07,True
+U0804,Customer 804,Kathmandu,34,other,regular,Fashion & Accessories|Kitchen & Home,2024-07-24,False
+U0805,Customer 805,Butwal,37,other,new,Books & Education|Handicrafts & Art,2023-05-01,True
+U0806,Customer 806,Biratnagar,28,other,power,Fashion & Accessories|Electronics,2024-07-21,True
+U0807,Customer 807,Biratnagar,45,other,power,Fashion & Accessories|Books & Education,2024-03-04,True
+U0808,Customer 808,Bhaktapur,21,male,new,Books & Education|Daily Groceries,2023-07-31,True
+U0809,Customer 809,Kathmandu,55,male,new,Handicrafts & Art|Electronics,2023-01-24,False
+U0810,Customer 810,Lalitpur,46,other,power,Traditional Attire|Books & Education,2023-06-25,True
+U0811,Customer 811,Kathmandu,35,other,regular,Handicrafts & Art|Fashion & Accessories,2024-05-28,True
+U0812,Customer 812,Biratnagar,32,other,power,Handicrafts & Art|Electronics,2023-07-05,True
+U0813,Customer 813,Kathmandu,19,other,power,Traditional Attire|Electronics,2023-10-06,True
+U0814,Customer 814,Biratnagar,51,male,regular,Handicrafts & Art|Kitchen & Home,2024-02-25,False
+U0815,Customer 815,Bhaktapur,55,female,power,Books & Education|Fashion & Accessories,2023-11-26,True
+U0816,Customer 816,Butwal,30,female,new,Fashion & Accessories|Daily Groceries,2023-01-17,True
+U0817,Customer 817,Butwal,44,male,regular,Kitchen & Home|Traditional Attire,2024-05-10,True
+U0818,Customer 818,Bhaktapur,51,female,regular,Handicrafts & Art|Electronics,2024-03-25,True
+U0819,Customer 819,Pokhara,55,other,regular,Fashion & Accessories|Kitchen & Home,2024-12-11,True
+U0820,Customer 820,Dharan,29,other,new,Handicrafts & Art|Fashion & Accessories,2023-05-20,False
+U0821,Customer 821,Lalitpur,57,other,power,Daily Groceries|Electronics,2024-02-05,False
+U0822,Customer 822,Bhaktapur,32,other,power,Traditional Attire|Electronics,2023-01-12,True
+U0823,Customer 823,Bhaktapur,21,female,regular,Kitchen & Home|Fashion & Accessories,2023-01-28,True
+U0824,Customer 824,Biratnagar,51,female,regular,Electronics|Fashion & Accessories,2023-09-07,True
+U0825,Customer 825,Pokhara,55,other,new,Handicrafts & Art|Fashion & Accessories,2023-02-08,True
+U0826,Customer 826,Kathmandu,38,female,regular,Fashion & Accessories|Books & Education,2024-08-31,True
+U0827,Customer 827,Lalitpur,22,other,new,Fashion & Accessories|Kitchen & Home,2023-06-13,True
+U0828,Customer 828,Biratnagar,23,male,regular,Traditional Attire|Daily Groceries,2023-11-05,False
+U0829,Customer 829,Lalitpur,22,male,regular,Fashion & Accessories|Kitchen & Home,2023-09-06,True
+U0830,Customer 830,Dharan,30,male,regular,Traditional Attire|Daily Groceries,2024-05-15,True
+U0831,Customer 831,Dharan,21,other,regular,Fashion & Accessories|Handicrafts & Art,2023-03-07,True
+U0832,Customer 832,Lalitpur,27,other,new,Traditional Attire|Handicrafts & Art,2024-05-12,True
+U0833,Customer 833,Lalitpur,32,male,power,Books & Education|Fashion & Accessories,2023-08-06,True
+U0834,Customer 834,Pokhara,39,male,power,Handicrafts & Art|Daily Groceries,2024-10-11,True
+U0835,Customer 835,Pokhara,25,female,new,Kitchen & Home|Electronics,2024-08-11,True
+U0836,Customer 836,Pokhara,50,other,power,Books & Education|Fashion & Accessories,2023-04-20,True
+U0837,Customer 837,Dharan,26,other,new,Traditional Attire|Electronics,2024-02-18,True
+U0838,Customer 838,Biratnagar,22,male,power,Fashion & Accessories|Handicrafts & Art,2023-10-25,True
+U0839,Customer 839,Kathmandu,49,female,regular,Books & Education|Handicrafts & Art,2023-07-17,True
+U0840,Customer 840,Kathmandu,35,female,power,Kitchen & Home|Handicrafts & Art,2023-12-07,True
+U0841,Customer 841,Butwal,49,male,new,Fashion & Accessories|Electronics,2024-02-14,False
+U0842,Customer 842,Biratnagar,49,female,new,Fashion & Accessories|Books & Education,2024-02-27,True
+U0843,Customer 843,Biratnagar,56,male,regular,Traditional Attire|Handicrafts & Art,2023-01-18,True
+U0844,Customer 844,Pokhara,49,other,power,Fashion & Accessories|Daily Groceries,2024-10-12,True
+U0845,Customer 845,Bhaktapur,25,other,power,Kitchen & Home|Fashion & Accessories,2024-02-28,True
+U0846,Customer 846,Bhaktapur,31,other,regular,Traditional Attire|Kitchen & Home,2023-08-27,True
+U0847,Customer 847,Dharan,34,male,regular,Electronics|Fashion & Accessories,2024-02-12,True
+U0848,Customer 848,Kathmandu,33,female,new,Traditional Attire|Books & Education,2024-10-13,False
+U0849,Customer 849,Dharan,45,other,new,Kitchen & Home|Fashion & Accessories,2024-11-04,True
+U0850,Customer 850,Butwal,48,other,regular,Traditional Attire|Daily Groceries,2023-07-24,True
+U0851,Customer 851,Dharan,27,female,power,Electronics|Fashion & Accessories,2023-04-13,True
+U0852,Customer 852,Biratnagar,42,other,power,Handicrafts & Art|Kitchen & Home,2023-04-27,True
+U0853,Customer 853,Butwal,23,female,new,Kitchen & Home|Electronics,2023-03-23,True
+U0854,Customer 854,Dharan,25,other,new,Electronics|Traditional Attire,2023-08-26,False
+U0855,Customer 855,Kathmandu,31,male,power,Kitchen & Home|Fashion & Accessories,2023-11-22,True
+U0856,Customer 856,Bhaktapur,47,other,regular,Books & Education|Daily Groceries,2024-11-14,True
+U0857,Customer 857,Bhaktapur,36,other,power,Traditional Attire|Daily Groceries,2024-02-07,True
+U0858,Customer 858,Kathmandu,24,female,power,Fashion & Accessories|Books & Education,2023-03-04,True
+U0859,Customer 859,Bhaktapur,29,other,power,Traditional Attire|Handicrafts & Art,2024-08-23,True
+U0860,Customer 860,Butwal,32,male,regular,Handicrafts & Art|Traditional Attire,2024-06-16,True
+U0861,Customer 861,Pokhara,57,other,new,Traditional Attire|Books & Education,2023-07-13,False
+U0862,Customer 862,Kathmandu,19,other,regular,Fashion & Accessories|Handicrafts & Art,2023-06-09,True
+U0863,Customer 863,Kathmandu,51,female,power,Books & Education|Traditional Attire,2023-03-07,True
+U0864,Customer 864,Butwal,56,female,regular,Electronics|Books & Education,2023-03-01,True
+U0865,Customer 865,Pokhara,36,male,new,Fashion & Accessories|Traditional Attire,2023-02-05,True
+U0866,Customer 866,Dharan,48,other,regular,Daily Groceries|Electronics,2023-08-05,False
+U0867,Customer 867,Biratnagar,36,other,regular,Handicrafts & Art|Daily Groceries,2024-03-31,True
+U0868,Customer 868,Butwal,21,other,power,Daily Groceries|Electronics,2023-01-28,True
+U0869,Customer 869,Kathmandu,27,other,new,Handicrafts & Art|Fashion & Accessories,2024-07-16,False
+U0870,Customer 870,Pokhara,26,female,regular,Handicrafts & Art|Traditional Attire,2024-06-05,True
+U0871,Customer 871,Pokhara,36,other,power,Books & Education|Handicrafts & Art,2024-02-07,False
+U0872,Customer 872,Lalitpur,42,male,new,Handicrafts & Art|Daily Groceries,2024-10-14,True
+U0873,Customer 873,Biratnagar,56,female,power,Fashion & Accessories|Daily Groceries,2024-08-26,True
+U0874,Customer 874,Biratnagar,35,other,new,Electronics|Books & Education,2023-03-22,True
+U0875,Customer 875,Kathmandu,39,male,power,Kitchen & Home|Books & Education,2023-10-04,True
+U0876,Customer 876,Pokhara,23,other,new,Kitchen & Home|Fashion & Accessories,2024-05-20,True
+U0877,Customer 877,Dharan,18,male,power,Traditional Attire|Fashion & Accessories,2024-01-06,True
+U0878,Customer 878,Pokhara,54,other,regular,Fashion & Accessories|Books & Education,2023-06-29,False
+U0879,Customer 879,Dharan,20,other,power,Daily Groceries|Fashion & Accessories,2023-01-19,True
+U0880,Customer 880,Bhaktapur,45,female,regular,Handicrafts & Art|Kitchen & Home,2024-10-18,True
+U0881,Customer 881,Biratnagar,39,female,power,Books & Education|Kitchen & Home,2023-03-20,True
+U0882,Customer 882,Lalitpur,54,female,power,Handicrafts & Art|Traditional Attire,2023-11-07,True
+U0883,Customer 883,Butwal,45,male,new,Traditional Attire|Fashion & Accessories,2024-10-29,True
+U0884,Customer 884,Kathmandu,42,male,regular,Electronics|Fashion & Accessories,2024-04-12,True
+U0885,Customer 885,Pokhara,43,female,regular,Books & Education|Electronics,2023-04-27,True
+U0886,Customer 886,Biratnagar,24,female,regular,Traditional Attire|Books & Education,2024-09-22,True
+U0887,Customer 887,Pokhara,37,other,power,Traditional Attire|Books & Education,2023-07-03,True
+U0888,Customer 888,Bhaktapur,44,male,new,Electronics|Daily Groceries,2023-09-29,True
+U0889,Customer 889,Dharan,40,other,regular,Daily Groceries|Electronics,2024-10-17,True
+U0890,Customer 890,Butwal,57,female,new,Daily Groceries|Electronics,2023-09-08,True
+U0891,Customer 891,Bhaktapur,41,male,new,Handicrafts & Art|Electronics,2023-12-24,True
+U0892,Customer 892,Dharan,51,other,power,Electronics|Fashion & Accessories,2024-09-13,True
+U0893,Customer 893,Biratnagar,35,other,new,Daily Groceries|Kitchen & Home,2023-03-19,True
+U0894,Customer 894,Dharan,28,other,power,Electronics|Traditional Attire,2023-10-17,False
+U0895,Customer 895,Pokhara,20,female,regular,Handicrafts & Art|Fashion & Accessories,2023-06-21,True
+U0896,Customer 896,Lalitpur,37,female,power,Daily Groceries|Fashion & Accessories,2023-07-12,True
+U0897,Customer 897,Dharan,21,female,power,Fashion & Accessories|Electronics,2024-04-27,True
+U0898,Customer 898,Dharan,46,male,new,Daily Groceries|Kitchen & Home,2024-06-05,True
+U0899,Customer 899,Bhaktapur,55,male,power,Kitchen & Home|Electronics,2024-01-27,True
+U0900,Customer 900,Biratnagar,50,other,power,Electronics|Books & Education,2024-12-03,False
+U0901,Customer 901,Lalitpur,38,other,new,Books & Education|Handicrafts & Art,2023-10-14,True
+U0902,Customer 902,Bhaktapur,52,male,new,Electronics|Kitchen & Home,2024-03-25,True
+U0903,Customer 903,Kathmandu,38,other,new,Fashion & Accessories|Traditional Attire,2024-10-17,True
+U0904,Customer 904,Butwal,29,female,new,Traditional Attire|Handicrafts & Art,2023-09-10,True
+U0905,Customer 905,Butwal,38,male,new,Fashion & Accessories|Electronics,2024-11-19,False
+U0906,Customer 906,Butwal,56,other,new,Kitchen & Home|Fashion & Accessories,2024-03-13,True
+U0907,Customer 907,Butwal,53,other,power,Kitchen & Home|Books & Education,2023-05-03,True
+U0908,Customer 908,Kathmandu,25,male,new,Daily Groceries|Fashion & Accessories,2024-10-08,True
+U0909,Customer 909,Bhaktapur,41,other,new,Daily Groceries|Handicrafts & Art,2024-08-22,False
+U0910,Customer 910,Dharan,25,other,power,Fashion & Accessories|Kitchen & Home,2023-11-28,True
+U0911,Customer 911,Dharan,38,other,power,Electronics|Handicrafts & Art,2024-11-24,True
+U0912,Customer 912,Kathmandu,37,other,regular,Fashion & Accessories|Daily Groceries,2023-07-15,True
+U0913,Customer 913,Bhaktapur,27,other,new,Handicrafts & Art|Fashion & Accessories,2024-06-11,True
+U0914,Customer 914,Lalitpur,22,female,power,Handicrafts & Art|Traditional Attire,2024-08-27,True
+U0915,Customer 915,Biratnagar,32,male,regular,Electronics|Traditional Attire,2024-05-07,True
+U0916,Customer 916,Kathmandu,37,male,power,Handicrafts & Art|Electronics,2023-01-15,True
+U0917,Customer 917,Bhaktapur,19,female,regular,Handicrafts & Art|Daily Groceries,2023-09-09,True
+U0918,Customer 918,Lalitpur,51,male,new,Electronics|Kitchen & Home,2023-01-19,True
+U0919,Customer 919,Dharan,45,other,regular,Traditional Attire|Fashion & Accessories,2024-04-16,False
+U0920,Customer 920,Dharan,27,other,new,Handicrafts & Art|Electronics,2023-06-14,True
+U0921,Customer 921,Bhaktapur,26,male,new,Kitchen & Home|Daily Groceries,2023-06-25,True
+U0922,Customer 922,Butwal,46,male,regular,Electronics|Traditional Attire,2023-01-29,True
+U0923,Customer 923,Kathmandu,44,female,regular,Electronics|Books & Education,2023-10-06,True
+U0924,Customer 924,Biratnagar,21,male,new,Fashion & Accessories|Handicrafts & Art,2024-06-02,True
+U0925,Customer 925,Biratnagar,51,female,new,Traditional Attire|Kitchen & Home,2024-04-02,True
+U0926,Customer 926,Pokhara,54,male,new,Daily Groceries|Books & Education,2024-05-23,True
+U0927,Customer 927,Pokhara,24,other,regular,Kitchen & Home|Traditional Attire,2024-02-02,False
+U0928,Customer 928,Biratnagar,39,male,regular,Handicrafts & Art|Kitchen & Home,2024-05-12,True
+U0929,Customer 929,Pokhara,45,other,regular,Electronics|Kitchen & Home,2023-07-05,True
+U0930,Customer 930,Dharan,43,male,new,Traditional Attire|Kitchen & Home,2024-06-04,True
+U0931,Customer 931,Dharan,51,male,new,Handicrafts & Art|Electronics,2023-03-22,True
+U0932,Customer 932,Pokhara,22,female,new,Electronics|Fashion & Accessories,2023-09-26,True
+U0933,Customer 933,Pokhara,41,male,regular,Electronics|Traditional Attire,2024-01-13,True
+U0934,Customer 934,Kathmandu,25,female,power,Fashion & Accessories|Electronics,2023-04-21,True
+U0935,Customer 935,Dharan,18,male,new,Handicrafts & Art|Kitchen & Home,2024-07-22,False
+U0936,Customer 936,Butwal,31,male,power,Kitchen & Home|Books & Education,2023-11-14,True
+U0937,Customer 937,Lalitpur,48,male,power,Fashion & Accessories|Handicrafts & Art,2024-11-29,True
+U0938,Customer 938,Bhaktapur,22,male,new,Fashion & Accessories|Books & Education,2024-11-19,True
+U0939,Customer 939,Bhaktapur,32,female,new,Traditional Attire|Books & Education,2023-12-01,True
+U0940,Customer 940,Butwal,45,female,power,Handicrafts & Art|Electronics,2024-12-09,True
+U0941,Customer 941,Dharan,23,male,regular,Handicrafts & Art|Traditional Attire,2024-07-08,True
+U0942,Customer 942,Kathmandu,19,male,regular,Daily Groceries|Fashion & Accessories,2024-07-28,True
+U0943,Customer 943,Biratnagar,26,female,regular,Electronics|Books & Education,2023-08-02,True
+U0944,Customer 944,Pokhara,33,other,power,Handicrafts & Art|Daily Groceries,2023-06-07,False
+U0945,Customer 945,Lalitpur,47,female,regular,Handicrafts & Art|Books & Education,2023-10-30,False
+U0946,Customer 946,Dharan,55,male,new,Fashion & Accessories|Handicrafts & Art,2023-11-17,True
+U0947,Customer 947,Bhaktapur,35,female,power,Kitchen & Home|Fashion & Accessories,2023-09-08,True
+U0948,Customer 948,Butwal,49,female,new,Fashion & Accessories|Daily Groceries,2023-12-18,True
+U0949,Customer 949,Dharan,53,other,new,Books & Education|Daily Groceries,2023-10-28,True
+U0950,Customer 950,Pokhara,48,male,new,Handicrafts & Art|Traditional Attire,2024-04-24,True
+U0951,Customer 951,Pokhara,31,male,new,Electronics|Handicrafts & Art,2024-09-29,False
+U0952,Customer 952,Kathmandu,52,female,regular,Daily Groceries|Handicrafts & Art,2023-08-05,True
+U0953,Customer 953,Lalitpur,21,other,power,Kitchen & Home|Daily Groceries,2023-06-19,False
+U0954,Customer 954,Lalitpur,47,male,regular,Handicrafts & Art|Books & Education,2024-04-07,False
+U0955,Customer 955,Biratnagar,51,other,new,Traditional Attire|Daily Groceries,2024-03-02,True
+U0956,Customer 956,Lalitpur,54,male,regular,Electronics|Traditional Attire,2024-04-23,True
+U0957,Customer 957,Biratnagar,49,female,regular,Electronics|Fashion & Accessories,2024-12-11,True
+U0958,Customer 958,Kathmandu,30,female,new,Traditional Attire|Handicrafts & Art,2023-06-15,True
+U0959,Customer 959,Lalitpur,35,female,regular,Fashion & Accessories|Books & Education,2023-04-17,True
+U0960,Customer 960,Butwal,55,female,regular,Kitchen & Home|Electronics,2024-04-26,True
+U0961,Customer 961,Biratnagar,48,male,regular,Handicrafts & Art|Electronics,2023-08-30,True
+U0962,Customer 962,Kathmandu,18,other,new,Electronics|Traditional Attire,2023-07-07,False
+U0963,Customer 963,Bhaktapur,56,female,regular,Fashion & Accessories|Daily Groceries,2024-05-20,True
+U0964,Customer 964,Bhaktapur,40,male,power,Electronics|Fashion & Accessories,2024-11-03,True
+U0965,Customer 965,Butwal,34,other,regular,Books & Education|Daily Groceries,2023-08-14,True
+U0966,Customer 966,Lalitpur,48,female,power,Handicrafts & Art|Fashion & Accessories,2024-06-01,False
+U0967,Customer 967,Kathmandu,47,female,power,Kitchen & Home|Traditional Attire,2023-10-23,True
+U0968,Customer 968,Kathmandu,30,female,power,Fashion & Accessories|Daily Groceries,2023-05-15,True
+U0969,Customer 969,Pokhara,20,other,regular,Fashion & Accessories|Handicrafts & Art,2023-06-27,True
+U0970,Customer 970,Butwal,30,other,regular,Traditional Attire|Books & Education,2023-12-29,True
+U0971,Customer 971,Biratnagar,37,female,power,Electronics|Fashion & Accessories,2024-06-27,True
+U0972,Customer 972,Kathmandu,52,female,new,Fashion & Accessories|Handicrafts & Art,2023-10-17,True
+U0973,Customer 973,Dharan,41,male,power,Kitchen & Home|Daily Groceries,2023-08-22,True
+U0974,Customer 974,Biratnagar,56,other,power,Electronics|Books & Education,2024-07-15,True
+U0975,Customer 975,Kathmandu,54,male,regular,Traditional Attire|Kitchen & Home,2023-03-30,True
+U0976,Customer 976,Bhaktapur,27,female,new,Daily Groceries|Books & Education,2023-08-29,True
+U0977,Customer 977,Dharan,37,female,regular,Daily Groceries|Electronics,2024-10-26,True
+U0978,Customer 978,Kathmandu,32,other,new,Traditional Attire|Daily Groceries,2024-01-10,True
+U0979,Customer 979,Biratnagar,31,other,power,Fashion & Accessories|Kitchen & Home,2024-09-17,True
+U0980,Customer 980,Kathmandu,32,female,regular,Books & Education|Daily Groceries,2024-06-20,True
+U0981,Customer 981,Biratnagar,48,other,regular,Books & Education|Daily Groceries,2024-01-28,True
+U0982,Customer 982,Lalitpur,55,female,new,Kitchen & Home|Daily Groceries,2024-07-18,False
+U0983,Customer 983,Butwal,20,female,power,Traditional Attire|Handicrafts & Art,2024-03-31,True
+U0984,Customer 984,Bhaktapur,47,other,regular,Fashion & Accessories|Traditional Attire,2024-08-17,True
+U0985,Customer 985,Dharan,45,other,regular,Daily Groceries|Fashion & Accessories,2023-10-14,False
+U0986,Customer 986,Lalitpur,35,other,regular,Electronics|Handicrafts & Art,2024-11-21,False
+U0987,Customer 987,Pokhara,53,female,new,Daily Groceries|Traditional Attire,2024-02-18,True
+U0988,Customer 988,Lalitpur,33,female,power,Daily Groceries|Handicrafts & Art,2023-01-29,True
+U0989,Customer 989,Pokhara,19,male,new,Handicrafts & Art|Electronics,2024-07-29,True
+U0990,Customer 990,Bhaktapur,52,female,power,Fashion & Accessories|Handicrafts & Art,2024-01-01,False
+U0991,Customer 991,Dharan,48,male,power,Traditional Attire|Books & Education,2023-12-22,False
+U0992,Customer 992,Lalitpur,34,female,power,Daily Groceries|Electronics,2024-03-19,True
+U0993,Customer 993,Dharan,40,female,regular,Daily Groceries|Electronics,2024-03-24,True
+U0994,Customer 994,Lalitpur,49,female,power,Daily Groceries|Electronics,2024-04-17,True
+U0995,Customer 995,Bhaktapur,20,male,new,Books & Education|Traditional Attire,2023-05-01,False
+U0996,Customer 996,Pokhara,32,male,new,Fashion & Accessories|Electronics,2023-08-15,True
+U0997,Customer 997,Bhaktapur,24,other,new,Daily Groceries|Fashion & Accessories,2024-06-27,True
+U0998,Customer 998,Dharan,57,male,power,Fashion & Accessories|Books & Education,2023-07-16,True
+U0999,Customer 999,Dharan,24,other,power,Electronics|Fashion & Accessories,2023-02-17,True
+U1000,Customer 1000,Pokhara,27,male,regular,Handicrafts & Art|Kitchen & Home,2023-11-27,True
+U1001,Customer 1001,Dharan,50,male,new,Handicrafts & Art|Daily Groceries,2024-05-21,True
+U1002,Customer 1002,Dharan,52,other,regular,Kitchen & Home|Handicrafts & Art,2023-06-17,True
+U1003,Customer 1003,Biratnagar,22,female,regular,Electronics|Handicrafts & Art,2024-03-02,True
+U1004,Customer 1004,Pokhara,57,female,new,Handicrafts & Art|Kitchen & Home,2023-01-10,True
+U1005,Customer 1005,Dharan,29,female,power,Daily Groceries|Kitchen & Home,2024-05-20,False
+U1006,Customer 1006,Lalitpur,39,female,new,Electronics|Traditional Attire,2024-12-17,True
+U1007,Customer 1007,Dharan,18,other,new,Books & Education|Kitchen & Home,2023-07-24,True
+U1008,Customer 1008,Kathmandu,18,male,new,Traditional Attire|Handicrafts & Art,2023-12-29,True
+U1009,Customer 1009,Biratnagar,57,female,power,Kitchen & Home|Fashion & Accessories,2024-10-01,True
+U1010,Customer 1010,Dharan,23,female,power,Daily Groceries|Handicrafts & Art,2024-07-09,True
+U1011,Customer 1011,Biratnagar,22,female,new,Traditional Attire|Kitchen & Home,2023-01-08,True
+U1012,Customer 1012,Bhaktapur,34,other,new,Books & Education|Traditional Attire,2023-04-22,False
+U1013,Customer 1013,Bhaktapur,37,female,regular,Handicrafts & Art|Books & Education,2024-04-02,True
+U1014,Customer 1014,Butwal,46,female,new,Handicrafts & Art|Fashion & Accessories,2024-10-27,True
+U1015,Customer 1015,Butwal,42,other,regular,Books & Education|Traditional Attire,2023-12-13,True
+U1016,Customer 1016,Kathmandu,33,female,new,Books & Education|Fashion & Accessories,2023-12-20,True
+U1017,Customer 1017,Biratnagar,28,female,regular,Kitchen & Home|Daily Groceries,2023-08-03,False
+U1018,Customer 1018,Pokhara,35,female,new,Electronics|Kitchen & Home,2024-12-04,False
+U1019,Customer 1019,Lalitpur,46,other,power,Daily Groceries|Fashion & Accessories,2024-03-03,True
+U1020,Customer 1020,Bhaktapur,41,female,new,Traditional Attire|Books & Education,2024-12-09,True
+U1021,Customer 1021,Kathmandu,43,other,regular,Daily Groceries|Electronics,2024-01-15,True
+U1022,Customer 1022,Pokhara,42,female,new,Handicrafts & Art|Traditional Attire,2023-09-15,False
+U1023,Customer 1023,Pokhara,19,male,power,Kitchen & Home|Books & Education,2024-02-28,True
+U1024,Customer 1024,Dharan,44,male,power,Electronics|Handicrafts & Art,2023-07-09,False
+U1025,Customer 1025,Biratnagar,52,female,new,Fashion & Accessories|Traditional Attire,2024-09-19,True
+U1026,Customer 1026,Lalitpur,34,male,new,Handicrafts & Art|Traditional Attire,2024-01-23,True
+U1027,Customer 1027,Kathmandu,48,male,new,Daily Groceries|Electronics,2023-08-01,False
+U1028,Customer 1028,Pokhara,51,female,regular,Traditional Attire|Daily Groceries,2023-05-19,True
+U1029,Customer 1029,Butwal,27,female,power,Daily Groceries|Electronics,2024-05-23,True
+U1030,Customer 1030,Dharan,48,other,regular,Kitchen & Home|Handicrafts & Art,2024-03-12,False
+U1031,Customer 1031,Lalitpur,48,female,regular,Daily Groceries|Electronics,2023-10-11,True
+U1032,Customer 1032,Lalitpur,40,male,power,Kitchen & Home|Fashion & Accessories,2024-09-25,True
+U1033,Customer 1033,Bhaktapur,55,female,new,Books & Education|Traditional Attire,2023-11-18,True
+U1034,Customer 1034,Pokhara,42,male,new,Books & Education|Fashion & Accessories,2023-02-09,True
+U1035,Customer 1035,Dharan,30,male,new,Kitchen & Home|Books & Education,2023-03-23,False
+U1036,Customer 1036,Biratnagar,51,other,regular,Traditional Attire|Daily Groceries,2024-08-25,False
+U1037,Customer 1037,Lalitpur,35,female,new,Handicrafts & Art|Traditional Attire,2023-07-16,True
+U1038,Customer 1038,Lalitpur,25,male,regular,Books & Education|Kitchen & Home,2024-08-05,True
+U1039,Customer 1039,Dharan,33,male,power,Kitchen & Home|Books & Education,2024-01-07,True
+U1040,Customer 1040,Lalitpur,50,female,power,Books & Education|Fashion & Accessories,2024-10-28,True
+U1041,Customer 1041,Biratnagar,50,other,regular,Handicrafts & Art|Kitchen & Home,2024-12-12,True
+U1042,Customer 1042,Biratnagar,38,other,power,Daily Groceries|Books & Education,2024-04-13,True
+U1043,Customer 1043,Biratnagar,40,female,power,Books & Education|Handicrafts & Art,2024-09-23,True
+U1044,Customer 1044,Butwal,42,other,power,Fashion & Accessories|Kitchen & Home,2023-10-03,True
+U1045,Customer 1045,Pokhara,49,other,new,Books & Education|Fashion & Accessories,2024-06-07,True
+U1046,Customer 1046,Kathmandu,32,female,new,Handicrafts & Art|Electronics,2024-12-08,True
+U1047,Customer 1047,Biratnagar,22,female,new,Electronics|Daily Groceries,2023-04-01,True
+U1048,Customer 1048,Lalitpur,52,female,regular,Traditional Attire|Electronics,2023-08-08,True
+U1049,Customer 1049,Bhaktapur,21,other,regular,Kitchen & Home|Handicrafts & Art,2024-03-22,True
+U1050,Customer 1050,Bhaktapur,43,female,new,Handicrafts & Art|Books & Education,2024-01-06,True
+U1051,Customer 1051,Kathmandu,50,other,power,Fashion & Accessories|Handicrafts & Art,2024-01-02,False
+U1052,Customer 1052,Dharan,48,female,power,Handicrafts & Art|Kitchen & Home,2024-08-12,False
+U1053,Customer 1053,Kathmandu,38,other,new,Kitchen & Home|Electronics,2023-08-04,True
+U1054,Customer 1054,Kathmandu,51,male,power,Fashion & Accessories|Daily Groceries,2024-06-26,True
+U1055,Customer 1055,Kathmandu,36,female,regular,Books & Education|Handicrafts & Art,2023-05-15,True
+U1056,Customer 1056,Pokhara,31,female,new,Handicrafts & Art|Traditional Attire,2024-01-27,True
+U1057,Customer 1057,Pokhara,20,female,regular,Daily Groceries|Kitchen & Home,2023-03-18,False
+U1058,Customer 1058,Dharan,53,other,power,Fashion & Accessories|Handicrafts & Art,2024-02-03,False
+U1059,Customer 1059,Biratnagar,21,other,regular,Electronics|Kitchen & Home,2024-12-07,True
+U1060,Customer 1060,Dharan,42,female,regular,Kitchen & Home|Fashion & Accessories,2024-08-24,True
+U1061,Customer 1061,Kathmandu,20,other,new,Traditional Attire|Handicrafts & Art,2023-09-25,True
+U1062,Customer 1062,Butwal,57,female,new,Daily Groceries|Handicrafts & Art,2024-02-11,True
+U1063,Customer 1063,Dharan,40,male,power,Kitchen & Home|Books & Education,2024-04-06,True
+U1064,Customer 1064,Butwal,52,other,regular,Fashion & Accessories|Electronics,2024-12-16,True
+U1065,Customer 1065,Biratnagar,18,female,regular,Fashion & Accessories|Handicrafts & Art,2023-04-21,True
+U1066,Customer 1066,Biratnagar,26,female,power,Traditional Attire|Daily Groceries,2023-10-24,True
+U1067,Customer 1067,Butwal,24,female,new,Handicrafts & Art|Kitchen & Home,2024-06-06,True
+U1068,Customer 1068,Bhaktapur,47,other,power,Kitchen & Home|Handicrafts & Art,2024-06-21,True
+U1069,Customer 1069,Bhaktapur,22,other,regular,Daily Groceries|Traditional Attire,2024-09-05,False
+U1070,Customer 1070,Dharan,45,other,regular,Kitchen & Home|Electronics,2024-11-08,True
+U1071,Customer 1071,Pokhara,47,female,regular,Books & Education|Kitchen & Home,2023-10-06,False
+U1072,Customer 1072,Pokhara,20,male,new,Fashion & Accessories|Kitchen & Home,2023-06-10,True
+U1073,Customer 1073,Lalitpur,18,other,regular,Traditional Attire|Books & Education,2023-06-19,True
+U1074,Customer 1074,Lalitpur,22,female,power,Traditional Attire|Handicrafts & Art,2024-03-19,True
+U1075,Customer 1075,Pokhara,51,other,new,Traditional Attire|Books & Education,2023-04-16,False
+U1076,Customer 1076,Pokhara,46,other,new,Books & Education|Electronics,2024-10-26,True
+U1077,Customer 1077,Pokhara,26,male,new,Fashion & Accessories|Traditional Attire,2024-03-13,True
+U1078,Customer 1078,Kathmandu,55,other,regular,Daily Groceries|Books & Education,2024-05-30,True
+U1079,Customer 1079,Lalitpur,54,female,regular,Traditional Attire|Books & Education,2024-06-18,False
+U1080,Customer 1080,Bhaktapur,54,male,regular,Traditional Attire|Electronics,2023-05-16,True
+U1081,Customer 1081,Lalitpur,50,male,power,Daily Groceries|Handicrafts & Art,2024-08-31,True
+U1082,Customer 1082,Dharan,22,other,new,Electronics|Handicrafts & Art,2023-10-05,True
+U1083,Customer 1083,Dharan,42,other,new,Electronics|Kitchen & Home,2023-05-06,True
+U1084,Customer 1084,Kathmandu,24,other,regular,Daily Groceries|Handicrafts & Art,2024-07-15,True
+U1085,Customer 1085,Bhaktapur,36,female,regular,Kitchen & Home|Daily Groceries,2023-03-01,True
+U1086,Customer 1086,Dharan,41,male,new,Handicrafts & Art|Books & Education,2024-11-15,True
+U1087,Customer 1087,Dharan,49,female,new,Fashion & Accessories|Traditional Attire,2024-03-24,True
+U1088,Customer 1088,Dharan,32,female,power,Books & Education|Fashion & Accessories,2023-05-10,True
+U1089,Customer 1089,Butwal,26,other,power,Handicrafts & Art|Daily Groceries,2024-09-14,False
+U1090,Customer 1090,Bhaktapur,35,male,regular,Fashion & Accessories|Daily Groceries,2023-07-30,True
+U1091,Customer 1091,Lalitpur,41,male,regular,Books & Education|Handicrafts & Art,2024-07-30,False
+U1092,Customer 1092,Kathmandu,43,other,power,Daily Groceries|Kitchen & Home,2023-08-10,True
+U1093,Customer 1093,Pokhara,21,other,power,Kitchen & Home|Handicrafts & Art,2024-08-11,False
+U1094,Customer 1094,Butwal,41,other,regular,Traditional Attire|Handicrafts & Art,2024-08-26,True
+U1095,Customer 1095,Pokhara,57,male,power,Traditional Attire|Books & Education,2023-04-13,True
+U1096,Customer 1096,Biratnagar,28,female,regular,Books & Education|Traditional Attire,2024-11-21,True
+U1097,Customer 1097,Lalitpur,25,female,new,Electronics|Handicrafts & Art,2023-11-16,True
+U1098,Customer 1098,Lalitpur,19,male,new,Electronics|Daily Groceries,2024-04-20,True
+U1099,Customer 1099,Dharan,19,male,regular,Traditional Attire|Handicrafts & Art,2023-08-28,True
+U1100,Customer 1100,Bhaktapur,21,male,power,Kitchen & Home|Electronics,2024-10-04,True
+U1101,Customer 1101,Butwal,27,male,new,Handicrafts & Art|Traditional Attire,2024-01-22,True
+U1102,Customer 1102,Biratnagar,38,male,power,Electronics|Books & Education,2023-09-27,True
+U1103,Customer 1103,Biratnagar,38,male,power,Fashion & Accessories|Handicrafts & Art,2023-01-28,True
+U1104,Customer 1104,Lalitpur,55,male,new,Books & Education|Daily Groceries,2023-07-01,True
+U1105,Customer 1105,Butwal,27,male,regular,Fashion & Accessories|Kitchen & Home,2023-12-05,False
+U1106,Customer 1106,Butwal,55,other,new,Fashion & Accessories|Traditional Attire,2023-03-02,False
+U1107,Customer 1107,Dharan,48,other,new,Fashion & Accessories|Handicrafts & Art,2023-10-26,True
+U1108,Customer 1108,Lalitpur,53,male,new,Handicrafts & Art|Traditional Attire,2024-07-02,True
+U1109,Customer 1109,Bhaktapur,56,female,new,Daily Groceries|Kitchen & Home,2024-02-28,True
+U1110,Customer 1110,Dharan,32,female,regular,Kitchen & Home|Books & Education,2023-07-28,True
+U1111,Customer 1111,Dharan,34,other,regular,Kitchen & Home|Books & Education,2024-02-10,True
+U1112,Customer 1112,Pokhara,31,other,new,Traditional Attire|Books & Education,2023-07-25,True
+U1113,Customer 1113,Pokhara,43,male,regular,Kitchen & Home|Books & Education,2024-09-01,False
+U1114,Customer 1114,Lalitpur,47,other,regular,Traditional Attire|Electronics,2023-12-02,False
+U1115,Customer 1115,Dharan,52,male,new,Handicrafts & Art|Fashion & Accessories,2023-08-16,True
+U1116,Customer 1116,Kathmandu,43,other,new,Electronics|Kitchen & Home,2024-01-25,True
+U1117,Customer 1117,Dharan,28,female,regular,Kitchen & Home|Handicrafts & Art,2024-02-29,True
+U1118,Customer 1118,Butwal,36,male,new,Daily Groceries|Traditional Attire,2024-12-20,False
+U1119,Customer 1119,Bhaktapur,43,male,regular,Books & Education|Electronics,2024-10-16,True
+U1120,Customer 1120,Pokhara,41,female,power,Handicrafts & Art|Traditional Attire,2023-07-30,False
+U1121,Customer 1121,Lalitpur,21,other,new,Kitchen & Home|Electronics,2023-08-03,True
+U1122,Customer 1122,Kathmandu,36,male,regular,Traditional Attire|Handicrafts & Art,2023-03-14,True
+U1123,Customer 1123,Bhaktapur,36,other,regular,Traditional Attire|Electronics,2023-12-20,True
+U1124,Customer 1124,Butwal,38,female,power,Books & Education|Kitchen & Home,2024-01-07,True
+U1125,Customer 1125,Bhaktapur,35,female,new,Electronics|Handicrafts & Art,2023-05-25,True
+U1126,Customer 1126,Bhaktapur,18,male,new,Kitchen & Home|Electronics,2024-03-10,True
+U1127,Customer 1127,Biratnagar,22,male,regular,Handicrafts & Art|Electronics,2023-10-20,False
+U1128,Customer 1128,Bhaktapur,53,female,power,Daily Groceries|Fashion & Accessories,2023-07-23,True
+U1129,Customer 1129,Dharan,26,other,regular,Kitchen & Home|Electronics,2024-07-03,True
+U1130,Customer 1130,Butwal,33,other,new,Books & Education|Traditional Attire,2024-06-10,True
+U1131,Customer 1131,Dharan,24,other,power,Traditional Attire|Fashion & Accessories,2024-04-22,True
+U1132,Customer 1132,Dharan,21,other,power,Handicrafts & Art|Electronics,2023-11-04,True
+U1133,Customer 1133,Dharan,47,male,new,Books & Education|Fashion & Accessories,2023-08-18,True
+U1134,Customer 1134,Pokhara,24,male,regular,Handicrafts & Art|Kitchen & Home,2024-09-06,True
+U1135,Customer 1135,Biratnagar,56,male,power,Traditional Attire|Fashion & Accessories,2024-04-16,True
+U1136,Customer 1136,Biratnagar,49,female,power,Fashion & Accessories|Traditional Attire,2023-10-03,True
+U1137,Customer 1137,Butwal,43,female,new,Kitchen & Home|Fashion & Accessories,2024-11-19,True
+U1138,Customer 1138,Pokhara,52,male,power,Handicrafts & Art|Fashion & Accessories,2023-06-20,False
+U1139,Customer 1139,Butwal,50,male,new,Daily Groceries|Handicrafts & Art,2023-07-23,True
+U1140,Customer 1140,Pokhara,41,other,power,Electronics|Handicrafts & Art,2024-08-31,True
+U1141,Customer 1141,Bhaktapur,29,male,new,Traditional Attire|Electronics,2024-06-12,True
+U1142,Customer 1142,Butwal,43,female,power,Electronics|Books & Education,2024-10-24,True
+U1143,Customer 1143,Biratnagar,21,male,regular,Kitchen & Home|Fashion & Accessories,2023-04-24,True
+U1144,Customer 1144,Bhaktapur,30,other,regular,Electronics|Books & Education,2024-11-21,False
+U1145,Customer 1145,Kathmandu,55,female,regular,Daily Groceries|Electronics,2024-10-20,False
+U1146,Customer 1146,Pokhara,42,other,power,Kitchen & Home|Electronics,2024-02-08,True
+U1147,Customer 1147,Biratnagar,34,male,regular,Handicrafts & Art|Daily Groceries,2024-11-26,True
+U1148,Customer 1148,Dharan,52,other,regular,Books & Education|Fashion & Accessories,2023-05-03,True
+U1149,Customer 1149,Dharan,36,other,new,Fashion & Accessories|Electronics,2023-02-08,True
+U1150,Customer 1150,Kathmandu,39,other,new,Traditional Attire|Books & Education,2023-04-23,False
+U1151,Customer 1151,Kathmandu,38,male,power,Daily Groceries|Kitchen & Home,2023-10-10,True
+U1152,Customer 1152,Butwal,54,female,power,Books & Education|Daily Groceries,2023-06-04,True
+U1153,Customer 1153,Butwal,26,female,power,Kitchen & Home|Daily Groceries,2023-08-27,True
+U1154,Customer 1154,Pokhara,53,female,regular,Electronics|Kitchen & Home,2024-05-26,True
+U1155,Customer 1155,Kathmandu,56,female,regular,Daily Groceries|Kitchen & Home,2023-02-09,True
+U1156,Customer 1156,Bhaktapur,29,male,regular,Traditional Attire|Electronics,2024-10-16,True
+U1157,Customer 1157,Dharan,52,other,regular,Books & Education|Fashion & Accessories,2023-11-25,False
+U1158,Customer 1158,Bhaktapur,30,female,power,Traditional Attire|Electronics,2023-07-15,True
+U1159,Customer 1159,Dharan,27,male,regular,Electronics|Books & Education,2023-11-23,True
+U1160,Customer 1160,Dharan,42,female,new,Books & Education|Kitchen & Home,2023-08-15,True
+U1161,Customer 1161,Kathmandu,57,female,new,Kitchen & Home|Traditional Attire,2024-12-16,True
+U1162,Customer 1162,Bhaktapur,27,other,power,Books & Education|Electronics,2023-09-09,False
+U1163,Customer 1163,Lalitpur,24,female,power,Daily Groceries|Electronics,2024-02-13,False
+U1164,Customer 1164,Butwal,28,male,new,Kitchen & Home|Handicrafts & Art,2023-08-28,True
+U1165,Customer 1165,Biratnagar,40,female,power,Daily Groceries|Fashion & Accessories,2024-07-14,False
+U1166,Customer 1166,Dharan,44,male,power,Kitchen & Home|Handicrafts & Art,2023-01-07,True
+U1167,Customer 1167,Lalitpur,49,other,new,Handicrafts & Art|Kitchen & Home,2023-05-25,False
+U1168,Customer 1168,Kathmandu,39,other,new,Kitchen & Home|Handicrafts & Art,2023-05-04,True
+U1169,Customer 1169,Dharan,50,other,regular,Daily Groceries|Traditional Attire,2023-01-01,True
+U1170,Customer 1170,Lalitpur,34,other,new,Books & Education|Fashion & Accessories,2024-02-02,True
+U1171,Customer 1171,Kathmandu,56,female,new,Electronics|Handicrafts & Art,2023-04-25,True
+U1172,Customer 1172,Dharan,41,other,new,Kitchen & Home|Traditional Attire,2024-11-15,True
+U1173,Customer 1173,Dharan,32,other,new,Traditional Attire|Daily Groceries,2024-08-22,True
+U1174,Customer 1174,Kathmandu,26,other,power,Daily Groceries|Kitchen & Home,2024-08-05,True
+U1175,Customer 1175,Dharan,40,other,regular,Handicrafts & Art|Kitchen & Home,2024-09-02,False
+U1176,Customer 1176,Dharan,40,female,regular,Handicrafts & Art|Books & Education,2023-06-16,False
+U1177,Customer 1177,Bhaktapur,22,female,power,Handicrafts & Art|Daily Groceries,2023-03-06,True
+U1178,Customer 1178,Bhaktapur,44,male,power,Books & Education|Kitchen & Home,2023-02-19,True
+U1179,Customer 1179,Kathmandu,39,female,power,Traditional Attire|Electronics,2024-07-22,True
+U1180,Customer 1180,Butwal,30,female,new,Traditional Attire|Fashion & Accessories,2024-10-03,True
+U1181,Customer 1181,Kathmandu,25,female,new,Kitchen & Home|Daily Groceries,2024-03-31,True
+U1182,Customer 1182,Pokhara,50,female,new,Electronics|Books & Education,2024-05-17,True
+U1183,Customer 1183,Bhaktapur,54,female,regular,Kitchen & Home|Electronics,2024-10-10,True
+U1184,Customer 1184,Bhaktapur,47,female,regular,Traditional Attire|Kitchen & Home,2023-01-18,True
+U1185,Customer 1185,Dharan,37,female,new,Traditional Attire|Kitchen & Home,2024-03-21,True
+U1186,Customer 1186,Biratnagar,43,male,power,Fashion & Accessories|Kitchen & Home,2023-04-26,False
+U1187,Customer 1187,Pokhara,51,male,new,Kitchen & Home|Handicrafts & Art,2023-09-26,True
+U1188,Customer 1188,Butwal,47,other,power,Handicrafts & Art|Fashion & Accessories,2024-08-05,True
+U1189,Customer 1189,Kathmandu,30,male,regular,Books & Education|Traditional Attire,2023-06-25,True
+U1190,Customer 1190,Butwal,48,other,new,Kitchen & Home|Daily Groceries,2024-11-24,True
+U1191,Customer 1191,Dharan,38,male,new,Handicrafts & Art|Daily Groceries,2024-05-12,True
+U1192,Customer 1192,Kathmandu,18,other,new,Handicrafts & Art|Daily Groceries,2024-01-18,True
+U1193,Customer 1193,Bhaktapur,31,female,new,Daily Groceries|Books & Education,2024-06-01,True
+U1194,Customer 1194,Kathmandu,55,female,new,Books & Education|Electronics,2023-04-26,True
+U1195,Customer 1195,Pokhara,31,female,power,Electronics|Handicrafts & Art,2024-12-19,True
+U1196,Customer 1196,Lalitpur,36,male,regular,Fashion & Accessories|Handicrafts & Art,2024-07-20,True
+U1197,Customer 1197,Lalitpur,27,other,power,Handicrafts & Art|Traditional Attire,2023-03-29,False
+U1198,Customer 1198,Biratnagar,53,other,regular,Fashion & Accessories|Electronics,2023-06-13,True
+U1199,Customer 1199,Biratnagar,24,female,regular,Kitchen & Home|Daily Groceries,2023-01-18,True
+U1200,Customer 1200,Dharan,57,other,regular,Handicrafts & Art|Books & Education,2023-12-05,True
+U1201,Customer 1201,Butwal,22,other,regular,Kitchen & Home|Traditional Attire,2024-02-23,True
+U1202,Customer 1202,Dharan,38,male,regular,Handicrafts & Art|Books & Education,2023-07-23,False
+U1203,Customer 1203,Butwal,26,other,regular,Kitchen & Home|Books & Education,2024-03-22,True
+U1204,Customer 1204,Butwal,53,female,power,Books & Education|Electronics,2024-09-15,True
+U1205,Customer 1205,Pokhara,49,other,regular,Kitchen & Home|Books & Education,2023-02-16,True
+U1206,Customer 1206,Bhaktapur,49,female,regular,Electronics|Fashion & Accessories,2023-08-11,True
+U1207,Customer 1207,Butwal,54,male,power,Handicrafts & Art|Traditional Attire,2023-04-06,True
+U1208,Customer 1208,Butwal,49,other,power,Kitchen & Home|Electronics,2024-11-28,False
+U1209,Customer 1209,Kathmandu,28,female,new,Electronics|Kitchen & Home,2023-06-28,True
+U1210,Customer 1210,Biratnagar,26,female,regular,Books & Education|Electronics,2024-07-02,True
+U1211,Customer 1211,Pokhara,24,other,regular,Handicrafts & Art|Traditional Attire,2024-11-10,True
+U1212,Customer 1212,Bhaktapur,24,male,new,Electronics|Handicrafts & Art,2023-12-10,True
+U1213,Customer 1213,Dharan,39,female,power,Traditional Attire|Electronics,2023-01-03,True
+U1214,Customer 1214,Biratnagar,24,other,regular,Electronics|Handicrafts & Art,2024-06-27,False
+U1215,Customer 1215,Kathmandu,52,male,regular,Handicrafts & Art|Daily Groceries,2024-08-23,False
+U1216,Customer 1216,Butwal,30,female,new,Daily Groceries|Handicrafts & Art,2024-07-05,True
+U1217,Customer 1217,Dharan,21,other,power,Daily Groceries|Electronics,2023-10-22,True
+U1218,Customer 1218,Dharan,34,male,power,Traditional Attire|Daily Groceries,2023-03-06,True
+U1219,Customer 1219,Lalitpur,28,male,new,Books & Education|Kitchen & Home,2024-09-25,False
+U1220,Customer 1220,Bhaktapur,57,male,regular,Handicrafts & Art|Traditional Attire,2023-07-29,True
+U1221,Customer 1221,Biratnagar,33,female,new,Traditional Attire|Electronics,2023-01-28,True
+U1222,Customer 1222,Butwal,46,male,power,Kitchen & Home|Handicrafts & Art,2024-07-06,True
+U1223,Customer 1223,Butwal,43,female,regular,Kitchen & Home|Handicrafts & Art,2024-08-14,True
+U1224,Customer 1224,Bhaktapur,24,other,new,Traditional Attire|Fashion & Accessories,2023-05-18,True
+U1225,Customer 1225,Pokhara,32,male,new,Kitchen & Home|Electronics,2024-05-08,True
+U1226,Customer 1226,Kathmandu,43,male,power,Daily Groceries|Books & Education,2023-06-23,True
+U1227,Customer 1227,Biratnagar,45,female,regular,Traditional Attire|Books & Education,2023-03-02,True
+U1228,Customer 1228,Lalitpur,29,male,regular,Fashion & Accessories|Electronics,2024-11-08,True
+U1229,Customer 1229,Butwal,19,male,regular,Kitchen & Home|Traditional Attire,2024-09-15,True
+U1230,Customer 1230,Biratnagar,56,male,power,Daily Groceries|Traditional Attire,2024-12-16,True
+U1231,Customer 1231,Bhaktapur,36,other,new,Kitchen & Home|Books & Education,2023-10-13,True
+U1232,Customer 1232,Butwal,42,female,new,Books & Education|Electronics,2023-08-30,True
+U1233,Customer 1233,Bhaktapur,30,female,new,Handicrafts & Art|Traditional Attire,2024-03-10,True
+U1234,Customer 1234,Bhaktapur,54,other,power,Traditional Attire|Electronics,2024-01-19,True
+U1235,Customer 1235,Pokhara,57,female,new,Kitchen & Home|Handicrafts & Art,2024-04-18,True
+U1236,Customer 1236,Bhaktapur,32,other,new,Fashion & Accessories|Electronics,2023-10-02,True
+U1237,Customer 1237,Lalitpur,23,female,new,Fashion & Accessories|Traditional Attire,2023-03-06,False
+U1238,Customer 1238,Kathmandu,29,male,regular,Traditional Attire|Electronics,2024-04-23,True
+U1239,Customer 1239,Bhaktapur,22,male,regular,Fashion & Accessories|Daily Groceries,2023-03-07,False
+U1240,Customer 1240,Pokhara,35,other,regular,Fashion & Accessories|Handicrafts & Art,2024-01-01,True
+U1241,Customer 1241,Lalitpur,51,female,power,Traditional Attire|Handicrafts & Art,2023-11-24,False
+U1242,Customer 1242,Dharan,35,male,power,Books & Education|Kitchen & Home,2024-06-25,True
+U1243,Customer 1243,Butwal,46,female,power,Traditional Attire|Daily Groceries,2023-05-13,True
+U1244,Customer 1244,Biratnagar,39,male,regular,Kitchen & Home|Fashion & Accessories,2024-01-17,True
+U1245,Customer 1245,Biratnagar,52,female,new,Books & Education|Fashion & Accessories,2024-08-17,False
+U1246,Customer 1246,Dharan,23,female,regular,Electronics|Books & Education,2024-07-25,True
+U1247,Customer 1247,Dharan,19,other,power,Daily Groceries|Handicrafts & Art,2023-06-11,True
+U1248,Customer 1248,Dharan,49,female,new,Books & Education|Handicrafts & Art,2023-05-23,True
+U1249,Customer 1249,Pokhara,40,female,power,Kitchen & Home|Traditional Attire,2024-11-22,False
+U1250,Customer 1250,Bhaktapur,54,male,new,Handicrafts & Art|Kitchen & Home,2023-04-17,True
+U1251,Customer 1251,Lalitpur,54,female,power,Kitchen & Home|Traditional Attire,2023-10-08,True
+U1252,Customer 1252,Butwal,55,male,regular,Books & Education|Daily Groceries,2023-07-07,True
+U1253,Customer 1253,Dharan,44,female,power,Fashion & Accessories|Kitchen & Home,2023-01-19,True
+U1254,Customer 1254,Pokhara,42,male,regular,Traditional Attire|Handicrafts & Art,2023-09-18,True
+U1255,Customer 1255,Butwal,53,female,regular,Kitchen & Home|Daily Groceries,2024-10-31,True
+U1256,Customer 1256,Lalitpur,24,male,new,Handicrafts & Art|Traditional Attire,2024-10-17,True
+U1257,Customer 1257,Bhaktapur,48,other,power,Fashion & Accessories|Electronics,2024-02-09,False
+U1258,Customer 1258,Biratnagar,42,female,power,Traditional Attire|Handicrafts & Art,2024-04-23,True
+U1259,Customer 1259,Kathmandu,24,male,new,Traditional Attire|Handicrafts & Art,2024-12-05,True
+U1260,Customer 1260,Biratnagar,34,other,power,Electronics|Traditional Attire,2024-06-14,True
+U1261,Customer 1261,Lalitpur,28,female,power,Kitchen & Home|Electronics,2024-05-03,True
+U1262,Customer 1262,Biratnagar,19,female,new,Traditional Attire|Electronics,2024-03-21,True
+U1263,Customer 1263,Biratnagar,57,other,regular,Kitchen & Home|Daily Groceries,2023-11-19,True
+U1264,Customer 1264,Lalitpur,38,male,new,Traditional Attire|Kitchen & Home,2024-09-19,True
+U1265,Customer 1265,Biratnagar,28,other,regular,Traditional Attire|Fashion & Accessories,2023-06-14,True
+U1266,Customer 1266,Pokhara,30,male,new,Handicrafts & Art|Electronics,2024-05-03,True
+U1267,Customer 1267,Butwal,30,other,regular,Daily Groceries|Electronics,2023-03-08,True
+U1268,Customer 1268,Kathmandu,38,other,new,Daily Groceries|Kitchen & Home,2024-10-12,True
+U1269,Customer 1269,Kathmandu,31,female,new,Fashion & Accessories|Handicrafts & Art,2023-10-31,True
+U1270,Customer 1270,Butwal,28,male,new,Traditional Attire|Books & Education,2023-04-07,False
+U1271,Customer 1271,Kathmandu,26,male,new,Traditional Attire|Daily Groceries,2024-02-22,True
+U1272,Customer 1272,Dharan,47,male,regular,Daily Groceries|Fashion & Accessories,2024-07-02,True
+U1273,Customer 1273,Pokhara,24,other,power,Kitchen & Home|Traditional Attire,2024-04-29,True
+U1274,Customer 1274,Pokhara,23,female,new,Electronics|Kitchen & Home,2024-07-13,True
+U1275,Customer 1275,Lalitpur,54,other,power,Electronics|Fashion & Accessories,2024-05-13,True
+U1276,Customer 1276,Kathmandu,23,female,new,Electronics|Fashion & Accessories,2024-03-18,False
+U1277,Customer 1277,Butwal,21,male,power,Daily Groceries|Fashion & Accessories,2024-08-01,True
+U1278,Customer 1278,Pokhara,26,female,regular,Electronics|Fashion & Accessories,2023-10-17,True
+U1279,Customer 1279,Pokhara,27,female,regular,Fashion & Accessories|Traditional Attire,2023-09-23,True
+U1280,Customer 1280,Kathmandu,40,other,regular,Kitchen & Home|Handicrafts & Art,2024-05-24,True
+U1281,Customer 1281,Kathmandu,41,female,regular,Kitchen & Home|Electronics,2024-09-24,True
+U1282,Customer 1282,Dharan,48,female,power,Traditional Attire|Handicrafts & Art,2023-08-22,True
+U1283,Customer 1283,Butwal,47,female,regular,Electronics|Kitchen & Home,2023-12-27,True
+U1284,Customer 1284,Biratnagar,29,female,new,Books & Education|Handicrafts & Art,2023-07-29,True
+U1285,Customer 1285,Butwal,57,other,regular,Books & Education|Traditional Attire,2024-05-03,True
+U1286,Customer 1286,Butwal,21,other,new,Books & Education|Handicrafts & Art,2024-04-08,True
+U1287,Customer 1287,Bhaktapur,39,female,new,Books & Education|Handicrafts & Art,2024-04-20,False
+U1288,Customer 1288,Lalitpur,50,male,regular,Electronics|Fashion & Accessories,2024-04-24,False
+U1289,Customer 1289,Butwal,35,male,power,Fashion & Accessories|Electronics,2024-02-06,True
+U1290,Customer 1290,Lalitpur,56,male,new,Kitchen & Home|Electronics,2023-05-19,True
+U1291,Customer 1291,Lalitpur,53,other,regular,Books & Education|Electronics,2023-08-02,True
+U1292,Customer 1292,Bhaktapur,31,other,regular,Daily Groceries|Fashion & Accessories,2023-08-12,True
+U1293,Customer 1293,Dharan,21,other,power,Traditional Attire|Electronics,2023-05-14,True
+U1294,Customer 1294,Pokhara,27,male,new,Fashion & Accessories|Traditional Attire,2023-08-20,True
+U1295,Customer 1295,Lalitpur,32,male,new,Fashion & Accessories|Handicrafts & Art,2024-09-02,True
+U1296,Customer 1296,Dharan,38,other,regular,Handicrafts & Art|Daily Groceries,2024-03-18,True
+U1297,Customer 1297,Dharan,47,female,new,Electronics|Handicrafts & Art,2024-02-12,False
+U1298,Customer 1298,Kathmandu,37,male,power,Kitchen & Home|Fashion & Accessories,2023-08-13,True
+U1299,Customer 1299,Biratnagar,48,other,new,Fashion & Accessories|Daily Groceries,2024-08-07,True
+U1300,Customer 1300,Lalitpur,40,male,regular,Electronics|Fashion & Accessories,2023-03-05,True
+U1301,Customer 1301,Lalitpur,57,male,new,Daily Groceries|Kitchen & Home,2024-06-02,False
+U1302,Customer 1302,Butwal,29,other,regular,Traditional Attire|Daily Groceries,2023-04-08,True
+U1303,Customer 1303,Kathmandu,44,male,regular,Books & Education|Daily Groceries,2024-05-14,True
+U1304,Customer 1304,Lalitpur,33,female,new,Daily Groceries|Electronics,2023-11-24,True
+U1305,Customer 1305,Pokhara,46,male,power,Kitchen & Home|Fashion & Accessories,2023-06-12,True
+U1306,Customer 1306,Lalitpur,19,other,power,Handicrafts & Art|Daily Groceries,2023-03-17,True
+U1307,Customer 1307,Lalitpur,57,male,regular,Fashion & Accessories|Handicrafts & Art,2023-07-09,True
+U1308,Customer 1308,Kathmandu,40,male,new,Traditional Attire|Electronics,2024-12-19,True
+U1309,Customer 1309,Bhaktapur,29,other,new,Handicrafts & Art|Electronics,2024-08-19,True
+U1310,Customer 1310,Lalitpur,40,female,regular,Traditional Attire|Kitchen & Home,2024-07-04,True
+U1311,Customer 1311,Bhaktapur,45,female,new,Electronics|Fashion & Accessories,2024-09-10,True
+U1312,Customer 1312,Lalitpur,51,male,power,Electronics|Handicrafts & Art,2023-09-02,True
+U1313,Customer 1313,Pokhara,27,female,power,Fashion & Accessories|Daily Groceries,2023-08-02,True
+U1314,Customer 1314,Dharan,54,female,regular,Electronics|Handicrafts & Art,2024-02-09,True
+U1315,Customer 1315,Lalitpur,33,female,new,Daily Groceries|Traditional Attire,2024-06-08,True
+U1316,Customer 1316,Pokhara,49,other,power,Kitchen & Home|Electronics,2024-01-24,True
+U1317,Customer 1317,Biratnagar,39,female,regular,Kitchen & Home|Books & Education,2024-12-13,True
+U1318,Customer 1318,Lalitpur,57,female,power,Electronics|Daily Groceries,2024-03-03,True
+U1319,Customer 1319,Lalitpur,33,other,new,Kitchen & Home|Fashion & Accessories,2023-11-30,False
+U1320,Customer 1320,Lalitpur,32,female,regular,Fashion & Accessories|Handicrafts & Art,2023-11-15,True
+U1321,Customer 1321,Lalitpur,18,male,new,Daily Groceries|Handicrafts & Art,2024-10-10,True
+U1322,Customer 1322,Dharan,23,male,power,Electronics|Daily Groceries,2024-06-15,True
+U1323,Customer 1323,Bhaktapur,48,male,new,Handicrafts & Art|Kitchen & Home,2023-03-24,True
+U1324,Customer 1324,Biratnagar,45,other,regular,Handicrafts & Art|Daily Groceries,2023-08-22,True
+U1325,Customer 1325,Dharan,33,male,regular,Daily Groceries|Fashion & Accessories,2024-03-24,False
+U1326,Customer 1326,Biratnagar,19,male,regular,Electronics|Kitchen & Home,2023-06-24,True
+U1327,Customer 1327,Butwal,56,female,regular,Kitchen & Home|Traditional Attire,2024-01-20,True
+U1328,Customer 1328,Butwal,18,male,new,Traditional Attire|Handicrafts & Art,2024-12-15,True
+U1329,Customer 1329,Lalitpur,31,female,power,Daily Groceries|Books & Education,2024-12-14,True
+U1330,Customer 1330,Lalitpur,39,female,regular,Daily Groceries|Books & Education,2023-06-20,True
+U1331,Customer 1331,Dharan,19,female,regular,Handicrafts & Art|Kitchen & Home,2024-02-15,True
+U1332,Customer 1332,Biratnagar,24,female,new,Books & Education|Daily Groceries,2023-03-03,True
+U1333,Customer 1333,Bhaktapur,25,other,new,Traditional Attire|Electronics,2023-05-13,True
+U1334,Customer 1334,Kathmandu,24,male,power,Electronics|Daily Groceries,2023-12-22,False
+U1335,Customer 1335,Lalitpur,49,female,new,Kitchen & Home|Fashion & Accessories,2024-07-11,False
+U1336,Customer 1336,Dharan,27,other,power,Fashion & Accessories|Daily Groceries,2024-08-10,True
+U1337,Customer 1337,Dharan,55,female,power,Fashion & Accessories|Traditional Attire,2024-08-07,True
+U1338,Customer 1338,Dharan,18,male,new,Handicrafts & Art|Daily Groceries,2023-03-06,True
+U1339,Customer 1339,Dharan,28,female,regular,Handicrafts & Art|Fashion & Accessories,2024-06-15,True
+U1340,Customer 1340,Dharan,23,female,regular,Fashion & Accessories|Electronics,2023-07-14,True
+U1341,Customer 1341,Pokhara,28,female,new,Daily Groceries|Fashion & Accessories,2024-09-28,True
+U1342,Customer 1342,Butwal,51,female,power,Traditional Attire|Handicrafts & Art,2023-07-21,True
+U1343,Customer 1343,Pokhara,34,female,regular,Traditional Attire|Handicrafts & Art,2024-09-15,True
+U1344,Customer 1344,Biratnagar,41,male,new,Traditional Attire|Daily Groceries,2023-04-08,True
+U1345,Customer 1345,Biratnagar,46,male,new,Traditional Attire|Electronics,2023-07-10,False
+U1346,Customer 1346,Bhaktapur,51,other,regular,Books & Education|Handicrafts & Art,2023-09-07,True
+U1347,Customer 1347,Dharan,25,male,power,Books & Education|Daily Groceries,2024-04-29,True
+U1348,Customer 1348,Biratnagar,40,female,power,Daily Groceries|Traditional Attire,2024-10-26,True
+U1349,Customer 1349,Pokhara,51,other,power,Traditional Attire|Handicrafts & Art,2024-08-28,False
+U1350,Customer 1350,Butwal,26,other,power,Handicrafts & Art|Books & Education,2023-10-12,True
+U1351,Customer 1351,Biratnagar,24,male,regular,Daily Groceries|Handicrafts & Art,2025-02-08,False
+U1352,Customer 1352,Kathmandu,49,other,regular,Electronics|Fashion & Accessories,2025-05-16,True
+U1353,Customer 1353,Lalitpur,55,male,regular,Electronics|Fashion & Accessories,2025-01-18,True
+U1354,Customer 1354,Biratnagar,33,male,regular,Fashion & Accessories|Traditional Attire,2025-04-15,True
+U1355,Customer 1355,Lalitpur,21,male,new,Handicrafts & Art|Traditional Attire,2025-04-16,False
+U1356,Customer 1356,Kathmandu,36,other,regular,Daily Groceries|Kitchen & Home,2025-05-16,False
+U1357,Customer 1357,Dharan,57,other,power,Traditional Attire|Fashion & Accessories,2025-02-09,True
+U1358,Customer 1358,Lalitpur,34,female,regular,Kitchen & Home|Traditional Attire,2025-02-25,True
+U1359,Customer 1359,Lalitpur,21,female,new,Fashion & Accessories|Kitchen & Home,2025-05-23,True
+U1360,Customer 1360,Bhaktapur,33,other,new,Electronics|Daily Groceries,2025-05-06,True
+U1361,Customer 1361,Butwal,40,male,power,Electronics|Fashion & Accessories,2025-04-11,True
+U1362,Customer 1362,Dharan,44,female,regular,Traditional Attire|Handicrafts & Art,2025-05-25,True
+U1363,Customer 1363,Butwal,56,male,regular,Fashion & Accessories|Books & Education,2025-03-24,True
+U1364,Customer 1364,Lalitpur,48,other,regular,Fashion & Accessories|Handicrafts & Art,2025-03-19,True
+U1365,Customer 1365,Bhaktapur,56,other,regular,Kitchen & Home|Traditional Attire,2025-04-20,True
+U1366,Customer 1366,Butwal,24,other,new,Kitchen & Home|Books & Education,2025-03-04,True
+U1367,Customer 1367,Butwal,45,other,power,Daily Groceries|Fashion & Accessories,2025-02-15,True
+U1368,Customer 1368,Dharan,21,male,power,Electronics|Handicrafts & Art,2025-01-17,True
+U1369,Customer 1369,Butwal,54,other,regular,Daily Groceries|Electronics,2025-05-11,True
+U1370,Customer 1370,Kathmandu,25,other,new,Traditional Attire|Books & Education,2025-01-24,True
+U1371,Customer 1371,Dharan,29,female,regular,Handicrafts & Art|Traditional Attire,2025-02-02,True
+U1372,Customer 1372,Lalitpur,34,female,power,Fashion & Accessories|Kitchen & Home,2025-05-18,False
+U1373,Customer 1373,Kathmandu,26,female,power,Books & Education|Handicrafts & Art,2025-05-01,True
+U1374,Customer 1374,Kathmandu,40,female,power,Kitchen & Home|Books & Education,2025-03-04,True
+U1375,Customer 1375,Kathmandu,26,other,new,Electronics|Traditional Attire,2025-01-21,True
+U1376,Customer 1376,Butwal,40,other,new,Kitchen & Home|Electronics,2025-01-23,True
+U1377,Customer 1377,Kathmandu,23,other,regular,Handicrafts & Art|Electronics,2025-03-10,True
+U1378,Customer 1378,Dharan,45,other,power,Kitchen & Home|Handicrafts & Art,2025-02-28,False
+U1379,Customer 1379,Lalitpur,50,male,regular,Handicrafts & Art|Books & Education,2025-03-18,True
+U1380,Customer 1380,Pokhara,49,female,power,Fashion & Accessories|Electronics,2025-02-06,True
+U1381,Customer 1381,Bhaktapur,41,other,new,Handicrafts & Art|Kitchen & Home,2025-01-16,True
+U1382,Customer 1382,Kathmandu,28,other,power,Traditional Attire|Daily Groceries,2025-01-14,True
+U1383,Customer 1383,Kathmandu,30,female,new,Traditional Attire|Handicrafts & Art,2025-04-14,True
+U1384,Customer 1384,Butwal,57,other,new,Electronics|Kitchen & Home,2025-01-28,True
+U1385,Customer 1385,Dharan,45,other,power,Electronics|Handicrafts & Art,2025-04-25,True
+U1386,Customer 1386,Biratnagar,29,female,new,Fashion & Accessories|Daily Groceries,2025-05-01,True
+U1387,Customer 1387,Butwal,53,male,regular,Daily Groceries|Kitchen & Home,2025-02-18,True
+U1388,Customer 1388,Bhaktapur,43,female,new,Daily Groceries|Books & Education,2025-02-25,True
+U1389,Customer 1389,Dharan,22,male,new,Kitchen & Home|Books & Education,2025-03-14,True
+U1390,Customer 1390,Pokhara,19,other,regular,Daily Groceries|Traditional Attire,2025-04-08,True
+U1391,Customer 1391,Biratnagar,53,female,new,Traditional Attire|Books & Education,2025-01-07,True
+U1392,Customer 1392,Lalitpur,48,female,new,Daily Groceries|Books & Education,2025-03-16,True
+U1393,Customer 1393,Bhaktapur,32,male,regular,Books & Education|Electronics,2025-01-03,True
+U1394,Customer 1394,Kathmandu,24,female,regular,Fashion & Accessories|Electronics,2025-02-21,True
+U1395,Customer 1395,Butwal,33,female,power,Traditional Attire|Daily Groceries,2025-02-23,True
+U1396,Customer 1396,Lalitpur,38,male,power,Daily Groceries|Books & Education,2025-02-16,True
+U1397,Customer 1397,Dharan,22,female,power,Traditional Attire|Daily Groceries,2025-01-22,True
+U1398,Customer 1398,Dharan,56,female,new,Kitchen & Home|Electronics,2025-03-19,True
+U1399,Customer 1399,Lalitpur,46,female,regular,Electronics|Kitchen & Home,2025-01-22,True
+U1400,Customer 1400,Pokhara,24,female,power,Books & Education|Traditional Attire,2025-02-18,True
+U1401,Customer 1401,Lalitpur,40,other,new,Books & Education|Fashion & Accessories,2025-02-24,True
+U1402,Customer 1402,Kathmandu,43,other,power,Handicrafts & Art|Kitchen & Home,2025-01-21,True
+U1403,Customer 1403,Lalitpur,36,female,regular,Fashion & Accessories|Traditional Attire,2025-02-09,True
+U1404,Customer 1404,Butwal,27,female,power,Daily Groceries|Fashion & Accessories,2025-01-20,True
+U1405,Customer 1405,Lalitpur,50,other,new,Kitchen & Home|Handicrafts & Art,2025-04-30,True
+U1406,Customer 1406,Biratnagar,21,other,new,Traditional Attire|Books & Education,2025-01-04,True
+U1407,Customer 1407,Biratnagar,32,male,regular,Fashion & Accessories|Electronics,2025-01-26,False
+U1408,Customer 1408,Kathmandu,49,female,new,Books & Education|Handicrafts & Art,2025-03-12,True
+U1409,Customer 1409,Butwal,49,other,regular,Books & Education|Handicrafts & Art,2025-05-07,True
+U1410,Customer 1410,Dharan,50,female,power,Fashion & Accessories|Books & Education,2025-01-13,True
+U1411,Customer 1411,Biratnagar,29,male,power,Kitchen & Home|Traditional Attire,2025-05-24,True
+U1412,Customer 1412,Dharan,30,male,power,Handicrafts & Art|Kitchen & Home,2025-01-18,False
+U1413,Customer 1413,Biratnagar,29,female,power,Handicrafts & Art|Traditional Attire,2025-04-12,False
+U1414,Customer 1414,Pokhara,18,male,regular,Electronics|Books & Education,2025-04-10,True
+U1415,Customer 1415,Pokhara,51,female,power,Traditional Attire|Handicrafts & Art,2025-02-03,True
+U1416,Customer 1416,Biratnagar,37,other,power,Traditional Attire|Handicrafts & Art,2025-04-20,True
+U1417,Customer 1417,Bhaktapur,24,female,power,Daily Groceries|Traditional Attire,2025-03-12,True
+U1418,Customer 1418,Kathmandu,50,female,new,Handicrafts & Art|Traditional Attire,2025-05-23,True
+U1419,Customer 1419,Lalitpur,37,female,regular,Kitchen & Home|Handicrafts & Art,2025-03-05,True
+U1420,Customer 1420,Dharan,41,female,regular,Electronics|Daily Groceries,2025-04-18,True
+U1421,Customer 1421,Biratnagar,24,male,power,Handicrafts & Art|Daily Groceries,2025-02-06,True
+U1422,Customer 1422,Kathmandu,21,female,regular,Traditional Attire|Fashion & Accessories,2025-03-19,True
+U1423,Customer 1423,Biratnagar,47,other,power,Daily Groceries|Handicrafts & Art,2025-04-04,True
+U1424,Customer 1424,Bhaktapur,39,female,regular,Books & Education|Electronics,2025-03-16,True
+U1425,Customer 1425,Lalitpur,31,other,regular,Fashion & Accessories|Electronics,2025-05-22,True
+U1426,Customer 1426,Pokhara,53,other,regular,Books & Education|Fashion & Accessories,2025-05-26,True
+U1427,Customer 1427,Butwal,33,other,new,Electronics|Fashion & Accessories,2025-03-24,True
+U1428,Customer 1428,Biratnagar,32,other,power,Traditional Attire|Electronics,2025-02-24,True
+U1429,Customer 1429,Kathmandu,33,female,new,Kitchen & Home|Electronics,2025-04-22,False
+U1430,Customer 1430,Pokhara,50,male,power,Books & Education|Daily Groceries,2025-03-05,False
+U1431,Customer 1431,Kathmandu,22,male,power,Daily Groceries|Handicrafts & Art,2025-05-06,True
+U1432,Customer 1432,Kathmandu,21,female,power,Books & Education|Handicrafts & Art,2025-04-04,True
+U1433,Customer 1433,Bhaktapur,38,male,new,Kitchen & Home|Fashion & Accessories,2025-03-04,True
+U1434,Customer 1434,Bhaktapur,48,female,regular,Traditional Attire|Kitchen & Home,2025-04-21,True
+U1435,Customer 1435,Biratnagar,29,male,new,Electronics|Daily Groceries,2025-03-19,True
+U1436,Customer 1436,Bhaktapur,36,other,regular,Traditional Attire|Electronics,2025-01-15,False
+U1437,Customer 1437,Bhaktapur,40,male,regular,Kitchen & Home|Traditional Attire,2025-01-06,True
+U1438,Customer 1438,Pokhara,38,female,regular,Kitchen & Home|Traditional Attire,2025-05-02,True
+U1439,Customer 1439,Biratnagar,34,other,new,Handicrafts & Art|Fashion & Accessories,2025-04-21,True
+U1440,Customer 1440,Kathmandu,43,other,regular,Fashion & Accessories|Electronics,2025-03-05,True
+U1441,Customer 1441,Bhaktapur,54,male,regular,Traditional Attire|Daily Groceries,2025-05-21,True
+U1442,Customer 1442,Pokhara,38,female,regular,Books & Education|Daily Groceries,2025-03-27,True
+U1443,Customer 1443,Biratnagar,29,male,power,Fashion & Accessories|Daily Groceries,2025-04-21,False
+U1444,Customer 1444,Bhaktapur,25,female,power,Fashion & Accessories|Traditional Attire,2025-01-07,True
+U1445,Customer 1445,Dharan,20,male,power,Kitchen & Home|Fashion & Accessories,2025-05-09,True
+U1446,Customer 1446,Butwal,50,other,power,Kitchen & Home|Books & Education,2025-02-12,True
+U1447,Customer 1447,Lalitpur,52,female,regular,Books & Education|Daily Groceries,2025-04-12,False
+U1448,Customer 1448,Pokhara,51,female,new,Kitchen & Home|Fashion & Accessories,2025-02-23,True
+U1449,Customer 1449,Lalitpur,33,female,new,Electronics|Fashion & Accessories,2025-01-22,True
+U1450,Customer 1450,Lalitpur,40,male,power,Books & Education|Daily Groceries,2025-04-10,True
+U1451,Customer 1451,Butwal,44,male,regular,Kitchen & Home|Traditional Attire,2025-03-08,True
+U1452,Customer 1452,Lalitpur,36,other,power,Electronics|Fashion & Accessories,2025-02-02,True
+U1453,Customer 1453,Lalitpur,32,other,power,Traditional Attire|Books & Education,2025-05-04,True
+U1454,Customer 1454,Bhaktapur,41,female,regular,Electronics|Books & Education,2025-04-07,True
+U1455,Customer 1455,Biratnagar,40,female,regular,Kitchen & Home|Traditional Attire,2025-03-16,True
+U1456,Customer 1456,Biratnagar,46,other,power,Traditional Attire|Electronics,2025-02-25,True
+U1457,Customer 1457,Kathmandu,35,other,new,Handicrafts & Art|Kitchen & Home,2025-04-08,False
+U1458,Customer 1458,Butwal,18,male,new,Electronics|Daily Groceries,2025-02-09,True
+U1459,Customer 1459,Lalitpur,27,male,regular,Kitchen & Home|Handicrafts & Art,2025-02-01,True
+U1460,Customer 1460,Pokhara,22,female,power,Books & Education|Kitchen & Home,2025-01-09,True
+U1461,Customer 1461,Bhaktapur,44,other,power,Handicrafts & Art|Books & Education,2025-04-09,True
+U1462,Customer 1462,Kathmandu,50,other,new,Traditional Attire|Handicrafts & Art,2025-04-13,True
+U1463,Customer 1463,Butwal,41,male,power,Handicrafts & Art|Fashion & Accessories,2025-01-08,False
+U1464,Customer 1464,Butwal,19,other,new,Electronics|Traditional Attire,2025-01-19,True
+U1465,Customer 1465,Lalitpur,20,male,new,Traditional Attire|Fashion & Accessories,2025-01-17,True
+U1466,Customer 1466,Butwal,19,other,new,Fashion & Accessories|Electronics,2025-04-13,True
+U1467,Customer 1467,Lalitpur,23,female,new,Daily Groceries|Handicrafts & Art,2025-05-28,True
+U1468,Customer 1468,Kathmandu,52,other,new,Daily Groceries|Kitchen & Home,2025-01-21,True
+U1469,Customer 1469,Lalitpur,33,other,regular,Handicrafts & Art|Books & Education,2025-03-09,True
+U1470,Customer 1470,Biratnagar,18,female,power,Books & Education|Fashion & Accessories,2025-01-02,False
+U1471,Customer 1471,Pokhara,24,female,regular,Kitchen & Home|Electronics,2025-04-12,False
+U1472,Customer 1472,Lalitpur,35,male,power,Daily Groceries|Electronics,2025-04-02,True
+U1473,Customer 1473,Lalitpur,27,other,new,Electronics|Kitchen & Home,2025-02-02,True
+U1474,Customer 1474,Kathmandu,40,male,new,Handicrafts & Art|Electronics,2025-01-28,False
+U1475,Customer 1475,Kathmandu,33,other,new,Daily Groceries|Traditional Attire,2025-02-13,True
+U1476,Customer 1476,Butwal,31,other,power,Books & Education|Electronics,2025-05-18,True
+U1477,Customer 1477,Dharan,41,male,new,Daily Groceries|Books & Education,2025-02-03,True
+U1478,Customer 1478,Kathmandu,42,other,power,Kitchen & Home|Daily Groceries,2025-02-10,True
+U1479,Customer 1479,Bhaktapur,47,other,new,Handicrafts & Art|Kitchen & Home,2025-04-22,True
+U1480,Customer 1480,Butwal,21,other,power,Traditional Attire|Handicrafts & Art,2025-05-26,True
+U1481,Customer 1481,Dharan,35,male,power,Fashion & Accessories|Daily Groceries,2025-03-08,True
+U1482,Customer 1482,Bhaktapur,40,other,new,Fashion & Accessories|Traditional Attire,2025-01-18,True
+U1483,Customer 1483,Dharan,43,other,power,Daily Groceries|Kitchen & Home,2025-04-28,True
+U1484,Customer 1484,Lalitpur,41,female,power,Kitchen & Home|Electronics,2025-03-02,True
+U1485,Customer 1485,Lalitpur,29,female,regular,Electronics|Handicrafts & Art,2025-02-01,True
+U1486,Customer 1486,Lalitpur,24,other,new,Handicrafts & Art|Kitchen & Home,2025-03-05,False
+U1487,Customer 1487,Biratnagar,52,other,regular,Fashion & Accessories|Handicrafts & Art,2025-02-14,True
+U1488,Customer 1488,Lalitpur,43,other,power,Electronics|Traditional Attire,2025-05-21,True
+U1489,Customer 1489,Dharan,45,male,power,Traditional Attire|Electronics,2025-03-05,True
+U1490,Customer 1490,Bhaktapur,23,male,new,Handicrafts & Art|Kitchen & Home,2025-04-23,True
+U1491,Customer 1491,Butwal,51,female,regular,Daily Groceries|Handicrafts & Art,2025-04-28,True
+U1492,Customer 1492,Dharan,51,female,power,Fashion & Accessories|Daily Groceries,2025-04-18,True
+U1493,Customer 1493,Lalitpur,46,male,new,Electronics|Books & Education,2025-03-01,True
+U1494,Customer 1494,Biratnagar,26,other,new,Traditional Attire|Kitchen & Home,2025-04-27,True
+U1495,Customer 1495,Dharan,27,female,new,Daily Groceries|Kitchen & Home,2025-03-18,False
+U1496,Customer 1496,Pokhara,48,female,regular,Kitchen & Home|Traditional Attire,2025-02-27,True
+U1497,Customer 1497,Dharan,52,male,power,Electronics|Daily Groceries,2025-04-16,True
+U1498,Customer 1498,Bhaktapur,25,female,regular,Traditional Attire|Handicrafts & Art,2025-04-07,True
+U1499,Customer 1499,Pokhara,24,female,new,Traditional Attire|Fashion & Accessories,2025-05-16,False
+U1500,Customer 1500,Biratnagar,49,male,regular,Daily Groceries|Books & Education,2025-01-21,True

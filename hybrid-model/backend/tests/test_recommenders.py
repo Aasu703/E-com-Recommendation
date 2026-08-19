@@ -183,6 +183,22 @@ def test_hybrid_recommender_scores_and_adaptive_alpha(monkeypatch):
     assert cold_alpha < warm_alpha
 
 
+def test_temporal_split_is_leak_free():
+    """Mirrors the SPLIT_DATE convention in results_eval_clean.py: train must be
+    strictly before the cutoff and test strictly at/after it, with no overlap."""
+    interactions = tiny_interactions()
+    interactions["timestamp"] = pd.to_datetime(interactions["timestamp"])
+    split_date = pd.Timestamp("2025-01-01")
+
+    train = interactions[interactions["timestamp"] < split_date]
+    test = interactions[interactions["timestamp"] >= split_date]
+
+    assert len(train) > 0
+    assert len(test) > 0
+    assert len(train) + len(test) == len(interactions)
+    assert train["timestamp"].max() < split_date <= test["timestamp"].min()
+
+
 def test_evaluator_returns_metrics_for_requested_k_values(monkeypatch):
     monkeypatch.setattr("recommender.content_based.np.save", lambda *args, **kwargs: None)
     model = HybridRecommender().fit(tiny_products(), tiny_users(), tiny_interactions())

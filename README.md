@@ -6,7 +6,9 @@
 
 ## Abstract
 
-This project builds and evaluates a recommendation system tailored for Nepali e-commerce. It compares a **non-personalized baseline** (most-recent products) against a **hybrid AI recommender** that combines collaborative filtering, content-based similarity, cold-start handling, freshness boosting, and festival-aware ranking for Dashain/Tihar periods. The system is served through a FastAPI backend and visualized in a Next.js storefront UI called **NepKart**.
+This project builds and rigorously evaluates a recommendation system tailored for Nepal's data-sparse e-commerce market. It compares a **non-personalized recency baseline** and a **popularity baseline** against content-based, collaborative-filtering, and a **hybrid AI recommender** that blends collaborative filtering with content-based similarity via an adaptive weight, plus freshness boosting and festival-aware ranking for Dashain/Tihar. The system is served through a FastAPI backend (with a live Redis cache) and visualized in a Next.js storefront called **NepKart**.
+
+The central methodological finding is honest and deliberately so. An earlier evaluation contained **train/test leakage** (models were fit on the full interaction history, including the held-out test period), which made the Hybrid appear to beat the baseline by 2–3× on ranking accuracy. Once the evaluation is made **leak-free** (models fit strictly on interactions before the temporal cutoff), that accuracy gap disappears: on the leak-free split the Hybrid is **statistically indistinguishable from the recency baseline** on Precision/Recall/NDCG (paired t-test on Precision@10, Hybrid vs Baseline: p = 0.49 — not significant), and the collaborative component *alone* actually out-ranks the blended Hybrid. The Hybrid's genuine, reproducible advantages are **catalog coverage and personalization** (it surfaces ~34% of the catalog across users versus ~0.4% for the baseline at K=10) and **cold-start item reach** (it surfaces 180 of 200 brand-new items that the recency and popularity baselines never show). All numbers cited anywhere in this repository are traceable to files under `hybrid-model/backend/results/` and are regenerated from a single source-of-truth exporter.
 
 ---
 
@@ -43,25 +45,25 @@ Located in `hybrid-model/backend/nepali_ecommerce_data/`:
 
 | File | Rows | Description |
 |------|------|-------------|
-| `products.csv` | 500 | Product catalog with category, subcategory, brand, price (NPR), rating, tags, new-arrival flag, stock status |
-| `users.csv` | 300 | User profiles with city, age, gender, user type, preferred categories, join date, verification status |
-| `interactions.csv` | 6,194 | User-product interactions (view, cart, purchase) with implicit scores, timestamps, month, festival flag |
+| `products.csv` | 2,500 | Product catalog with category, subcategory, brand, price (NPR), rating, tags, new-arrival flag, stock status |
+| `users.csv` | 1,500 | User profiles with city, age, gender, user type, preferred categories, join date, verification status |
+| `interactions.csv` | 30,723 | User-product interactions (view, cart, purchase) with implicit scores, timestamps, month, festival flag |
 
 ### Sample Data
 
 **products.csv:**
 | product_id | name | category | price_npr | avg_rating | is_new_arrival |
 |------------|------|----------|-----------|------------|----------------|
-| P0001 | Himalaya Bags 1 | Fashion & Accessories | 899 | 4.6 | True |
-| P0002 | Kathmandu Craft Jewellery 2 | Fashion & Accessories | 6500 | 4.0 | False |
-| P0003 | Janakpur Mart Woodcraft 3 | Handicrafts & Art | 350 | 4.2 | True |
+| P0001 | Himalaya Bags 1 | Fashion & Accessories | 2500 | 3.5 | False |
+| P0002 | Kathmandu Craft Jewellery 2 | Fashion & Accessories | 4200 | 4.6 | False |
+| P0003 | Janakpur Mart Woodcraft 3 | Handicrafts & Art | 550 | 3.3 | False |
 
 **interactions.csv:**
 | user_id | product_id | interaction_type | implicit_score | month | is_festival_period |
 |---------|------------|------------------|----------------|-------|-------------------|
-| U0030 | P0420 | purchase | 4.0 | 12 | False |
-| U0206 | P0130 | cart | 2.0 | 4 | False |
-| U0047 | P0150 | view | 1.0 | 7 | False |
+| U1038 | P0611 | view | 1.0 | 4 | False |
+| U0364 | P1159 | cart | 2.0 | 8 | False |
+| U0846 | P0571 | view | 1.0 | 10 | True |
 
 ---
 
@@ -70,9 +72,9 @@ Located in `hybrid-model/backend/nepali_ecommerce_data/`:
 ```mermaid
 graph TB
     subgraph Dataset
-        A["products.csv<br/>500 products"] --> D["Data Loader"]
-        B["users.csv<br/>300 users"] --> D
-        C["interactions.csv<br/>6,194 interactions"] --> D
+        A["products.csv<br/>2,500 products"] --> D["Data Loader"]
+        B["users.csv<br/>1,500 users"] --> D
+        C["interactions.csv<br/>30,723 interactions"] --> D
     end
 
     subgraph ML Models
@@ -98,6 +100,32 @@ graph TB
         L --> N
     end
 ```
+
+### Infrastructure scope (what is actually deployed vs designed)
+
+To keep the evaluation honest, this repository distinguishes between the
+components that the **evaluated prototype actually runs** and components that are
+**designed but not deployed**:
+
+- **Recommendation serving — deployed.** The FastAPI service loads the models
+  and serves recommendations entirely from **in-memory pandas DataFrames**
+  loaded from the CSVs. There is no application database in the request path.
+- **Redis cache — deployed and measured.** The `/api/v1/recommend/user/{id}`
+  endpoint performs a real Redis GET/SET around inference. Live latency was
+  measured against a running Redis instance (see `results/latency_live.txt`,
+  produced by `results_latency.py`): a cache hit is a real HTTP round-trip, not
+  a simulated constant.
+- **PostgreSQL (SQLAlchemy models in `db/`) — designed but NOT deployed.** The
+  ORM models exist for a persistence design, but no database session is ever
+  opened; the evaluated system does not read or write a database. Accordingly
+  `/health` reports `db_connected: false`.
+- **Celery workers / beat (`jobs/`) — designed but NOT deployed.** The nightly
+  retrain and cache-precompute tasks are written but are not scheduled or run in
+  the evaluated prototype; no results in this repository depend on them.
+
+The `docker-compose.yml` includes `postgres`, `redis`, `worker` and `beat`
+services for a full deployment target, but only `redis` (and the API) were
+exercised for the reported measurements.
 
 ---
 
@@ -159,26 +187,65 @@ New arrival products receive a **+0.08 score boost** to help overcome the cold-s
 
 ---
 
-## Evaluation Results
+## Evaluation Results (leak-free, dataset v3)
 
-Evaluation uses **Hit Rate @ 10** — the percentage of test users for whom the held-out last interaction appears in the top-10 recommendations.
+All models are fit **only** on interactions before the temporal cutoff and evaluated on the held-out slice (no leakage). Numbers below are quoted verbatim from `hybrid-model/backend/results/`; see [`results/RESULTS_SUMMARY.md`](hybrid-model/backend/results/RESULTS_SUMMARY.md) for the full protocol, caveats, and every source file.
 
-| Model | Hit Rate @ 10 | Description |
-|-------|---------------|-------------|
-| **Baseline** (Most Recent) | 0.0200 | No personalization, same list for all users |
-| **Hybrid AI** (CF + CB + Context) | 0.0300 | Personalized, adaptive, festival-aware |
-| **Improvement** | **+50.0%** | Hybrid outperforms baseline |
+### Component comparison at K=10 (fixed-date split, 1,386 test users)
 
-The evaluation script is at `hybrid-model/backend/evaluation_suite/compare_models.py`.
+Source: `results/components_eval.csv` (`results_eval_components.py`).
+
+| Model | Precision@10 | Recall@10 | NDCG@10 | Coverage@10 |
+|-------|-------------:|----------:|--------:|------------:|
+| Baseline (recency) | 0.0030 | 0.0039 | 0.0038 | 0.0040 |
+| Popularity | 0.0029 | 0.0042 | 0.0034 | 0.0040 |
+| Content-based only | 0.0021 | 0.0029 | 0.0025 | 0.7032 |
+| Collaborative only | 0.0027 | 0.0041 | 0.0033 | 0.2504 |
+| **Hybrid** | 0.0019 | 0.0029 | 0.0026 | **0.3208** |
+
+**Honest reading.** On ranking accuracy the models are close, and the Hybrid does **not** lead — the collaborative filter alone is the strongest accuracy model here. Absolute precision/recall/NDCG are far smaller than earlier dataset versions because the catalog is 2,500 products (5x dataset v2) while K is unchanged, so hitting a held-out item in the top-K is proportionally harder for every model. The Hybrid's decisive, legitimate win is **catalog coverage** (0.3208 vs 0.0040 for the baseline: it personalizes across ~32% of the catalog rather than showing one static list to everyone). Numbers reflect the shipped config `gamma=1, cold_user_fallback=True`, which raised Hybrid Precision@10 from 0.0012 → 0.0019 vs the earlier `gamma=3` edition.
+
+### Statistical significance (80/20 split, per-user)
+
+Source: `results/significance_tests.csv` (`results_significance.py`; paired t-test, Wilcoxon, 1,000-sample bootstrap 95% CI, seed=42).
+
+- **Hybrid vs Baseline** — Precision@10 p = 0.61, NDCG@10 p = 0.79: **not significant** (accuracy parity).
+- **Hybrid vs Content-based** — Precision@10 p = 0.039: **significantly worse**; NDCG@10 p = 0.35: not significant.
+- **Hybrid vs Collaborative** — Hybrid is **significantly worse** (Precision@10 p = 0.0016, NDCG@10 p = 0.0298; bootstrap CI entirely negative). The blend costs a little accuracy relative to pure CF.
+
+### Cold-start (dataset v2/v3 introduce genuine cold cohorts)
+
+Sources: `results/advanced_evaluation.txt` (RQ3), `results/cold_items.csv` (`results_cold_items.py`).
+
+- **User-side.** Three segments exist (zero-history: 127 users, low-activity 1–3: 60, active >3: 1,199). With the shipped cold-user fallback, zero-history users get the popularity fallback at α=1.0 (plus a preferred-category boost) and now score Precision@10 = 0.0016 (previously 0.0000 when their top-10 was 100% new arrivals) — the cold-start hole is partially closed. The **low-activity segment remains at 0.0000** (1–3 interactions is still too little signal) — an honest residual weakness.
+- **Item-side.** The Hybrid surfaces **180 of 200** brand-new (`is_cold_item`) products across test users' top-10 lists (0.900 coverage); the recency **Baseline and Popularity surface 0/200** — they structurally cannot reach items with no interaction history.
+
+### Infrastructure latency (measured against live Redis)
+
+Source: `results/latency_live.csv` (`results_latency.py`, 200 cold + 200 warm requests).
+
+| Scenario | Mean (ms) | P95 (ms) |
+|----------|----------:|---------:|
+| Cache miss (full inference) | 9.04 | 10.03 |
+| Cache hit (live Redis) | 1.46 | 1.73 |
+
+### Secondary check — leave-one-out Hit Rate@10
+
+Source: `evaluation_suite/evaluation_results.txt` (`compare_models.py`): Baseline 0.0100, Hybrid 0.0100 on a 100-user subset — tied. This is a noisy signal (a few hits) and is consistent with the accuracy-parity finding above; it is not evidence of a Hybrid accuracy advantage.
 
 ---
 
 ## Project Structure
 
+> **Note:** `baseline-model/` is a **superseded early iteration**, retained for
+> provenance only. All active development, the current models, the leak-free
+> evaluation, and every cited result live in `hybrid-model/`. Do not develop
+> against or cite numbers from `baseline-model/`.
+
 ```
 .
 ├── README.md                          # This file
-├── baseline-model/
+├── baseline-model/                    # SUPERSEDED — early iteration, kept for provenance
 │   ├── backend/                       # FastAPI backend for baseline recommender
 │   │   ├── api/                       # API routes, config, schemas
 │   │   ├── recommender/               # BaselineRecommender class
@@ -255,7 +322,35 @@ cd hybrid-model/backend
 poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
 ```
 
-Test it:
+Open the API docs:
+
+```text
+http://localhost:8000/docs
+```
+
+Useful endpoints:
+
+```bash
+curl http://localhost:8000/health
+curl "http://localhost:8000/api/v1/recommend/user/U0001?top_k=5&month=10"
+curl "http://localhost:8000/api/v1/recommend/product/P0001/similar?top_k=5"
+curl "http://localhost:8000/api/v1/recommend/popular?top_k=5"
+curl "http://localhost:8000/api/v1/users"
+curl "http://localhost:8000/api/v1/products"
+```
+
+## Running the Baseline Backend
+
+The baseline (non-personalized, recency-only) model has its own standalone backend for comparison:
+
+```bash
+cd baseline-model/backend
+poetry install
+poetry run uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+
+Useful endpoints:
+
 ```bash
 curl http://localhost:8000/health
 curl "http://localhost:8000/api/v1/recommend/user/U0001?top_k=5"
@@ -324,7 +419,7 @@ print('Smoke test passed')
 |--------|----------|-------------|
 | GET | `/health` | System health check |
 | GET | `/api/v1/recommend/user/{user_id}` | Personalized hybrid recommendations |
-| GET | `/api/v1/recommend/similar/{product_id}` | Content-based similar products |
+| GET | `/api/v1/recommend/product/{product_id}/similar` | Content-based similar products |
 | GET | `/api/v1/recommend/popular` | Globally popular products |
 | GET | `/api/v1/products` | Product catalog |
 | GET | `/api/v1/users` | User list (for demo selector) |
@@ -340,6 +435,45 @@ print('Smoke test passed')
 | `03_collaborative.ipynb` | User-item matrix construction and SVD decomposition |
 | `04_hybrid.ipynb` | Combining CF + CB with adaptive alpha and festival context |
 | `05_evaluation.ipynb` | Baseline vs hybrid comparison with Hit Rate metric |
+
+---
+
+## Reproducing the Full Results (Leak-Free)
+
+Every table above is produced by models trained only on data prior to the test
+period (no leakage), on dataset v3. The full, independently reproducible pass
+lives in
+[`hybrid-model/backend/results/RESULTS_SUMMARY.md`](hybrid-model/backend/results/RESULTS_SUMMARY.md),
+regenerated by:
+
+```bash
+cd hybrid-model/backend
+poetry run python results_eval_clean.py             # primary clean time-split (Hybrid vs Baseline)
+poetry run python results_eval_components.py        # five-model component comparison
+poetry run python results_ablation_gamma.py         # gamma sweep
+poetry run python results_ablation_alpha.py         # fixed / adaptive / switching strategy + boost ablation
+poetry run python results_eval_80_20.py             # literal 80/20 split (+ fixed-date sensitivity)
+poetry run python results_significance.py           # t-test, Wilcoxon, bootstrap CI
+poetry run python tests/run_advanced_evaluation.py  # RQ1 significance, RQ2 latency, RQ3 cold-start segments
+poetry run python results_cold_items.py             # item-side cold-start (cold-item coverage)
+poetry run python results_latency.py                # LIVE Redis latency (requires docker compose up -d redis + running API)
+poetry run python results_figures.py                # exports EDA + comparison charts to results/figures/
+poetry run python scripts/export_metrics.py         # single source of truth -> frontend + thesis_assets
+```
+
+Headline finding: once training is strictly limited to pre-test-period data,
+Hybrid and Baseline are statistically indistinguishable on ranking accuracy
+(paired t-test on Precision@10, Hybrid vs Baseline: p = 0.61), the collaborative
+component alone out-ranks the Hybrid, and Hybrid's clear, reproducible
+wins are catalog coverage (0.3208 vs 0.0040 at K=10) and cold-start item reach
+(180/200 new items vs 0/200 for the baselines). The shipped model
+(`gamma=1, cold_user_fallback=True`) edges the Hybrid's Precision@10 up to
+0.0019 and lifts the zero-history cold-start segment from 0.0000 to 0.0016
+without changing the accuracy-parity story. See `RESULTS_SUMMARY.md` for full
+numbers, caveats, and the recommended primary evaluation protocol.
+
+## Dataset Documentation
+See [hybrid-model/backend/DATASET.md](hybrid-model/backend/DATASET.md) for detailed information on the synthetic Nepali market model, its demographics, and its seasonal cycles.
 
 ---
 

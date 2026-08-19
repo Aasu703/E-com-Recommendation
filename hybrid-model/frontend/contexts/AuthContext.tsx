@@ -1,56 +1,81 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import {
+  fetchMe,
+  loginUser,
+  registerUser,
+  setAuthToken,
+  type RegisterPayload,
+  type UserProfile,
+} from '../lib/rec-api';
+
+const TOKEN_KEY = 'nepkart_auth_token';
 
 interface AuthContextType {
-  isAuthenticated: boolean;
-  userId: string | null;
-  token: string | null;
-  login: (userId: string) => void;
+  user: UserProfile | null;
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<UserProfile>;
+  register: (payload: RegisterPayload) => Promise<UserProfile>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
-  isAuthenticated: false,
-  userId: null,
-  token: null,
-  login: () => {},
+  user: null,
+  isLoading: true,
+  login: async () => {
+    throw new Error('AuthProvider not mounted');
+  },
+  register: async () => {
+    throw new Error('AuthProvider not mounted');
+  },
   logout: () => {},
 });
 
-export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('jwt_token');
-    const storedUserId = localStorage.getItem('user_id');
-    if (storedToken && storedUserId) {
-      setIsAuthenticated(true);
-      setUserId(storedUserId);
-      setToken(storedToken);
+    const stored = localStorage.getItem(TOKEN_KEY);
+    if (!stored) {
+      setIsLoading(false);
+      return;
     }
+    setAuthToken(stored);
+    fetchMe()
+      .then(setUser)
+      .catch(() => {
+        localStorage.removeItem(TOKEN_KEY);
+        setAuthToken(null);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
-  const login = (uid: string) => {
-    // Simulate JWT token generation
-    const mockJwt = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.${btoa(JSON.stringify({ uid, exp: Date.now() + 3600000 }))}.simulated_signature`;
-    localStorage.setItem('jwt_token', mockJwt);
-    localStorage.setItem('user_id', uid);
-    setIsAuthenticated(true);
-    setUserId(uid);
-    setToken(mockJwt);
+  const applySession = (accessToken: string, profile: UserProfile) => {
+    localStorage.setItem(TOKEN_KEY, accessToken);
+    setAuthToken(accessToken);
+    setUser(profile);
+  };
+
+  const login = async (email: string, password: string): Promise<UserProfile> => {
+    const res = await loginUser(email, password);
+    applySession(res.access_token, res.user);
+    return res.user;
+  };
+
+  const register = async (payload: RegisterPayload): Promise<UserProfile> => {
+    const res = await registerUser(payload);
+    applySession(res.access_token, res.user);
+    return res.user;
   };
 
   const logout = () => {
-    localStorage.removeItem('jwt_token');
-    localStorage.removeItem('user_id');
-    setIsAuthenticated(false);
-    setUserId(null);
-    setToken(null);
+    localStorage.removeItem(TOKEN_KEY);
+    setAuthToken(null);
+    setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userId, token, login, logout }}>
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -16,7 +16,7 @@ export function StatCard({ label, value, change, positive = true }: StatCardProp
       <div className="stat-card-value">{value}</div>
       {change && (
         <span className={`stat-card-change ${positive ? "positive" : "negative"}`}>
-          {positive ? "↑" : "↓"} {change}
+          {change}
         </span>
       )}
     </div>

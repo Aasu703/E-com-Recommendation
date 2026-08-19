@@ -1,4 +1,4 @@
-.PHONY: install setup train api worker test notebooks clean smoke-test docker-up docker-logs
+.PHONY: install setup train api worker test notebooks clean smoke-test docker-up docker-logs dev
 
 install:
 	python -m poetry install
@@ -12,7 +12,11 @@ train:
 	python -m poetry run python -c "from recommender.hybrid import HybridRecommender; from recommender.utils import load_data; p,u,i=load_data(); m=HybridRecommender().fit(p,u,i); m.save('models/hybrid_recommender.pkl'); print('Models trained and saved')"
 
 api:
-	python -m poetry run uvicorn api.main:app --reload --port 8000
+	python -m poetry run dev
+
+dev:
+	python -m poetry run dev &
+	cd ../frontend && npm run dev
 
 worker:
 	python -m poetry run celery -A jobs.celery_app worker --loglevel=info

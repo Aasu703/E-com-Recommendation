@@ -1,0 +1,11 @@
+======================================================================
+Cold-user fallback experiment (shipped default vs previous behaviour)
+======================================================================
+Split date: 2025-01-01 | Zero-history test users: 127 | Low-activity test users: 60
+
+shipped (cold_user_fallback=True) | Zero-history (0 train): Precision@10=0.0016 Recall@10=0.0066 NDCG@10=0.0067 Coverage=0.0124 (n=127)
+shipped (cold_user_fallback=True) | Low-activity (1-3 train): Precision@10=0.0000 Recall@10=0.0000 NDCG@10=0.0000 Coverage=0.1164 (n=60)
+
+previous shipped (cold_user_fallback=False) | Zero-history (0 train): Precision@10=0.0000 Recall@10=0.0000 NDCG@10=0.0000 Coverage=0.0040 (n=127)
+previous shipped (cold_user_fallback=False) | Low-activity (1-3 train): Precision@10=0.0000 Recall@10=0.0000 NDCG@10=0.0000 Coverage=0.1164 (n=60)
+

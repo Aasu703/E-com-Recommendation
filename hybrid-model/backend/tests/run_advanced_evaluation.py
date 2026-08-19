@@ -4,7 +4,9 @@ Addresses RQ1 (Accuracy), RQ2 (Latency), and RQ3 (Cold-Start).
 """
 
 import time
+import sys
 import logging
+from contextlib import redirect_stdout, redirect_stderr
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -18,8 +20,25 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
 DATA_DIR = Path("nepali_ecommerce_data")
+RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
 K = 10
 COLD_START_THRESHOLD = 3
+
+
+class _Tee:
+    """Mirror every write to both the console and a capture list (so the full
+    report is also persisted to results/advanced_evaluation.txt)."""
+
+    def __init__(self):
+        self.buffer: list[str] = []
+        self.console = sys.stdout
+
+    def write(self, data: str) -> None:
+        self.console.write(data)
+        self.buffer.append(data)
+
+    def flush(self) -> None:
+        self.console.flush()
 
 def load_data():
     products_df = pd.read_csv(DATA_DIR / "products.csv")
@@ -95,49 +114,95 @@ def run_rq2_latency(hybrid, user_id):
     print(f"| Scenario | Average Latency (ms) | P95 Latency (ms) |")
     print(f"|----------|----------------------|------------------|")
     print(f"| Cache Miss (Inference) | {mean_miss:.2f} | {np.percentile(miss_times, 95):.2f} |")
-    print(f"| Cache Hit (Redis) | {mean_hit:.2f} | {np.percentile(hit_times, 95):.2f} |")
-    print(f"\nLatency Reduction: {reduction:.2f}%")
+    print(f"| Cache Hit (SIMULATED +0.5ms) | {mean_hit:.2f} | {np.percentile(hit_times, 95):.2f} |")
+    print(f"\nLatency Reduction: {reduction:.2f}% (using the SIMULATED cache-hit figure).")
+    print("NOTE: the cache-hit row above is a SIMULATED upper-bound (a fixed +0.5 ms")
+    print("constant), NOT a live Redis measurement. The authoritative LIVE measurement")
+    print("against a running Redis instance is in results/latency_live.txt, produced by")
+    print("results_latency.py (200 cold + 200 warm requests to the live API).")
 
 def run_rq3_stratification(hybrid, train_df, test_df, products_df):
-    """RQ3: User Stratification (Cold-Start vs Active)"""
-    logger.info("Running RQ3: User Stratification...")
-    
-    user_counts = train_df["user_id"].value_counts()
-    active_users = user_counts[user_counts > COLD_START_THRESHOLD].index.intersection(test_df["user_id"].unique())
-    cold_users = user_counts[user_counts <= COLD_START_THRESHOLD].index.intersection(test_df["user_id"].unique())
-    
-    # Add users with 0 interactions in train but present in test as cold users
-    all_test_users = test_df["user_id"].unique()
-    zero_interact_users = [u for u in all_test_users if u not in user_counts.index]
-    cold_users = list(cold_users) + zero_interact_users
-    
-    def evaluate_segment(user_list, name):
-        metrics = {"precision": [], "recall": [], "ndcg": []}
+    """RQ3: User stratification across three activity segments.
+
+    Segments are defined by each user's TRAIN-period interaction count:
+      * Zero-history (0 train interactions) -- the true cold-start segment;
+      * Low-activity (1-3 train interactions);
+      * Active (>3 train interactions).
+    Only test users (>=1 held-out interaction) are evaluable. Dataset v2
+    guarantees a non-empty zero-history segment (see DATASET.md v2 changelog).
+    """
+    logger.info("Running RQ3: User Stratification (three segments)...")
+
+    train_counts = train_df["user_id"].value_counts().to_dict()
+    test_users = list(test_df["user_id"].unique())
+
+    def train_count(u):
+        return train_counts.get(u, 0)
+
+    zero_users = [u for u in test_users if train_count(u) == 0]
+    low_users = [u for u in test_users if 1 <= train_count(u) <= COLD_START_THRESHOLD]
+    active_users = [u for u in test_users if train_count(u) > COLD_START_THRESHOLD]
+
+    # Popularity fallback list and new-arrival set, to characterise what the
+    # system actually serves to zero-history users.
+    fallback_ids = [item["product_id"] for item in hybrid.cf.popularity_fallback[:K]]
+    new_arrival_ids = set(products_df.loc[products_df["is_new_arrival"].astype(bool), "product_id"])
+
+    def evaluate_segment(user_list):
+        precision, recall, ndcg = [], [], []
         covered = set()
-        for user_id in user_list[:50]: # Sample
+        for user_id in user_list:
             actual = set(test_df[test_df["user_id"] == user_id]["product_id"])
             recs = hybrid.recommend(user_id, top_k=K)
             rec_ids = [r["product_id"] for r in recs]
             covered.update(rec_ids)
-            
             hits = [1 if pid in actual else 0 for pid in rec_ids]
-            metrics["precision"].append(sum(hits) / K)
-            metrics["recall"].append(sum(hits) / max(len(actual), 1))
+            precision.append(sum(hits) / K)
+            recall.append(sum(hits) / max(len(actual), 1))
             dcg = sum(hit / np.log2(idx + 2) for idx, hit in enumerate(hits))
             idcg = sum(1 / np.log2(idx + 2) for idx in range(min(len(actual), K)))
-            metrics["ndcg"].append(dcg / idcg if idcg > 0 else 0)
-        
-        coverage = len(covered) / len(products_df)
-        return {k: np.mean(v) for k, v in metrics.items()}, coverage
+            ndcg.append(dcg / idcg if idcg > 0 else 0)
+        if not user_list:
+            return None
+        return {
+            "precision": np.mean(precision),
+            "recall": np.mean(recall),
+            "ndcg": np.mean(ndcg),
+            "coverage": len(covered) / len(products_df),
+            "n": len(user_list),
+        }
 
-    active_metrics, active_cov = evaluate_segment(list(active_users), "Active")
-    cold_metrics, cold_cov = evaluate_segment(list(cold_users), "Cold-Start")
-    
-    print("\n### RQ3: User Stratification Performance")
-    print(f"| Segment | Precision@{K} | Recall@{K} | NDCG@{K} | Catalog Coverage |")
-    print(f"|---------|--------------|-----------|----------|------------------|")
-    print(f"| Active Users | {active_metrics['precision']:.4f} | {active_metrics['recall']:.4f} | {active_metrics['ndcg']:.4f} | {active_cov:.4f} |")
-    print(f"| Cold-Start | {cold_metrics['precision']:.4f} | {cold_metrics['recall']:.4f} | {cold_metrics['ndcg']:.4f} | {cold_cov:.4f} |")
+    segments = [
+        ("Zero-history (0 train)", zero_users),
+        ("Low-activity (1-3 train)", low_users),
+        ("Active (>3 train)", active_users),
+    ]
+
+    print("\n### RQ3: User Stratification Performance (three segments)")
+    print(f"| Segment | Users | Precision@{K} | Recall@{K} | NDCG@{K} | Catalog Coverage |")
+    print(f"|---------|-------|--------------|-----------|----------|------------------|")
+    for name, users in segments:
+        m = evaluate_segment(users)
+        if m is None:
+            print(f"| {name} | 0 | N/A | N/A | N/A | N/A |")
+        else:
+            print(f"| {name} | {m['n']} | {m['precision']:.4f} | {m['recall']:.4f} | {m['ndcg']:.4f} | {m['coverage']:.4f} |")
+
+    # Cold-start pathway: what does the system ACTUALLY serve to zero-history users?
+    if zero_users:
+        new_arrival_frac, pop_overlap = [], []
+        for user_id in zero_users:
+            rec_ids = [r["product_id"] for r in hybrid.recommend(user_id, top_k=K)]
+            if rec_ids:
+                new_arrival_frac.append(len([p for p in rec_ids if p in new_arrival_ids]) / len(rec_ids))
+                pop_overlap.append(len(set(rec_ids) & set(fallback_ids)) / K)
+        print(f"\nCold-start pathway (zero-history segment, {len(zero_users)} users):")
+        print("A zero-history user has no CF factors and no content seed. The shipped")
+        print("cold-user fallback (cold_user_fallback=True) forces alpha=1.0 for such")
+        print("users, so the popularity fallback populated into the CF vector actually")
+        print("scores (plus a +0.08 boost on their onboarding preferred_categories).")
+        print(f"  Mean fraction of served top-{K} that are new arrivals: {np.mean(new_arrival_frac):.1%}")
+        print(f"  Mean overlap of served top-{K} with the popularity fallback list: {np.mean(pop_overlap):.1%}")
 
 def main():
     products_df, users_df, interactions_df = load_data()
@@ -160,4 +225,10 @@ def main():
     run_rq3_stratification(hybrid, train_df, test_df, products_df)
 
 if __name__ == "__main__":
-    main()
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    tee = _Tee()
+    with redirect_stdout(tee), redirect_stderr(tee):
+        main()
+    out_path = RESULTS_DIR / "advanced_evaluation.txt"
+    out_path.write_text("".join(tee.buffer), encoding="utf-8")
+    print(f"\nWrote {out_path}")
