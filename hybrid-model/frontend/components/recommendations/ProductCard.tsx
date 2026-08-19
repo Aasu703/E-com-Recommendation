@@ -35,7 +35,7 @@ export function ProductCard({ product, showScores = true, layout = "vertical" }:
           {/* Badges */}
           <div className="product-card-badges">
             {p.is_festival_recommendation && (
-              <span className="badge badge-festival">🎉 Festival</span>
+              <span className="badge badge-festival">Festival</span>
             )}
             {p.is_new_arrival && (
               <span className="badge badge-new">New</span>

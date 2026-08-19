@@ -10,9 +10,9 @@ import { Navbar } from '../components/ui/Navbar';
 import { ShieldCheck, CheckCircle2, Truck, Loader2 } from 'lucide-react';
 
 const PAYMENT_METHODS = [
-  { id: 'cod', label: 'Cash on Delivery', emoji: '💵' },
-  { id: 'esewa', label: 'eSewa', emoji: '📱' },
-  { id: 'khalti', label: 'Khalti', emoji: '💜' },
+  { id: 'cod', label: 'Cash on Delivery' },
+  { id: 'esewa', label: 'eSewa' },
+  { id: 'khalti', label: 'Khalti' },
 ];
 
 export default function CheckoutPage() {
@@ -41,7 +41,7 @@ export default function CheckoutPage() {
         <Navbar />
         <main className="max-w-xl mx-auto px-4 py-24 text-center">
           <p className="text-slate-500 text-lg mb-4">Your cart is empty.</p>
-          <Link href="/" className="text-indigo-600 font-bold hover:text-indigo-700">
+          <Link href="/" className="text-teal-700 font-bold hover:text-teal-800">
             Start Shopping
           </Link>
         </main>
@@ -85,7 +85,7 @@ export default function CheckoutPage() {
             <h1 className="text-3xl font-extrabold mb-8">Checkout</h1>
 
             <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-6 flex items-center gap-4">
-              <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+              <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
                 <Truck className="h-5 w-5" />
               </div>
               <div>
@@ -101,7 +101,7 @@ export default function CheckoutPage() {
                   <label
                     key={m.id}
                     className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                      paymentMethod === m.id ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 hover:bg-slate-50'
+                      paymentMethod === m.id ? 'border-teal-600 bg-teal-50' : 'border-slate-200 hover:bg-slate-50'
                     }`}
                   >
                     <input
@@ -110,9 +110,8 @@ export default function CheckoutPage() {
                       value={m.id}
                       checked={paymentMethod === m.id}
                       onChange={() => setPaymentMethod(m.id)}
-                      className="accent-indigo-600"
+                      className="accent-teal-700"
                     />
-                    <span className="text-lg">{m.emoji}</span>
                     <span className="font-semibold text-sm">{m.label}</span>
                   </label>
                 ))}
@@ -139,7 +138,7 @@ export default function CheckoutPage() {
               <button
                 onClick={handlePlaceOrder}
                 disabled={placing}
-                className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-xl transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-bold py-4 px-6 rounded-xl transition-all disabled:opacity-50"
               >
                 {placing ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShieldCheck className="h-5 w-5" />}
                 {placing ? 'Placing Order…' : 'Place Order'}
@@ -152,7 +151,7 @@ export default function CheckoutPage() {
               <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-6" />
               <h1 className="text-3xl font-extrabold mb-2">Order Placed!</h1>
               <p className="text-slate-500 mb-1">Order ID</p>
-              <p className="font-mono font-bold text-indigo-600 text-lg mb-8">{orderId}</p>
+              <p className="font-mono font-bold text-teal-700 text-lg mb-8">{orderId}</p>
 
               <div className="text-left border-t border-slate-100 pt-6 space-y-2 mb-6">
                 {orderRecap.items.map((item) => (
@@ -174,7 +173,7 @@ export default function CheckoutPage() {
 
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                className="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-8 rounded-xl transition-all"
               >
                 Continue Shopping
               </Link>

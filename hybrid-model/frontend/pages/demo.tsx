@@ -47,7 +47,7 @@ function PersonaPicker() {
         <button
           type="button"
           onClick={startAsNewVisitor}
-          className="flex items-center gap-1.5 text-sm font-semibold text-indigo-300 hover:text-indigo-200 transition-colors"
+          className="flex items-center gap-1.5 text-sm font-semibold text-teal-400 hover:text-teal-200 transition-colors"
         >
           <UserPlus className="h-4 w-4" /> New Visitor (cold-start)
         </button>
@@ -80,7 +80,7 @@ function DemoStorefront() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24 pb-32">
         <section id="recommendations">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <Sparkles className="h-6 w-6" />
             </div>
             <div>
@@ -109,7 +109,7 @@ function DemoStorefront() {
 
         <section>
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-emerald-100 rounded-lg text-emerald-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <Scale className="h-6 w-6" />
             </div>
             <div>
@@ -123,7 +123,7 @@ function DemoStorefront() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-bold">🤖 Hybrid AI</span>
+                <span className="px-3 py-1 rounded-full bg-teal-700 text-white text-xs font-bold">Hybrid AI</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {hybrid.isLoading
@@ -138,7 +138,7 @@ function DemoStorefront() {
 
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-bold">📋 Baseline (No AI)</span>
+                <span className="px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-bold">Baseline (No AI)</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {baseline.isLoading
@@ -155,7 +155,7 @@ function DemoStorefront() {
 
         <section>
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-purple-100 rounded-lg text-purple-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <TrendingUp className="h-6 w-6" />
             </div>
             <div>

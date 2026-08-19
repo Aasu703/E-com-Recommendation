@@ -14,4 +14,5 @@ gamma | Precision@10 | NDCG@10
 
 Highest Precision@10: gamma=1 (0.0017)
 Highest NDCG@10: gamma=1 (0.0020)
-Current default in recommender/hybrid.py: gamma=3 (unchanged by this ablation)
+Current default in recommender/hybrid.py: gamma=1 (measured-best value; the
+shipped model additionally ships cold_user_fallback=True, disabled here to isolate the alpha curve)

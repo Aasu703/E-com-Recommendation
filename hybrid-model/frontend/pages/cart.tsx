@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useCart } from '../contexts/CartContext';
 import { useRequireAuth } from '../hooks/useRequireAuth';
 import { Navbar } from '../components/ui/Navbar';
-import { ArrowLeft, Trash2, Minus, Plus, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Trash2, Minus, Plus, ShieldCheck, Package } from 'lucide-react';
 
 export default function CartPage() {
   const { user, isLoading } = useRequireAuth();
@@ -28,7 +28,7 @@ export default function CartPage() {
       <Navbar />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 text-teal-700 hover:text-teal-800 font-medium mb-8 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Continue Shopping
         </Link>
@@ -38,7 +38,7 @@ export default function CartPage() {
         {items.length === 0 ? (
           <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center">
             <p className="text-slate-500 text-lg mb-4">Your cart is empty.</p>
-            <Link href="/" className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:text-indigo-700">
+            <Link href="/" className="inline-flex items-center gap-2 text-teal-700 font-bold hover:text-teal-800">
               Start Shopping
             </Link>
           </div>
@@ -47,8 +47,8 @@ export default function CartPage() {
             <div className="lg:w-2/3 space-y-4">
               {items.map((item) => (
                 <div key={item.product_id} className="bg-white border border-slate-200 rounded-2xl p-5 flex items-center gap-5">
-                  <div className="h-20 w-20 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0 text-3xl">
-                    📦
+                  <div className="h-20 w-20 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Package className="h-8 w-8 text-slate-300" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-slate-900 truncate">{item.name}</h3>
@@ -72,7 +72,7 @@ export default function CartPage() {
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="text-lg font-extrabold text-indigo-600 mb-2">
+                    <div className="text-lg font-extrabold text-teal-700 mb-2">
                       NPR {(item.price_npr * item.quantity).toLocaleString()}
                     </div>
                     <button
@@ -109,7 +109,7 @@ export default function CartPage() {
                 </div>
                 <button
                   onClick={() => router.push('/checkout')}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-500/20"
+                  className="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors"
                 >
                   <ShieldCheck className="h-5 w-5" />
                   Proceed to Checkout

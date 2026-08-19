@@ -1,7 +1,3 @@
-INFO: Fitting models...
-INFO: Running RQ1: Statistical Significance Test...
-INFO: Running RQ2: Latency Profiling...
-INFO: Running RQ3: User Stratification (three segments)...
 
 ==================================================
 ADVANCED EVALUATION REPORT
@@ -10,19 +6,19 @@ ADVANCED EVALUATION REPORT
 ### RQ1: Statistical Significance (NDCG@10)
 | Model | Mean NDCG@10 | Std Dev |
 |-------|--------------|---------|
-| Hybrid | 0.0046 | 0.0358 |
+| Hybrid | 0.0060 | 0.0367 |
 | Baseline | 0.0069 | 0.0264 |
 
-Paired T-Test: t=-0.6096, p=0.5435
+Paired T-Test: t=-0.2423, p=0.8091
 Result: Not Statistically Significant
 
 ### RQ2: Infrastructure Latency Profiling
 | Scenario | Average Latency (ms) | P95 Latency (ms) |
 |----------|----------------------|------------------|
-| Cache Miss (Inference) | 4.92 | 5.86 |
+| Cache Miss (Inference) | 5.05 | 6.38 |
 | Cache Hit (SIMULATED +0.5ms) | 0.50 | 0.50 |
 
-Latency Reduction: 89.83% (using the SIMULATED cache-hit figure).
+Latency Reduction: 90.10% (using the SIMULATED cache-hit figure).
 NOTE: the cache-hit row above is a SIMULATED upper-bound (a fixed +0.5 ms
 constant), NOT a live Redis measurement. The authoritative LIVE measurement
 against a running Redis instance is in results/latency_live.txt, produced by
@@ -31,16 +27,14 @@ results_latency.py (200 cold + 200 warm requests to the live API).
 ### RQ3: User Stratification Performance (three segments)
 | Segment | Users | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
 |---------|-------|--------------|-----------|----------|------------------|
-| Zero-history (0 train) | 127 | 0.0000 | 0.0000 | 0.0000 | 0.0040 |
-| Low-activity (1-3 train) | 60 | 0.0000 | 0.0000 | 0.0000 | 0.1484 |
-| Active (>3 train) | 1199 | 0.0013 | 0.0020 | 0.0018 | 0.2808 |
+| Zero-history (0 train) | 127 | 0.0016 | 0.0066 | 0.0067 | 0.0124 |
+| Low-activity (1-3 train) | 60 | 0.0000 | 0.0000 | 0.0000 | 0.1164 |
+| Active (>3 train) | 1199 | 0.0018 | 0.0025 | 0.0023 | 0.2760 |
 
 Cold-start pathway (zero-history segment, 127 users):
-A zero-history user has no CF factors and no content seed, so alpha = 0
-(fully content-based weighting) but content similarity is uniformly zero.
-The served ranking is therefore driven by the +0.08 freshness boost, i.e.
-these users are shown NEW-ARRIVAL products (a discovery-oriented cold-start
-pathway). The popularity fallback populates the CF vector but is nullified
-because alpha = 0 for a user with no interactions.
-  Mean fraction of served top-10 that are new arrivals: 100.0%
-  Mean overlap of served top-10 with the popularity fallback list: 0.0%
+A zero-history user has no CF factors and no content seed. The shipped
+cold-user fallback (cold_user_fallback=True) forces alpha=1.0 for such
+users, so the popularity fallback populated into the CF vector actually
+scores (plus a +0.08 boost on their onboarding preferred_categories).
+  Mean fraction of served top-10 that are new arrivals: 0.0%
+  Mean overlap of served top-10 with the popularity fallback list: 55.0%

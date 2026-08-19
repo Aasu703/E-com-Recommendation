@@ -201,23 +201,23 @@ Source: `results/components_eval.csv` (`results_eval_components.py`).
 | Popularity | 0.0029 | 0.0042 | 0.0034 | 0.0040 |
 | Content-based only | 0.0021 | 0.0029 | 0.0025 | 0.7032 |
 | Collaborative only | 0.0027 | 0.0041 | 0.0033 | 0.2504 |
-| **Hybrid** | 0.0012 | 0.0017 | 0.0014 | **0.3376** |
+| **Hybrid** | 0.0019 | 0.0029 | 0.0026 | **0.3208** |
 
-**Honest reading.** On ranking accuracy the models are close, and the Hybrid does **not** lead — the collaborative filter alone is the strongest accuracy model here. Absolute precision/recall/NDCG are far smaller than earlier dataset versions because the catalog is 2,500 products (5x dataset v2) while K is unchanged, so hitting a held-out item in the top-K is proportionally harder for every model. The Hybrid's decisive, legitimate win is **catalog coverage** (0.3376 vs 0.0040 for the baseline: it personalizes across ~34% of the catalog rather than showing one static list to everyone).
+**Honest reading.** On ranking accuracy the models are close, and the Hybrid does **not** lead — the collaborative filter alone is the strongest accuracy model here. Absolute precision/recall/NDCG are far smaller than earlier dataset versions because the catalog is 2,500 products (5x dataset v2) while K is unchanged, so hitting a held-out item in the top-K is proportionally harder for every model. The Hybrid's decisive, legitimate win is **catalog coverage** (0.3208 vs 0.0040 for the baseline: it personalizes across ~32% of the catalog rather than showing one static list to everyone). Numbers reflect the shipped config `gamma=1, cold_user_fallback=True`, which raised Hybrid Precision@10 from 0.0012 → 0.0019 vs the earlier `gamma=3` edition.
 
 ### Statistical significance (80/20 split, per-user)
 
 Source: `results/significance_tests.csv` (`results_significance.py`; paired t-test, Wilcoxon, 1,000-sample bootstrap 95% CI, seed=42).
 
-- **Hybrid vs Baseline** — Precision@10 p = 0.49, NDCG@10 p = 0.30: **not significant** (accuracy parity).
-- **Hybrid vs Content-based** — Precision@10 p = 0.025: **significantly worse**; NDCG@10 p = 0.054: not significant (borderline).
-- **Hybrid vs Collaborative** — Hybrid is **significantly worse** (Precision@10 p = 0.0028, NDCG@10 p = 0.0036; bootstrap CI entirely negative). The blend costs a little accuracy relative to pure CF.
+- **Hybrid vs Baseline** — Precision@10 p = 0.61, NDCG@10 p = 0.79: **not significant** (accuracy parity).
+- **Hybrid vs Content-based** — Precision@10 p = 0.039: **significantly worse**; NDCG@10 p = 0.35: not significant.
+- **Hybrid vs Collaborative** — Hybrid is **significantly worse** (Precision@10 p = 0.0016, NDCG@10 p = 0.0298; bootstrap CI entirely negative). The blend costs a little accuracy relative to pure CF.
 
 ### Cold-start (dataset v2/v3 introduce genuine cold cohorts)
 
 Sources: `results/advanced_evaluation.txt` (RQ3), `results/cold_items.csv` (`results_cold_items.py`).
 
-- **User-side.** Three segments exist (zero-history: 127 users, low-activity 1–3: 60, active >3: 1,199). Zero-history users are served a discovery pathway (100% new-arrival items driven by the freshness boost); this surfaces fresh content but scores 0 accuracy on their held-out interactions — an honest limitation.
+- **User-side.** Three segments exist (zero-history: 127 users, low-activity 1–3: 60, active >3: 1,199). With the shipped cold-user fallback, zero-history users get the popularity fallback at α=1.0 (plus a preferred-category boost) and now score Precision@10 = 0.0016 (previously 0.0000 when their top-10 was 100% new arrivals) — the cold-start hole is partially closed. The **low-activity segment remains at 0.0000** (1–3 interactions is still too little signal) — an honest residual weakness.
 - **Item-side.** The Hybrid surfaces **180 of 200** brand-new (`is_cold_item`) products across test users' top-10 lists (0.900 coverage); the recency **Baseline and Popularity surface 0/200** — they structurally cannot reach items with no interaction history.
 
 ### Infrastructure latency (measured against live Redis)
@@ -463,10 +463,13 @@ poetry run python scripts/export_metrics.py         # single source of truth -> 
 
 Headline finding: once training is strictly limited to pre-test-period data,
 Hybrid and Baseline are statistically indistinguishable on ranking accuracy
-(paired t-test on Precision@10, Hybrid vs Baseline: p = 0.49), the collaborative
-component alone slightly out-ranks the Hybrid, and Hybrid's clear, reproducible
-wins are catalog coverage (0.3376 vs 0.0040 at K=10) and cold-start item reach
-(180/200 new items vs 0/200 for the baselines). See `RESULTS_SUMMARY.md` for full
+(paired t-test on Precision@10, Hybrid vs Baseline: p = 0.61), the collaborative
+component alone out-ranks the Hybrid, and Hybrid's clear, reproducible
+wins are catalog coverage (0.3208 vs 0.0040 at K=10) and cold-start item reach
+(180/200 new items vs 0/200 for the baselines). The shipped model
+(`gamma=1, cold_user_fallback=True`) edges the Hybrid's Precision@10 up to
+0.0019 and lifts the zero-history cold-start segment from 0.0000 to 0.0016
+without changing the accuracy-parity story. See `RESULTS_SUMMARY.md` for full
 numbers, caveats, and the recommended primary evaluation protocol.
 
 ## Dataset Documentation

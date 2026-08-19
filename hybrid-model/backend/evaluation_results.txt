@@ -1,0 +1,4 @@
+Evaluation Results (Hit Rate @ 10)
+Baseline: 0.0100
+Hybrid AI: 0.0000
+Improvement: +-100.0%

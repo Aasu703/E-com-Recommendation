@@ -3,8 +3,11 @@
 alpha = Uc / (Uc + gamma), where Uc is a user's interaction count and gamma
 (COLD_START_THRESHOLD) was a hand-picked constant of 3 in recommender/hybrid.py.
 recommender/hybrid.py now exposes gamma as an optional HybridRecommender(gamma=...)
-constructor argument (default unchanged at 3) so it can be swept without
-touching the scoring formula itself.
+constructor argument so it can be swept without touching the scoring formula
+itself. The shipped default is gamma=1 (the measured-best value); this ablation
+passes cold_user_fallback=False so the gamma rows isolate the alpha-curve effect
+from the cold-user popularity fallback (which triggers only for zero-history
+users and is gamma-independent).
 
 Uses the same train-only fit / held-out test split as results_eval_clean.py
 (train < 2025-01-01, test >= 2025-01-01) so these numbers are directly
@@ -60,7 +63,7 @@ def main() -> None:
     emit(f"K = {K}")
     emit()
 
-    hybrid = HybridRecommender().fit(products_df, users_df, train_df)
+    hybrid = HybridRecommender(cold_user_fallback=False).fit(products_df, users_df, train_df)
     evaluator = Evaluator()
 
     rows = []
@@ -81,7 +84,8 @@ def main() -> None:
     best_ndcg = max(rows, key=lambda r: r["ndcg"])
     emit(f"Highest Precision@{K}: gamma={best_precision['gamma']} ({best_precision['precision']:.4f})")
     emit(f"Highest NDCG@{K}: gamma={best_ndcg['gamma']} ({best_ndcg['ndcg']:.4f})")
-    emit(f"Current default in recommender/hybrid.py: gamma=3 (unchanged by this ablation)")
+    emit(f"Current default in recommender/hybrid.py: gamma=1 (measured-best value; the")
+    emit(f"shipped model additionally ships cold_user_fallback=True, disabled here to isolate the alpha curve)")
 
     txt_path = RESULTS_DIR / "gamma_ablation.txt"
     txt_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

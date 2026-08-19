@@ -1,11 +1,11 @@
 const CATEGORIES = [
-  { name: 'Traditional Attire', emoji: '🧵' },
-  { name: 'Handicrafts & Art', emoji: '🏺' },
-  { name: 'Electronics', emoji: '📱' },
-  { name: 'Kitchen & Home', emoji: '🍳' },
-  { name: 'Daily Groceries', emoji: '🛒' },
-  { name: 'Fashion & Accessories', emoji: '👜' },
-  { name: 'Books & Education', emoji: '📚' },
+  { name: 'Traditional Attire' },
+  { name: 'Handicrafts & Art' },
+  { name: 'Electronics' },
+  { name: 'Kitchen & Home' },
+  { name: 'Daily Groceries' },
+  { name: 'Fashion & Accessories' },
+  { name: 'Books & Education' },
 ];
 
 interface CategoryNavProps {
@@ -21,9 +21,9 @@ export function CategoryNav({ activeCategory, setActiveCategory }: CategoryNavPr
           <button
             type="button"
             onClick={() => setActiveCategory(null)}
-            className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+            className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
               activeCategory === null
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-teal-700 text-white'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -34,14 +34,13 @@ export function CategoryNav({ activeCategory, setActiveCategory }: CategoryNavPr
               key={c.name}
               type="button"
               onClick={() => setActiveCategory(c.name)}
-              className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+              className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${
                 activeCategory === c.name
-                  ? 'bg-indigo-600 text-white shadow-sm'
+                  ? 'bg-teal-700 text-white'
                   : 'text-slate-600 hover:bg-slate-100'
               }`}
             >
-              <span>{c.emoji}</span>
-              <span>{c.name}</span>
+              {c.name}
             </button>
           ))}
         </div>

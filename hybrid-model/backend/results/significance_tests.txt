@@ -6,38 +6,38 @@ Test users compared (paired): 1346 | Bootstrap resamples: 1000 | seed=42
 A positive mean difference favours Hybrid.
 
 Hybrid vs Baseline — Precision@10
-  mean Hybrid=0.0011 | mean Baseline=0.0014 | mean diff=-0.0003
-  paired t-test:      t=-0.6859, p=0.4929 -> not significant
-  Wilcoxon:           W=262.5000, p=0.4927 -> not significant
-  bootstrap 95% CI of mean diff: [-0.0011, +0.0005]
+  mean Hybrid=0.0012 | mean Baseline=0.0014 | mean diff=-0.0002
+  paired t-test:      t=-0.5070, p=0.6123 -> not significant
+  Wilcoxon:           W=288.0000, p=0.6121 -> not significant
+  bootstrap 95% CI of mean diff: [-0.0011, +0.0006]
 
 Hybrid vs Baseline — NDCG@10
-  mean Hybrid=0.0017 | mean Baseline=0.0027 | mean diff=-0.0009
-  paired t-test:      t=-1.0439, p=0.2967 -> not significant
-  Wilcoxon:           W=268.0000, p=0.6139 -> not significant
-  bootstrap 95% CI of mean diff: [-0.0027, +0.0007]
+  mean Hybrid=0.0024 | mean Baseline=0.0027 | mean diff=-0.0003
+  paired t-test:      t=-0.2601, p=0.7948 -> not significant
+  Wilcoxon:           W=309.5000, p=0.9282 -> not significant
+  bootstrap 95% CI of mean diff: [-0.0024, +0.0017]
 
 Hybrid vs ContentBased — Precision@10
-  mean Hybrid=0.0011 | mean ContentBased=0.0022 | mean diff=-0.0011
-  paired t-test:      t=-2.2394, p=0.0253 -> SIGNIFICANT (p<0.05)
-  Wilcoxon:           W=345.0000, p=0.0253 -> SIGNIFICANT (p<0.05)
-  bootstrap 95% CI of mean diff: [-0.0022, -0.0002]
+  mean Hybrid=0.0012 | mean ContentBased=0.0022 | mean diff=-0.0010
+  paired t-test:      t=-2.0667, p=0.0390 -> SIGNIFICANT (p<0.05)
+  Wilcoxon:           W=376.0000, p=0.0390 -> SIGNIFICANT (p<0.05)
+  bootstrap 95% CI of mean diff: [-0.0021, -0.0001]
 
 Hybrid vs ContentBased — NDCG@10
-  mean Hybrid=0.0017 | mean ContentBased=0.0033 | mean diff=-0.0016
-  paired t-test:      t=-1.9258, p=0.0543 -> not significant
-  Wilcoxon:           W=352.0000, p=0.0616 -> not significant
-  bootstrap 95% CI of mean diff: [-0.0031, +0.0001]
+  mean Hybrid=0.0024 | mean ContentBased=0.0033 | mean diff=-0.0009
+  paired t-test:      t=-0.9401, p=0.3473 -> not significant
+  Wilcoxon:           W=431.0000, p=0.2314 -> not significant
+  bootstrap 95% CI of mean diff: [-0.0027, +0.0010]
 
 Hybrid vs Collaborative — Precision@10
-  mean Hybrid=0.0011 | mean Collaborative=0.0022 | mean diff=-0.0010
-  paired t-test:      t=-2.9936, p=0.0028 -> SIGNIFICANT (p<0.05)
-  Wilcoxon:           W=46.0000, p=0.0028 -> SIGNIFICANT (p<0.05)
-  bootstrap 95% CI of mean diff: [-0.0018, -0.0004]
+  mean Hybrid=0.0012 | mean Collaborative=0.0022 | mean diff=-0.0010
+  paired t-test:      t=-3.1635, p=0.0016 -> SIGNIFICANT (p<0.05)
+  Wilcoxon:           W=18.0000, p=0.0016 -> SIGNIFICANT (p<0.05)
+  bootstrap 95% CI of mean diff: [-0.0016, -0.0004]
 
 Hybrid vs Collaborative — NDCG@10
-  mean Hybrid=0.0017 | mean Collaborative=0.0032 | mean diff=-0.0015
-  paired t-test:      t=-2.9197, p=0.0036 -> SIGNIFICANT (p<0.05)
-  Wilcoxon:           W=101.5000, p=0.0041 -> SIGNIFICANT (p<0.05)
-  bootstrap 95% CI of mean diff: [-0.0025, -0.0005]
+  mean Hybrid=0.0024 | mean Collaborative=0.0032 | mean diff=-0.0008
+  paired t-test:      t=-2.1756, p=0.0298 -> SIGNIFICANT (p<0.05)
+  Wilcoxon:           W=71.5000, p=0.0249 -> SIGNIFICANT (p<0.05)
+  bootstrap 95% CI of mean diff: [-0.0015, -0.0000]
 

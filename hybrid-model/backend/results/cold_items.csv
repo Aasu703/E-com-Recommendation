@@ -1,5 +1,5 @@
 model,freshness_boost,cold_item_coverage,mean_cold_items_per_list
-Hybrid,True,0.9,3.797979797979798
-Hybrid,False,0.9,1.8903318903318904
+Hybrid,True,0.9,2.194083694083694
+Hybrid,False,0.895,1.227994227994228
 Baseline,n/a,0.0,0.0
 Popularity,n/a,0.0,0.0

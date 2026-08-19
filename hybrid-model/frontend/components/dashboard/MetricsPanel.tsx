@@ -27,11 +27,10 @@ export function MetricsPanel() {
     <div className="metrics-panel">
       <div className="section-header">
         <div>
-          <h2>📊 Hybrid vs Baseline — Leak-Free Evaluation</h2>
+          <h2>Hybrid vs Baseline — Leak-Free Evaluation</h2>
           <div className="section-subtitle">
             {HEADLINE.protocol} · {HEADLINE.n_users} users. Accuracy is on par with
-            the baseline ({HEADLINE.accuracy_significance.verdict}); the Hybrid&apos;s
-            clear win is catalog coverage.
+            the baseline; the Hybrid&apos;s clear win is catalog coverage.
           </div>
         </div>
       </div>

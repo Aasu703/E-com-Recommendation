@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useCartGate } from "../../contexts/CartGateContext";
 import { Navbar } from "../../components/ui/Navbar";
 import { StoreProductCard } from "../../components/ui/StoreProductCard";
-import { ArrowLeft, ShoppingCart, Star, Sparkles, Minus, Plus, Check } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Star, Sparkles, Minus, Plus, Check, Package } from "lucide-react";
 import type { RecommendedProduct } from "../../lib/rec-api";
 
 export default function ProductDetailPage() {
@@ -56,7 +56,7 @@ export default function ProductDetailPage() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
-        <Link href="/" className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium mb-10 transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 text-teal-700 hover:text-teal-800 font-medium mb-10 transition-colors">
           <ArrowLeft className="h-4 w-4" />
           Back to Store
         </Link>
@@ -68,17 +68,16 @@ export default function ProductDetailPage() {
             <p className="text-slate-500 text-lg">Product not found.</p>
           </div>
         ) : (
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 mb-20 shadow-sm flex flex-col md:flex-row gap-12">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 mb-20 flex flex-col md:flex-row gap-12">
             {/* Product Image Placeholder */}
-            <div className="w-full md:w-1/2 aspect-square bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-slate-100 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15)_0,transparent_70%)]" />
-              <span className="text-9xl opacity-20">📦</span>
+            <div className="w-full md:w-1/2 aspect-square bg-teal-50 rounded-2xl border border-slate-100 flex items-center justify-center relative overflow-hidden">
+              <Package className="h-24 w-24 text-teal-200" />
             </div>
 
             {/* Product Info */}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <div className="flex gap-2 mb-4 flex-wrap">
-                <span className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-100">
+                <span className="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-bold tracking-wider uppercase border border-teal-100">
                   {product.category}
                 </span>
                 {product.is_new_arrival && (
@@ -113,7 +112,7 @@ export default function ProductDetailPage() {
                 {product.description}
               </p>
 
-              <div className="text-4xl font-extrabold text-indigo-600 mb-8">
+              <div className="text-4xl font-extrabold text-teal-700 mb-8">
                 NPR {product.price_npr.toLocaleString()}
               </div>
 
@@ -141,11 +140,11 @@ export default function ProductDetailPage() {
               <button
                 onClick={handleAddToCart}
                 disabled={!product.in_stock}
-                className={`w-full font-bold py-4 px-8 rounded-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-2 ${
+                className={`w-full font-bold py-4 px-8 rounded-xl transition-colors flex items-center justify-center gap-2 ${
                   added
                     ? 'bg-green-500 text-white'
                     : product.in_stock
-                    ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/20'
+                    ? 'bg-teal-700 hover:bg-teal-800 text-white'
                     : 'bg-slate-100 text-slate-400 cursor-not-allowed'
                 }`}
               >
@@ -159,7 +158,7 @@ export default function ProductDetailPage() {
         {/* Similar Products */}
         <section>
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-pink-100 rounded-lg text-pink-600 shadow-sm">
+            <div className="p-2 bg-teal-50 rounded-lg text-teal-700">
               <Sparkles className="h-6 w-6" />
             </div>
             <div>

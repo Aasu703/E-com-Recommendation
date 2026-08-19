@@ -67,13 +67,13 @@ export default function CaseStudyPage() {
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20 pb-32">
         {/* ── Hero ── */}
         <section className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 border border-indigo-200 text-indigo-700 font-medium text-sm mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-medium text-sm mb-6">
             <Sparkles className="h-4 w-4" />
             <span>Case Study</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
             Why a Hybrid Model for
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mt-2">
+            <span className="block text-teal-700 mt-2">
               Nepal&apos;s E-Commerce Market
             </span>
           </h1>
@@ -94,9 +94,9 @@ export default function CaseStudyPage() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {NEPAL_CHALLENGES.map((c) => (
-              <div key={c.title} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <div key={c.title} className="bg-white rounded-2xl border border-slate-200 p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1.5 bg-indigo-100 rounded-lg text-indigo-600">{c.icon}</div>
+                  <div className="p-1.5 bg-teal-50 rounded-lg text-teal-700">{c.icon}</div>
                   <h3 className="font-bold text-slate-900">{c.title}</h3>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed">{c.body}</p>
@@ -117,7 +117,7 @@ export default function CaseStudyPage() {
             blending them.
           </p>
 
-          <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm">
+          <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-slate-500">
@@ -134,7 +134,7 @@ export default function CaseStudyPage() {
                   return (
                     <tr
                       key={model}
-                      className={`border-b border-slate-100 last:border-0 ${isHybrid ? 'bg-indigo-50/60' : ''}`}
+                      className={`border-b border-slate-100 last:border-0 ${isHybrid ? 'bg-teal-50/60' : ''}`}
                     >
                       <td className="px-5 py-3 font-semibold text-slate-800">
                         {COMPONENT_LABEL[model]}
@@ -156,14 +156,14 @@ export default function CaseStudyPage() {
           </div>
           <p className="text-xs text-slate-400 mt-2">
             Source: <code>results/components_eval.csv</code> — see the full{' '}
-            <Link href="/dashboard" className="text-indigo-600 font-semibold hover:underline">
+            <Link href="/dashboard" className="text-teal-700 font-semibold hover:underline">
               Thesis Dashboard
             </Link>{' '}
             for K=5/20 and every other protocol.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <h3 className="font-bold text-slate-900 mb-2">Collaborative filtering alone</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Actually leads on raw ranking accuracy (Precision@10{' '}
@@ -174,7 +174,7 @@ export default function CaseStudyPage() {
                 below content-based or hybrid.
               </p>
             </div>
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
               <h3 className="font-bold text-slate-900 mb-2">Content-based alone</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Reaches the widest catalog coverage (
@@ -186,7 +186,7 @@ export default function CaseStudyPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-6 mt-5">
+          <div className="bg-teal-50 border border-teal-100 rounded-2xl p-6 mt-5">
             <h3 className="font-bold text-slate-900 mb-2">The hybrid&apos;s job, honestly stated</h3>
             <p className="text-sm text-slate-700 leading-relaxed">
               The hybrid was chosen not because it beats every model on accuracy —
@@ -231,7 +231,7 @@ export default function CaseStudyPage() {
                 body: `Cache-hit responses average ${HEADLINE.latency_ms.cache_hit_mean.toFixed(2)}ms vs ${HEADLINE.latency_ms.cache_miss_mean.toFixed(2)}ms on a cache miss (live Redis measurement) — a ~99% reduction, workable for real-time serving.`,
               },
             ].map((item) => (
-              <div key={item.title} className="flex gap-3 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <div key={item.title} className="flex gap-3 bg-white rounded-2xl border border-slate-200 p-5">
                 <CheckCircle2 className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold text-slate-900 text-sm mb-1">{item.title}</h3>
@@ -272,7 +272,7 @@ export default function CaseStudyPage() {
                 body: 'PostgreSQL/SQLAlchemy and Celery are fully coded but not wired up at runtime — the live system serves from in-memory data with an optional Redis cache; /health honestly reports db_connected: false.',
               },
             ].map((item) => (
-              <div key={item.title} className="flex gap-3 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <div key={item.title} className="flex gap-3 bg-white rounded-2xl border border-slate-200 p-5">
                 <XCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-bold text-slate-900 text-sm mb-1">{item.title}</h3>
@@ -300,7 +300,7 @@ export default function CaseStudyPage() {
           </p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all hover:scale-105 shadow-lg shadow-indigo-500/30"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold transition-colors"
           >
             See the full statistical breakdown
             <ArrowRight className="h-5 w-5" />
