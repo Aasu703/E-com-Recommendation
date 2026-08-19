@@ -25,7 +25,7 @@ RESULTS = BACKEND / "results"
 FRONTEND_LIB = BACKEND.parent / "frontend" / "lib"
 THESIS_ASSETS = BACKEND / "thesis_assets"
 
-DATASET_VERSION = "v3"
+DATASET_VERSION = "v4"
 
 
 def load_csv(name: str) -> tuple[str, list[dict]]:

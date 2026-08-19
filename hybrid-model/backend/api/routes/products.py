@@ -38,7 +38,16 @@ async def list_products(
     if category:
         df = df[df["category"] == category]
     if q:
-        df = df[df["name"].str.contains(q, case=False, na=False)]
+        q = q.strip()
+        mask = (
+            df["name"].str.contains(q, case=False, na=False)
+            | df["description"].str.contains(q, case=False, na=False)
+            | df["tags"].str.contains(q, case=False, na=False)
+            | df["brand"].str.contains(q, case=False, na=False)
+            | df["subcategory"].str.contains(q, case=False, na=False)
+            | df["category"].str.contains(q, case=False, na=False)
+        )
+        df = df[mask]
     if min_price is not None:
         df = df[df["price_npr"] >= min_price]
     if max_price is not None:

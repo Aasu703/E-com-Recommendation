@@ -2,17 +2,17 @@
 Gamma (cold-start threshold) ablation
 alpha = Uc / (Uc + gamma)
 ============================================================
-Split date: 2025-01-01 | Train interactions: 21,400
+Split date: 2025-01-01 | Train interactions: 15,503
 K = 10
 
 gamma | Precision@10 | NDCG@10
 ------|--------------|--------
-1     | 0.0017       | 0.0020
-3     | 0.0012       | 0.0014
-5     | 0.0008       | 0.0011
-10    | 0.0009       | 0.0010
+1     | 0.0064       | 0.0087
+3     | 0.0046       | 0.0056
+5     | 0.0038       | 0.0041
+10    | 0.0034       | 0.0033
 
-Highest Precision@10: gamma=1 (0.0017)
-Highest NDCG@10: gamma=1 (0.0020)
+Highest Precision@10: gamma=1 (0.0064)
+Highest NDCG@10: gamma=1 (0.0087)
 Current default in recommender/hybrid.py: gamma=1 (measured-best value; the
 shipped model additionally ships cold_user_fallback=True, disabled here to isolate the alpha curve)

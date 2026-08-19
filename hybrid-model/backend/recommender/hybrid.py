@@ -27,7 +27,7 @@ class HybridRecommender:
         "Traditional Gifts",
         "Electronics",  # Festival electronics are big in Dashain
     }
-    COLD_START_THRESHOLD = 1  # default gamma in the formula (γ=1 best in results/gamma_ablation.txt, dataset v3)
+    COLD_START_THRESHOLD = 1  # default gamma in the formula (γ=1 best in results/gamma_ablation.txt, dataset v4)
 
     def __init__(
         self,

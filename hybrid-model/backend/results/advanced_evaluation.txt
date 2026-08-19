@@ -6,19 +6,19 @@ ADVANCED EVALUATION REPORT
 ### RQ1: Statistical Significance (NDCG@10)
 | Model | Mean NDCG@10 | Std Dev |
 |-------|--------------|---------|
-| Hybrid | 0.0060 | 0.0367 |
-| Baseline | 0.0069 | 0.0264 |
+| Hybrid | 0.0144 | 0.0488 |
+| Baseline | 0.0062 | 0.0234 |
 
-Paired T-Test: t=-0.2423, p=0.8091
+Paired T-Test: t=1.4791, p=0.1423
 Result: Not Statistically Significant
 
 ### RQ2: Infrastructure Latency Profiling
 | Scenario | Average Latency (ms) | P95 Latency (ms) |
 |----------|----------------------|------------------|
-| Cache Miss (Inference) | 5.05 | 6.38 |
+| Cache Miss (Inference) | 6.47 | 9.28 |
 | Cache Hit (SIMULATED +0.5ms) | 0.50 | 0.50 |
 
-Latency Reduction: 90.10% (using the SIMULATED cache-hit figure).
+Latency Reduction: 92.27% (using the SIMULATED cache-hit figure).
 NOTE: the cache-hit row above is a SIMULATED upper-bound (a fixed +0.5 ms
 constant), NOT a live Redis measurement. The authoritative LIVE measurement
 against a running Redis instance is in results/latency_live.txt, produced by
@@ -27,14 +27,14 @@ results_latency.py (200 cold + 200 warm requests to the live API).
 ### RQ3: User Stratification Performance (three segments)
 | Segment | Users | Precision@10 | Recall@10 | NDCG@10 | Catalog Coverage |
 |---------|-------|--------------|-----------|----------|------------------|
-| Zero-history (0 train) | 127 | 0.0016 | 0.0066 | 0.0067 | 0.0124 |
-| Low-activity (1-3 train) | 60 | 0.0000 | 0.0000 | 0.0000 | 0.1164 |
-| Active (>3 train) | 1199 | 0.0018 | 0.0025 | 0.0023 | 0.2760 |
+| Zero-history (0 train) | 149 | 0.0027 | 0.0101 | 0.0047 | 0.0112 |
+| Low-activity (1-3 train) | 78 | 0.0000 | 0.0000 | 0.0000 | 0.1176 |
+| Active (>3 train) | 1200 | 0.0049 | 0.0039 | 0.0065 | 0.2156 |
 
-Cold-start pathway (zero-history segment, 127 users):
+Cold-start pathway (zero-history segment, 149 users):
 A zero-history user has no CF factors and no content seed. The shipped
 cold-user fallback (cold_user_fallback=True) forces alpha=1.0 for such
 users, so the popularity fallback populated into the CF vector actually
 scores (plus a +0.08 boost on their onboarding preferred_categories).
   Mean fraction of served top-10 that are new arrivals: 0.0%
-  Mean overlap of served top-10 with the popularity fallback list: 55.0%
+  Mean overlap of served top-10 with the popularity fallback list: 61.5%

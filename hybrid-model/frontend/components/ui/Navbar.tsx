@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ShoppingCart, Search, User, Menu, LogOut, Package } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, X, LogOut, Package } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 
@@ -18,6 +18,7 @@ export function Navbar() {
     e.preventDefault();
     const q = query.trim();
     router.push(q ? `/products?q=${encodeURIComponent(q)}` : '/products');
+    setMenuOpen(false);
   };
 
   const handleLogout = () => {
@@ -126,11 +127,91 @@ export function Navbar() {
                 </span>
               )}
             </Link>
-            <button className="md:hidden text-slate-500">
-              <Menu className="h-6 w-6" />
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              className="md:hidden text-slate-500 hover:text-teal-700 transition-colors"
+            >
+              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
+
+        {menuOpen && (
+          <div className="md:hidden border-t border-slate-100 py-4 px-2 space-y-4">
+            <form onSubmit={handleSearch}>
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="w-full bg-slate-100 border border-transparent rounded-full py-2 px-4 pl-10 text-slate-900 focus:outline-none focus:bg-white focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all"
+                />
+                <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
+              </div>
+            </form>
+
+            <Link
+              href="/case-study"
+              onClick={() => setMenuOpen(false)}
+              className="block px-2 py-2 text-sm font-semibold text-slate-600 hover:text-teal-700 transition-colors"
+            >
+              Why Nepal
+            </Link>
+            <Link
+              href="/products"
+              onClick={() => setMenuOpen(false)}
+              className="block px-2 py-2 text-sm font-semibold text-slate-600 hover:text-teal-700 transition-colors"
+            >
+              All Products
+            </Link>
+
+            {user ? (
+              <>
+                <Link
+                  href="/account"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center gap-2 px-2 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                >
+                  <User className="h-4 w-4" /> Account
+                </Link>
+                <Link
+                  href="/account?tab=orders"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center gap-2 px-2 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                >
+                  <Package className="h-4 w-4" /> Orders
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="w-full flex items-center gap-2 px-2 py-2 text-sm text-red-600 hover:bg-red-50"
+                >
+                  <LogOut className="h-4 w-4" /> Logout
+                </button>
+              </>
+            ) : (
+              <div className="flex items-center gap-2 px-2 pt-1">
+                <Link
+                  href="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm font-semibold text-slate-600 hover:text-teal-700 transition-colors px-3 py-2"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-full px-4 py-2 transition-colors"
+                >
+                  Sign up
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </nav>
   );

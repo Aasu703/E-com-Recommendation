@@ -1,0 +1,25 @@
+=== regenerating primary dataset (seed 42) ===
+== shapes ==
+products 2500 x 14
+users 1500 x 9
+interactions 30739 x 9
+interactions columns: ['interaction_id', 'user_id', 'product_id', 'interaction_type', 'rating', 'implicit_score', 'timestamp', 'month', 'is_festival_period']
+== split ==
+train rows 15503 / test rows 15236
+test month range: 1..12
+festival (month 10-11) test rows: 2645
+cold-start cohort users with ZERO train history: 150/150
+cold-start cohort users with zero interactions at all: 40 (want >= 40)
+cold-item interactions pre-cutoff: 0 (want 0), post-cutoff: 203
+new-arrival interactions pre-cutoff: 0 (want 0)
+== planted-signal check ==
+users with >=5 interactions: 1200
+mean fraction of a user's interactions in their preferred categories: 0.844
+(random baseline would be ~2/7 = 0.286; affinity model should be well above)
+=== determinism / cross-seed ===
+products.csv deterministic (same seed): True
+users.csv deterministic (same seed): True
+interactions.csv deterministic (same seed): True
+products.csv differs across seeds: True
+users.csv differs across seeds: True
+interactions.csv differs across seeds: True
