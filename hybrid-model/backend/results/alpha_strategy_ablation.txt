@@ -1,42 +1,43 @@
 ====================================================================================
 HYBRIDIZATION-STRATEGY comparison (clean leak-free split, K=10)
 ====================================================================================
-Split date: 2025-01-01 | Train interactions: 21,400
-NOTE: the festival boost is inactive on this test window (months 1-6);
-      'festival off' rows are identical to 'festival on' by construction.
+Split date: 2025-01-01 | Train interactions: 15,503
+NOTE: festival months (10-11) ARE in the v4 test window, but the festival
+      boost is still inactive here -- Evaluator never passes a month context,
+      so 'festival off' rows equal 'festival on' by harness construction.
 
 
 [FIXED]
 Configuration                          | Precision | Recall | NDCG  | Coverage
 ---------------------------------------|-----------|--------|-------|---------
-fixed alpha=0.00                       | 0.0019    | 0.0027 | 0.0021 | 0.7028
-fixed alpha=0.25                       | 0.0024    | 0.0036 | 0.0028 | 0.9092
-fixed alpha=0.50                       | 0.0022    | 0.0033 | 0.0027 | 0.8840
-fixed alpha=0.75                       | 0.0022    | 0.0033 | 0.0026 | 0.6396
-fixed alpha=1.00                       | 0.0029    | 0.0045 | 0.0037 | 0.2396
+fixed alpha=0.00                       | 0.0105    | 0.0086 | 0.0091 | 0.6924
+fixed alpha=0.25                       | 0.0100    | 0.0081 | 0.0099 | 0.8928
+fixed alpha=0.50                       | 0.0095    | 0.0077 | 0.0095 | 0.8288
+fixed alpha=0.75                       | 0.0097    | 0.0078 | 0.0123 | 0.4568
+fixed alpha=1.00                       | 0.0142    | 0.0112 | 0.0155 | 0.1544
 
 [ADAPTIVE]
 Configuration                          | Precision | Recall | NDCG  | Coverage
 ---------------------------------------|-----------|--------|-------|---------
-adaptive gamma=1                       | 0.0017    | 0.0023 | 0.0020 | 0.3160
-adaptive gamma=3                       | 0.0012    | 0.0017 | 0.0014 | 0.3376
-adaptive gamma=5                       | 0.0008    | 0.0011 | 0.0011 | 0.3948
-adaptive gamma=10                      | 0.0009    | 0.0012 | 0.0010 | 0.5100
+adaptive gamma=1                       | 0.0064    | 0.0051 | 0.0087 | 0.2376
+adaptive gamma=3                       | 0.0046    | 0.0035 | 0.0056 | 0.2872
+adaptive gamma=5                       | 0.0038    | 0.0029 | 0.0041 | 0.3720
+adaptive gamma=10                      | 0.0034    | 0.0028 | 0.0033 | 0.5684
 
 [SWITCHING]
 Configuration                          | Precision | Recall | NDCG  | Coverage
 ---------------------------------------|-----------|--------|-------|---------
-switching gamma=1                      | 0.0027    | 0.0039 | 0.0032 | 0.2384
-switching gamma=3                      | 0.0027    | 0.0039 | 0.0032 | 0.3904
-switching gamma=5                      | 0.0027    | 0.0039 | 0.0032 | 0.3904
+switching gamma=1                      | 0.0142    | 0.0112 | 0.0155 | 0.1536
+switching gamma=3                      | 0.0142    | 0.0112 | 0.0155 | 0.3644
+switching gamma=5                      | 0.0142    | 0.0112 | 0.0155 | 0.3680
 
 [BOOST]
 Configuration                          | Precision | Recall | NDCG  | Coverage
 ---------------------------------------|-----------|--------|-------|---------
-adaptive gamma=3 boosts:both-on        | 0.0012    | 0.0017 | 0.0014 | 0.3376
-adaptive gamma=3 boosts:freshness-off  | 0.0019    | 0.0026 | 0.0022 | 0.4980
-adaptive gamma=3 boosts:festival-off   | 0.0012    | 0.0017 | 0.0014 | 0.3376
-adaptive gamma=3 boosts:both-off       | 0.0019    | 0.0026 | 0.0022 | 0.4980
+adaptive gamma=3 boosts:both-on        | 0.0046    | 0.0035 | 0.0056 | 0.2872
+adaptive gamma=3 boosts:freshness-off  | 0.0088    | 0.0071 | 0.0099 | 0.5096
+adaptive gamma=3 boosts:festival-off   | 0.0046    | 0.0035 | 0.0056 | 0.2872
+adaptive gamma=3 boosts:both-off       | 0.0088    | 0.0071 | 0.0099 | 0.5096
 
-Highest Precision@10: fixed alpha=1.00 (0.0029)
-Highest Coverage@10: fixed alpha=0.25 (0.9092)
+Highest Precision@10: fixed alpha=1.00 (0.0142)
+Highest Coverage@10: fixed alpha=0.25 (0.8928)

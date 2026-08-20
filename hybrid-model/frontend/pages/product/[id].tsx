@@ -69,9 +69,14 @@ export default function ProductDetailPage() {
           </div>
         ) : (
           <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 mb-20 flex flex-col md:flex-row gap-12">
-            {/* Product Image Placeholder */}
+            {/* Product Image */}
             <div className="w-full md:w-1/2 aspect-square bg-teal-50 rounded-2xl border border-slate-100 flex items-center justify-center relative overflow-hidden">
-              <Package className="h-24 w-24 text-teal-200" />
+              {product.image_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+              ) : (
+                <Package className="h-24 w-24 text-teal-200" />
+              )}
             </div>
 
             {/* Product Info */}

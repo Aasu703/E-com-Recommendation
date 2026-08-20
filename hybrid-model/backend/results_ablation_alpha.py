@@ -18,12 +18,18 @@ cold_user_fallback is explicitly disabled (False) so every row isolates the
 strategy/boost effect without the shipped cold-user popularity fallback (which
 triggers only for zero-history users and is orthogonal to these settings).
 
-NOTE on the festival boost: the Evaluator does not pass a month context and the
-held-out test window is 2025-01 .. 2025-06 (months 1-6), whereas the festival
-boost only fires in months 10-11. The festival boost is therefore INACTIVE on
-this test set by construction, so "festival off" rows are identical to their
-"festival on" counterparts. This is reported honestly rather than hidden; only
-the freshness boost is testable on this window.
+NOTE on the festival boost: as of dataset v4 the held-out test window spans
+2025-01 .. 2025-12 (months 1-12), so festival months 10-11 ARE present in the
+test set. The festival boost is still INACTIVE in this evaluation, but for a
+different, harness-level reason: `Evaluator.evaluate()` never passes a `month`
+key in the `recommend()` context (see recommender/evaluator.py), so
+`HybridRecommender` always falls back to the current wall-clock month and the
+boost never fires from held-out timestamps regardless of dataset version.
+"festival off" rows are therefore identical to their "festival on" counterparts
+here too, but this is a harness limitation, not a dataset one -- wiring the
+test interaction's own month through `context` would make the festival boost
+testable. This is reported honestly rather than hidden; only the freshness
+boost is testable with the current harness.
 
 Outputs:
   results/alpha_strategy_ablation.csv
@@ -80,8 +86,9 @@ def main() -> None:
     emit("HYBRIDIZATION-STRATEGY comparison (clean leak-free split, K=10)")
     emit("=" * 84)
     emit(f"Split date: {SPLIT_DATE.date()} | Train interactions: {len(train_df):,}")
-    emit("NOTE: the festival boost is inactive on this test window (months 1-6);")
-    emit("      'festival off' rows are identical to 'festival on' by construction.")
+    emit("NOTE: festival months (10-11) ARE in the v4 test window, but the festival")
+    emit("      boost is still inactive here -- Evaluator never passes a month context,")
+    emit("      so 'festival off' rows equal 'festival on' by harness construction.")
     emit()
 
     rows: list[dict] = []

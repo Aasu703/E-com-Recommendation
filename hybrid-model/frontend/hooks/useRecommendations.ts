@@ -130,7 +130,11 @@ export function useAccountOrders(enabled: boolean) {
 
 /** Filterable/searchable/sortable/paginated catalogue (products page). */
 export function useProducts(params: ProductListParams) {
-  const { data, error, isLoading } = useSWR(["products", params], () => getProducts(params));
+  const { data, error, isLoading } = useSWR(
+    ["products", params],
+    () => getProducts(params),
+    { keepPreviousData: true },
+  );
   return {
     items: data?.items ?? [],
     total: data?.total ?? 0,

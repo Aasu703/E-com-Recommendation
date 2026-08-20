@@ -83,6 +83,7 @@ class ContentBasedRecommender:
                 "subcategory": row["subcategory"],
                 "brand": row["brand"],
                 "price_npr": int(row["price_npr"]),
+                "image_url": row.get("image_url"),
                 "avg_rating": None if pd.isna(row["avg_rating"]) else float(row["avg_rating"]),
                 "similarity_score": float(np.clip(score, 0, 1)),
                 "is_new_arrival": bool(row["is_new_arrival"]),

@@ -59,5 +59,7 @@ def get_popular_products(
         0.6 * min_max_normalize(merged["interaction_count"].to_numpy())
         + 0.4 * min_max_normalize(merged["avg_rating"].to_numpy())
     )
-    cols = ["product_id", "name", "category", "price_npr", "popularity_score"]
+    if "image_url" not in merged.columns:
+        merged["image_url"] = None
+    cols = ["product_id", "name", "category", "price_npr", "image_url", "popularity_score"]
     return merged.sort_values("popularity_score", ascending=False).head(top_k)[cols].to_dict("records")

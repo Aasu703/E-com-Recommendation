@@ -27,7 +27,7 @@ class HybridRecommender:
         "Traditional Gifts",
         "Electronics",  # Festival electronics are big in Dashain
     }
-    COLD_START_THRESHOLD = 1  # default gamma in the formula (γ=1 best in results/gamma_ablation.txt, dataset v3)
+    COLD_START_THRESHOLD = 1  # default gamma in the formula (γ=1 best in results/gamma_ablation.txt, dataset v4)
 
     def __init__(
         self,
@@ -198,6 +198,7 @@ class HybridRecommender:
                 "subcategory": row["subcategory"],
                 "brand": row["brand"],
                 "price_npr": int(row["price_npr"]),
+                "image_url": row.get("image_url"),
                 "avg_rating": None if pd.isna(row["avg_rating"]) else float(row["avg_rating"]),
                 "in_stock": bool(row["in_stock"]),
                 "is_new_arrival": bool(is_new_arrival_arr[i]),
@@ -254,5 +255,17 @@ class HybridRecommender:
 
     @classmethod
     def load(cls, path: Path | str) -> "HybridRecommender":
-        """Load a saved hybrid model."""
-        return joblib.load(Path(path))
+        """Load a saved hybrid model.
+
+        Backfills attributes added after an older pickle was saved so a stale
+        model file (e.g. one trained before `cold_user_fallback` shipped) never
+        crashes `recommend()` with AttributeError. Missing attributes are filled
+        from a freshly-constructed instance's defaults, matching the shipped
+        configuration.
+        """
+        model = joblib.load(Path(path))
+        defaults = cls()
+        for attr in ("cold_user_fallback", "freshness_boost", "festival_boost", "strategy", "fixed_alpha"):
+            if not hasattr(model, attr):
+                setattr(model, attr, getattr(defaults, attr))
+        return model

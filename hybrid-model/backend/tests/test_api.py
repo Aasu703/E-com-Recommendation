@@ -82,3 +82,74 @@ async def test_popular_recommendations_return_top_k_list(client):
     recommendations = response.json()["recommendations"]
     assert isinstance(recommendations, list)
     assert len(recommendations) == 5
+
+
+# ---------------------------------------------------------------------------
+# Catalogue search / filter / sort / pagination
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_products_list_paginates(client):
+    response = await client.get("/api/v1/products?limit=5&page=1")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["page"] == 1
+    assert body["limit"] == 5
+    assert len(body["items"]) == 5
+    assert body["total"] >= 5
+
+
+@pytest.mark.asyncio
+async def test_products_search_matches_name(client):
+    response = await client.get("/api/v1/products?q=Tea&limit=100")
+
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert len(items) > 0
+    assert all("tea" in item["name"].lower() for item in items)
+
+
+@pytest.mark.asyncio
+async def test_products_search_matches_brand_and_tag(client):
+    by_brand = await client.get("/api/v1/products?q=himalaya&limit=100")
+    by_tag = await client.get("/api/v1/products?q=thangka&limit=100")
+
+    assert by_brand.status_code == 200
+    assert by_tag.status_code == 200
+    assert all(
+        "himalaya" in item["brand"].lower() for item in by_brand.json()["items"]
+    )
+    assert all(
+        "thangka" in item["tags"].lower() for item in by_tag.json()["items"]
+    )
+
+
+@pytest.mark.asyncio
+async def test_products_filter_by_category_and_stock(client):
+    response = await client.get(
+        "/api/v1/products?category=Electronics&in_stock=true&limit=100"
+    )
+
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert len(items) > 0
+    assert all(item["category"] == "Electronics" for item in items)
+    assert all(item["in_stock"] for item in items)
+
+
+@pytest.mark.asyncio
+async def test_products_sort_by_price_asc(client):
+    response = await client.get("/api/v1/products?sort=price_asc&limit=100")
+
+    assert response.status_code == 200
+    prices = [item["price_npr"] for item in response.json()["items"]]
+    assert prices == sorted(prices)
+
+
+@pytest.mark.asyncio
+async def test_products_unknown_sort_rejected(client):
+    response = await client.get("/api/v1/products?sort=bogus")
+
+    assert response.status_code == 400

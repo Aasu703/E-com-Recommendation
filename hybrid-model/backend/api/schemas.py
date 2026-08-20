@@ -59,6 +59,7 @@ class RecommendedProduct(BaseModel):
     brand: str = ""
     price_npr: int
     price_formatted: str
+    image_url: str | None = None
     avg_rating: float | None = None
     in_stock: bool = True
     is_new_arrival: bool = False
